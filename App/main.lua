@@ -10,5 +10,6 @@ display.setStatusBar( display.HiddenStatusBar )
 -- include the Corona "composer" module
 local composer = require "composer"
 
+print("caricamento menu")
 -- load menu screen
-composer.gotoScene( "menu" )
+composer.gotoScene( "loadmainmenu" )
