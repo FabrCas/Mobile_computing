@@ -10,7 +10,7 @@ local scene = composer.newScene()
 -- include Corona's "widget" library
 local widget = require "widget"
 widget.setTheme("widget_theme_android_holo_dark")
-
+local menuSound
 --------------------------------------------
 
 -- forward declarations and other locals
@@ -27,6 +27,7 @@ end
 
 function scene:create( event )
   local sceneGroup = self.view
+  menuSound = audio.loadSound("/static/Sounds/menuSound.wav")
 
   -- Called when the scene's view does not exist.
   -- 
@@ -56,10 +57,6 @@ local mylistener= function (event)
   end
   end
 
-  
-
-
-
   -- create a widget button (which will loads level1.lua on release)
   playBtn = widget.newButton{
     label="Play Now",
@@ -71,7 +68,7 @@ local mylistener= function (event)
   }
   playBtn.x = display.contentCenterX
   playBtn.y = display.contentHeight - 125
-  playBtn.onPress= mylistener
+  playBtn.onPress = mylistener
 
   -- all display objects must be inserted into group
   sceneGroup:insert( background )
@@ -81,9 +78,11 @@ end
 
 function scene:show( event )
   local sceneGroup = self.view
+  
   local phase = event.phase
 
   if phase == "will" then
+    audio.play(menuSound,{channel=1, loops=-1, fadein= 5000})
     -- Called when the scene is still off screen and is about to move on screen
   elseif phase == "did" then
     -- Called when the scene is now on screen
@@ -109,6 +108,8 @@ end
 
 function scene:destroy( event )
   local sceneGroup = self.view
+  audio.pause(menuSound)
+  menuSound= nil
 
   -- Called prior to the removal of scene's "view" (sceneGroup)
   -- 

@@ -10,10 +10,14 @@ local scene = composer.newScene()
 local myTimer
 local loading
 
+
 -- Called when the scene's view does not exist:
 function scene:create( event )
   local sceneGroup = self.view
-
+  if(menuSound==nil) then
+    print("0")
+  else print("1")
+  end
   print( "\nloadmainmenu: creazione evento" )
 end
 
@@ -41,15 +45,13 @@ local options =
     composer.gotoScene( "mainmenu", "crossFade", 500 )
   end
   myTimer = timer.performWithDelay( 1000, goToMenu, 1 )
-
+  
 end
 
-
--- Called when scene is about to move offscreen:
 function scene:hide()
 
   if myTimer then timer.cancel( myTimer ); end
-
+  
   print( "loadmainmenu: hide event" )
 
 end
@@ -57,7 +59,6 @@ end
 
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroy( event )
-
   print( "destroying loadmainmenu's view" )
 end
 

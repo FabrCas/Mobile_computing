@@ -16,7 +16,8 @@ local physics = require "physics"
 local screenW, screenH, halfW = display.actualContentWidth, display.actualContentHeight, display.contentCenterX
 
 function scene:create( event )
-
+  
+  composer.removeScene("mainmenu")
 	-- Called when the scene's view does not exist.
 	-- 
 	-- INSERT code here to initialize the scene
@@ -40,15 +41,17 @@ function scene:create( event )
 	background:setFillColor( .5 )
 	
 	-- make a crate (off-screen), position it, and rotate slightly
-	local crate = display.newImageRect( "crate.png", 90, 90 )
+	local crate = display.newImage( "/static/2DAssets/blackball.png")
+  
 	crate.x, crate.y = 160, -100
 	crate.rotation = 15
+  crate.shape={}
 	
 	-- add physics to the crate
 	physics.addBody( crate, { density=1.0, friction=0.3, bounce=0.3 } )
 	
 	-- create a grass object and add physics (with custom shape)
-	local grass = display.newImageRect( "grass.png", screenW, 82 )
+	local grass = display.newImageRect( "/static/2DAssets/grass.png", screenW, 82 )
 	grass.anchorX = 0
 	grass.anchorY = 1
 	--  draw the grass at the very bottom of the screen
