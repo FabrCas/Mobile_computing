@@ -1,15 +1,25 @@
 -----------------------------------------------------------------------------------------
---
+-- Level Director
 -- main.lua
---
+-- Created on lun set 16 15:44:26 2019
 -----------------------------------------------------------------------------------------
-
--- hide the status bar
+system.activate("multitouch")
 display.setStatusBar( display.HiddenStatusBar )
 
--- include the Corona "composer" module
-local composer = require "composer"
+--physics = require ("physics")
+--physics.start()
 
-print("caricamento menu")
--- load menu screen
-composer.gotoScene( "loadmainmenu" )
+local composer = require( "composer" )
+composer.imgDir = "images/"
+
+--variabili utili per la selezione delle scene
+--non di default
+composer.level = 1 --sei nel menu
+
+
+local function main()
+composer.gotoScene( "toMenu", "fade", 500 )
+   return true
+end
+-- Begin
+main()
