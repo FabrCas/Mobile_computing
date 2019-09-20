@@ -36,12 +36,12 @@ function shoot(event)
 	if canShoot then
 		canShoot = false
 	print(event.phase)
-	i=15
+	i=10
     cerchio = display.newCircle(_W/2,i, i) --creazione palla
-    physics.addBody(cerchio,{radius=i,bounce=0.5})
+    physics.addBody(cerchio,{radius=i,bounce=0.8})
 local mx,my = event.x,event.y
 local angle = math.atan2(my - (cerchio.y + 0), mx - (cerchio.x +0))
-local vx,vy = math.cos(angle)*10, math.sin(angle)*10
+local vx,vy = math.cos(angle)*5, math.sin(angle)*5
  cerchio:applyForce(vx,vy,cerchio.x,cerchio.y)
     end end
   bg:addEventListener("tap",shoot)
@@ -57,7 +57,7 @@ end
 ---------------------------------------------------------------------------------
 function hit(event)
 	        brick = event.target
-            local vx, vy = brick:getLinearVelocity()
+            local vx, vy = event.other:getLinearVelocity()
             --calcolo del modulo di vx e vy
             if vx<0 then vx = -vx end
             if vy<0 then vy = -vy end
@@ -72,7 +72,7 @@ function hit(event)
           --  		c= c+1
           --  	end end
 
-			brick.life = brick.life-(damage + vy/3 +vx/3 + math.random(2,45))
+			brick.life = brick.life-(damage + vy/10 +vx/10)
 			print("ciao")
 
 			if brick.life < 0 then
@@ -92,7 +92,7 @@ function scene:create( event )
 	myLevel= LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
   --physics.setDrawMode( "debug" )
-
+physics.setGravity(0, 30)
     -- aggiunta listener ai mattoni
 	local obj = {}
 	for i=1,29 do
