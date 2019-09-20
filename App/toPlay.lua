@@ -24,9 +24,19 @@ function scene:create( event )
     -- Code here runs when the scene is first created but has not yet appeared on screen
     sceneGroup = self.view
 
-   local txt = display.newText("play", _W/2, _H/2-30,native.systemFontBold, 40)
-   txt:setFillColor(0, 0, 1)
-   sceneGroup:insert(txt)
+   local testoSchermo = display.newText("Tap to play test level", _W/2, _H/2-30,native.systemFontBold, 40)
+   testoSchermo:setFillColor(0, 0, 1)
+   sceneGroup:insert(testoSchermo)
+
+
+ local function onClick(event)
+ local options = { effect = "crossFade", time = 200}
+ self:removeEventListener( "tap", onClick )
+ composer.gotoScene( "levels.scene1", options )
+ return true
+end
+
+   testoSchermo:addEventListener("tap", onClick )
 end
 
 
@@ -41,14 +51,12 @@ function scene:show( event )
 
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
-
-    end
+end
 end
 
 
 -- hide()
 function scene:hide( event )
-
     local sceneGroup = self.view
     local phase = event.phase
 
@@ -57,17 +65,15 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Code here runs immediately after the scene goes entirely off screen
-
+        print("toPlay page removed")
     end
 end
 
 
 -- destroy()
 function scene:destroy( event )
-
     local sceneGroup = self.view
     -- Code here runs prior to the removal of scene's view
-
 end
 
 
