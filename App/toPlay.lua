@@ -24,8 +24,8 @@ function scene:create( event )
     -- Code here runs when the scene is first created but has not yet appeared on screen
     sceneGroup = self.view
 
-   local testoSchermo = display.newText("Tap to play test level", _W/2, _H/2-30,native.systemFontBold, 40)
-   testoSchermo:setFillColor(0, 0, 1)
+   local testoSchermo = display.newText("Tap to play\n [test level]", _W/2, _H/2-30,native.systemFontBold, 20)
+   testoSchermo:setFillColor(0.9, 0.1, 0)
    sceneGroup:insert(testoSchermo)
 
 

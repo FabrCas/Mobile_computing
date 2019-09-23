@@ -16,13 +16,15 @@ function scene:create( event )
     -- view is not yet visible
     local sceneGroup = self.view
 print("menu-> create")
-	display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
+--	display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
+  --sceneGroup:insert(bg)
+
 
 	-- Insert your own background
-	-- local background = display.newImage(composer.imgDir .. "bg.png", 0, 0, true)
-	-- background.anchorX = 0
-	-- background.anchorY = 0
-	-- sceneGroup:insert(background)
+	 local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
+	background.anchorX = 0
+  background.anchorY = 0
+	sceneGroup:insert(background)
 
 	--set images for carousel
 	-- table item is { unlocked image, locked image, locked}

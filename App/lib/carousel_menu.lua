@@ -42,15 +42,11 @@ function new( imageSet, slideBackground, top )
 		local p = display.newSnapshot( w,h )
 		math.randomseed( 0 )
 
-		if (myImages[i].locked) then
-			texture = display.newImage(myImages[i].imageLocked)
-			texture.xScale= 1.2
-			texture.yScale= 0.5
-		else
+
 			texture = display.newImage(myImages[i].image)
 			texture.xScale= 1.2
-			texture.yScale= 0.5
-		end
+			texture.yScale= 0.8
+
 
 		p.canvas:insert( texture )
 		p:invalidate( "canvas" )
@@ -113,11 +109,11 @@ function new( imageSet, slideBackground, top )
 				dragDistance = touch.x - startPos
 				dragYDistance = touch.y - startYPos
 
-				if (dragDistance < -200 and imgNum < #images) then
+				if (dragDistance < -100 and imgNum < #images) then
 					nextImage()
-				elseif (dragDistance < -200 and imgNum == #images) then
+				elseif (dragDistance < -100 and imgNum == #images) then
 					--g:jumpToImage()
-				elseif (dragDistance > 200 and imgNum > 1) then
+				elseif (dragDistance > 100 and imgNum > 1) then
 					prevImage()
 				else
 					cancelMove()
@@ -159,10 +155,13 @@ function new( imageSet, slideBackground, top )
 
 	function nextImage()
 
-		tween = transition.to( images[imgNum], {time=400, alpha=0.7, transition=easing.outExpo } )
+		tween = transition.to( images[imgNum], {time=400, alpha=0, transition=easing.outExpo } )
 
 		if images[imgNum-1] ~= nil then
 			tween = transition.to( images[imgNum-1], {time=400, alpha=0, transition=easing.outExpo } )
+		end
+		if images[imgNum] ~= nil then
+			tween = transition.to( images[imgNum], {time=500, alpha=0, transition=easing.outExpo } )
 		end
 		if images[imgNum+1] ~= nil then
 			tween = transition.to( images[imgNum+1], {time=400, alpha=1, transition=easing.outExpo } )
@@ -186,10 +185,13 @@ function new( imageSet, slideBackground, top )
 	end
 
 	function prevImage()
-		tween = transition.to( images[imgNum], {time=400, alpha=0.7, transition=easing.outExpo } )
+		tween = transition.to( images[imgNum], {time=400, alpha=0, transition=easing.outExpo } )
 
 		if images[imgNum-1] ~= nil then
 			tween = transition.to( images[imgNum-1], {time=400, alpha=1, transition=easing.outExpo } )
+		end
+		if images[imgNum] ~= nil then
+			tween = transition.to( images[imgNum], {time=500, alpha=0, transition=easing.outExpo } )
 		end
 		if images[imgNum-2] ~= nil then
 			tween = transition.to( images[imgNum-2], {time=400, alpha=0.7, transition=easing.outExpo } )
@@ -197,6 +199,7 @@ function new( imageSet, slideBackground, top )
 		if images[imgNum+1] ~= nil then
 			tween = transition.to( images[imgNum+1], {time=400, alpha=0, transition=easing.outExpo } )
 		end
+
 
 
 		transition.to( images[imgNum].path, { x3=-300, y3=-100, x4=-300, y4=100,
