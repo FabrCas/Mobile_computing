@@ -4,6 +4,8 @@
 --
 ---------------------------------------------------------------------------------
 local composer = require( "composer" )
+--sceglieri qui partita storia o no
+require ("lib.partitaStoria")
 local scene = composer.newScene()
 require("lib.LD_LoaderX")
 physics = require ("physics")
@@ -41,10 +43,10 @@ end
 --rect2:addEventListener( "tap", function() p= p+10 print(p) end )
 --rect:addEventListener( "tap", function() p= p-10 print(p) end )
 ---------------------------------------------------------------------------------
--- FUNZIONE DI SHOOTING 
+-- FUNZIONE DI SHOOTING
 ---------------------------------------------------------------------------------
 function shoot(event) --i=10 bounce = 0,6 local angle = math.atan2(my - (cerchio.y + event.y/5.5), mx - (cerchio.x +0))
-	  
+
 	  function getAngle() --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
     local angolo
     local latoVerticale = event.y
@@ -61,7 +63,7 @@ function shoot(event) --i=10 bounce = 0,6 local angle = math.atan2(my - (cerchio
     else return -angolo end
   end --FINE FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
   rect.rotation = getAngle()
-	if canShoot then  
+	if canShoot then
 		--canShoot = false
 	print(event.phase)
 	i=5.5
@@ -82,16 +84,16 @@ cerchio:setLinearVelocity( normDeltaX  * speed, normDeltaY  * speed )
 -- CREAZIONE PALLA ANIMATA
 ---------------------------------------------------------------------------------
 function creaSfera()
-	   local cerchioProps = 
+	   local cerchioProps =
 	{
-		name 	= "ball", 
+		name 	= "ball",
 		x		= 50,
 		y		= 40,
 		assetName	= "balls_preview2_0",
 		xScale = 0.1,
 		yScale = 0.1,
 	}
-	
+
 	local cerchio = getLevel():createObject("Layer 1", cerchioProps ).view
 	cerchio:setSequence("ball_splash")
    cerchio:play()
@@ -157,6 +159,8 @@ Runtime:addEventListener( "enterFrame", moveMonster )
 
 -- Called when the scene's view does not exist:
 function scene:create( event )
+  partitaS:prova()
+  print(partitaS:provaVar())
 	local screenGroup = self.view
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)

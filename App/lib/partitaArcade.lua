@@ -1,0 +1,2 @@
+--dati della partita in modalità arcade
+--valori standard invariabili per ogni partita
