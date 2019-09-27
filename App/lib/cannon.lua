@@ -1,5 +1,5 @@
 local _M = {}
-local newBall = require('ball').newBall
+local newBall = require('lib.ball').newBall
 function _M.newCannon() 
     local cannon = display.newImageRect("images/cannon.png", 25, 50)
 	cannon.x = display.contentWidth/2

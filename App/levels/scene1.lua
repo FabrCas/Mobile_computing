@@ -13,7 +13,8 @@ physics = require ("physics")
 physics.start()
 local _W = display.contentWidth
 local _H = display.contentHeight
-local damage = 15
+partitaS:new()
+local damage = partitaS:stats().danno
 local bg = display.newRect( _W/2, _H/2, _W, _H )
 bg.alpha=0.01
 local nMattoni = 0 --numero dei mattoni
@@ -43,6 +44,7 @@ end
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
 function removeBrick(brick)
+  brick.scritta:removeSelf()
 	brick:removeSelf()
 	brick = nil
 	nMattoni = nMattoni - 1
@@ -57,20 +59,25 @@ function hit(event)
 	        brick = event.target
             local vx, vy = event.other:getLinearVelocity()
             --calcolo del modulo di vx e vy
-            if vx<0 then vx = -vx end
-            if vy<0 then vy = -vy end
-          
-			brick.life = brick.life - (damage + vy/10 +vx/10)
-			
 
-			if brick.life < 0 then
+			brick.life = brick.life - (damage)
+
+			if brick.life <= 0 then
                removeBrick(brick)
+
+		--	elseif brick.life<= damage  then --per rendere più visibili mattoni che avrebbero un alpha troppo basso
+--brick.alpha = 0.25
+--object=brick
+--object.fill.effect = "filter.dissolve"
+
+--object.fill.effect.threshold = 0.5
+
+
 				else
-					brick.alpha = brick.life/100.00
+          brick.scritta.text= brick.life
+				--	brick.alpha = (brick.life/(5*100))*50
 				end
-				if brick.alpha<0.25 then --per rendere più visibili mattoni che avrebbero un alpha troppo basso
-					brick.alpha = 0.25
-				end
+
 			end
 ---------------------------------------------------------------------------------
 --FUNZIONE DI PROVA
@@ -90,7 +97,7 @@ function moveMonster(event)
 end
 Runtime:addEventListener( "enterFrame", moveMonster )
 --]]
-local newCannon = require('cannon').newCannon
+local newCannon = require('lib.cannon').newCannon
 
 -- Called when the scene's view does not exist:
 function scene:create( event )
@@ -111,8 +118,11 @@ function scene:create( event )
 	for i=1,29 do
 	obj[i] = {}
 	obj[i] = myLevel:getLayerObject("Layer 1","Brick_"..string.format(i)).view
+    obj[i].life = 5
+  obj[i].scritta= display.newText(obj[i].life
+  , obj[i].x, obj[i].y )
+  obj[i].scritta.rotation= obj[i].rotation
 	 obj[i]:addEventListener( "preCollision", hit)
-	obj[i].life = 100.00
 	obj[i].c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
 	nMattoni = nMattoni + 1
 	end

@@ -30,7 +30,7 @@ end
   print("****************************PartitaCorrettamenteImportato*****************************************************")
 end
 
-function partitaS:aggiungiscore(scoreLivello, tempo)
+function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   --lo scorelivello è un valore che verrà inviato sia se si ha finito il livello con il gameOver,in quel caso
   --poi verrà chiesto lo score definitivo e stampato a schermo
   --aggiungere un bonus prima di inviare lo score del livello se il giocatore lo ha portato a termine
