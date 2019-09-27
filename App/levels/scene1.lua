@@ -5,6 +5,7 @@
 ---------------------------------------------------------------------------------
 local composer = require( "composer" )
 --sceglieri qui partita storia o no
+
 require ("lib.partitaStoria")
 local scene = composer.newScene()
 require("lib.LD_LoaderX")
@@ -25,10 +26,6 @@ local canShoot = true
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
  physics.addBody( muroInAlto,"static")
- muroInBasso:addEventListener( "collision", function(event)  event.other:removeSelf( ) event.other = nil canShoot = true end )
- local rect = display.newRect( _W/2, 0, 10, 50 )
- rect:setFillColor( 0.5,0.5,0.6 )
- rect.anchorY = 0
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
@@ -42,62 +39,6 @@ end
 --local rect2 = display.newRect( _W, _H -100, 200, 50 )
 --rect2:addEventListener( "tap", function() p= p+10 print(p) end )
 --rect:addEventListener( "tap", function() p= p-10 print(p) end )
----------------------------------------------------------------------------------
--- FUNZIONE DI SHOOTING
----------------------------------------------------------------------------------
-function shoot(event) --i=10 bounce = 0,6 local angle = math.atan2(my - (cerchio.y + event.y/5.5), mx - (cerchio.x +0))
-
-	  function getAngle() --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
-    local angolo
-    local latoVerticale = event.y
-    print("il lato verticale e':" .. latoVerticale)
-    print("rect.y=" .. rect.y)
-    local latoObliquo = math.sqrt(math.pow((rect.x - event.x),2)+math.pow((rect.y - event.y),2))
-    print("il lato obliquo e':" .. latoObliquo)
-    angoloRad = (math.acos(latoVerticale/latoObliquo))  --radianti
-    print("angolo radianti = ".. angoloRad)
-    angolo= ((angoloRad*180)/3.14)
-    print("angolo = ".. angolo)
-    if (event.x < _W/2) then
-    return angolo
-    else return -angolo end
-  end --FINE FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
-  rect.rotation = getAngle()
-	if canShoot then
-		--canShoot = false
-	print(event.phase)
-	i=5.5
-    cerchio = display.newCircle(_W/2, 0, i) --creazione palla
-    physics.addBody(cerchio,{radius=i,bounce=0.8})
-deltaX =  event.x-_W/2
-deltaY = event.y
-normDeltaX = deltaX / math.sqrt(math.pow(deltaX,2) + math.pow(deltaY,2))
-normDeltaY = deltaY / math.sqrt(math.pow(deltaX,2) + math.pow(deltaY,2))
- speed = 700
- print(normDeltaX.." * "..string.format(speed).."= "..string.format(normDeltaX*speed))
-  print(normDeltaY .. " * " .. string.format(speed).."= " .. string.format(normDeltaY*speed))
-  physics.setGravity(0, 0)
-cerchio:setLinearVelocity( normDeltaX  * speed, normDeltaY  * speed )
-    end end
- bg:addEventListener("tap",shoot)
----------------------------------------------------------------------------------
--- CREAZIONE PALLA ANIMATA
----------------------------------------------------------------------------------
-function creaSfera()
-	   local cerchioProps =
-	{
-		name 	= "ball",
-		x		= 50,
-		y		= 40,
-		assetName	= "balls_preview2_0",
-		xScale = 0.1,
-		yScale = 0.1,
-	}
-
-	local cerchio = getLevel():createObject("Layer 1", cerchioProps ).view
-	cerchio:setSequence("ball_splash")
-   cerchio:play()
-    end
 ---------------------------------------------------------------------------------
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
@@ -118,16 +59,9 @@ function hit(event)
             --calcolo del modulo di vx e vy
             if vx<0 then vx = -vx end
             if vy<0 then vy = -vy end
-          --  if vx == 0 and brick.c==2 then
-           -- 	if brick.x > _W/2 then
-           -- 		brick.applyForce(-10,5,brick.x,brick.y)
-           -- 	else
-          --  		brick.applyForce(10,5,brick.x,brick.y)
-          --  	elseif vx==0 and brick.c<2 then
-          --  		c= c+1
-          --  	end end
+          
 			brick.life = brick.life - (damage + vy/10 +vx/10)
-			--print("ciao")
+			
 
 			if brick.life < 0 then
                removeBrick(brick)
@@ -156,6 +90,7 @@ function moveMonster(event)
 end
 Runtime:addEventListener( "enterFrame", moveMonster )
 --]]
+local newCannon = require('cannon').newCannon
 
 -- Called when the scene's view does not exist:
 function scene:create( event )
@@ -166,7 +101,11 @@ function scene:create( event )
 	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
     --physics.setDrawMode( "debug" )
-    creaSfera()
+    self.cannon = newCannon()
+    bg:addEventListener("tap", function(event) if canShoot==true then
+    self.cannon:shoot(event.x,event.y) canShoot=false end end)
+    muroInBasso:addEventListener( "collision", function(event)  event.other:removeSelf( ) event.other = nil canShoot = true end )
+
     -- aggiunta listener ai mattoni
 	local obj = {}
 	for i=1,29 do
