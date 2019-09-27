@@ -73,10 +73,10 @@ deltaX =  event.x-_W/2
 deltaY = event.y
 normDeltaX = deltaX / math.sqrt(math.pow(deltaX,2) + math.pow(deltaY,2))
 normDeltaY = deltaY / math.sqrt(math.pow(deltaX,2) + math.pow(deltaY,2))
- speed = 700
+ speed = 500
  print(normDeltaX.." * "..string.format(speed).."= "..string.format(normDeltaX*speed))
   print(normDeltaY .. " * " .. string.format(speed).."= " .. string.format(normDeltaY*speed))
-  physics.setGravity(0, 0)
+  physics.setGravity(0, 9.8)
 cerchio:setLinearVelocity( normDeltaX  * speed, normDeltaY  * speed )
     end end
  bg:addEventListener("tap",shoot)
@@ -112,7 +112,7 @@ end end
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
 function hit(event)
-	physics.setGravity( 0, 46 )
+	physics.setGravity( 0, 20 )
 	        brick = event.target
             local vx, vy = event.other:getLinearVelocity()
             --calcolo del modulo di vx e vy
