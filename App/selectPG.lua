@@ -6,6 +6,7 @@ local physics = require ("physics")
 local _W = display.contentWidth
 local _H = display.contentHeight
 physics.start()
+tapSound= audio.loadSound("/Sounds/mb1.mp3")
 
 local scene = composer.newScene()
 
@@ -20,6 +21,25 @@ local scene = composer.newScene()
 -- -----------------------------------------------------------------------------------
 
 
+local function chiamaProssimaScena()
+    local options = { effect = "crossFade", time = 200}
+    composer.gotoScene( "toPlay", options )
+end
+
+
+local function onButtonClick(event)
+  nomePersonaggio= event.target.pg
+  print (nomePersonaggio)
+  --print("tap esiste?")
+  --print(tapSound==nil)
+  audio.play(tapSound, {channel=3})
+  partitaS:setPG(nomePersonaggio)
+  pg= myLevel:getLayerObject("PGs", "cottonBall").view
+  --timer.performWithDelay( 10000 , composer.gotoScene( "toPlay", options ))
+  pg:play()
+  timer.performWithDelay(2000, chiamaProssimaScena)
+  return true
+end
 
 -- create()
 function scene:create( event )
@@ -31,29 +51,19 @@ function scene:create( event )
     myLevel:loadLevel("sceltaPersonaggio")
 
 
-    function onButtonClick(event, nomePersonaggio)
-      local options = { effect = "crossFade", time = 200}
-      print(nomePersonaggio)
-      partitaS:setPG(nomePersonaggio)
-      pg= myLevel:getLayerObject("PGs", "cottonBall").view
-      timer.performWithDelay( 3000 , composer.gotoScene( "toPlay", options ))
-      pg:play()
-      return true
-    end
-
 --aggungere gli altri bottoni per gli altri personaggi
       rectButton= myLevel:getLayerObject("backgrounds", "rect_pg1")
       --.view lo fa diventare un display object, per le proprietà io deve accedere alla table
       -- quindi non la devo mettere
-      rectButton.view.alpha= 1
+    --  rectButton.view.alpha= 1
     --  print(rectButton.property['pgName'])
     --  print(rectButton)
     --  print(rectButton.view)
-
-      rectButton.view:addEventListener("tap", function(event) onButtonClick(event,rectButton.property['pgName']) end ) --onButtonClick(event, rectButton.property['pgName']) end )
+  rectButton.view.pg= rectButton.property['pgName']
+  --print (rectButton.view.pg)
+      rectButton.view:addEventListener("tap", onButtonClick) --onButtonClick(event, rectButton.property['pgName']) end )
       --rectButton.onRelease= onButtonClick
 end
-
 
 -- show()
 function scene:show( event )
@@ -66,7 +76,7 @@ function scene:show( event )
 
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
-if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
+
 
     end
 end
@@ -80,6 +90,7 @@ function scene:hide( event )
 
     if ( phase == "will" ) then
         -- Code here runs when the scene is on screen (but is about to go off screen)
+        audio.pause(menuSound)
 
     elseif ( phase == "did" ) then
         -- Code here runs immediately after the scene goes entirely off screen
@@ -92,6 +103,7 @@ end
 function scene:destroy( event )
 
     local sceneGroup = self.view
+    menuSound= nil
     myLevel:removeLevel()
     myLevel=nil
     -- Code here runs prior to the removal of scene's view

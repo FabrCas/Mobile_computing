@@ -50,7 +50,12 @@ function scene:show( event )
 
    local sceneGroup = self.view
    if event.phase == "will" then
-     audio.play(menuSound,{channel=1, loops=-1, fadein= 5000})
+     audio.setVolume( 0.1, {channel=2}  )
+    audio.play(menuSound, {channel=2, loops=-1, fadein= 2000})
+     print ("il volume è"..audio.getVolume())
+    -- audio.setVolume( 0.1, {channel=2}  )
+     print ("il volume è"..audio.getVolume())
+     print(audio.isChannelActive( 1 ))
    elseif event.phase == "did" then
      print("menu-> show (did)")
 
@@ -92,7 +97,7 @@ function scene:hide( event )
    -- all disposal happens here
    if event.phase == "will" then
 		Runtime:removeEventListener("levelClicked")
-		audio.pause(menuSound)
+		--audio.pause(menuSound)
 		levelGroup:cleanUp()
 
    elseif event.phase == "did" then
@@ -107,7 +112,7 @@ function scene:destroy( event )
    -- Remove all unecessary composer items
    composer.pageSwap = nil
 
-	menuSound= nil
+	--menuSound= nil
 end
 
 scene:addEventListener( "create", scene )
