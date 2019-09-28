@@ -1,13 +1,13 @@
 local _M = {}
 local newBall = require('lib.ball').newBall
-function _M.newCannon() 
+function _M.newCannon()
     local cannon = display.newImageRect("images/cannon.png", 25, 50)
 	cannon.x = display.contentWidth/2
 	cannon.y = 0
 	cannon.anchorY = 0
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
----------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------
 	function cannon:getAngle(sx,sy) --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
          local angolo
          local latoVerticale = sy
@@ -21,13 +21,14 @@ function _M.newCannon()
 ---------------------------------------------------------------------------------
 -- FUNZIONE DI SHOOTING
 ---------------------------------------------------------------------------------
-  function cannon:shoot(sx,sy)
-       cannon:getAngle(sx,sy)
+  function cannon:shoot(event)
+    sx,sy= event.x , event.y
+ cannon:getAngle(sx,sy)
   	local ball = newBall(sx,sy)
 	if ball and not ball.isLaunched then
 		ball:launch()
     end
-     end 
+ end
      return cannon
  end
 

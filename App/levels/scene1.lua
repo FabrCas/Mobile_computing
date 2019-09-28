@@ -64,21 +64,18 @@ function hit(event)
 
 			if brick.life <= 0 then
                removeBrick(brick)
+             else
+                brick.scritta.text= brick.life
+             --	brick.alpha = (brick.life/(5*100))*50
+             end
 
-		--	elseif brick.life<= damage  then --per rendere più visibili mattoni che avrebbero un alpha troppo basso
---brick.alpha = 0.25
---object=brick
---object.fill.effect = "filter.dissolve"
-
---object.fill.effect.threshold = 0.5
-
-
-				else
-          brick.scritta.text= brick.life
-				--	brick.alpha = (brick.life/(5*100))*50
-				end
-
-			end
+           end
+---------------------------------------------------------------------------------
+--FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA
+---------------------------------------------------------------------------------
+function hitMuro(event)
+physics.setGravity( 0, 46 )
+end
 ---------------------------------------------------------------------------------
 --FUNZIONE DI PROVA
 ---------------------------------------------------------------------------------
@@ -108,11 +105,14 @@ function scene:create( event )
 	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
     --physics.setDrawMode( "debug" )
-    self.cannon = newCannon()
-    bg:addEventListener("tap", function(event) if canShoot==true then
-    self.cannon:shoot(event.x,event.y) canShoot=false end end)
+    cannon = newCannon()
+    Runtime:addEventListener("touch", function(event)
+      if event.phase == 'began' or event.phase == 'moved' then
+        cannon:getAngle(event.x,event.y)
+      elseif event.phase == 'ended' and canShoot then cannon:shoot(event) canShoot=false end end  )
     muroInBasso:addEventListener( "collision", function(event)  event.other:removeSelf( ) event.other = nil canShoot = true end )
-
+    muroSinistra:addEventListener( "preCollision", hitMuro)
+    muroDestra:addEventListener( "preCollision", hitMuro)
     -- aggiunta listener ai mattoni
 	local obj = {}
 	for i=1,29 do
