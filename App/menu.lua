@@ -49,11 +49,11 @@ end -- ends scene:create
 function scene:show( event )
 
    local sceneGroup = self.view
-   if event.phase == "will" then 
+   if event.phase == "will" then
      audio.play(menuSound,{channel=1, loops=-1, fadein= 5000})
    elseif event.phase == "did" then
      print("menu-> show (did)")
-	 
+
       -- purges previous and next scenes
       if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
       if nil~= composer.getScene("toOption") then composer.removeScene("toOption", false) end
@@ -63,7 +63,7 @@ function scene:show( event )
 	local function runLevel(livello)
 	--	composer.gotoScene( "gestisciMenuPrimario" , { effect = "crossFade", time = 200})
   if livello == 1 then
-    composer.gotoScene( "toPlay", options)
+    composer.gotoScene( "selectPG", options)
     return true
   elseif livello == 2 then
     composer.gotoScene( "toOptions", options )

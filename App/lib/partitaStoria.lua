@@ -71,4 +71,13 @@ function partitaS:piano()
   return piano
 end
 
+
+--**************************************Funzioni per settare le variabili locali**************************************************************
+
+function partitaS:setPG(pg)
+personaggio=pg
+end
+
+
+
 --************************************Salvataggio dati****************************************************************************************

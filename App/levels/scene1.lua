@@ -152,6 +152,7 @@ function scene:show( event )
     if ( phase == "will" ) then
         -- Called when the scene is still off screen (but is about to come on screen).
     elseif ( phase == "did" ) then
+      print(partitaS:personaggio())
     if nil~= composer.getScene("toPlay") then composer.removeScene("page_1", false) end
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
