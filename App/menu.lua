@@ -24,7 +24,7 @@ print("menu-> create")
 	-- Insert your own background
 	 local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
 	background.anchorX = 0
-  background.anchorY = 0
+    background.anchorY = 0
 	sceneGroup:insert(background)
 
 	--set images for carousel

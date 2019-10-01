@@ -23,6 +23,8 @@ local muroDestra = display.newRect( _W, _H/2, 0 , _H)
 local muroInBasso = display.newRect( _W/2, _H+15, _W, 0 )
 local muroInAlto = display.newRect( _W/2, -5, _W, 0 )
 local canShoot = true
+local potereAttivato = false
+txt_generale = display.newText( "", _W/2 +50 ,  30, native.systemFont,12 )
  physics.addBody( muroSinistra,"static")
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
@@ -55,6 +57,11 @@ end end
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
 function hit(event)
+	if event.target.name == 'speciale' then
+		 local txt = display.newText( "Potere speciale attivo per il successivo tiro", _W/2 +50 ,  30, native.systemFont,12 )
+		 transition.to( txt, { time=1500, alpha=0} )
+		potereAttivato = true 
+		end
 	physics.setGravity( 0, 46 )
 	        brick = event.target
             local vx, vy = event.other:getLinearVelocity()
@@ -68,7 +75,6 @@ function hit(event)
                 brick.scritta.text= brick.life
              --	brick.alpha = (brick.life/(5*100))*50
              end
-
            end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA
@@ -102,14 +108,24 @@ function scene:create( event )
   print(partitaS:provaVar())
 	local screenGroup = self.view
 	--local myLevel = {}
-	myLevel = LD_Loader:new(self.view)
+	myLevel = LD_Loader:new(self.view) 
 	myLevel:loadLevel("Level01") -- set your scene/level name here
     --physics.setDrawMode( "debug" )
+
+    local pause = display.newRect( _W, _H-40, 30, 10 )
+    pause:addEventListener( "tap", function(event) 
+    	isPaused=true
+    	physics.pause() 
+    	local g = display.newRect( _W/2, _H/2, 100, 100 )
+    	 g:addEventListener("tap",function(event) isPaused=false physics.start() g:removeSelf( ) g=nil end) end)
+
     cannon = newCannon()
-    Runtime:addEventListener("touch", function(event)
+
+    Runtime:addEventListener("touch", function(event) if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         cannon:getAngle(event.x,event.y)
-      elseif event.phase == 'ended' and canShoot then cannon:shoot(event) canShoot=false end end  )
+      elseif event.phase == 'ended' and canShoot then cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end end end )
+
     muroInBasso:addEventListener( "collision", function(event)  event.other:removeSelf( ) event.other = nil canShoot = true end )
     muroSinistra:addEventListener( "preCollision", hitMuro)
     muroDestra:addEventListener( "preCollision", hitMuro)
@@ -117,14 +133,16 @@ function scene:create( event )
 	local obj = {}
 	for i=1,29 do
 	obj[i] = {}
-	obj[i] = myLevel:getLayerObject("Layer 1","Brick_"..string.format(i)).view
-    obj[i].life = 5
-  obj[i].scritta= display.newText(obj[i].life
-  , obj[i].x, obj[i].y )
-  obj[i].scritta.rotation= obj[i].rotation
-	 obj[i]:addEventListener( "preCollision", hit)
-	obj[i].c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
+	obj[i] = myLevel:getLayerObject("Layer 1","Brick_"..string.format(i))
+	obj[i].view.name= obj[i].property['tipo']
+    obj[i].view.life = 5
+  obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
+  obj[i].view.scritta.rotation= obj[i].rotation
+	obj[i].view:addEventListener( "preCollision", hit)
+	obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
+	obj[i] = obj[i].view
 	nMattoni = nMattoni + 1
+
 	end
 
 	-- Touch event listener for button

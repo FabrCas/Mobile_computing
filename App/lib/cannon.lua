@@ -21,10 +21,11 @@ function _M.newCannon()
 ---------------------------------------------------------------------------------
 -- FUNZIONE DI SHOOTING
 ---------------------------------------------------------------------------------
-  function cannon:shoot(event)
+  function cannon:shoot(event,potereAttivato)
+    print("cannon:shoot",potereAttivato)
     sx,sy= event.x , event.y
  cannon:getAngle(sx,sy)
-  	local ball = newBall(sx,sy)
+  	local ball = newBall(sx,sy,potereAttivato)
 	if ball and not ball.isLaunched then
 		ball:launch()
     end
