@@ -16,7 +16,7 @@ local _H = display.contentHeight
 partitaS:new()
 local damage = partitaS:stats().danno
 local bg = display.newRect( _W/2, _H/2, _W, _H )
-bg.alpha=0.01
+bg.alpha=0.1 bg.name="bg"
 local nMattoni = 0 --numero dei mattoni
 local muroSinistra = display.newRect( 0, _H/2, 0 ,_H )
 local muroDestra = display.newRect( _W, _H/2, 0 , _H)
@@ -34,14 +34,9 @@ txt_generale = display.newText( "", _W/2 +50 ,  30, native.systemFont,12 )
 ---------------------------------------------------------------------------------
 local btn = nil
 local myLevel = {}
---local p = 10
 function getLevel()
 	return myLevel
 end
---local rect = display.newRect( 0, _H -100 , 200, 50 )
---local rect2 = display.newRect( _W, _H -100, 200, 50 )
---rect2:addEventListener( "tap", function() p= p+10 print(p) end )
---rect:addEventListener( "tap", function() p= p-10 print(p) end )
 ---------------------------------------------------------------------------------
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
@@ -65,8 +60,6 @@ function hit(event)
 	physics.setGravity( 0, 46 )
 	        brick = event.target
             local vx, vy = event.other:getLinearVelocity()
-            --calcolo del modulo di vx e vy
-
 			brick.life = brick.life - (damage)
 
 			if brick.life <= 0 then
@@ -83,25 +76,37 @@ function hitMuro(event)
 physics.setGravity( 0, 46 )
 end
 ---------------------------------------------------------------------------------
---FUNZIONE DI PROVA
+--FUNZIONE CHE CREA LA PAUSA
 ---------------------------------------------------------------------------------
---[[local pg = display.newImageRect( "images/Owlet_Monster.png",64,64)
-pg.x = 120 pg.y = 0
---pg.fill.effect = "filter.blurVertical"
---pg.fill.effect.blurSize = 8
---pg.fill.effect.sigma = 128
---blurSize — default = 8 ; min = 2 ; max = 512
---sigma — default = 128 ; min = 2 ; max = 512
-function moveMonster(event)
-	pg.y = pg.y + 5
-	if (pg.y > _H) then
-		pg.y=-32
-	end
+local function creaPausa()
+local schermataPausa = display.newRect( _W/2, _H/2, 100, 100 )
+    	 schermataPausa:addEventListener("tap",function(event) isPaused=false physics.start() schermataPausa:removeSelf( ) schermataPausa=nil end)
 end
-Runtime:addEventListener( "enterFrame", moveMonster )
---]]
-local newCannon = require('lib.cannon').newCannon
+---------------------------------------------------------------------------------
+--FUNZIONE 
+---------------------------------------------------------------------------------
+ local function touchPausa(event)
+    	isPaused=true physics.pause() creaPausa() return true  end
 
+ local function touchBg(event) 
+    	if not isPaused then
+      if event.phase == 'began' or event.phase == 'moved' then
+        cannon:getAngle(event.x,event.y)
+      elseif event.phase == 'ended' and canShoot then cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end
+          end
+          end 
+---------------------------------------------------------------------------------
+--FUNZIONE TOUCH
+---------------------------------------------------------------------------------          
+  local function touch(event)
+  	if event.target.name == "pausa" then
+  		touchPausa(event) 
+  	elseif event.target.name == "bg" then
+  		touchBg(event) end
+  	end
+
+local newCannon = require('lib.cannon').newCannon
+cannon = newCannon()
 -- Called when the scene's view does not exist:
 function scene:create( event )
   partitaS:prova()
@@ -111,20 +116,11 @@ function scene:create( event )
 	myLevel = LD_Loader:new(self.view) 
 	myLevel:loadLevel("Level01") -- set your scene/level name here
     --physics.setDrawMode( "debug" )
+    local pausa = display.newRect( _W, _H-40, 30, 10 )
+    pausa.name = "pausa"
+    pausa:addEventListener( "touch", touch )
 
-    local pause = display.newRect( _W, _H-40, 30, 10 )
-    pause:addEventListener( "tap", function(event) 
-    	isPaused=true
-    	physics.pause() 
-    	local g = display.newRect( _W/2, _H/2, 100, 100 )
-    	 g:addEventListener("tap",function(event) isPaused=false physics.start() g:removeSelf( ) g=nil end) end)
-
-    cannon = newCannon()
-
-    Runtime:addEventListener("touch", function(event) if not isPaused then
-      if event.phase == 'began' or event.phase == 'moved' then
-        cannon:getAngle(event.x,event.y)
-      elseif event.phase == 'ended' and canShoot then cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end end end )
+    bg:addEventListener("touch", touch )
 
     muroInBasso:addEventListener( "collision", function(event)  event.other:removeSelf( ) event.other = nil canShoot = true end )
     muroSinistra:addEventListener( "preCollision", hitMuro)
