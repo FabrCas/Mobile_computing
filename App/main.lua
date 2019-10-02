@@ -11,7 +11,7 @@ display.setStatusBar( display.HiddenStatusBar )
 
 local composer = require( "composer" )
 composer.imgDir = "images/"
-
+composer.musicDir = "sounds/"
 --variabili utili per la selezione delle scene
 --non di default
 composer.level = 1 --sei nel menu

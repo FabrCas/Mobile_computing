@@ -6,7 +6,7 @@ local physics = require ("physics")
 local _W = display.contentWidth
 local _H = display.contentHeight
 physics.start()
-tapSound= audio.loadSound("/Sounds/mb1.mp3")
+tapSound= audio.loadSound("sounds/mb1.mp3")
 
 local scene = composer.newScene()
 
@@ -32,7 +32,8 @@ local function onButtonClick(event)
   print (nomePersonaggio)
   --print("tap esiste?")
   --print(tapSound==nil)
-  audio.play(tapSound, {channel=3})
+  local channel2= audio.findFreeChannel(2)
+  audio.play(tapSound,{channel= channel2})
   partitaS:setPG(nomePersonaggio)
   pg= myLevel:getLayerObject("PGs", "cottonBall").view
   --timer.performWithDelay( 10000 , composer.gotoScene( "toPlay", options ))
@@ -90,7 +91,7 @@ function scene:hide( event )
 
     if ( phase == "will" ) then
         -- Code here runs when the scene is on screen (but is about to go off screen)
-        audio.pause(menuSound)
+      --  audio.pause(menuSound)
 
     elseif ( phase == "did" ) then
         -- Code here runs immediately after the scene goes entirely off screen
