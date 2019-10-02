@@ -15,7 +15,7 @@ local numeroPagineMenu= 2
 function scene:create( event )
     -- view is not yet visible
     local sceneGroup = self.view
-	menuSound= audio.loadSound("/Sounds/montage.mp3")
+	menuSound= audio.loadStream("sounds/montage.mp3")
 print("menu-> create")
 --	display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
   --sceneGroup:insert(bg)
@@ -50,12 +50,13 @@ function scene:show( event )
 
    local sceneGroup = self.view
    if event.phase == "will" then
-     audio.setVolume( 0.1, {channel=2}  )
-    audio.play(menuSound, {channel=2, loops=-1, fadein= 2000})
-     print ("il volume è"..audio.getVolume())
+   local channel1 = audio.findFreeChannel(1)
+   	audio.setVolume( 0.5, {channel=channel1}  )
+    audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
+
+    -- print ("il volume è"..audio.getVolume())
     -- audio.setVolume( 0.1, {channel=2}  )
-     print ("il volume è"..audio.getVolume())
-     print(audio.isChannelActive( 1 ))
+     --print ("il volume è"..audio.getVolume())
    elseif event.phase == "did" then
      print("menu-> show (did)")
 
@@ -97,7 +98,7 @@ function scene:hide( event )
    -- all disposal happens here
    if event.phase == "will" then
 		Runtime:removeEventListener("levelClicked")
-		--audio.pause(menuSound)
+
 		levelGroup:cleanUp()
 
    elseif event.phase == "did" then
@@ -111,8 +112,8 @@ function scene:destroy( event )
   print("menu-> destroy")
    -- Remove all unecessary composer items
    composer.pageSwap = nil
-
-	--menuSound= nil
+  audio.pause(menuSound)
+	menuSound= nil
 end
 
 scene:addEventListener( "create", scene )
