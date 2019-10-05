@@ -38,7 +38,7 @@ local function onButtonClick(event)
   pg= myLevel:getLayerObject("PGs", "cottonBall").view
   --timer.performWithDelay( 10000 , composer.gotoScene( "toPlay", options ))
   pg:play()
-  timer.performWithDelay(2000, chiamaProssimaScena)
+  timer.performWithDelay(000, chiamaProssimaScena)
   return true
 end
 

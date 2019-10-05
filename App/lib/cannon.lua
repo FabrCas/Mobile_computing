@@ -1,10 +1,17 @@
 local _M = {}
 local newBall = require('lib.ball').newBall
+require("lib.LD_LoaderX")
+local myLevel = {}
+myLevel= LD_Loader:new()
+myLevel:loadLevel("shoot")
 function _M.newCannon()
-    local cannon = display.newImageRect("images/cannon.png", 25, 50)
-	cannon.x = display.contentWidth/2
-	cannon.y = 0
-	cannon.anchorY = 0
+    --local cannon = display.newImageRect("images/cannon.png", 25, 50)
+    local cannon = myLevel:getLayerObject("LayerCannone", "cannon_fire_0").view
+    cannon.x = display.contentWidth/2
+    cannon.y = 50
+    cannon.anchorY = 0.35
+
+  --  myLevel:getLayerObject("Layer 1","Brick_"..string.format(i))
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
@@ -27,6 +34,7 @@ function _M.newCannon()
  cannon:getAngle(sx,sy)
   	local ball = newBall(sx,sy,potereAttivato)
 	if ball and not ball.isLaunched then
+    cannon:play()
 		ball:launch()
     end
  end

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="cannon_fire" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="shoot">
+ <assets firstgid="1" name="cannon_fire" width="92" height="136">
+  <image source="../cannon_fire.png" width="1288" height="136"/>
+  <asset frame="0" name="cannon_fire_0" spritename="" class="" export="1" x="0" y="0" w="92" h="136">
+   <animations>
+    <sequence name="sequence 1" loopCount="1" loopDirection="0" duration="500" default="1" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+      <frame idx="2"/>
+      <frame idx="3"/>
+      <frame idx="4"/>
+      <frame idx="5"/>
+      <frame idx="6"/>
+      <frame idx="7"/>
+      <frame idx="8"/>
+      <frame idx="9"/>
+      <frame idx="10"/>
+      <frame idx="11"/>
+      <frame idx="12"/>
+      <frame idx="13"/>
+      <frame idx="0"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="cannon_fire_1" spritename="" class="" export="0" x="92" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="cannon_fire_2" spritename="" class="" export="0" x="184" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="3" name="cannon_fire_3" spritename="" class="" export="0" x="276" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="4" name="cannon_fire_4" spritename="" class="" export="0" x="368" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="5" name="cannon_fire_5" spritename="" class="" export="0" x="460" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="6" name="cannon_fire_6" spritename="" class="" export="0" x="552" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="7" name="cannon_fire_7" spritename="" class="" export="0" x="644" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="8" name="cannon_fire_8" spritename="" class="" export="0" x="736" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="9" name="cannon_fire_9" spritename="" class="" export="0" x="828" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="10" name="cannon_fire_10" spritename="" class="" export="0" x="920" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="11" name="cannon_fire_11" spritename="" class="" export="0" x="1012" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="12" name="cannon_fire_12" spritename="" class="" export="0" x="1104" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="13" name="cannon_fire_13" spritename="" class="" export="0" x="1196" y="0" w="92" h="136">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="LayerCannone" gridX="16" gridY="16">
+  <object uid="{30272b22-1193-42fb-b802-8d4667608bd5}" shape="6" name="cannon_fire_0" alpha="1" blendMode="0" idx="1" spriteName="" x="112" y="0" width="92" height="136" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+</level>

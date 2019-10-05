@@ -55,7 +55,7 @@ function hit(event)
 	if event.target.name == 'speciale' then
 		 local txt = display.newText( "Potere speciale attivo per il successivo tiro", _W/2 +50 ,  30, native.systemFont,12 )
 		 transition.to( txt, { time=1500, alpha=0} )
-		potereAttivato = true 
+		potereAttivato = true
 		end
 	physics.setGravity( 0, 46 )
 	        brick = event.target
@@ -83,24 +83,24 @@ local schermataPausa = display.newRect( _W/2, _H/2, 100, 100 )
     	 schermataPausa:addEventListener("tap",function(event) isPaused=false physics.start() schermataPausa:removeSelf( ) schermataPausa=nil end)
 end
 ---------------------------------------------------------------------------------
---FUNZIONE 
+--FUNZIONE
 ---------------------------------------------------------------------------------
  local function touchPausa(event)
     	isPaused=true physics.pause() creaPausa() return true  end
 
- local function touchBg(event) 
+ local function touchBg(event)
     	if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         cannon:getAngle(event.x,event.y)
       elseif event.phase == 'ended' and canShoot then cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end
           end
-          end 
+          end
 ---------------------------------------------------------------------------------
 --FUNZIONE TOUCH
----------------------------------------------------------------------------------          
+---------------------------------------------------------------------------------
   local function touch(event)
   	if event.target.name == "pausa" then
-  		touchPausa(event) 
+  		touchPausa(event)
   	elseif event.target.name == "bg" then
   		touchBg(event) end
   	end
@@ -113,7 +113,7 @@ function scene:create( event )
   print(partitaS:provaVar())
 	local screenGroup = self.view
 	--local myLevel = {}
-	myLevel = LD_Loader:new(self.view) 
+	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
     --physics.setDrawMode( "debug" )
     local pausa = display.newRect( _W, _H-40, 30, 10 )
