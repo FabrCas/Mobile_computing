@@ -24,7 +24,10 @@ local muroInBasso = display.newRect( _W/2, _H+15, _W, 0 )
 local muroInAlto = display.newRect( _W/2, -5, _W, 0 )
 local canShoot = true
 local potereAttivato = false
-txt_generale = display.newText( "", _W/2 +50 ,  30, native.systemFont,12 )
+local numBallMax = 12
+txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  30, native.systemFont,12 )
+local txt_SpecialeVisibile = false
+local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  30, native.systemFont,12 )
  physics.addBody( muroSinistra,"static")
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
@@ -46,15 +49,17 @@ function removeBrick(brick)
 	brick = nil
 	nMattoni = nMattoni - 1
 	if nMattoni == 0 then
-		local txt = display.newText( "Hai vinto!", _W/2, _H/2 , native.systemFont,12 )
+		local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
 end end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
 function hit(event)
 	if event.target.name == 'speciale' then
-		 local txt = display.newText( "Potere speciale attivo per il successivo tiro", _W/2 +50 ,  30, native.systemFont,12 )
-		 transition.to( txt, { time=1500, alpha=0} )
+		if not txt_SpecialeVisibile then  
+		  txt_Speciale = display.newText( "Potere speciale attivo per il successivo tiro", _W/2 +80 ,  30, native.systemFont,12 )
+		 txt_SpecialeVisibile = true
+		end
 		potereAttivato = true
 		end
 	physics.setGravity( 0, 46 )
@@ -83,7 +88,7 @@ local schermataPausa = display.newRect( _W/2, _H/2, 100, 100 )
     	 schermataPausa:addEventListener("tap",function(event) isPaused=false physics.start() schermataPausa:removeSelf( ) schermataPausa=nil end)
 end
 ---------------------------------------------------------------------------------
---FUNZIONE
+--FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  local function touchPausa(event)
     	isPaused=true physics.pause() creaPausa() return true  end
@@ -92,7 +97,12 @@ end
     	if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         cannon:getAngle(event.x,event.y)
-      elseif event.phase == 'ended' and canShoot then cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end
+      elseif event.phase == 'ended' and canShoot then 
+      if potereAttivato then txt_Attivo:removeSelf() end
+      numBallMax = numBallMax - 1 
+      txt_numBallMax:removeSelf() 
+      txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  30, native.systemFont,12 ) 
+      cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end
           end
           end
 ---------------------------------------------------------------------------------
@@ -104,6 +114,12 @@ end
   	elseif event.target.name == "bg" then
   		touchBg(event) end
   	end
+---------------------------------------------------------------------------------
+--FUNZIONE TOUCH
+---------------------------------------------------------------------------------
+local function finePartita()
+	local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
+end
 
 local newCannon = require('lib.cannon').newCannon
 cannon = newCannon()
@@ -122,7 +138,18 @@ function scene:create( event )
 
     bg:addEventListener("touch", touch )
 
-    muroInBasso:addEventListener( "collision", function(event)  event.other:removeSelf( ) event.other = nil canShoot = true end )
+    muroInBasso:addEventListener( "collision", function(event)  
+    	event.other:removeSelf( ) 
+    	event.other = nil 
+    	if numBallMax>0 then  --se ci sono palline
+    		canShoot = true   --si può sparare di nuovo
+    	  else finePartita() end
+    	  if potereAttivato then
+
+    	txt_Attivo = display.newText( "Potere speciale attivo", display.contentWidth/2 +50 ,  30, native.systemFont,12 ) end
+        if txt_SpecialeVisibile then txt_SpecialeVisibile = false txt_Speciale:removeSelf() end
+             
+     end )
     muroSinistra:addEventListener( "preCollision", hitMuro)
     muroDestra:addEventListener( "preCollision", hitMuro)
     -- aggiunta listener ai mattoni
