@@ -56,7 +56,7 @@ end end
 ---------------------------------------------------------------------------------
 function hit(event)
 	if event.target.name == 'speciale' then
-		if not txt_SpecialeVisibile then  
+		if not txt_SpecialeVisibile then
 		  txt_Speciale = display.newText( "Potere speciale attivo per il successivo tiro", _W/2 +80 ,  30, native.systemFont,12 )
 		 txt_SpecialeVisibile = true
 		end
@@ -97,11 +97,11 @@ end
     	if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         cannon:getAngle(event.x,event.y)
-      elseif event.phase == 'ended' and canShoot then 
+      elseif event.phase == 'ended' and canShoot then
       if potereAttivato then txt_Attivo:removeSelf() end
-      numBallMax = numBallMax - 1 
-      txt_numBallMax:removeSelf() 
-      txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  30, native.systemFont,12 ) 
+      numBallMax = numBallMax - 1
+      txt_numBallMax:removeSelf()
+      txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  30, native.systemFont,12 )
       cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end
           end
           end
@@ -112,10 +112,11 @@ end
   	if event.target.name == "pausa" then
   		touchPausa(event)
   	elseif event.target.name == "bg" then
-  		touchBg(event) end
+      if not((event.x < 32 and event.y > 415) or (event.x > 256 and event.y > 415)) then
+  		touchBg(event) end end
   	end
 ---------------------------------------------------------------------------------
---FUNZIONE TOUCH
+--FUNZIONE FINE PARTITA
 ---------------------------------------------------------------------------------
 local function finePartita()
 	local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
@@ -138,9 +139,9 @@ function scene:create( event )
 
     bg:addEventListener("touch", touch )
 
-    muroInBasso:addEventListener( "collision", function(event)  
-    	event.other:removeSelf( ) 
-    	event.other = nil 
+    muroInBasso:addEventListener( "collision", function(event)
+    	event.other:removeSelf( )
+    	event.other = nil
     	if numBallMax>0 then  --se ci sono palline
     		canShoot = true   --si può sparare di nuovo
     	  else finePartita() end
@@ -148,7 +149,7 @@ function scene:create( event )
 
     	txt_Attivo = display.newText( "Potere speciale attivo", display.contentWidth/2 +50 ,  30, native.systemFont,12 ) end
         if txt_SpecialeVisibile then txt_SpecialeVisibile = false txt_Speciale:removeSelf() end
-             
+
      end )
     muroSinistra:addEventListener( "preCollision", hitMuro)
     muroDestra:addEventListener( "preCollision", hitMuro)
@@ -165,8 +166,13 @@ function scene:create( event )
 	obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
 	obj[i] = obj[i].view
 	nMattoni = nMattoni + 1
-
 	end
+
+
+  local newUI = require('lib.creazioneUI').newUI
+  UI = newUI()
+  --local newCannon = require('lib.cannon').newCannon
+  --cannon = newCannon()
 
 	-- Touch event listener for button
 	function onButtonClick( event )
