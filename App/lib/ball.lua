@@ -10,6 +10,7 @@ function _M.newBall(sx,sy,potereAttivato, angolo)
 
 	if potereAttivato then
 	 ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", 15, 15)
+	 physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
 	else
  display.setDefault( "isAnchorClamped", false )
     ball = display.newImageRect("images/default ball.png", 15, 15)
