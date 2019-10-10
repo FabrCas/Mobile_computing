@@ -4,15 +4,13 @@
 local physics = require('physics')
 require ("lib.partitaStoria")
 local _M = {}
-
+display.setDefault( "isAnchorClamped", false )
 
 function _M.newBall(sx,sy,potereAttivato, angolo)
-
 	if potereAttivato then
 	 ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", 15, 15)
-	 physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
+	 --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
 	else
- display.setDefault( "isAnchorClamped", false )
     ball = display.newImageRect("images/default ball.png", 15, 15)
         end
     ball.x  = display.contentWidth/2
@@ -30,6 +28,7 @@ function _M.newBall(sx,sy,potereAttivato, angolo)
 
 
 	function ball:launch()
+
 	   ball.isLaunched = true
 	   ball.bodyType = 'dynamic' -- Change to dynamic so it can move
 	   deltaX = sx - display.contentWidth/2

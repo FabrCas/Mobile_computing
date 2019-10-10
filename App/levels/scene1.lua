@@ -32,6 +32,7 @@ local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  30, native
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
  physics.addBody( muroInAlto,"static")
+ physics.setGravity( 0, 46 )
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
