@@ -11,8 +11,8 @@ local scene = composer.newScene()
 require("lib.LD_LoaderX")
 physics = require ("physics")
 physics.start()
-local _W = display.contentWidth
-local _H = display.contentHeight
+_W = display.contentWidth
+_H = display.contentHeight
 partitaS:new()
 local damage = partitaS:stats().danno
 local bg = display.newRect( _W/2, _H/2, _W, _H )
@@ -32,7 +32,6 @@ local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  30, native
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
  physics.addBody( muroInAlto,"static")
- physics.setGravity( 0, 46 )
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
@@ -82,18 +81,8 @@ function hitMuro(event)
 physics.setGravity( 0, 46 )
 end
 ---------------------------------------------------------------------------------
---FUNZIONE CHE CREA LA PAUSA
----------------------------------------------------------------------------------
-local function creaPausa()
-local schermataPausa = display.newRect( _W/2, _H/2, 100, 100 )
-    	 schermataPausa:addEventListener("tap",function(event) isPaused=false physics.start() schermataPausa:removeSelf( ) schermataPausa=nil end)
-end
----------------------------------------------------------------------------------
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
- local function touchPausa(event)
-    	isPaused=true physics.pause() creaPausa() return true  end
-
  local function touchBg(event)
     	if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
@@ -110,9 +99,7 @@ end
 --FUNZIONE TOUCH
 ---------------------------------------------------------------------------------
   local function touch(event)
-  	if event.target.name == "pausa" then
-  		touchPausa(event)
-  	elseif event.target.name == "bg" then
+  	if event.target.name == "bg" then
       if not((event.x < 32 and event.y > 415) or (event.x > 256 and event.y > 415)) then
   		touchBg(event) end end
   	end
@@ -134,10 +121,6 @@ function scene:create( event )
 	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
     --physics.setDrawMode( "debug" )
-    local pausa = display.newRect( _W, _H-40, 30, 10 )
-    pausa.name = "pausa"
-    pausa:addEventListener( "touch", touch )
-
     bg:addEventListener("touch", touch )
 
     muroInBasso:addEventListener( "collision", function(event)
