@@ -17,7 +17,7 @@ function _M.newCannon()
 	gruppo_cannone:insert(cannon)
   --gruppo_cannone:insert(segnalino)
     cannon.x = display.contentWidth/2
-    cannon.y = 50
+    cannon.y = 60  --50
     cannon.anchorY = 0.35
 
   --  myLevel:getLayerObject("Layer 1","Brick_"..string.format(i))
@@ -47,9 +47,6 @@ function _M.newCannon()
 --print( "xMax: ".. bounds.xMax ) -- xMax: 125
 --print( "yMax: ".. bounds.yMax ) -- yMax: 125
 
-segnalino = display.newCircle( gruppo_cannone,display.contentWidth/2 ,130 , 2 )
-segnalino:setFillColor(1,1,1)
-segnalino.alpha = 1
 
   	local ball = newBall(sx,sy,potereAttivato, cannon.rotation)
 	if ball and not ball.isLaunched then

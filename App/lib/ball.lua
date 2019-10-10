@@ -16,7 +16,7 @@ function _M.newBall(sx,sy,potereAttivato, angolo)
     ball = display.newImageRect("images/default ball.png", 15, 15)
         end
     ball.x  = display.contentWidth/2
-    ball.y = 50-- 130
+    ball.y = 60-- 130
 		print("stampe")
 		print(angolo)
 		print(72.5/ball.contentHeight)
