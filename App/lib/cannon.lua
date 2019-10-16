@@ -6,7 +6,7 @@ local gruppo_cannone = display.newGroup()
 myLevel= LD_Loader:new()
 myLevel:loadLevel("shoot")
 display.setDefault( "isAnchorClamped", false )
-function _M.newCannon()
+function _M.newCannon(ui)
     --local cannon = display.newImageRect("images/cannon.png", 25, 50)
     cannon = myLevel:getLayerObject("LayerCannone", "cannon_fire_0").view
   --  segnalino = display.newCircle( gruppo_cannone, display.contentWidth/2, 130, 1 )
@@ -52,6 +52,8 @@ function _M.newCannon()
 	if ball and not ball.isLaunched then
     cannon:play()
 		ball:launch()
+
+    ui:caricaPalla()
     end
  end
      return cannon

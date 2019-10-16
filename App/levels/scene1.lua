@@ -32,6 +32,9 @@ local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  50, native
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
  physics.addBody( muroInAlto,"static")
+
+ local newUI = require('lib.creazioneUI').newUI
+ UI = newUI()
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
@@ -114,7 +117,7 @@ end
 ---------------------------------------------------------------------------------
 
 local newCannon = require('lib.cannon').newCannon
-cannon = newCannon()
+cannon = newCannon(UI)
 -- Called when the scene's view does not exist:
 function scene:create( event )
   partitaS:prova()
@@ -134,7 +137,7 @@ function scene:create( event )
     	  else finePartita() end
     	  if potereAttivato then
         led_acceso.alpha=1
-    	txt_Attivo = display.newText( "Potere speciale attivo", display.contentWidth/2 + 100 ,  50, native.systemFont,12 ) 
+    	txt_Attivo = display.newText( "Potere speciale attivo", display.contentWidth/2 + 100 ,  50, native.systemFont,12 )
     	else led_acceso.alpha = 0 end
         if txt_SpecialeVisibile then txt_SpecialeVisibile = false txt_Speciale:removeSelf() end
      end )
@@ -156,8 +159,7 @@ function scene:create( event )
 	end
 
 
-  local newUI = require('lib.creazioneUI').newUI
-  UI = newUI()
+
   --local newCannon = require('lib.cannon').newCannon
   --cannon = newCannon()
 
