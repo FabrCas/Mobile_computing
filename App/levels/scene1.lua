@@ -25,9 +25,9 @@ local muroInAlto = display.newRect( _W/2, -5, _W, 0 )
 local canShoot = true
 local potereAttivato = false
 local numBallMax = 12
-txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  30, native.systemFont,12 )
+txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  50, native.systemFont,12 )
 local txt_SpecialeVisibile = false
-local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  30, native.systemFont,12 )
+local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  50, native.systemFont,12 )
  physics.addBody( muroSinistra,"static")
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
@@ -57,7 +57,7 @@ end end
 function hit(event)
 	if event.target.name == 'speciale' then
 		if not txt_SpecialeVisibile then
-		  txt_Speciale = display.newText( "Potere speciale attivo per il successivo tiro", _W/2 +80 ,  30, native.systemFont,12 )
+		  txt_Speciale = display.newText( "Potere speciale attivo \n per il successivo tiro", _W/2 +100 ,  60, native.systemFont,12 )
 		 txt_SpecialeVisibile = true
 		end
 		potereAttivato = true
@@ -91,7 +91,7 @@ end
       if potereAttivato then txt_Attivo:removeSelf() end
       numBallMax = numBallMax - 1
       txt_numBallMax:removeSelf()
-      txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  30, native.systemFont,12 )
+      txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  50, native.systemFont,12 )
       cannon:shoot(event,potereAttivato) potereAttivato=false canShoot=false  end
           end
           end
@@ -109,6 +109,9 @@ end
 local function finePartita()
 	local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
 end
+---------------------------------------------------------------------------------
+--FUNZIONE POWER ACCESA O SPENTA
+---------------------------------------------------------------------------------
 
 local newCannon = require('lib.cannon').newCannon
 cannon = newCannon()
@@ -130,10 +133,10 @@ function scene:create( event )
     		canShoot = true   --si può sparare di nuovo
     	  else finePartita() end
     	  if potereAttivato then
-
-    	txt_Attivo = display.newText( "Potere speciale attivo", display.contentWidth/2 +50 ,  30, native.systemFont,12 ) end
+        led_acceso.alpha=1
+    	txt_Attivo = display.newText( "Potere speciale attivo", display.contentWidth/2 + 100 ,  50, native.systemFont,12 ) 
+    	else led_acceso.alpha = 0 end
         if txt_SpecialeVisibile then txt_SpecialeVisibile = false txt_Speciale:removeSelf() end
-
      end )
     muroSinistra:addEventListener( "preCollision", hitMuro)
     muroDestra:addEventListener( "preCollision", hitMuro)
@@ -145,7 +148,7 @@ function scene:create( event )
 	obj[i].view.name= obj[i].property['tipo']
     obj[i].view.life = 5
   obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
-  obj[i].view.scritta.rotation= obj[i].rotation
+  obj[i].view.scritta.rotation = obj[i].view.rotation
 	obj[i].view:addEventListener( "preCollision", hit)
 	obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
 	obj[i] = obj[i].view

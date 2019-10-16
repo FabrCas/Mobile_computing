@@ -40,10 +40,10 @@ function M:createLevel(LD_Helper_Instance)
 	-- Load Assets
 	level.assets=self:loadAssets()
 	-- Physics properties
-	physics.setGravity(0,9.8) 
+	--physics.setGravity(0,9.8) 
 	physics.setDrawMode('normal')
-	physics.setPositionIterations(8)	
-	physics.setVelocityIterations(3)	
+	--physics.setPositionIterations(8)	
+	--physics.setVelocityIterations(3)	
 	level.parallaxEnabled=false
 	-- Layers --
 	level.layers={} 

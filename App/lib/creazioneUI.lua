@@ -3,6 +3,7 @@ require("lib.LD_LoaderX")
 local myLevel = {}
 myLevel = LD_Loader:new()
 myLevel:loadLevel("ui")
+led_acceso= display.newImageRect("images/led acceso.png",  30,30 )
 function _M.newUI()
 	require ("lib.partitaStoria")
 	
@@ -24,13 +25,13 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
       chiudi.alpha = 0.01
       local stats = partitaS:stats()
       local gruppo_testo = display.newGroup( )
-    local txt_damage  = display.newText( stats.danno , 240, 90 , native.systemFontBold,45 )     
+    local txt_damage  = display.newText( stats.danno , 240, 95 , native.systemFontBold,45 )     
     local txt_balls   = display.newText( stats.numeroPalle , 240, 135 , native.systemFontBold,45 )     
     local txt_speed   = display.newText( stats.velocita , 240, 180 , native.systemFontBold,45 )     
     local txt_bounce  = display.newText( stats.rimbalzo , 240, 225 , native.systemFontBold,45 )    
-    local txt_size    = display.newText( stats.grandezza , 240, 270 , native.systemFontBold,45 )    
-    local txt_density = display.newText( stats.densita , 240, 315 , native.systemFontBold ,45)    
-    local txt_luck    = display.newText( stats.fortuna , 240, 360 , native.systemFontBold ,45)    
+    local txt_size    = display.newText( stats.grandezza , 240, 267 , native.systemFontBold,45 )    
+    local txt_density = display.newText( stats.densita , 240, 310 , native.systemFontBold ,45)    
+    local txt_luck    = display.newText( stats.fortuna , 240, 350 , native.systemFontBold ,45)    
     gruppo_testo:insert(txt_damage)
     gruppo_testo:insert(txt_balls)
     gruppo_testo:insert(txt_speed)
@@ -53,7 +54,8 @@ end
 
     local buttonPausa = myLevel:getLayerObject("invisible_layer", "buttonPausa").view
     local buttonStats = myLevel:getLayerObject("invisible_layer", "buttonStats").view
-
+    led_acceso.x = myLevel:getLayerObject("ui_layer" ,"led spento_0").view.x led_acceso.y = myLevel:getLayerObject("ui_layer" ,"led spento_0").view.y
+    led_acceso.alpha = 0
     buttonPausa:addEventListener('tap',function(event) physics.pause() isPaused=true creaPausa() end)
     buttonStats:addEventListener('tap',function(event) physics.pause() isPaused=true creaStatistiche() end)
 end

@@ -21,7 +21,9 @@ function _M.newBall(sx,sy,potereAttivato, angolo)
 		ball.anchorY= -4.83 --4,83
 		ball.anchorX= 0.5--72.5/ball.contentWidth
 		ball.rotation=  angolo
+		if potereAttivato then
     physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
+else physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8}) end
     ball.density= 0.73
     -- While the ball rests near the cannon, it's static
     ball.isLaunched = false
