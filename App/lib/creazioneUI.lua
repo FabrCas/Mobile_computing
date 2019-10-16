@@ -4,7 +4,7 @@ require ("lib.partitaStoria")
 local myLevel = {}
 myLevel = LD_Loader:new()
 myLevel:loadLevel("ui")
-led_acceso= display.newImageRect("images/led acceso.png",  30,30 )
+led_acceso = display.newImageRect("images/led acceso.png",  30,30 )
 require ("lib.partitaStoria")
 local statistiche= partitaS:stats()
 local numeroPalle

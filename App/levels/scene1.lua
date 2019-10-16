@@ -15,9 +15,11 @@ _W = display.contentWidth
 _H = display.contentHeight
 partitaS:new()
 local damage = partitaS:stats().danno
+--[[
 local bg = display.newRect( _W/2, _H/2, _W, _H )
-bg.alpha=0.1 bg.name="bg"
-local nMattoni = 0 --numero dei mattoni
+bg.alpha=0.1 bg.name="bg"--]]
+nMattoni = 0 --numero dei mattoni
+--[[
 local muroSinistra = display.newRect( 0, _H/2, 0 ,_H )
 local muroDestra = display.newRect( _W, _H/2, 0 , _H)
 local muroInBasso = display.newRect( _W/2, _H+15, _W, 0 )
@@ -31,10 +33,7 @@ local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  50, native
  physics.addBody( muroSinistra,"static")
  physics.addBody( muroDestra,"static")
  physics.addBody( muroInBasso,"static")
- physics.addBody( muroInAlto,"static")
-
- local newUI = require('lib.creazioneUI').newUI
- UI = newUI()
+ physics.addBody( muroInAlto,"static") --]]
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
@@ -43,6 +42,7 @@ local myLevel = {}
 function getLevel()
 	return myLevel
 end
+--[[
 ---------------------------------------------------------------------------------
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ function hit(event)
 ---------------------------------------------------------------------------------
 function hitMuro(event)
 physics.setGravity( 0, 46 )
-end
+end --
 ---------------------------------------------------------------------------------
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ end
 ---------------------------------------------------------------------------------
 
 local newCannon = require('lib.cannon').newCannon
-cannon = newCannon(UI)
+cannon = newCannon() --]]
 -- Called when the scene's view does not exist:
 function scene:create( event )
   partitaS:prova()
@@ -126,9 +126,8 @@ function scene:create( event )
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
-    --physics.setDrawMode( "debug" )
-    bg:addEventListener("touch", touch )
 
+    --[[bg:addEventListener("touch", touch )
     muroInBasso:addEventListener( "collision", function(event)
     	event.other:removeSelf( )
     	event.other = nil
@@ -142,7 +141,7 @@ function scene:create( event )
         if txt_SpecialeVisibile then txt_SpecialeVisibile = false txt_Speciale:removeSelf() end
      end )
     muroSinistra:addEventListener( "preCollision", hitMuro)
-    muroDestra:addEventListener( "preCollision", hitMuro)
+    muroDestra:addEventListener( "preCollision", hitMuro) --]]
     -- aggiunta listener ai mattoni
 	local obj = {}
 	for i=1,29 do
@@ -159,7 +158,8 @@ function scene:create( event )
 	end
 
 
-
+  local newUI = require('lib.creazioneUI').newUI
+  UI = newUI()
   --local newCannon = require('lib.cannon').newCannon
   --cannon = newCannon()
 
