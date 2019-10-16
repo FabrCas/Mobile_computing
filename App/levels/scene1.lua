@@ -193,11 +193,11 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-		local prevScene = composer.getSceneName( "previous" )
+	--	local prevScene = composer.getSceneName( "previous" )
 		-- remove previous scene's view
-		if (prevScene) then
+	if (prevScene) then
 			composer.removeScene( prevScene )
-		end
+     	end
     end
 
 	print( "1: show event - ", phase )

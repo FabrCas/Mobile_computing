@@ -8,6 +8,7 @@ local score
 local prova="gianna"
 local piano
 
+
 partitaS = {}
 partitaS_mt =  {__index = partitaS}
 
@@ -23,8 +24,55 @@ function partitaS:new()
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
   }
-  piano=0
+  piano.altezza=0
+  creazioneTorre()
 end
+
+--buffer livelli 30, 10 per piano
+--10 al primo , 10 al secondo, 10 al terzo
+--numero stanze:
+--min:5 max:8
+--min:8 max:11
+--min:11 max:15
+--convenzioni: 1->nord 2->est 3->sud 4->ovest
+function creazioneTorre(){
+  if piano.altezza == 0 then
+    local inizio = math.random(1, 10);
+    piano.start= "scene"..string.format(inizio)
+    piano.nStanze= math.random(5,8)
+    stanze = {}
+    stanza= "scene"..string.format(inizio);
+    for i=1, 4 do
+      esisteStanza= math.random(0,1)
+      direzione= math.random(1,4)
+
+
+
+
+      if i=1 then
+        stanza.nord=
+      elseif i=2 then
+        stanza.est=
+      elseif i=3 then
+        stanza.sud
+      else then
+        stanza.
+    stanze[1]= stanza
+    stanzeRimaste= piano.nStanze -1
+    for i=1, piano.nStanze do
+       stanza=
+
+
+
+    end
+
+  elseif piano.altezza==1 then
+
+  elseif piano.altezza==2 then
+
+  end
+}
+
 
  function partitaS:prova()
   print("****************************PartitaCorrettamenteImportato*****************************************************")
