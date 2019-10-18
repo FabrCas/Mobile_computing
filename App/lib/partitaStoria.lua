@@ -24,11 +24,11 @@ function partitaS:new()
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
   }
-  piano.altezza=0
-  creazioneTorre()
+  --piano.altezza=0
+  --creazioneTorre()
 end
 
---buffer livelli 30, 10 per piano
+--[[buffer livelli 30, 10 per piano
 --10 al primo , 10 al secondo, 10 al terzo
 --numero stanze:
 --min:5 max:8
@@ -71,7 +71,7 @@ function creazioneTorre(){
   elseif piano.altezza==2 then
 
   end
-}
+}--]]
 
 
  function partitaS:prova()

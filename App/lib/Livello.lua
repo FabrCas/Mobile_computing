@@ -8,27 +8,29 @@ physics.addBody( muroSinistra,"static")
 physics.addBody( muroDestra,"static")
 physics.addBody( muroInBasso,"static")
 physics.addBody( muroInAlto,"static")
+require ("lib.creazioneUI")
 local bg = display.newRect( _W/2, _H/2, _W, _H )
 bg.alpha=0.1 bg.name="bg"
 local canShoot = true
 local potereAttivato = false
-local numBallMax = 12
+local numBallMax = partitaS:stats().numeroPalle
 txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  50, native.systemFont,12 )
 local txt_SpecialeVisibile = false
 local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  50, native.systemFont,12 )
+  local newUI = require('lib.creazioneUI').newUI
+  UI = newUI()
+livelloBase = {}
+livelloBase_mt =  {__index = livelloBase}
 
-Livello = {}
-Livello_mt =  {__index = Livello}
-
-function Livello:new()
-
+function livelloBase:new()
+print'livelloo'
 end
 
- function Livello:prova()
+ function livelloBase:prova()
   print("****************************Livello funziona*****************************************************")
 end
 
-function Livello:funzione(parametro1, parametro2)
+function livelloBase:funzione(parametro1, parametro2)
 
 end
 ---------------------------------------------------------------------------------
@@ -45,7 +47,7 @@ end end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
-function hit(event)
+function livelloBase:hit(event)
 	if event.target.name == 'speciale' then
 		if not txt_SpecialeVisibile then
 		  txt_Speciale = display.newText( "Potere speciale attivo \n per il successivo tiro", _W/2 +100 ,  60, native.systemFont,12 )
@@ -56,7 +58,7 @@ function hit(event)
 	physics.setGravity( 0, 46 )
 	        brick = event.target
             local vx, vy = event.other:getLinearVelocity()
-			brick.life = brick.life - (damage)
+			brick.life = brick.life - (partitaS:stats().danno)
 
 			if brick.life <= 0 then
                removeBrick(brick)
@@ -104,7 +106,7 @@ end
 --CREAZIONE CANNONE AGGIUNTA LISTENER
 ---------------------------------------------------------------------------------
 local newCannon = require('lib.cannon').newCannon
-cannon = newCannon()
+cannon = newCannon(UI)
 bg:addEventListener("touch", touch )
 muroInBasso:addEventListener( "collision", function(event)
   event.other:removeSelf( )

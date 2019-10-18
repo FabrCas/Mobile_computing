@@ -79,9 +79,10 @@ function myLevel:caricaPalla()
 		vecchiaPalla= nil
 	end
 	numeroPalle= numeroPalle -1
+    if numeroPalle>0 then 
   obj = myLevel:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle -1)).view
 	obj:setLinearVelocity(150,0)
-	vecchiaPalla= obj
+	vecchiaPalla= obj end
 end
 return myLevel
 end

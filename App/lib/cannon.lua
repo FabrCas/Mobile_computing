@@ -1,5 +1,6 @@
 local _M = {}
 local newBall = require('lib.ball').newBall
+require ("lib.creazioneUI")
 require("lib.LD_LoaderX")
 local myLevel = {}
 local gruppo_cannone = display.newGroup()
