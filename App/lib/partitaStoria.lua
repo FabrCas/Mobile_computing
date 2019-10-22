@@ -7,6 +7,8 @@ local livelli --table dove verranno salvati tutti i livelli per piano
 local score
 local prova="gianna"
 local piano
+math.randomseed(os.time())
+math.random(); math.random(); math.random() -- per stabilizzare i primi valori di random
 
 
 partitaS = {}
@@ -24,57 +26,103 @@ function partitaS:new()
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
   }
-  --piano.altezza=0
-  --creazioneTorre()
+  piano= {}
+  piano.altezza=0
+  creazioneTorre()
 end
 
---[[buffer livelli 30, 10 per piano
+--buffer livelli 30, 10 per piano
 --10 al primo , 10 al secondo, 10 al terzo
 --numero stanze:
 --min:5 max:8
 --min:8 max:11
 --min:11 max:15
 --convenzioni: 1->nord 2->est 3->sud 4->ovest
-function creazioneTorre(){
+function creazioneTorre()
+ print ("************************************************inizio creazione********************************************************")
   if piano.altezza == 0 then
+
     local inizio = math.random(1, 10);
-    piano.start= "scene"..string.format(inizio)
+    
     piano.nStanze= math.random(5,8)
-    stanze = {}
-    stanza= "scene"..string.format(inizio);
+    stanza= {}
+    stanza.nome = "scene"..string.format(inizio);
+    piano.start= stanza
+    local stanzeRimaste= piano.nStanze
+
+    local delta=0
     for i=1, 4 do
-      esisteStanza= math.random(0,1)
-      direzione= math.random(1,4)
+      esisteStanza= math.random((1+ delta),4)  --delta ci assicura che almeno una stanza verrà creata per la stanza di partenza, nella quarta iterazione
+      --si possono sovrascrive le stanza, magari esisteStanza è = 4, 3 volte, ma una solo stanza viene memorizzata, perchè tutte e tre vanno nella stassa posizione
+      print ("iterazione"..string.format(i))
+      print (esisteStanza)
 
+      if esisteStanza==4 then
+      local direzione= math.random(1,4)
+      local stanzaSorteggiata= math.random(1,10)
+      local stanzaTemp = {}
+      stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata);
 
+      
+      print (direzione)
+      print (stanzaSorteggiata)
 
-
-      if i=1 then
-        stanza.nord=
-      elseif i=2 then
-        stanza.est=
-      elseif i=3 then
-        stanza.sud
-      else then
-        stanza.
-    stanze[1]= stanza
-    stanzeRimaste= piano.nStanze -1
-    for i=1, piano.nStanze do
-       stanza=
-
-
-
+      if direzione==1 then
+        stanza.nord= stanzaTemp
+      elseif direzione==2 then
+        stanza.est= stanzaTemp
+      elseif direzione== 3 then
+        stanza.sud = stanzaTemp
+      else 
+        stanza.ovest= stanzaTemp
+      end
     end
+    delta= delta+1
+  end
 
-  elseif piano.altezza==1 then
+if (stanza.nord ~= nil) then 
+print (stanza.nord.nome)
+stanzeRimaste = stanzeRimaste -1
+end 
+if (stanza.est ~= nil) then 
+print (stanza.est.nome)
+stanzeRimaste = stanzeRimaste -1
+end
+if (stanza.sud ~= nil) then 
+print (stanza.sud.nome)
+stanzeRimaste = stanzeRimaste-1
+end
+if (stanza.ovest ~= nil) then 
+print (stanza.ovest.nome)
+stanzeRimaste = stanzeRimaste-1
+end
 
-  elseif piano.altezza==2 then
+print(stanzeRimaste)
+   -- stanzeRimaste= piano.nStanze -1
+   -- for i=1, piano.nStanze do
+   --    stanza=1
+
+   print ("************************************************fine creazione********************************************************")
+ end
+
+--altri piani
+
+
+  --elseif piano.altezza==1 then
+
+  --else piano.altezza== 2
+end
+
+
+
+function creaPiano()
+
 
   end
-}--]]
 
 
- function partitaS:prova()
+
+function partitaS:prova()
   print("****************************PartitaCorrettamenteImportato*****************************************************")
 end
 
