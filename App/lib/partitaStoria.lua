@@ -29,6 +29,7 @@ function partitaS:new()
   piano= {}
   piano.altezza=0
   creazioneTorre()
+
 end
 
 --buffer livelli 30, 10 per piano
@@ -39,21 +40,41 @@ end
 --min:11 max:15
 --convenzioni: 1->nord 2->est 3->sud 4->ovest
 function creazioneTorre()
- print ("************************************************inizio creazione********************************************************")
+ print ("******************************************inizio creazione piano 1 ********************************************************")
   if piano.altezza == 0 then
+    local pianoCartesianoStanze= {} -- coppie (x,y) utilizzate per la corretta 
+    --toNord -> (-, +1)
+    --toEst -> (+1, -)
+    --toSud -> (-, -1)
+    --toOvest -> (-1, -)
 
     local inizio = math.random(1, 10);
     
     piano.nStanze= math.random(5,8)
     stanza= {}
+    stanza.coordinate= {}
+    stanza.coordinate.x=0
+    stanza.coordinate.y=0
+    table.insert(pianoCartesianoStanze, stanza.coordinate)
+
     stanza.nome = "scene"..string.format(inizio);
     piano.start= stanza
     local stanzeRimaste= piano.nStanze
 
+    print("numero stanze di partenza: "..string.format(stanzeRimaste))
+
     local delta=0
+
+    local nordSorteggiato= false
+    local estSorteggiato= false
+    local sudSorteggiato= false
+    local ovestSorteggiato= false
+
+
     for i=1, 4 do
       esisteStanza= math.random((1+ delta),4)  --delta ci assicura che almeno una stanza verrà creata per la stanza di partenza, nella quarta iterazione
       --si possono sovrascrive le stanza, magari esisteStanza è = 4, 3 volte, ma una solo stanza viene memorizzata, perchè tutte e tre vanno nella stassa posizione
+
       print ("iterazione"..string.format(i))
       print (esisteStanza)
 
@@ -61,48 +82,79 @@ function creazioneTorre()
       local direzione= math.random(1,4)
       local stanzaSorteggiata= math.random(1,10)
       local stanzaTemp = {}
-      stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata);
+      local coordinateUtilizzate= {}
 
-      
+      stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
+
+  
       print (direzione)
       print (stanzaSorteggiata)
 
       if direzione==1 then
+        if (not nordSorteggiato) then 
         stanza.nord= stanzaTemp
+        coordinateUtilizzate.x= stanza.coordinate.x
+        coordinateUtilizzate.y= (stanza.coordinate.y + 1) 
+        table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        nordSorteggiato= true
+        stanzeRimaste = stanzeRimaste -1
+      end
       elseif direzione==2 then
+        if (not estSorteggiato) then 
         stanza.est= stanzaTemp
+       coordinateUtilizzate.x= (stanza.coordinate.x + 1)
+        coordinateUtilizzate.y= stanza.coordinate.y
+        table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        estSorteggiato= true 
+         stanzeRimaste = stanzeRimaste -1
+      end
       elseif direzione== 3 then
+        if (not sudSorteggiato) then 
         stanza.sud = stanzaTemp
+        coordinateUtilizzate.x= stanza.coordinate.x
+        coordinateUtilizzate.y= (stanza.coordinate.y -1)
+        table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        sudSorteggiato = true
+        stanzeRimaste = stanzeRimaste -1
+      end
       else 
+        if (not ovestSorteggiato) then
         stanza.ovest= stanzaTemp
+        coordinateUtilizzate.x= (stanza.coordinate.x -1)
+        coordinateUtilizzate.y= stanza.coordinate.y
+        table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        ovestSorteggiato= true 
+        stanzeRimaste = stanzeRimaste -1
+      end
       end
     end
     delta= delta+1
   end
 
+
+--stampe prova 
 if (stanza.nord ~= nil) then 
 print (stanza.nord.nome)
-stanzeRimaste = stanzeRimaste -1
 end 
 if (stanza.est ~= nil) then 
 print (stanza.est.nome)
-stanzeRimaste = stanzeRimaste -1
 end
 if (stanza.sud ~= nil) then 
 print (stanza.sud.nome)
-stanzeRimaste = stanzeRimaste-1
 end
 if (stanza.ovest ~= nil) then 
 print (stanza.ovest.nome)
-stanzeRimaste = stanzeRimaste-1
 end
 
-print(stanzeRimaste)
-   -- stanzeRimaste= piano.nStanze -1
-   -- for i=1, piano.nStanze do
-   --    stanza=1
+print("numero stanze dopo la prima creazione: "..string.format(stanzeRimaste))
+print ("coordinate utilizzate:")
+for i=1, #pianoCartesianoStanze do 
+  print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
+end
+   print ("***************************************fine creazione piano 1********************************************************")
 
-   print ("************************************************fine creazione********************************************************")
+
+
  end
 
 --altri piani
@@ -115,7 +167,7 @@ end
 
 
 
-function creaPiano()
+function creaStanze()
 
 
   end
