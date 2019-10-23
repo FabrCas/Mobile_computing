@@ -6,7 +6,9 @@ local livelloAttuale
 local livelli --table dove verranno salvati tutti i livelli per piano
 local score
 local prova="gianna"
-local piano
+local torre
+local piano -- var di appoggio per la creazione della torre 
+
 math.randomseed(os.time())
 math.random(); math.random(); math.random() -- per stabilizzare i primi valori di random
 
@@ -26,7 +28,8 @@ function partitaS:new()
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
   }
-  piano= {}
+  torre= {}
+  piano={}
   piano.altezza=0
   creazioneTorre()
 
@@ -42,41 +45,43 @@ end
 function creazioneTorre()
  print ("******************************************inizio creazione piano 1 ********************************************************")
   if piano.altezza == 0 then
+
     local pianoCartesianoStanze= {} -- coppie (x,y) utilizzate per la corretta 
     --toNord -> (-, +1)
     --toEst -> (+1, -)
     --toSud -> (-, -1)
     --toOvest -> (-1, -)
 
+    --inizializzazione piano con la prima stanza
     local inizio = math.random(1, 10);
-    
     piano.nStanze= math.random(5,8)
     stanza= {}
     stanza.coordinate= {}
     stanza.coordinate.x=0
     stanza.coordinate.y=0
     table.insert(pianoCartesianoStanze, stanza.coordinate)
-
+    listaCreazione= {} --lista di stanze su cui andrà effettuato la chiamata di creazione stanze
     stanza.nome = "scene"..string.format(inizio);
     piano.start= stanza
     local stanzeRimaste= piano.nStanze
 
     print("numero stanze di partenza: "..string.format(stanzeRimaste))
 
-    local delta=0
+    local delta=0 --variabile che evita il blocco nella creazione delle stanza
 
+--variabili per evitare di creare più stanze nella stessa direzione
     local nordSorteggiato= false
     local estSorteggiato= false
     local sudSorteggiato= false
     local ovestSorteggiato= false
 
-
+--creazione stanze 
     for i=1, 4 do
       esisteStanza= math.random((1+ delta),4)  --delta ci assicura che almeno una stanza verrà creata per la stanza di partenza, nella quarta iterazione
-      --si possono sovrascrive le stanza, magari esisteStanza è = 4, 3 volte, ma una solo stanza viene memorizzata, perchè tutte e tre vanno nella stassa posizione
 
-      print ("iterazione"..string.format(i))
-      print (esisteStanza)
+      print("---------------------")
+      print ("iterazione: "..string.format(i))
+      print ("esiste stanza: "..esisteStanza)
 
       if esisteStanza==4 then
       local direzione= math.random(1,4)
@@ -87,8 +92,9 @@ function creazioneTorre()
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
 
   
-      print (direzione)
-      print (stanzaSorteggiata)
+      print ("direzione: "..direzione)
+      print ("stanza sorteggiata: "..stanzaSorteggiata)
+      print("---------------------")
 
       if direzione==1 then
         if (not nordSorteggiato) then 
@@ -96,6 +102,7 @@ function creazioneTorre()
         coordinateUtilizzate.x= stanza.coordinate.x
         coordinateUtilizzate.y= (stanza.coordinate.y + 1) 
         table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        table.insert(listaCreazione, stanza.nord)
         nordSorteggiato= true
         stanzeRimaste = stanzeRimaste -1
       end
@@ -105,6 +112,7 @@ function creazioneTorre()
        coordinateUtilizzate.x= (stanza.coordinate.x + 1)
         coordinateUtilizzate.y= stanza.coordinate.y
         table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        table.insert(listaCreazione, stanza.est)
         estSorteggiato= true 
          stanzeRimaste = stanzeRimaste -1
       end
@@ -114,6 +122,7 @@ function creazioneTorre()
         coordinateUtilizzate.x= stanza.coordinate.x
         coordinateUtilizzate.y= (stanza.coordinate.y -1)
         table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        table.insert(listaCreazione, stanza.sud)
         sudSorteggiato = true
         stanzeRimaste = stanzeRimaste -1
       end
@@ -123,6 +132,7 @@ function creazioneTorre()
         coordinateUtilizzate.x= (stanza.coordinate.x -1)
         coordinateUtilizzate.y= stanza.coordinate.y
         table.insert(pianoCartesianoStanze, coordinateUtilizzate)
+        table.insert(listaCreazione, stanza.ovest)
         ovestSorteggiato= true 
         stanzeRimaste = stanzeRimaste -1
       end
@@ -151,26 +161,41 @@ print ("coordinate utilizzate:")
 for i=1, #pianoCartesianoStanze do 
   print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
 end
+print("prossime stanze nella creazione:")
+for i=1, #listaCreazione do
+  print (string.format(listaCreazione[i].nome))
+end 
+
+--------------------------------crazione altre stanze
+
+
+
+
+torre.primoPiano= piano
+piano=nil
+piano={}
+piano.altezza= 1
+--creazioneTorre()
+
    print ("***************************************fine creazione piano 1********************************************************")
-
-
-
  end
 
 --altri piani
 
 
   --elseif piano.altezza==1 then
+    --cancello le info
 
   --else piano.altezza== 2
 end
 
 
 
-function creaStanze()
-
+function creaStanze(stanzeRimanenti, pianoCartesiano, stanzaPartenza)
+  if stanzeRimanenti~= 0 then
 
   end
+end
 
 
 
@@ -215,8 +240,8 @@ function partitaS:personaggio()
   return personaggio
 end
 
-function partitaS:piano()
-  return piano
+function partitaS:torre()
+  return torre
 end
 
 
