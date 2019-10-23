@@ -7,7 +7,7 @@ local livelli --table dove verranno salvati tutti i livelli per piano
 local score
 local prova="gianna"
 local torre
-local piano -- var di appoggio per la creazione della torre 
+local piano -- var di appoggio per la creazione della torre
 
 math.randomseed(os.time())
 math.random(); math.random(); math.random() -- per stabilizzare i primi valori di random
@@ -46,7 +46,7 @@ function creazioneTorre()
  print ("******************************************inizio creazione piano 1 ********************************************************")
   if piano.altezza == 0 then
 
-    local pianoCartesianoStanze= {} -- coppie (x,y) utilizzate per la corretta 
+    local pianoCartesianoStanze= {} -- coppie (x,y) utilizzate per la corretta
     --toNord -> (-, +1)
     --toEst -> (+1, -)
     --toSud -> (-, -1)
@@ -75,7 +75,7 @@ function creazioneTorre()
     local sudSorteggiato= false
     local ovestSorteggiato= false
 
---creazione stanze 
+--creazione stanze
     for i=1, 4 do
       esisteStanza= math.random((1+ delta),4)  --delta ci assicura che almeno una stanza verrà creata per la stanza di partenza, nella quarta iterazione
 
@@ -91,33 +91,33 @@ function creazioneTorre()
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
 
-  
+
       print ("direzione: "..direzione)
       print ("stanza sorteggiata: "..stanzaSorteggiata)
       print("---------------------")
 
       if direzione==1 then
-        if (not nordSorteggiato) then 
+        if (not nordSorteggiato) then
         stanza.nord= stanzaTemp
         coordinateUtilizzate.x= stanza.coordinate.x
-        coordinateUtilizzate.y= (stanza.coordinate.y + 1) 
+        coordinateUtilizzate.y= (stanza.coordinate.y + 1)
         table.insert(pianoCartesianoStanze, coordinateUtilizzate)
         table.insert(listaCreazione, stanza.nord)
         nordSorteggiato= true
         stanzeRimaste = stanzeRimaste -1
       end
       elseif direzione==2 then
-        if (not estSorteggiato) then 
+        if (not estSorteggiato) then
         stanza.est= stanzaTemp
        coordinateUtilizzate.x= (stanza.coordinate.x + 1)
         coordinateUtilizzate.y= stanza.coordinate.y
         table.insert(pianoCartesianoStanze, coordinateUtilizzate)
         table.insert(listaCreazione, stanza.est)
-        estSorteggiato= true 
+        estSorteggiato= true
          stanzeRimaste = stanzeRimaste -1
       end
       elseif direzione== 3 then
-        if (not sudSorteggiato) then 
+        if (not sudSorteggiato) then
         stanza.sud = stanzaTemp
         coordinateUtilizzate.x= stanza.coordinate.x
         coordinateUtilizzate.y= (stanza.coordinate.y -1)
@@ -126,14 +126,14 @@ function creazioneTorre()
         sudSorteggiato = true
         stanzeRimaste = stanzeRimaste -1
       end
-      else 
+      else
         if (not ovestSorteggiato) then
         stanza.ovest= stanzaTemp
         coordinateUtilizzate.x= (stanza.coordinate.x -1)
         coordinateUtilizzate.y= stanza.coordinate.y
         table.insert(pianoCartesianoStanze, coordinateUtilizzate)
         table.insert(listaCreazione, stanza.ovest)
-        ovestSorteggiato= true 
+        ovestSorteggiato= true
         stanzeRimaste = stanzeRimaste -1
       end
       end
@@ -142,29 +142,29 @@ function creazioneTorre()
   end
 
 
---stampe prova 
-if (stanza.nord ~= nil) then 
+--stampe prova
+if (stanza.nord ~= nil) then
 print (stanza.nord.nome)
-end 
-if (stanza.est ~= nil) then 
+end
+if (stanza.est ~= nil) then
 print (stanza.est.nome)
 end
-if (stanza.sud ~= nil) then 
+if (stanza.sud ~= nil) then
 print (stanza.sud.nome)
 end
-if (stanza.ovest ~= nil) then 
+if (stanza.ovest ~= nil) then
 print (stanza.ovest.nome)
 end
 
 print("numero stanze dopo la prima creazione: "..string.format(stanzeRimaste))
 print ("coordinate utilizzate:")
-for i=1, #pianoCartesianoStanze do 
+for i=1, #pianoCartesianoStanze do
   print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
 end
 print("prossime stanze nella creazione:")
 for i=1, #listaCreazione do
   print (string.format(listaCreazione[i].nome))
-end 
+end
 
 --------------------------------crazione altre stanze
 
@@ -208,7 +208,8 @@ function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   --poi verrà chiesto lo score definitivo e stampato a schermo
   --aggiungere un bonus prima di inviare lo score del livello se il giocatore lo ha portato a termine
   local scoreParziale
-  scoreParziale= scoreLivello - (tempo/5000) --ogni 5 secondi diminuisce lo score di un valore unitario
+  scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
+  scoreParziale = scoreParziale + (palleRimaste*500)
   if(scoreParziale > 0) then
     score = score + scoreParziale
   end

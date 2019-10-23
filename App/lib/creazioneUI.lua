@@ -10,23 +10,27 @@ local statistiche= partitaS:stats()
 local numeroPalle
 local vecchiaPalla
 
+tempoInizioPausa = 0
+tempoFinePausa = 0
+tempoPausaTotale = 0
+
 function _M.newUI()
 	numeroPalle = statistiche.numeroPalle
 	for  i= (numeroPalle -1) ,10 do     -- -1 perchè una palla sta nel cannone
-
 		print("ball_"..i)
 		local obj = myLevel:getLayerObject("ui_layer", "ball_"..string.format(i)).view
 		obj:removeSelf()
 		obj=nil
 	end
-
 ---------------------------------------------------------------------------------
 --FUNZIONE CHE CREA LA PAUSA
 ---------------------------------------------------------------------------------
 local function creaPausa()
+	tempoInizioPausa = os.time()
 local schermataPausa = display.newRect( _W/2, _H/2, 100, 100 )
-    	 schermataPausa:addEventListener("tap",function(event) isPaused=false physics.start() schermataPausa:removeSelf( ) schermataPausa=nil end)
-
+    	 schermataPausa:addEventListener("tap",function(event) isPaused=false physics.start() schermataPausa:removeSelf( ) schermataPausa=nil tempoFinePausa=os.time()
+			 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
+		   print("tempo di pausa totale",tempoPausaTotale) end)
 end
 ---------------------------------------------------------------------------------
 --FUNZIONE CHE CREA LA SCHERMATA DI STATISTICHE
@@ -79,7 +83,7 @@ function myLevel:caricaPalla()
 		vecchiaPalla= nil
 	end
 	numeroPalle= numeroPalle -1
-    if numeroPalle>0 then 
+    if numeroPalle>0 then
   obj = myLevel:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle -1)).view
 	obj:setLinearVelocity(150,0)
 	vecchiaPalla= obj end

@@ -51,19 +51,17 @@ function scene:create( event )
 	nMattoni = nMattoni + 1
 	end
 
-	-- Touch event listener for button
+	--[[ Touch event listener for button
 	function onButtonClick( event )
 		print ("touch")
 		if event.phase == "began" then
-
 			composer.gotoScene( "scene2", "zoomOutInFade", 300  )
-
 			return true
 		end
 	end
 
 	-- btn = myLevel:getLayerObject( "layer1","btnNext" )
-	-- btn.onPress = onButtonClick
+	-- btn.onPress = onButtonClick ]]
 
 	print( "\n1: create event")
 end

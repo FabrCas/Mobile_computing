@@ -8,6 +8,7 @@ physics.addBody( muroSinistra,"static")
 physics.addBody( muroDestra,"static")
 physics.addBody( muroInBasso,"static")
 physics.addBody( muroInAlto,"static")
+tempoInizioLivello = os.time()
 require ("lib.creazioneUI")
 local bg = display.newRect( _W/2, _H/2, _W, _H )
 bg.alpha=0.1 bg.name="bg"
@@ -19,6 +20,7 @@ local txt_SpecialeVisibile = false
 local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  50, native.systemFont,12 )
   local newUI = require('lib.creazioneUI').newUI
   UI = newUI()
+
 livelloBase = {}
 livelloBase_mt =  {__index = livelloBase}
 
@@ -43,6 +45,7 @@ function removeBrick(brick)
 	nMattoni = nMattoni - 1
 	if nMattoni == 0 then
 		local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
+    partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello)+tempoPausaTotale, numBallMax,false)
 end end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
@@ -101,6 +104,7 @@ end
 ---------------------------------------------------------------------------------
 local function finePartita()
 	local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
+  partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
 ---------------------------------------------------------------------------------
 --CREAZIONE CANNONE AGGIUNTA LISTENER
