@@ -8,6 +8,7 @@ local score
 local prova="gianna"
 local torre
 local piano -- var di appoggio per la creazione della torre
+local tipiStanza= {"normale", "tesoro", "uscita"}
 
 math.randomseed(os.time())
 math.random(); math.random(); math.random() -- per stabilizzare i primi valori di random
@@ -29,11 +30,18 @@ function partitaS:new()
     velocita= 500
   }
   torre= {}
+  torre.pianoAttuale= 0
   piano={}
   piano.altezza=0
   creazioneTorre()
 
 end
+
+
+-- inizio funzioni per la creazione della mapppa 
+
+
+
 
 --buffer livelli 30, 10 per piano
 --10 al primo , 10 al secondo, 10 al terzo
@@ -42,9 +50,10 @@ end
 --min:8 max:11
 --min:11 max:15
 --convenzioni: 1->nord 2->est 3->sud 4->ovest
+--tipi di stanza_ normale, tesoro, uscita (tesoro scala con la fortuna)
 function creazioneTorre()
- print ("******************************************inizio creazione piano 1 ********************************************************")
-  if piano.altezza == 0 then
+ print ("******************************************inizio creazione piano ********************************************************")
+  if piano.altezza == 0 then --da  cancellare
 
     local pianoCartesianoStanze= {} -- coppie (x,y) utilizzate per la corretta
     --toNord -> (-, +1)
@@ -66,6 +75,7 @@ function creazioneTorre()
     local stanzeRimaste= piano.nStanze --ho creato la stanza iniziale, quindi -1
 
     print("numero stanze di partenza: "..string.format(stanzeRimaste))
+    print("stanza iniziale: ".. stanza.nome)
     stanzeRimaste= (piano.nStanze - 1) --ho creato la stanza iniziale, quindi -1
     local delta=0 --variabile che evita il blocco nella creazione delle stanza
 
@@ -181,29 +191,36 @@ local ricorsioneN = 1
 creaStanze(stanzeRimaste, pianoCartesianoStanze, listaCreazione, ricorsioneN)
 -----------------------------------------------------
 
+for i=1, #pianoCartesianoStanze do
+  print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
+end
+
+
+if (piano.altezza== 0) then 
 torre.primoPiano= piano
+elseif (piano.altezza==1) then 
+  torre.secondoPiano= piano
+else
+  torre.terzoPiano= piano
+end 
 piano=nil
 piano={}
-piano.altezza= 1
+
+print("avvio stampa di prova:")
+bufferStampa= {}
+stampaPiano(torre.primoPiano.start, 0,bufferStampa)
+--piano.altezza= 1
 --creazioneTorre()
 
-   print ("***************************************fine creazione piano 1********************************************************")
+   print ("***************************************fine creazione piano ********************************************************")
  end
-
---altri piani
-
-
-  --elseif piano.altezza==1 then
-    --cancello le info
-
-  --else piano.altezza== 2
 end
 
 
 
 function creaStanze(stanzeRimaste, coordinateStanze, listaCreazione, numero) --stanze rimanenti è un numero
   print("***************************/////*******************")
-  print ("numero iterazione"..numero)
+  print ("ciclo di creazione: "..numero)
 
 local stanzeRimanenti=stanzeRimaste
 local pianoCartesiano= coordinateStanze
@@ -238,14 +255,15 @@ if stanzeRimanenti > 0 then
 
       print ("direzione: "..direzione)
       print ("stanza sorteggiata: "..stanzaSorteggiata)
-      print("---------------------")
+      print("**********verifica stanza**************|")
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
+
       if direzione==1 then
         coordinateUtilizzate.x= stanza.coordinate.x
         coordinateUtilizzate.y= (stanza.coordinate.y + 1)
         print ("is valida:")
-        print (verificaCoordinate(coordinateUtilizzate, pianoCartesiano))
+        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not nordSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
@@ -260,7 +278,7 @@ if stanzeRimanenti > 0 then
         coordinateUtilizzate.x= (stanza.coordinate.x + 1)
         coordinateUtilizzate.y= stanza.coordinate.y
         print ("is valida:")
-        print (verificaCoordinate(coordinateUtilizzate, pianoCartesiano))
+        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not estSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
@@ -275,7 +293,7 @@ if stanzeRimanenti > 0 then
         coordinateUtilizzate.x= stanza.coordinate.x
         coordinateUtilizzate.y= (stanza.coordinate.y -1)
         print ("is valida:")
-        print (verificaCoordinate(coordinateUtilizzate, pianoCartesiano))
+        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
@@ -290,7 +308,7 @@ if stanzeRimanenti > 0 then
         coordinateUtilizzate.x= (stanza.coordinate.x -1)
         coordinateUtilizzate.y= stanza.coordinate.y
         print ("is valida:")
-        print (verificaCoordinate(coordinateUtilizzate, pianoCartesiano))
+        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not ovestSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
@@ -306,7 +324,11 @@ if stanzeRimanenti > 0 then
       delta= delta + 1
   end
 else
+  if  #pianoCartesiano < piano.altezza then
+    creazioneTorre()  -- errore nella creazione, ricomincio
+  else
   return true
+end
 end
 local newNum= num+1
 --table.remove(bufferCreazione, num)
@@ -326,6 +348,46 @@ function verificaCoordinate(coordinate, pianoCartesiano)
   return valoreBooleano
 end
 
+
+
+function stampaPiano(stanza, ricorsiveNumber, buffer)
+  if (stanza == nil) then 
+    return true 
+  else 
+  print("nome stanza: "..stanza.nome)
+  print("coordinate: ")
+  print(stanza.coordinate.x)
+  print(stanza.coordinate.y)
+
+  if (stanza.nord ~= nil) then
+print ("stanza nord: "..stanza.nord.nome)
+table.insert(buffer, stanza.nord)
+end
+if (stanza.est ~= nil) then
+print ("stanza est: "..stanza.est.nome)
+table.insert(buffer, stanza.est)
+end
+if (stanza.sud ~= nil) then
+print ("stanza sud: "..stanza.sud.nome)
+table.insert(buffer, stanza.sud)
+end
+if (stanza.ovest ~= nil) then
+print ("stanza ovest: "..stanza.ovest.nome)
+table.insert(buffer, stanza.ovest)
+end
+
+ricorsiveNumber= ricorsiveNumber +1
+stampaPiano(buffer[ricorsiveNumber], ricorsiveNumber, buffer)
+end 
+end
+
+
+
+
+-- fine funzioni per la creazione della mapppa 
+
+
+
 function partitaS:prova()
   print("****************************PartitaCorrettamenteImportato*****************************************************")
 end
@@ -342,7 +404,8 @@ function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   end
 end
 
-function partitaS:prossimoLivello()
+function partitaS:generaProssimoPiano()
+
   --return prossimolivello
 end
 
