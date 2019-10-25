@@ -18,7 +18,21 @@ local testoVolumeEffettoSonoro
 -- -----------------------------------------------------------------------------------
 
 
---listener
+
+
+
+
+
+
+
+-- -----------------------------------------------------------------------------------
+-- Scene event functions
+-- -----------------------------------------------------------------------------------
+
+-- create()
+function scene:create( event )
+
+    --listener
 local function onButtonClickUpMusica(event)
     partitaS:aumentaVolumeMusica()
     audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
@@ -66,18 +80,6 @@ local function onButtonCrediti(event)
     composer.gotoScene( "toCredits" , { effect = "crossFade", time = 200})
     audio.play(tapSound,{channel= 2})
 end
-
-
-
-
-
-
--- -----------------------------------------------------------------------------------
--- Scene event functions
--- -----------------------------------------------------------------------------------
-
--- create()
-function scene:create( event )
 
     local sceneGroup = self.view
 
@@ -133,7 +135,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
         --if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
-
+if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
     end
 end
 
