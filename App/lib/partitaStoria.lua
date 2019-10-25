@@ -519,7 +519,7 @@ function partitaS:volumeMusica()
   return volumeMusica
 end
 
-function partitas:volumeEffettoSonoro()
+function partitaS:volumeEffettoSonoro()
   return volumeEffettoSonoro
 end
 

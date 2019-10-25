@@ -1,42 +1,44 @@
 --dati della partita in modalità arcade
 --valori standard invariabili per ogni partita
 
+partitaA = {}
+partitaA_mt =  {__index = partitaA}
 local volumeMusica
 local volumeEffettoSonoro
 
 
 --**************************************Funzioni per ritarnare le variabili locali*****************************************************
 
-function partitaS:personaggio()
+function partitaA:personaggio()
   return personaggio
 end
 
-function partitaS:volumeMusica()
+function partitaA:volumeMusica()
   return volumeMusica
 end
 
-function partitas:volumeEffettoSonoro()
+function partitaA:volumeEffettoSonoro()
   return volumeEffettoSonoro
 end
 
 --**************************************Funzioni per settare le variabili locali**************************************************************
 
-function partitaS:setPG(pg)
+function partitaA:setPG(pg)
 personaggio=pg
 end
 
-function partitaS:aumentaVolumeMusica()
+function partitaA:aumentaVolumeMusica()
   volumeMusica= volumeMusica +1
 end
 
-function partitaS:diminuisciVolumeMusica()
+function partitaA:diminuisciVolumeMusica()
   volumeMusica= volumeMusica -1
 end
 
-function partitaS:aumentaVolumeEffettoSonoro()
+function partitaA:aumentaVolumeEffettoSonoro()
   volumeEffettoSonoro= volumeEffettoSonoro +1
 end
 
-function partitaS:diminuisciVolumeEffettoSonoro()
+function partitaA:diminuisciVolumeEffettoSonoro()
   volumeEffettoSonoro= volumeEffettoSonoro -1
 end
