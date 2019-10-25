@@ -33,6 +33,7 @@ local function onButtonClick(event)
   --print("tap esiste?")
   --print(tapSound==nil)
   local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
   partitaS:setPG(nomePersonaggio)
   pg= myLevel:getLayerObject("PGs", "cottonBall").view

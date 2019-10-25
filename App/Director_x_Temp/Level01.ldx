@@ -1,4 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="Level01">
- <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="1" gridY="1"/>
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="opzioni">
+ <assets firstgid="1" name="finestra_opzioni" width="640" height="960">
+  <image source="../images/finestra_opzioni.png" width="640" height="960"/>
+  <asset frame="0" name="finestra_opzioni_0" spritename="" class="" export="1" x="0" y="0" w="640" h="960">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="1" gridY="1">
+  <object uid="{2610a1ca-2334-46fd-ac45-a16d02f440bd}" shape="6" name="finestra_opzioni_0" alpha="1" blendMode="0" idx="1" spriteName="" x="2" y="12" width="318.667" height="478" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{ff496c94-fd96-4394-a60d-98b4ea7f2a7b}" shape="0" name="rect_2" alpha="1" blendMode="0" spriteName="" x="181.5" y="143.5" width="42.5" height="39" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="0" textcolor="4294967295">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{b88278c6-989a-4d32-96c2-aac2feda4c9a}" shape="0" name="rect_3" alpha="1" blendMode="0" spriteName="" x="182" y="211" width="42.5" height="39" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="0" textcolor="4294967295">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="bottoni" gridX="1" gridY="1">
+  <object uid="{19dde80d-6a72-48d2-93e0-b2037cbd7690}" shape="7" name="button_1" alpha="1" blendMode="0" spriteName="" x="136" y="147.5" width="33" height="32" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="16777216" textcolor="16777215" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="0" overstrokecolor="16777215">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{2d3d1e24-c4a7-4ff0-89a7-d760f4bde953}" shape="7" name="button_2" alpha="1" blendMode="0" spriteName="" x="230" y="147.5" width="33" height="32" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="16777216" textcolor="16777215" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="0" overstrokecolor="16777215">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{13661fb3-bd7f-4f5d-beb1-baedbb1b17fb}" shape="7" name="button_3" alpha="1" blendMode="0" spriteName="" x="137" y="213" width="33" height="32" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="16777216" textcolor="16777215" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="0" overstrokecolor="16777215">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{4b5cc756-1d80-4338-aaed-e7afae3b3e6f}" shape="7" name="button_4" alpha="1" blendMode="0" spriteName="" x="231" y="212.5" width="33" height="32" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="16777216" textcolor="16777215" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="0" overstrokecolor="16777215">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{fb9bc264-b775-418b-9531-8e4536f96ae6}" shape="7" name="button_5" alpha="1" blendMode="0" spriteName="" x="117" y="371.5" width="83" height="53.5" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="16777216" textcolor="16777215" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="0" overstrokecolor="16777215">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{9b5a766e-d6c7-4631-9994-80b5487def7f}" shape="7" name="button_6" alpha="1" blendMode="0" spriteName="" x="88.5" y="271" width="142.5" height="41.5" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="16777216" textcolor="16777215" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="0" overstrokecolor="16777215">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
 </level>

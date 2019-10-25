@@ -1,6 +1,7 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 local slideView = require("lib.carousel_menu")
+require ("lib.partitaStoria")
 
 -- Initial settings and checkings
 local sceneGroup = nil -- main group for all page elements
@@ -51,7 +52,7 @@ function scene:show( event )
    local sceneGroup = self.view
    if event.phase == "will" then
    local channel1 = audio.findFreeChannel(1)
-   	audio.setVolume( 0.5, {channel=channel1}  )
+   	audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
     audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
 
     -- print ("il volume è"..audio.getVolume())

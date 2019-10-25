@@ -10,8 +10,8 @@ local prova="gianna"
 local torre
 local piano -- var di appoggio per la creazione della torre
 
-local volumeMusica
-local volumeEffettoSonoro
+local volumeMusica = 0.5
+local volumeEffettoSonoro = 0.5
 --local tipiStanza= {"normale", "tesoro", "uscita"}
 
 math.randomseed(os.time())
@@ -530,19 +530,31 @@ personaggio=pg
 end
 
 function partitaS:aumentaVolumeMusica()
-  volumeMusica= volumeMusica +1
+  if(volumeMusica<=0.9) then 
+  volumeMusica= volumeMusica + 0.1
+end
 end
 
 function partitaS:diminuisciVolumeMusica()
-  volumeMusica= volumeMusica -1
+  if(volumeMusica>=0.1) then
+  volumeMusica= volumeMusica - 0.1
+  else 
+  volumeMusica=0
+end
 end
 
 function partitaS:aumentaVolumeEffettoSonoro()
-  volumeEffettoSonoro= volumeEffettoSonoro +1
+  if(volumeEffettoSonoro<=0.9) then
+  volumeEffettoSonoro= volumeEffettoSonoro + 0.1
+end
 end
 
 function partitaS:diminuisciVolumeEffettoSonoro()
-  volumeEffettoSonoro= volumeEffettoSonoro -1
+  if(volumeEffettoSonoro>=0.1) then
+  volumeEffettoSonoro= volumeEffettoSonoro - 0.1
+else 
+  volumeEffettoSonoro=0
+end
 end
 
 

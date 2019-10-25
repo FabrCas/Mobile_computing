@@ -28,11 +28,15 @@ function scene:show( event )
  
     local sceneGroup = self.view
     local phase = event.phase
- 
+
+        testo = display.newText("crediti", display.actualContentWidth/2, display.actualContentHeight/2,native.systemFontBold, 30)
+    sceneGroup:insert(testo)
+    
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
  
     elseif ( phase == "did" ) then
+        if nil~= composer.getScene("toOptions") then composer.removeScene("toOptions", false) end
         -- Code here runs when the scene is entirely on screen
  
     end

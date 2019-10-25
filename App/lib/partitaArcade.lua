@@ -28,11 +28,11 @@ personaggio=pg
 end
 
 function partitaA:aumentaVolumeMusica()
-  volumeMusica= volumeMusica +1
+  volumeMusica= volumeMusica +0.1
 end
 
 function partitaA:diminuisciVolumeMusica()
-  volumeMusica= volumeMusica -1
+  volumeMusica= volumeMusica -0.1
 end
 
 function partitaA:aumentaVolumeEffettoSonoro()
