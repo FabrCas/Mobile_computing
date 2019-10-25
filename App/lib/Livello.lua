@@ -46,11 +46,15 @@ function removeBrick(brick)
 	if nMattoni == 0 then
 		local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello)+tempoPausaTotale, numBallMax,false)
+    isPaused=true
 end end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
 function livelloBase:hit(event)
+  local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
+  brick_colpito.x = event.target.x
+  brick_colpito.y = event.target.y
 	if event.target.name == 'speciale' then
 		if not txt_SpecialeVisibile then
 		  txt_Speciale = display.newText( "Potere speciale attivo \n per il successivo tiro", _W/2 +100 ,  60, native.systemFont,12 )
@@ -69,6 +73,7 @@ function livelloBase:hit(event)
                 brick.scritta.text= brick.life
              --	brick.alpha = (brick.life/(5*100))*50
              end
+             timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
            end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA

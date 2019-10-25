@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="schermat_pausa_level">
+ <assets firstgid="1" name="finestra_pausa" width="640" height="960">
+  <image source="../images/finestra_pausa.png" width="640" height="960"/>
+  <asset frame="0" name="finestra_pausa_0" spritename="" class="" export="1" x="0" y="0" w="640" h="960">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="pulsanti" gridX="16" gridY="16">
+  <object uid="{b753a302-fceb-4726-bcf6-6960cf719a8f}" shape="6" name="finestra_pausa_0" alpha="1" blendMode="0" idx="1" spriteName="" x="0" y="0" width="320" height="480" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{3f508c78-2704-4300-8fc6-bbd556b9a51d}" shape="7" name="volumeeffetti+" alpha="1" blendMode="0" spriteName="" x="134.25" y="136.5" width="33.5" height="32.25" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="16777215" fillcolor="16777216" textcolor="16777215" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="4278190080" overstrokecolor="4294967295">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{159cf7a9-35ab-4f23-9372-c01b37cec200}" shape="7" name="volumeeffetti-" alpha="1" blendMode="0" spriteName="" x="228.25" y="136" width="33.5" height="32.25" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="4278190080" overstrokecolor="4294967295">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{a8928ee6-e1db-48c3-8bdc-4f85320e837c}" shape="7" name="volumemusica+" alpha="1" blendMode="0" spriteName="" x="135.25" y="202.75" width="33.5" height="32.25" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="4278190080" overstrokecolor="4294967295">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{8911bee2-ed5e-4898-9167-9e0b665c8899}" shape="7" name="volumemusica-" alpha="1" blendMode="0" spriteName="" x="229.25" y="203" width="33.5" height="32.25" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="4278190080" overstrokecolor="4294967295">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{001fde95-5acd-40b4-9401-d619e3d09ad6}" shape="7" name="backtomenu" alpha="1" blendMode="0" spriteName="" x="47.5" y="267.25" width="219.5" height="32.75" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="4278190080" overstrokecolor="4294967295">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{616966a1-3825-4e2f-8697-292e40258923}" shape="7" name="ok" alpha="0.8" blendMode="0" spriteName="" x="104" y="350.679" width="104" height="67.6423" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295" text="text" shadowcolor="4294967295" highlightcolor="4294967295" overfillcolor="4278190080" overstrokecolor="4294967295">
+   <font family="Arial" size="16"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+</level>

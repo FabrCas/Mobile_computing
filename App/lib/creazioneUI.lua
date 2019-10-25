@@ -1,6 +1,7 @@
 local _M = {}
 require("lib.LD_LoaderX")
 require ("lib.partitaStoria")
+local composer = require( "composer" )
 local myLevel = {}
 myLevel = LD_Loader:new()
 myLevel:loadLevel("ui")
@@ -9,6 +10,7 @@ require ("lib.partitaStoria")
 local statistiche= partitaS:stats()
 local numeroPalle
 local vecchiaPalla
+tapSound= audio.loadSound("sounds/mb1.mp3")
 
 tempoInizioPausa = 0
 tempoFinePausa = 0
@@ -27,11 +29,106 @@ function _M.newUI()
 ---------------------------------------------------------------------------------
 local function creaPausa()
 	tempoInizioPausa = os.time()
-local schermataPausa = display.newRect( _W/2, _H/2, 100, 100 )
-    	 schermataPausa:addEventListener("tap",function(event) isPaused=false physics.start() schermataPausa:removeSelf( ) schermataPausa=nil tempoFinePausa=os.time()
-			 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
-		   print("tempo di pausa totale",tempoPausaTotale) end)
+	isPaused=true
+
+	local testoVolumeMusica
+	local testoVolumeEffettoSonoro
+	--listener
+	local function onButtonClickUpMusica(event)
+	    partitaS:aumentaVolumeMusica()
+	    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+	    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+	end
+
+	local function onButtonClickDownMusica(event)
+	    partitaS:diminuisciVolumeMusica()
+	    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+	    if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
+	        testoVolumeMusica.text= 0
+	    else
+	    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+	end
+	end
+
+	local function onButtonClickDownEffettoSonoro(event)
+	    partitaS:diminuisciVolumeEffettoSonoro()
+	    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
+	    if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
+	        testoVolumeEffettoSonoro.txt=0
+	    else
+	    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+	end
+	end
+
+	local function onButtonClickUpEffettoSonoro(event)
+	     partitaS:aumentaVolumeEffettoSonoro()
+	    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
+	    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+	end
+
+	local function onButtonBackToMenu(event)
+		gruppo:removeSelf()
+		gruppo= nil
+		_M= nil
+	    composer.gotoScene( "menu" , { effect = "crossFade", time = 200})
+	end
+
+
+
+
+local pausa = {}
+pausa = LD_Loader:new()
+pausa:loadLevel("schermat_pausa_level")
+immagine_pausa = pausa:getLayerObject("pulsanti", "finestra_pausa_0").view
+gruppo = display.newGroup()
+
+local rectMusica = pausa:getLayerObject("pulsanti", "rect_9").view
+local rectEffetti = pausa:getLayerObject("pulsanti", "rect_8").view
+testoVolumeMusica= display.newText((partitaS:volumeMusica() * 10),rectMusica.x,rectMusica.y)
+testoVolumeMusica:setFillColor(0,0,0)
+testoVolumeEffettoSonoro= display.newText((partitaS:volumeEffettoSonoro() * 10),rectEffetti.x,rectEffetti.y)
+testoVolumeEffettoSonoro:setFillColor(0,0,0)
+
+
+
+local fxp = pausa:getLayerObject("pulsanti", "volumeeffetti+").view
+       fxp.alpha = 0.01
+
+local fxm = pausa:getLayerObject("pulsanti", "volumeeffetti-").view
+fxm.alpha = 0.01
+
+local musicap = pausa:getLayerObject("pulsanti", "volumemusica-").view
+musicap.alpha = 0.01
+
+local musicam = pausa:getLayerObject("pulsanti", "volumemusica+").view
+musicam.alpha = 0.01
+
+local backtomenu = pausa:getLayerObject("pulsanti", "backtomenu").view
+backtomenu.alpha = 0.01
+
+local ok = pausa:getLayerObject("pulsanti", "ok").view
+gruppo:insert(immagine_pausa) gruppo:insert(fxp) gruppo:insert(fxm) gruppo:insert(musicap) gruppo:insert(musicam) gruppo:insert(backtomenu) gruppo:insert(ok)
+ok.alpha = 0.01
+ok:addEventListener("tap",function(event) isPaused=false physics.start() gruppo:removeSelf() tempoFinePausa=os.time() --rimuove la pausa
+tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
+print("tempo di pausa totale",tempoPausaTotale)
+testoVolumeMusica:removeSelf()
+testoVolumeEffettoSonoro:removeSelf()
+testoVolumeEffettoSonoro= nil
+testoVolumeMusica= nil
+end)
+
+
+
+musicam:addEventListener("tap", onButtonClickUpMusica)
+musicap:addEventListener("tap", onButtonClickDownMusica)
+fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
+fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
+backtomenu:addEventListener("tap", onButtonBackToMenu)
+
 end
+
+
 ---------------------------------------------------------------------------------
 --FUNZIONE CHE CREA LA SCHERMATA DI STATISTICHE
 ---------------------------------------------------------------------------------
