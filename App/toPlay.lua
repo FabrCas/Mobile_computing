@@ -4,7 +4,6 @@ local scene = composer.newScene()
 local sceneGroup = nil -- main group for all page elements
 local _W = display.contentWidth; -- full width of the page
 local _H = display.contentHeight; -- full height of the page
-
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -32,7 +31,7 @@ function scene:create( event )
  local function onClick(event)
  local options = { effect = "crossFade", time = 200}
  self:removeEventListener( "tap", onClick )
- composer.gotoScene( "levels.scene1", options )
+ composer.gotoScene( "levels.mappa")
  return true
 end
 
