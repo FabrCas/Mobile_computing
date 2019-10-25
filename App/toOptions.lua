@@ -3,7 +3,8 @@ require ("lib.partitaStoria")
 require("lib.LD_LoaderX")
 local physics = require ("physics")
 physics.start()
-tapSound= audio.loadSound("sounds/mb1.mp3")
+tapSound1= audio.loadSound("sounds/mb1.mp3")
+tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 
 local scene = composer.newScene()
 local sceneGroup = nil -- main group for all page elements
@@ -22,6 +23,7 @@ local function onButtonClickUpMusica(event)
     partitaS:aumentaVolumeMusica()
     audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
     testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+    audio.play(tapSound2,{channel= 2})
 
 end
 
@@ -33,6 +35,7 @@ local function onButtonClickDownMusica(event)
     else
     testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
 end
+audio.play(tapSound2,{channel= 2})
 end
 
 local function onButtonClickDownEffettoSonoro(event)
@@ -42,21 +45,26 @@ local function onButtonClickDownEffettoSonoro(event)
         testoVolumeEffettoSonoro.txt=0
     else
     testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+
 end
+audio.play(tapSound2,{channel= 2})
 end
 
 local function onButtonClickUpEffettoSonoro(event)
      partitaS:aumentaVolumeEffettoSonoro()
     audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
     testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+    audio.play(tapSound2,{channel= 2})
 end
 
 local function onButtonEsci(event)
     composer.gotoScene( "menu" , { effect = "crossFade", time = 200})
+    audio.play(tapSound,{channel= 2})
 end
 
 local function onButtonCrediti(event)
     composer.gotoScene( "toCredits" , { effect = "crossFade", time = 200})
+    audio.play(tapSound,{channel= 2})
 end
 
 
@@ -80,7 +88,6 @@ function scene:create( event )
     myLevel= LD_Loader:new(sceneGroup)
     myLevel:loadLevel("opzioni")
     -- Code here runs when the scene is first created but has not yet appeared on screen
-
 --bottoni
    local bottoneUpMusica = myLevel:getLayerObject("bottoni", "button_3").view
     local bottoneDownMusica = myLevel:getLayerObject("bottoni", "button_4").view
@@ -111,10 +118,6 @@ function scene:create( event )
     sceneGroup:insert(testoVolumeEffettoSonoro)
     sceneGroup:insert(testoVolumeMusica)
 
-
-
-    sceneGroup = self.view
-
 end
 
 
@@ -126,9 +129,10 @@ function scene:show( event )
 
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
-
+        
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
+        --if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
 
     end
 end
@@ -169,3 +173,5 @@ scene:addEventListener( "destroy", scene )
 -- -----------------------------------------------------------------------------------
 
 return scene
+
+

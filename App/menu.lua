@@ -16,11 +16,10 @@ local numeroPagineMenu= 2
 function scene:create( event )
     -- view is not yet visible
     local sceneGroup = self.view
-	menuSound= audio.loadStream("sounds/montage.mp3")
-print("menu-> create")
---	display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
-  --sceneGroup:insert(bg)
 
+--	menuSound= audio.loadStream("sounds/montage.mp3")
+
+print("menu-> create")
 
 	-- Insert your own background
 	 local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
@@ -38,10 +37,15 @@ print("menu-> create")
 --  livelli.livelliDaCreare = numeroPagineMenu
 --  livelli.daLivello = 1 -- parto ad assegnare il livello 2, visto che il primo è del menu
 	levelGroup = slideView.new( images, nil, livelli)
-
+print(composer.level)
+  
+  -- this automatically move to the last selected level
+  if (composer.level > 1 ) then
+    levelGroup:jumpToImage(composer.level)
+  end
+  
 
 	-- this automatically move to the last selected level
-
 	sceneGroup:insert(levelGroup)
 
 end -- ends scene:create
@@ -50,15 +54,13 @@ end -- ends scene:create
 function scene:show( event )
 
    local sceneGroup = self.view
-   if event.phase == "will" then
-   local channel1 = audio.findFreeChannel(1)
-   	audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
-    audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
+   --if event.phase == "will" then
 
-    -- print ("il volume è"..audio.getVolume())
-    -- audio.setVolume( 0.1, {channel=2}  )
-     --print ("il volume è"..audio.getVolume())
-   elseif event.phase == "did" then
+  -- local channel1 = audio.findFreeChannel(1)
+   --	audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
+   -- audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
+
+   if event.phase == "did" then
      print("menu-> show (did)")
 
       -- purges previous and next scenes
@@ -69,6 +71,7 @@ function scene:show( event )
 
 	local function runLevel(livello)
 	--	composer.gotoScene( "gestisciMenuPrimario" , { effect = "crossFade", time = 200})
+  print("Run level eseguita")
   if livello == 1 then
     composer.gotoScene( "selectPG", options)
     return true
@@ -84,7 +87,7 @@ end
 			Runtime:removeEventListener("levelClicked")
 			levelGroup:cleanUp()
 			print (clicked, "clicked level", event.level)
-			timer.performWithDelay(0,  runLevel(event.level) , 1 )
+			timer.performWithDelay(0,  runLevel(event.level) ,1)
 		end
 	end
 
@@ -97,24 +100,27 @@ end -- ends scene:show
 function scene:hide( event )
   print("menu-> hide")
    -- all disposal happens here
-   if event.phase == "will" then
-		Runtime:removeEventListener("levelClicked")
+ if event.phase == "will" then
+Runtime:removeEventListener("levelClicked")
 
-		levelGroup:cleanUp()
+levelGroup:cleanUp()
 
-   elseif event.phase == "did" then
-        composer.test = nil
-		levelGroup = nil
-		print ("page_2 destroyed")
-   end
+ elseif event.phase == "did" then
+      composer.test = nil
+levelGroup = nil
+print ("page_2 destroyed")
+ end
+
+
+
 end
 
 function scene:destroy( event )
   print("menu-> destroy")
    -- Remove all unecessary composer items
-   composer.pageSwap = nil
-  audio.pause(menuSound)
-	menuSound= nil
+  composer.pageSwap = nil
+  --audio.pause(menuSound)
+	--menuSound= nil
 end
 
 scene:addEventListener( "create", scene )

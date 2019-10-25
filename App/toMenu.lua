@@ -1,19 +1,22 @@
 --Schermate di presenazione
 local composer = require( "composer" )
 local scene = composer.newScene()
+require ("lib.partitaStoria")
 
 local sceneGroup = nil -- main group for all page elements
 local _W = display.contentWidth; -- full width of the page
 local _H = display.contentHeight; -- full height of the page
 local btnStart = nil
-
+menuSound= audio.loadStream("sounds/montage.mp3")
 
 
 -- Called when the scene's view does not exist:
 function scene:create( event )
     -- view is not yet visible
     local sceneGroup = self.view
-
+  local channel1 = audio.findFreeChannel(1)
+    audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
+    audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
 	display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
   --coloro il background di default
 
