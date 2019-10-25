@@ -1,4 +1,5 @@
 --dati della partita in modalità storia
+
 local personaggio
 local stats
 --local prossimolivello
@@ -8,7 +9,10 @@ local score
 local prova="gianna"
 local torre
 local piano -- var di appoggio per la creazione della torre
-local tipiStanza= {"normale", "tesoro", "uscita"}
+
+local volumeMusica
+local volumeEffettoSonoro
+--local tipiStanza= {"normale", "tesoro", "uscita"}
 
 math.randomseed(os.time())
 math.random(); math.random(); math.random() -- per stabilizzare i primi valori di random
@@ -511,12 +515,36 @@ function partitaS:torre()
   return torre
 end
 
+function partitaS:volumeMusica()
+  return volumeMusica
+end
+
+function partitas:volumeEffettoSonoro()
+  return volumeEffettoSonoro
+end
 
 --**************************************Funzioni per settare le variabili locali**************************************************************
 
 function partitaS:setPG(pg)
 personaggio=pg
 end
+
+function partitaS:aumentaVolumeMusica()
+  volumeMusica= volumeMusica +1
+end
+
+function partitaS:diminuisciVolumeMusica()
+  volumeMusica= volumeMusica -1
+end
+
+function partitaS:aumentaVolumeEffettoSonoro()
+  volumeEffettoSonoro= volumeEffettoSonoro +1
+end
+
+function partitaS:diminuisciVolumeEffettoSonoro()
+  volumeEffettoSonoro= volumeEffettoSonoro -1
+end
+
 
 
 
