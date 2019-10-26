@@ -13,39 +13,59 @@ local _h = display.contentHeight/2
  p1 = partitaS:torre().primoPiano
  p2 = partitaS:torre().secondoPiano
  p3 = partitaS:torre().terzoPiano
- --lista= {}
+ lista= {}
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
- local function creaMappa(stanza)
- rect = display.newRect( _w + stanza.coordinate.x*6 , _h - stanza.coordinate.y*6, 20, 20 )
- print("largh = ",rect.width) print("lungh = " ,rect.height)
+ local function creaMappa(stanza, iter)
+    --m= margine per distaccare le stanza
+    --l= larghezza stanza == a= altezza stanza
+     if(stanza==nil) then 
+        return true
+else
+    print(stanza.nome)
+local margine= 2
+local altezza = 20
+local larghezza= 20
+
+ rect = display.newRect( _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)), 20, 20 )
+if stanza.isLocked==false then
+    rect:setFillColor(1,0,0)
+end
+if stanza.tipo== "tesoro" then 
+    rect:setFillColor(1,1,0)
+end
+if stanza.tipo == "uscita" then
+    rect:setFillColor(0,1,0)
+end
  if stanza.nord ~= nil then
  porta = display.newRect( rect.x, rect.y - 10, 8, 4)
- porta:setFillColor( 1,0,1 )
- creaMappa(stanza.nord)
+ porta:setFillColor( 0,0,1 )
+ table.insert(lista,stanza.nord)
 end
  if stanza.est ~= nil then
  porta = display.newRect( rect.x + 10, rect.y , 8, 4)
- porta:setFillColor( 1,0,1 )
-creaMappa(stanza.est)
+ porta:setFillColor( 0,0,1 )
+  table.insert(lista,stanza.est)
 end
  if stanza.ovest ~= nil then
  porta = display.newRect( rect.x-10, rect.y , 8, 4)
- porta:setFillColor( 1,0,1 )
- creaMappa(stanza.ovest)
+ porta:setFillColor( 0,0,1 )
+  table.insert(lista,stanza.ovest)
 end
  if stanza.sud ~= nil then
  porta = display.newRect( rect.x, rect.y + 10, 8, 4)
- porta:setFillColor( 1,0,1 )
- creaMappa(stanza.sud)
+ porta:setFillColor( 0,0,1 )
+  table.insert(lista,stanza.sud)
 end
-
+new_iter= iter +1
+creaMappa(lista[new_iter], new_iter)
+end
 end
 -- create()
 function scene:create( event )
-
-     creaMappa(p1.start)
+    local indicePartenza= 0
+     creaMappa(p3.start,indicePartenza )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
  

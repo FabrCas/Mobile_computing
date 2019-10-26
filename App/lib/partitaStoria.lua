@@ -84,6 +84,7 @@ math.random(); math.random(); math.random()
     end
 
     local stanza= {}
+    stanza.isLocked = false
     stanza.coordinate= {}
     stanza.coordinate.x=0
     stanza.coordinate.y=0
@@ -104,7 +105,7 @@ math.random(); math.random(); math.random()
     local estSorteggiato= false
     local sudSorteggiato= false
     local ovestSorteggiato= false
-    
+
    --*******************************************************************************************************************
 math.randomseed(os.time())
 math.random(); math.random(); math.random()
@@ -132,6 +133,7 @@ math.random(); math.random(); math.random()
 
       local stanzaTemp = {}
       stanzaTemp.coordinate={}
+      stanzaTemp.isLocked= true
       local coordinateUtilizzate= {}
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
@@ -319,6 +321,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       print("**********verifica stanza**************|")
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
+      stanzaTemp.isLocked = true
       sorteggioStanzaTesoro = math.random(1,6)
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
@@ -411,13 +414,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
        end
   end
 else
-  --print(#pianoCartesiano)
-  --print(stanzeTotali)
-  --if  #pianoCartesiano < stanzeTotali then
-    --creazioneTorre()  -- errore nella creazione, ricomincio
-  --else
   return true
---end
 end
 local newNum= num+1
 --table.remove(bufferCreazione, num)
@@ -449,6 +446,8 @@ function stampaPiano(stanza, ricorsiveNumber, buffer)
   print("coordinate: ")
   print(stanza.coordinate.x)
   print(stanza.coordinate.y)
+  print("è bloccata:")
+  print(stanza.isLocked)
 
   if (stanza.nord ~= nil) then
 print ("stanza nord: "..stanza.nord.nome)
