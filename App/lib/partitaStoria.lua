@@ -66,6 +66,11 @@ print ("******************************************inizio creazione piano *******
     --toOvest -> (-1, -)
     local inizio
 
+   --*******************************************************************************************************************
+math.randomseed(os.time())
+math.random(); math.random(); math.random()
+--***************************************************************************************************************************
+
     --inizializzazione piano con la prima stanza
     if (piano.altezza==0) then 
     inizio = math.random(1, 10);
@@ -99,6 +104,11 @@ print ("******************************************inizio creazione piano *******
     local estSorteggiato= false
     local sudSorteggiato= false
     local ovestSorteggiato= false
+    
+   --*******************************************************************************************************************
+math.randomseed(os.time())
+math.random(); math.random(); math.random()
+--***************************************************************************************************************************
 
 --creazione stanze
     for i=1, 4 do
@@ -108,9 +118,9 @@ print ("******************************************inizio creazione piano *******
       print ("iterazione: "..string.format(i))
       print (esisteStanza==4)
 
+
       if esisteStanza==4 then
       local direzione= math.random(1,4)
-
       local stanzaSorteggiata
       if (piano.altezza==0) then 
     stanzaSorteggiata = math.random(1, 10);
@@ -280,6 +290,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
     local ovestSorteggiato= false
 
   for i=1, 4 do
+
     local CreazioneEseguita= false
     esisteStanza= math.random((1+ delta),4)
      print("---------------------")

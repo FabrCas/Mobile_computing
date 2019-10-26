@@ -16,6 +16,17 @@ local canShoot = true
 local potereAttivato = false
 local numBallMax = partitaS:stats().numeroPalle
 txt_numBallMax = display.newText( "numero palle = "..numBallMax, _W/2 - 100 ,  50, native.systemFont,12 )
+
+--da cancellare 
+require ("lib.partitaStoria")
+math.randomseed(os.time())
+math.random(); math.random(); math.random()
+local torre = partitaS:torre()
+stanze_p1= display.newText( "P1 -> nStanze: "..torre.primoPiano.nStanze, _W/2 - 100 ,  70, native.systemFont,12 )
+stanze_p2= display.newText( "P2 -> nStanze: "..torre.secondoPiano.nStanze, _W/2 - 100 ,  90, native.systemFont,12 )
+stanze_p3= display.newText( "P3 -> nStanze: "..torre.terzoPiano.nStanze, _W/2 - 100 ,  110, native.systemFont,12 )
+--
+
 local txt_SpecialeVisibile = false
 local txt_Attivo = display.newText( "", display.contentWidth/2 +50 ,  50, native.systemFont,12 )
   local newUI = require('lib.creazioneUI').newUI
