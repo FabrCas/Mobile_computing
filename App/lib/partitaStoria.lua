@@ -205,8 +205,6 @@ math.random(); math.random(); math.random()
     delta= delta+1
   end
 
-
-
 --stampe prova
 if (stanza.nord ~= nil) then
 print (stanza.nord.nome)
@@ -294,6 +292,8 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
     local sudSorteggiato= false
     local ovestSorteggiato= false
 
+  if ((math.abs(stanza.coordinate.x) <3) and  (math.abs(stanza.coordinate.y) <3))   then
+
   for i=1, 4 do
 
     local CreazioneEseguita= false
@@ -302,6 +302,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       print ("iterazione: "..string.format(i))
       print (esisteStanza==4)
 
+ -- if math.abs(stanza.coordinate.x) <=3 and  math.abs(stanza.coordinate.y) <=3 then 
     if esisteStanza==4 then
 
       local direzione= math.random(1,4)
@@ -416,7 +417,8 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       if CreazioneEseguita==false then        --per evitare il caso di buffer vuoto
          table.insert(bufferCreazione, stanza)
        end
-  end
+  end  --end for 
+end  --end controllo coordinate non maggiori a 3
 else
   return true
 end

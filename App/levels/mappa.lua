@@ -18,10 +18,6 @@ local _h = display.contentHeight/2
  listaRect={}  --lista grafica delle stanze 
  listaPorte={}  --lista grafica delle porte, da levare? 
 
---print (torre.pianoAttuale)
---print (torre.stanzaAttuale.coordinate.x)
---print (torre.stanzaAttuale.coordinate.y)
-
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
@@ -187,7 +183,6 @@ end
 --funzione che cancella una mappa in uno stato passato per allegerire la memoria 
 function cancellaMappa (listaRect,porte)
     for i=1, #listaRect do
-        print(i)
         listaRect[i]:removeSelf()
         listaRect[i]= nil
     end
