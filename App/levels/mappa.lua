@@ -150,26 +150,26 @@ rect.height= altezza
 
 --stampa delle porte (da eliminare)
  if stanza.nord ~= nil then
- porta = display.newRect( rect.x, rect.y - (altezza/2), 8, 4)
- porta:setFillColor( 0,0,1 )
+ porta = display.newRect( rect.x, rect.y - ((altezza/2)+1), 4, 4)
+ porta:setFillColor( 0,0,0 )
  table.insert(listaPorte, porta)
  table.insert(lista,stanza.nord)
 end
  if stanza.est ~= nil then
- porta = display.newRect( rect.x + (larghezza/2), rect.y , 8, 4)
- porta:setFillColor( 0,0,1 )
+ porta = display.newRect( rect.x + ((larghezza/2)+1), rect.y , 4, 4)
+ porta:setFillColor( 0,0,0 )
  table.insert(listaPorte, porta)
   table.insert(lista,stanza.est)
 end
  if stanza.ovest ~= nil then
- porta = display.newRect( rect.x-(larghezza/2), rect.y , 8, 4)
- porta:setFillColor( 0,0,1 )
+ porta = display.newRect( rect.x-((larghezza/2)+1), rect.y , 4, 4)
+ porta:setFillColor( 0,0,0 )
  table.insert(listaPorte, porta)
   table.insert(lista,stanza.ovest)
 end
  if stanza.sud ~= nil then
- porta = display.newRect( rect.x, rect.y + (altezza/2), 8, 4)
- porta:setFillColor( 0,0,1 )
+ porta = display.newRect( rect.x, rect.y + ((altezza/2)+1), 4, 4)
+ porta:setFillColor( 0,0,0 )
  table.insert(listaPorte, porta)
   table.insert(lista,stanza.sud)
 end
