@@ -38,6 +38,7 @@ function partitaS:new()
   piano={}
   piano.altezza=0
   creazioneTorre()
+  torre.stanzaAttuale= torre.primoPiano.start
 
 end
 
@@ -85,6 +86,7 @@ math.random(); math.random(); math.random()
 
     local stanza= {}
     stanza.isLocked = false
+    stanza.isCompleted = false
     stanza.coordinate= {}
     stanza.coordinate.x=0
     stanza.coordinate.y=0
@@ -134,6 +136,7 @@ math.random(); math.random(); math.random()
       local stanzaTemp = {}
       stanzaTemp.coordinate={}
       stanzaTemp.isLocked= true
+      stanzaTemp.isCompleted = false
       local coordinateUtilizzate= {}
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
@@ -322,6 +325,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
+      stanzaTemp.isCompleted = false
       sorteggioStanzaTesoro = math.random(1,6)
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
@@ -448,6 +452,8 @@ function stampaPiano(stanza, ricorsiveNumber, buffer)
   print(stanza.coordinate.y)
   print("è bloccata:")
   print(stanza.isLocked)
+  print("è completata:")
+  print(stanza.isCompleted)
 
   if (stanza.nord ~= nil) then
 print ("stanza nord: "..stanza.nord.nome)

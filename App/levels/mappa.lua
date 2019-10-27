@@ -9,63 +9,170 @@ local _h = display.contentHeight/2
 -- -----------------------------------------------------------------------------------
  partitaS:new()
  local p1, p2, p3
- 
+ torre = partitaS:torre()
  p1 = partitaS:torre().primoPiano
  p2 = partitaS:torre().secondoPiano
  p3 = partitaS:torre().terzoPiano
- lista= {}
+
+ lista= {}  --lista delle stanze da creare
+ listaRect={}  --lista grafica delle stanze 
+ listaPorte={}  --lista grafica delle porte, da levare? 
+
+--print (torre.pianoAttuale)
+--print (torre.stanzaAttuale.coordinate.x)
+--print (torre.stanzaAttuale.coordinate.y)
+
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
- local function creaMappa(stanza, iter)
-    --m= margine per distaccare le stanza
-    --l= larghezza stanza == a= altezza stanza
-     if(stanza==nil) then 
+
+-- create()
+function scene:create( event )
+
+local function onButtonClickStanzaSelezionata(event)
+  stanza= event.target.stanza
+  stanza.isCompleted = true 
+  torre.stanzaAttuale= stanza
+            if stanza.nord ~= nil then
+                stanza.nord.isLocked= false
+            end
+            if stanza.est ~= nil then
+                stanza.est.isLocked= false
+            end
+            if stanza.sud ~= nil then
+                stanza.sud.isLocked= false
+            end
+            if stanza.ovest ~= nil then
+                stanza.ovest.isLocked= false
+            end
+            print("lista rect valore: ")
+            print (#listaRect)
+            cancellaMappa(listaRect, listaPorte)
+            lista= nil
+            lista= {}
+            creazione()
+end
+
+local function onButtonClickStanzaSelezionataDadi(event)
+
+end
+
+local function onButtonClickStanzaSelezionataUscita(event)
+    print("uscita selezionata")
+    cancellaMappa(listaRect, listaPorte)
+    lista= nil
+    lista= {}
+    if (torre.pianoAttuale<2) then 
+    torre.pianoAttuale= torre.pianoAttuale+1
+    creazione()
+else
+    return true  --aggiungere schermata di vittoria o boss fight finale 
+end
+end
+
+local function creaMappa(stanza, iter)
+    --margine -> per distaccare le stanza
+    --larghezza stanza == altezza stanza
+local margine= 2
+local altezza = 40
+local larghezza= 40 
+local rect
+
+if(stanza==nil) then 
         return true
 else
-    print(stanza.nome)
-local margine= 2
-local altezza = 20
-local larghezza= 20
 
- rect = display.newRect( _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)), 20, 20 )
-if stanza.isLocked==false then
-    rect:setFillColor(1,0,0)
+if stanza.isCompleted== true then
+rect= display.newImage( composer.imgDir .."stanzaCompletata.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+--rect.stanza= stanza
+table.insert(listaRect, rect)
+elseif stanza.isLocked==true then
+    rect = display.newImage( composer.imgDir .."stanzaBloccata.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+    table.insert(listaRect, rect)
+elseif stanza.tipo== "tesoro" then 
+    rect = display.newImage( composer.imgDir .."stanzaPremio.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+    table.insert(listaRect, rect)
+    rect:addEventListener("tap", onButtonClickStanzaSelezionata)
+elseif stanza.tipo == "uscita" then
+    rect = display.newImage( composer.imgDir .."stanzaUscita.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+    table.insert(listaRect, rect)
+    --prossimo piano se 1 o 2, vittoria se 3
+    rect:addEventListener("tap", onButtonClickStanzaSelezionataUscita)
+else
+rect = display.newImage( composer.imgDir .."stanzaSbloccata.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+table.insert(listaRect, rect)
+rect:addEventListener("tap", onButtonClickStanzaSelezionata)
 end
-if stanza.tipo== "tesoro" then 
-    rect:setFillColor(1,1,0)
-end
-if stanza.tipo == "uscita" then
-    rect:setFillColor(0,1,0)
-end
+
+rect.stanza= stanza
+rect.width= larghezza
+rect.height= altezza
+
+
+--stampa delle porte (da eliminare)
  if stanza.nord ~= nil then
- porta = display.newRect( rect.x, rect.y - 10, 8, 4)
+ porta = display.newRect( rect.x, rect.y - (altezza/2), 8, 4)
  porta:setFillColor( 0,0,1 )
+ table.insert(listaPorte, porta)
  table.insert(lista,stanza.nord)
 end
  if stanza.est ~= nil then
- porta = display.newRect( rect.x + 10, rect.y , 8, 4)
+ porta = display.newRect( rect.x + (larghezza/2), rect.y , 8, 4)
  porta:setFillColor( 0,0,1 )
+ table.insert(listaPorte, porta)
   table.insert(lista,stanza.est)
 end
  if stanza.ovest ~= nil then
- porta = display.newRect( rect.x-10, rect.y , 8, 4)
+ porta = display.newRect( rect.x-(larghezza/2), rect.y , 8, 4)
  porta:setFillColor( 0,0,1 )
+ table.insert(listaPorte, porta)
   table.insert(lista,stanza.ovest)
 end
  if stanza.sud ~= nil then
- porta = display.newRect( rect.x, rect.y + 10, 8, 4)
+ porta = display.newRect( rect.x, rect.y + (altezza/2), 8, 4)
  porta:setFillColor( 0,0,1 )
+ table.insert(listaPorte, porta)
   table.insert(lista,stanza.sud)
 end
+--fine stampa delle porte
+
 new_iter= iter +1
+print (new_iter)
 creaMappa(lista[new_iter], new_iter)
 end
 end
--- create()
-function scene:create( event )
+
+--funzione che cancella una mappa in uno stato passato per allegerire la memoria 
+function cancellaMappa (listaRect,porte)
+    for i=1, #listaRect do
+        print(i)
+        listaRect[i]:removeSelf()
+        listaRect[i]= nil
+    end
+    for i=1, #porte do
+        porte[i]:removeSelf()
+        porte[i]= nil
+    end
+    listarect= nil
+    listarect= {}
+    porte={}
+    porte=nil
+end 
+
+
+
+function creazione()
     local indicePartenza= 0
-     creaMappa(p3.start,indicePartenza )
+if (torre.pianoAttuale==0) then 
+    creaMappa(p1.start,indicePartenza )
+elseif (torre.pianoAttuale==1) then 
+    creaMappa(p2.start,indicePartenza )
+else
+    creaMappa(p3.start,indicePartenza )
+end
+end
+
+ creazione()
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
@@ -82,6 +189,7 @@ function scene:show( event )
         -- Code here runs when the scene is still off screen (but is about to come on screen)
  
     elseif ( phase == "did" ) then
+        if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
         -- Code here runs when the scene is entirely on screen
  
     end
