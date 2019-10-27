@@ -29,6 +29,30 @@ local _h = display.contentHeight/2
 -- create()
 function scene:create( event )
 
+    local sceneGroup = self.view
+    -- Code here runs when the scene is first created but has not yet appeared on screen
+local background = display.newImage(composer.imgDir .. "scrollBg.jpg", 0, 0, true)
+    background.anchorX = 0
+    background.anchorY = 0
+    background.width= 320
+    background.height= 480
+    sceneGroup:insert(background)
+
+local testoSchermata = display.newImage(composer.imgDir .. "testoMappa.png", 0, 0, true)
+testoSchermata.anchorX = 0
+    testoSchermata.anchorY = 0
+    testoSchermata.width= 320
+    testoSchermata.height= 480
+    sceneGroup:insert(testoSchermata)
+
+local testoPiano = display.newImage(composer.imgDir .. "primoPiano.png", 0, 38, true)
+testoPiano.anchorX = 0
+    testoPiano.anchorY = 0
+    testoPiano.width= 320
+    testoPiano.height= 25
+    sceneGroup:insert(testoPiano)
+
+
 local function onButtonClickStanzaSelezionata(event)
   stanza= event.target.stanza
   stanza.isCompleted = true 
@@ -62,8 +86,27 @@ local function onButtonClickStanzaSelezionataUscita(event)
     cancellaMappa(listaRect, listaPorte)
     lista= nil
     lista= {}
+    sceneGroup:remove(testoPiano)
+    testoPiano:removeSelf()
+    testoPiano= nil
     if (torre.pianoAttuale<2) then 
     torre.pianoAttuale= torre.pianoAttuale+1
+    if (torre.pianoAttuale==1) then
+        testoPiano = display.newImage(composer.imgDir .. "secondoPiano.png", 0, 38, true)
+        testoPiano.anchorX = 0
+        testoPiano.anchorY = 0
+        testoPiano.width= 320
+        testoPiano.height= 25
+    sceneGroup:insert(testoPiano)
+    else
+        testoPiano = display.newImage(composer.imgDir .. "terzoPiano.png", 0, 38, true)
+        testoPiano.anchorX = 0
+        testoPiano.anchorY = 0
+        testoPiano.width= 320
+        testoPiano.height= 25
+    sceneGroup:insert(testoPiano)
+end
+
     creazione()
 else
     return true  --aggiungere schermata di vittoria o boss fight finale 
@@ -137,7 +180,6 @@ end
 --fine stampa delle porte
 
 new_iter= iter +1
-print (new_iter)
 creaMappa(lista[new_iter], new_iter)
 end
 end
@@ -173,10 +215,9 @@ end
 end
 
  creazione()
-    local sceneGroup = self.view
-    -- Code here runs when the scene is first created but has not yet appeared on screen
- 
-end
+
+end --fine create()
+
  
  
 -- show()
