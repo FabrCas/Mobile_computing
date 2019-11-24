@@ -50,6 +50,7 @@ testoPiano.anchorX = 0
 
 
 local function onButtonClickStanzaSelezionata(event)
+    composer.gotoScene("lib.scene1")
   stanza= event.target.stanza
   stanza.isCompleted = true 
   torre.stanzaAttuale= stanza

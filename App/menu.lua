@@ -85,7 +85,7 @@ end
 		clicked = clicked + 1
 		if (clicked ==1) then
 			Runtime:removeEventListener("levelClicked")
-			levelGroup:cleanUp()
+			--levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
 			print (clicked, "clicked level", event.level)
 			timer.performWithDelay(0,  runLevel(event.level) ,1)
 		end
@@ -103,7 +103,7 @@ function scene:hide( event )
  if event.phase == "will" then
 Runtime:removeEventListener("levelClicked")
 
-levelGroup:cleanUp()
+--levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
 
  elseif event.phase == "did" then
       composer.test = nil

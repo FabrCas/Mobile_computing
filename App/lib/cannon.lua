@@ -11,8 +11,7 @@ function _M.newCannon(ui)
     --local cannon = display.newImageRect("images/cannon.png", 25, 50)
     cannon = myLevel:getLayerObject("LayerCannone", "cannon_fire_0").view
   --  segnalino = display.newCircle( gruppo_cannone, display.contentWidth/2, 130, 1 )
-    cannone_x= cannon.x
-    cannone_y= cannon.y
+   
     --segnalino:setFillColor(1,1,1)
     --segnalino.alpha = 1
 	gruppo_cannone:insert(cannon)
