@@ -153,6 +153,7 @@ function removeBrick(brick)
    local function toMappa(event)
     scancellaTutto()
     composer.gotoScene("levels.mappa")
+    
   end
 
     timer.performWithDelay( 1000, toMappa )

@@ -114,7 +114,6 @@ end
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroy( event )
 
-	myLevel:removeLevel()
 	--myLevel = nil
 	print( "((destroying scene 1's view))" )
 end
