@@ -86,6 +86,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
       print(partitaS:personaggio())
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
+
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
@@ -113,7 +114,7 @@ end
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroy( event )
 
-	--myLevel:removeLevel()
+	myLevel:removeLevel()
 	--myLevel = nil
 	print( "((destroying scene 1's view))" )
 end

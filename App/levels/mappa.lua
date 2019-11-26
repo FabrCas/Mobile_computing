@@ -50,7 +50,7 @@ testoPiano.anchorX = 0
 
 
 local function onButtonClickStanzaSelezionata(event)
-    composer.gotoScene("lib.scene1")
+    composer.gotoScene("levels.scene1")
   stanza= event.target.stanza
   stanza.isCompleted = true 
   torre.stanzaAttuale= stanza
@@ -124,53 +124,61 @@ else
 
 if stanza.isCompleted== true then
 rect= display.newImage( composer.imgDir .."stanzaCompletata.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+sceneGroup:insert(rect)
 --rect.stanza= stanza
 table.insert(listaRect, rect)
 elseif stanza.isLocked==true then
     rect = display.newImage( composer.imgDir .."stanzaBloccata.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+    sceneGroup:insert(rect)
     table.insert(listaRect, rect)
 elseif stanza.tipo== "tesoro" then 
     rect = display.newImage( composer.imgDir .."stanzaPremio.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
+    sceneGroup:insert(rect)
     table.insert(listaRect, rect)
     rect:addEventListener("tap", onButtonClickStanzaSelezionata)
 elseif stanza.tipo == "uscita" then
     rect = display.newImage( composer.imgDir .."stanzaUscita.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
     table.insert(listaRect, rect)
+    sceneGroup:insert(rect)
     --prossimo piano se 1 o 2, vittoria se 3
     rect:addEventListener("tap", onButtonClickStanzaSelezionataUscita)
 else
 rect = display.newImage( composer.imgDir .."stanzaSbloccata.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
 table.insert(listaRect, rect)
 rect:addEventListener("tap", onButtonClickStanzaSelezionata)
+sceneGroup:insert(rect)
 end
 
 rect.stanza= stanza
 rect.width= larghezza
 rect.height= altezza
 
-
 --stampa delle porte (da eliminare)
  if stanza.nord ~= nil then
  porta = display.newRect( rect.x, rect.y - ((altezza/2)+1), 4, 4)
  porta:setFillColor( 0,0,0 )
+ sceneGroup:insert(porta)
  table.insert(listaPorte, porta)
  table.insert(lista,stanza.nord)
 end
  if stanza.est ~= nil then
  porta = display.newRect( rect.x + ((larghezza/2)+1), rect.y , 4, 4)
  porta:setFillColor( 0,0,0 )
+ sceneGroup:insert(porta)
  table.insert(listaPorte, porta)
   table.insert(lista,stanza.est)
 end
  if stanza.ovest ~= nil then
  porta = display.newRect( rect.x-((larghezza/2)+1), rect.y , 4, 4)
  porta:setFillColor( 0,0,0 )
+ sceneGroup:insert(porta)
  table.insert(listaPorte, porta)
   table.insert(lista,stanza.ovest)
 end
  if stanza.sud ~= nil then
  porta = display.newRect( rect.x, rect.y + ((altezza/2)+1), 4, 4)
  porta:setFillColor( 0,0,0 )
+ sceneGroup:insert(porta)
  table.insert(listaPorte, porta)
   table.insert(lista,stanza.sud)
 end
@@ -227,6 +235,7 @@ function scene:show( event )
  
     elseif ( phase == "did" ) then
         if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
+       --   if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
         -- Code here runs when the scene is entirely on screen
  
     end

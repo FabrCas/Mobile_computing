@@ -1,5 +1,6 @@
 local M = {}
 local composer = require( "composer" )
+local physics = require ("physics")
 local statistiche= partitaS:stats()
 local numeroPalle = statistiche.numeroPalle
 local led_acceso
@@ -148,6 +149,15 @@ function removeBrick(brick)
 	if nMattoni == 0 then
 		local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     gruppoLivello:insert(txt)
+
+   local function toMappa(event)
+    scancellaTutto()
+    composer.gotoScene("levels.mappa")
+  end
+
+    timer.performWithDelay( 1000, toMappa )
+
+  
    --DA SISTEMARE partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello)+tempoPausaTotale, numBallMax,false)
 end end
 ---------------------------------------------------------------------------------

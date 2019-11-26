@@ -44,9 +44,8 @@ function new( imageSet, slideBackground, top )
 
 
 			texture = display.newImage(myImages[i].image)
-			texture.xScale= 1.2
-			texture.yScale= 0.8
-
+			texture.xScale= 0.7
+			texture.yScale= 0.5
 
 		p.canvas:insert( texture )
 		p:invalidate( "canvas" )
@@ -109,11 +108,11 @@ function new( imageSet, slideBackground, top )
 				dragDistance = touch.x - startPos
 				dragYDistance = touch.y - startYPos
 
-				if (dragDistance < -100 and imgNum < #images) then
+				if (dragDistance < -50 and imgNum < #images) then
 					nextImage()
-				elseif (dragDistance < -100 and imgNum == #images) then
+				elseif (dragDistance < -50 and imgNum == #images) then
 					--g:jumpToImage()
-				elseif (dragDistance > 100 and imgNum > 1) then
+				elseif (dragDistance > 50 and imgNum > 1) then
 					prevImage()
 				else
 					cancelMove()
@@ -167,7 +166,7 @@ function new( imageSet, slideBackground, top )
 			tween = transition.to( images[imgNum+1], {time=400, alpha=1, transition=easing.outExpo } )
 		end
 		if images[imgNum+2] ~= nil then
-			tween = transition.to( images[imgNum+2], {time=400, alpha=0.7, transition=easing.outExpo } )
+			tween = transition.to( images[imgNum+2], {time=400, alpha=0, transition=easing.outExpo } )
 		end
 		transition.to( images[imgNum].path, { x1=300, y1=100, x2=300, y2=-100,
 					time=400, transition=easing.outExpo } )
@@ -194,7 +193,7 @@ function new( imageSet, slideBackground, top )
 			tween = transition.to( images[imgNum], {time=500, alpha=0, transition=easing.outExpo } )
 		end
 		if images[imgNum-2] ~= nil then
-			tween = transition.to( images[imgNum-2], {time=400, alpha=0.7, transition=easing.outExpo } )
+			tween = transition.to( images[imgNum-2], {time=400, alpha=0, transition=easing.outExpo } )
 		end
 		if images[imgNum+1] ~= nil then
 			tween = transition.to( images[imgNum+1], {time=400, alpha=0, transition=easing.outExpo } )
