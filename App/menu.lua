@@ -30,8 +30,9 @@ print("menu-> create")
 	--set images for carousel
 	-- table item is { unlocked image, locked image, locked}
 	local images = {
-	{image = composer.imgDir .. "play.png"},
-	{image = composer.imgDir .. "options.png"}
+	{image = composer.imgDir .. "TowerMode.png"},
+	{image = composer.imgDir .. "ArcadeMode.png"},
+  {image = composer.imgDir .. "Options_n.png"}
 	}
 
 --  livelli.livelliDaCreare = numeroPagineMenu
@@ -76,6 +77,9 @@ function scene:show( event )
     composer.gotoScene( "selectPG", options)
     return true
   elseif livello == 2 then
+    composer.gotoScene( "arcade", options )   --in futuro: arcade
+    return true
+     elseif livello == 3 then
     composer.gotoScene( "toOptions", options )
     return true
 	end

@@ -11,6 +11,7 @@ tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 local vecchiaPalla
  function creaCannone(cannon)
+  numeroPalle = statistiche.numeroPalle
   _G.gruppoLivello = display.newGroup( )
     _G.canShoot = true 
     _G.potereAttivato = false
@@ -146,7 +147,7 @@ function removeBrick(brick)
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
-  if nMattoni == 0 then
+  if nMattoni == 25 then
     local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     gruppoLivello:insert(txt)
 
@@ -239,7 +240,7 @@ function creaUI(screenGroup)
     gruppoLivello:insert(buttonStats)
 
     for  i= (numeroPalle -1) ,10 do     -- -1 perchè una palla sta nel cannone
-    print("ball_"..i)
+    --print("ball_"..i)
     local obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(i)).view
     obj:removeSelf()
     obj=nil
