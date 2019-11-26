@@ -34,7 +34,7 @@ audio.stop(1)
  local options = { effect = "crossFade", time = 200}
  self:removeEventListener( "tap", onClick )
  --composer.gotoScene( "levels.mappa")
- composer.gotoScene( "levels.scene1" )
+ composer.gotoScene( "levels.mappa" )
  return true
 end
 

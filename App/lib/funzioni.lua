@@ -1,5 +1,6 @@
 local M = {}
 local composer = require( "composer" )
+local physics = require ("physics")
 local statistiche= partitaS:stats()
 local numeroPalle = statistiche.numeroPalle
 local led_acceso
@@ -10,15 +11,15 @@ tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 local vecchiaPalla
  function creaCannone(cannon)
- 	_G.gruppoLivello = display.newGroup( )
+  _G.gruppoLivello = display.newGroup( )
     _G.canShoot = true 
     _G.potereAttivato = false
     _G.numBallMax = partitaS:stats().numeroPalle
-	display.setDefault( "isAnchorClamped", false )
-	cannon.x = display.contentWidth/2
+  display.setDefault( "isAnchorClamped", false )
+  cannon.x = display.contentWidth/2
     cannon.y = 60  --50
     cannon.anchorY = 0.35
-      print(	"FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
+      print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
 end
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
@@ -51,23 +52,23 @@ function caricaPalla()
 -- FUNZIONE PER CREAZIONE PALLA
 ---------------------------------------------------------------------------------
        function creaPalla(sx,sy,potereAttivato, angolo)
-       	if potereAttivato then
-	 ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", 15, 15)
-	 partitaS:stats().danno = 10
-	 --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
-	else
+        if potereAttivato then
+   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", 15, 15)
+   partitaS:stats().danno = 10
+   --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
+  else
     ball = display.newImageRect("images/default ball.png", 15, 15)
-		partitaS:stats().danno = 5
+    partitaS:stats().danno = 5
         end
     ball.x  = display.contentWidth/2
     ball.y = 60-- 130
-		print("stampe")
-		print(angolo)
-		print(72.5/ball.contentHeight)
-		ball.anchorY= -4.83 --4,83
-		ball.anchorX= 0.5--72.5/ball.contentWidth
-		ball.rotation=  angolo
-		if potereAttivato then
+    print("stampe")
+    print(angolo)
+    print(72.5/ball.contentHeight)
+    ball.anchorY= -4.83 --4,83
+    ball.anchorX= 0.5--72.5/ball.contentWidth
+    ball.rotation=  angolo
+    if potereAttivato then
     physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
 else physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8}) end
     ball.density= 0.73
@@ -75,8 +76,8 @@ else physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8}) end
     -- While the ball rests near the cannon, it's static
     ball.isLaunched = false
      ball.isLaunched = true
-	   ball.bodyType = 'dynamic' -- Change to dynamic so it can move
-	   deltaX = sx - display.contentWidth/2
+     ball.bodyType = 'dynamic' -- Change to dynamic so it can move
+     deltaX = sx - display.contentWidth/2
        deltaY = sy
        normDeltaX = deltaX / math.sqrt(deltaX^2 + deltaY^2)
        normDeltaY = deltaY / math.sqrt(deltaX^2 + deltaY^2)
@@ -142,12 +143,21 @@ end
 ---------------------------------------------------------------------------------
 function removeBrick(brick)
   brick.scritta:removeSelf()
-	brick:removeSelf()
-	brick = nil
-	nMattoni = nMattoni - 1
-	if nMattoni == 0 then
-		local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
+  brick:removeSelf()
+  brick = nil
+  nMattoni = nMattoni - 1
+  if nMattoni == 0 then
+    local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     gruppoLivello:insert(txt)
+
+   local function toMappa(event)
+    scancellaTutto()
+    composer.gotoScene("levels.mappa")
+  end
+
+    timer.performWithDelay( 1000, toMappa )
+
+  
    --DA SISTEMARE partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello)+tempoPausaTotale, numBallMax,false)
 end end
 ---------------------------------------------------------------------------------
@@ -157,20 +167,20 @@ function hit(event)
   local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
   brick_colpito.x = event.target.x
   brick_colpito.y = event.target.y
-	if event.target.name == 'speciale' then
-		potereAttivato = true
+  if event.target.name == 'speciale' then
+    potereAttivato = true
     led_acceso.alpha=1
-		end
-	physics.setGravity( 0, 46 )
-	        brick = event.target
+    end
+  physics.setGravity( 0, 46 )
+          brick = event.target
           local vx, vy = event.other:getLinearVelocity()
-			brick.life = brick.life - (partitaS:stats().danno)
+      brick.life = brick.life - (partitaS:stats().danno)
 
-			if brick.life <= 0 then
+      if brick.life <= 0 then
                removeBrick(brick)
              else
                 brick.scritta.text= brick.life
-             --	brick.alpha = (brick.life/(5*100))*50
+             -- brick.alpha = (brick.life/(5*100))*50
              end
              timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
            end
@@ -178,7 +188,7 @@ function hit(event)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
-    	if not isPaused then
+      if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         getAngle(event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot then
@@ -190,15 +200,15 @@ function hit(event)
 ---------------------------------------------------------------------------------
  function touch(event,cannon)
   if not isPaused then
-  	if event.target.name == "bg" then
+    if event.target.name == "bg" then
       if not((event.x < 32 and event.y > 415) or (event.x > 256 and event.y > 415)) then
-  		touchBg(event,cannon) end end
-  	end end
+      touchBg(event,cannon) end end
+    end end
 ---------------------------------------------------------------------------------
 --FUNZIONE FINE PARTITA
 ---------------------------------------------------------------------------------
  function finePartita()
-	local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
+  local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
   gruppoLivello:insert(txtFinePartita)
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
@@ -213,14 +223,14 @@ end
 --FUNZIONE CREAZIONE UI
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
-	_G.myUI = LD_Loader:new(screenGroup)
-	myUI:loadLevel("ui")
-	led_acceso = display.newImageRect("images/led acceso.png",  30,30 )
+  _G.myUI = LD_Loader:new(screenGroup)
+  myUI:loadLevel("ui")
+  led_acceso = display.newImageRect("images/led acceso.png",  30,30 )
   gruppoLivello:insert(led_acceso)
-	local buttonPausa = myUI:getLayerObject("invisible_layer", "buttonPausa").view
+  local buttonPausa = myUI:getLayerObject("invisible_layer", "buttonPausa").view
     local buttonStats = myUI:getLayerObject("invisible_layer", "buttonStats").view
-		local rectBalls = myUI:getLayerObject("invisible_layer", "rect_balls").view
-		rectBalls.alpha= 0;
+    local rectBalls = myUI:getLayerObject("invisible_layer", "rect_balls").view
+    rectBalls.alpha= 0;
     led_acceso.x = myUI:getLayerObject("ui_layer" ,"led spento_0").view.x led_acceso.y = myUI:getLayerObject("ui_layer" ,"led spento_0").view.y
     led_acceso.alpha = 0
     buttonPausa:addEventListener('tap',function(event) if isPaused == false then physics.pause() isPaused=true creaPausa() end end)
@@ -247,42 +257,42 @@ end
  function creaPausa()
   tempoInizioPausa = os.time()
   gruppoPausa = creaGruppo()
-	isPaused=true
+  isPaused=true
 
-	local testoVolumeMusica
-	local testoVolumeEffettoSonoro
-	--listener
-	local function onButtonClickUpMusica(event)
-	    partitaS:aumentaVolumeMusica()
-	    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-	    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
-	end
+  local testoVolumeMusica
+  local testoVolumeEffettoSonoro
+  --listener
+  local function onButtonClickUpMusica(event)
+      partitaS:aumentaVolumeMusica()
+      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+  end
 
-	local function onButtonClickDownMusica(event)
-	    partitaS:diminuisciVolumeMusica()
-	    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-	    if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
-	        testoVolumeMusica.text= 0
-	    else
-	    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
-	end end
+  local function onButtonClickDownMusica(event)
+      partitaS:diminuisciVolumeMusica()
+      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+      if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
+          testoVolumeMusica.text= 0
+      else
+      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+  end end
 
-	local function onButtonClickDownEffettoSonoro(event)
-	    partitaS:diminuisciVolumeEffettoSonoro()
-	    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
-	    if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
-	        testoVolumeEffettoSonoro.txt=0
-	    else
-	    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
-	end end
+  local function onButtonClickDownEffettoSonoro(event)
+      partitaS:diminuisciVolumeEffettoSonoro()
+      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
+      if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
+          testoVolumeEffettoSonoro.txt=0
+      else
+      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+  end end
 
-	local function onButtonClickUpEffettoSonoro(event)
-	     partitaS:aumentaVolumeEffettoSonoro()
-	    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
-	    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
-	end
+  local function onButtonClickUpEffettoSonoro(event)
+       partitaS:aumentaVolumeEffettoSonoro()
+      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
+      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+  end
 
-	 
+   
 
 local pausa = {}
 pausa = LD_Loader:new(gruppoPausa)
@@ -332,7 +342,7 @@ musicap:addEventListener("tap", onButtonClickDownMusica)
 fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
 fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
-	numeroPalle = statistiche.numeroPalle
+  numeroPalle = statistiche.numeroPalle
   isPaused=false
     scancellaTutto() --rimuove gruppolivello e cannone
     gruppoPausa:removeSelf() print("tolto da backtomenu ")

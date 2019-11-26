@@ -22,4 +22,4 @@ composer.gotoScene( "toMenu", "fade", 500 )
    return true
 end
 -- Begin
-main()
+main() 
