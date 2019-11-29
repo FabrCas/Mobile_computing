@@ -72,99 +72,75 @@ function scene:show( event )
         if nil~= composer.getScene("Menu") then composer.removeScene("Menu", false) end
 
 local function runLevel(livello)
-    local optons =  { effect = "crossFade", time = 200}
+    local options =  { effect = "crossFade",
+     time = 200,
+     params = { nomeLivello = 1}
+ }
   print("Run level (Arcade) eseguita")
+
     if livello == 1 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 1
     elseif livello == 2 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 2
      elseif livello == 3 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 3
      elseif livello == 4 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 4
      elseif livello == 5 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 5
      elseif livello == 6 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 6
      elseif livello == 7 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 7
      elseif livello == 8 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 8
      elseif livello == 9 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 9
      elseif livello == 10 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 10
      elseif livello == 11 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 11
      elseif livello == 12 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 12
      elseif livello == 13 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 13
      elseif livello == 14 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 14
      elseif livello == 15 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 15
      elseif livello == 16 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 16
      elseif livello == 17 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 17
      elseif livello == 18 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 18
      elseif livello == 19 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 19
      elseif livello == 20 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 20
      elseif livello == 21 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 21
      elseif livello == 22 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 22
      elseif livello == 23 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 23
      elseif livello == 24 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 24
      elseif livello == 25 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 25
      elseif livello == 26 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 26
      elseif livello == 27 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 27
      elseif livello == 28 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 28
      elseif livello == 29 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 29
      elseif livello == 30 then
-    composer.gotoScene( "levels.scene1", options)
-    return true
+        options.params.nomeLivello= 30
     end
+    composer.gotoScene( "selectPGArcade", options)
+    return true
 end
 
 

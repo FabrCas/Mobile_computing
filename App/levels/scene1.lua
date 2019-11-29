@@ -18,6 +18,7 @@ local f = require("lib.funzioni")
 --livelloBase:new() -- qui viene creato il livello
 local damage = partitaS:stats().danno
 nMattoni = 0 --numero dei mattoni
+audio.stop()
 
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
@@ -86,7 +87,8 @@ function scene:show( event )
     elseif ( phase == "did" ) then
       print(partitaS:personaggio())
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
-
+    if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
+    if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
