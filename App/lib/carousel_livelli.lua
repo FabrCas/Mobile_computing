@@ -160,15 +160,10 @@ function new( imageSet, slideBackground, top )
 				else
 					cancelMove()
 					if (dragDistance == 0) then
-						if (myImages[imgNum].locked) then
-							print ("clicked locked item ", imgNum)
-						else
 							print ("clicked item ", imgNum)
 							-- Sometime later, create an event and dispatch it
 							local event = { name="levelClicked", level=imgNum }
 							Runtime:dispatchEvent( event )
-						end
-
 					end
 				end
 
