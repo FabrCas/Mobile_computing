@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="static part ui" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="ui">
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="static part ui 3" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="ui">
  <assets firstgid="1" name="ui glass" width="200" height="200">
   <image source="../images/ui glass.png" width="200" height="200"/>
   <asset frame="0" name="ui glass_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
@@ -11,84 +11,16 @@
  <assets firstgid="2" name="ball" width="200" height="200">
   <image source="../images/default ball.png" width="200" height="200"/>
   <asset frame="0" name="ball_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
-   <physics enabled="1" bodytype="2" convex="0" linked="1">
-    <body bodyshape="1" friction="0.3" bounce="0.2" density="1" radius="100" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
  </assets>
  <assets firstgid="3" name="static part ui" width="640" height="960">
   <image source="../images/static part ui.png" width="640" height="960"/>
   <asset frame="0" name="static part ui_0" spritename="" class="" export="1" x="0" y="0" w="640" h="960">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" visible="0" gridX="640" gridY="960">
-    <object uid="{345579b8-adec-4b5e-8d7e-3622adc99190}" shape="1" name="polygon_6" alpha="1" blendMode="0" spriteName="" x="2" y="827" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 54,1 90,124 1,121"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{3061eddc-abec-42fa-875f-7c54dd906a8a}" shape="1" name="polygon_7" alpha="1" blendMode="0" spriteName="" x="56" y="827" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 71,45 -1,83"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{35163efe-f5f8-4ae0-8b68-63291c2a3694}" shape="1" name="polygon_8" alpha="1" blendMode="0" spriteName="" x="113" y="864" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 68,28 8,60"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{7156c976-d943-45ad-9f83-99888920527a}" shape="1" name="polygon_9" alpha="1" blendMode="0" spriteName="" x="181.5" y="891" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 70,18 55.5,37.5"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{8c68dbf3-109e-44eb-80b0-528092ca6d23}" shape="1" name="polygon_5" alpha="1" blendMode="0" spriteName="" x="250" y="908.5" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 50.5,7.75 50.25,18.75"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{4b3dd69b-67e7-42d9-b753-230a64ebd5e3}" shape="1" name="polygon_6" alpha="1" blendMode="0" spriteName="" x="284.25" y="916" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 107.75,-3.5 107,2.25"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{9871f07f-02bd-40e8-a42b-4c4a37d58841}" shape="1" name="polygon_7" alpha="1" blendMode="0" spriteName="" x="367.5" y="913.5" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 76.75,-15.5 76.75,-8"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{803b67e2-3f15-478d-a9a5-b9825475a884}" shape="1" name="polygon_8" alpha="1" blendMode="0" spriteName="" x="439.25" y="899.5" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 76,-27.75 76.5,-9.25"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{47417492-e6cd-49b2-9f48-f92019ee28f3}" shape="1" name="polygon_9" alpha="1" blendMode="0" spriteName="" x="493" y="879.75" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 66.75,-34 68.75,-22.75"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{47a112bd-ac8b-4a14-a633-fc16f8d729f8}" shape="1" name="polygon_10" alpha="1" blendMode="0" spriteName="" x="553.75" y="848.75" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 29.5,-20.5 33.25,-10.75"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-    <object uid="{a27530fd-6302-4d34-ad24-e9795a755f30}" shape="1" name="polygon_11" alpha="1" blendMode="0" spriteName="" x="583" y="828.25" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
-     <polygon points="0,0 56,0.25 56,9.75"/>
-     <physics enabled="1" bodytype="0" convex="1" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="1" bounce="0" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="0" groupindex="1"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
  </assets>
@@ -173,20 +105,20 @@
   </object>
  </layer>
  <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="invisible_layer" gridX="16" gridY="16">
-  <object uid="{eedc717d-9cab-455e-98ec-c832b5ea6e6d}" shape="3" name="buttonStats" alpha="1" blendMode="0" spriteName="" x="3.58333" y="425.917" width="43.1667" height="42.3333" anchorX="0.5" anchorY="0.5" strokecolor="33554431" fillcolor="33554431" textcolor="4294967295">
+  <object uid="{eedc717d-9cab-455e-98ec-c832b5ea6e6d}" shape="3" name="buttonPausa" alpha="1" blendMode="0" spriteName="" x="3.58333" y="425.917" width="43.1667" height="42.3333" anchorX="0.5" anchorY="0.5" strokecolor="33554431" fillcolor="33554431" textcolor="4294967295">
    <ellipse/>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="1" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{c11fa7fa-9e98-4444-aff0-36bafe1ec442}" shape="3" name="buttonPausa" alpha="1" blendMode="0" spriteName="" x="273.417" y="426.083" width="43.1667" height="42.3333" anchorX="0.5" anchorY="0.5" strokecolor="33554431" fillcolor="33554431" textcolor="4294967295">
+  <object uid="{c11fa7fa-9e98-4444-aff0-36bafe1ec442}" shape="3" name="buttonStats" alpha="1" blendMode="0" spriteName="" x="273.417" y="426.083" width="43.1667" height="42.3333" anchorX="0.5" anchorY="0.5" strokecolor="33554431" fillcolor="33554431" textcolor="4294967295">
    <ellipse/>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="1" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{82d37144-e9d1-4c19-850a-3e87a492b53c}" shape="0" name="rect_balls" alpha="1" blendMode="0" spriteName="" x="220.667" y="39.3333" width="99.3333" height="3.33333" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="33554431" fillcolor="0" textcolor="4294967295">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
