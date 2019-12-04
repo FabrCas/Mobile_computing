@@ -13,10 +13,10 @@ require("lib.LD_HelperX")
 _W = display.contentWidth
 _H = display.contentHeight
 
-local f 
+ local f 
 --livelloBase:new() -- qui viene creato il livello
 
-local modalita
+
 nMattoni= 0
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
@@ -28,15 +28,7 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
-local params = event.params
-modalita = params.modalita
-print("la modalità è: ".. modalita) 
-if modalita== "tower" then 
-	f =  require("lib.funzioni")
-else 
-	f =  require("lib.funzioni")
-	--f = require("lib.funzioniArcade")
-end
+
 audio.stop(1)
 
 
@@ -59,8 +51,22 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:show( event )
 	local phase = event.phase
+
+
 audio.pause(1)
     if ( phase == "will" ) then
+
+	local params = event.params
+local modalita = params.modalita
+print("la modalità è: ".. modalita) 
+if modalita== 'tower' then 
+	f =  require("lib.funzioni")
+else 
+	f =  require("lib.funzioniArcade")
+	--f = require("lib.funzioniArcade")
+end
+
+
 	local screenGroup = self.view
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)

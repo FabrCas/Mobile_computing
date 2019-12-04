@@ -1,7 +1,8 @@
 --dati della partita in modalità storia
 
 local personaggio
-local stats
+local statsS
+local statsA
 --local prossimolivello
 local livelloAttuale
 local livelli --table dove verranno salvati tutti i livelli per piano
@@ -18,20 +19,20 @@ math.randomseed(os.time())
 math.random(); math.random(); math.random() -- per stabilizzare i primi valori di random
 
 
-partitaS = {}
-partitaS_mt =  {__index = partitaS}
+partita = {}
+partita_mt =  {__index = partita}
 
-function partitaS:new()
+function partita:newS()
   livelloAttuale= "/scene01"
   score=0
-  stats = {
+  statsS = {
     danno= 1.0,
-    numeroPalle= 8,
+    numeroPalle= 8, --max 12
     rimbalzo= 0.5,
-    grandezza= 5.0, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    grandezza= 7.5, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 1.0,
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
-    velocita= 500
+    velocita= 700
   }
   torre= {}
   torre.pianoAttuale= 0
@@ -41,6 +42,23 @@ function partitaS:new()
   torre.stanzaAttuale= torre.primoPiano.start
 
 end
+
+
+function partita:newA()
+  livelloAttuale= "/scene01"
+  score=0
+  statsA = {
+    danno= 3.0,     --min 1, max 5
+    numeroPalle= 10, --min 6 , max 12
+    rimbalzo= 0.8, -- min 0, max  1
+    grandezza= 9, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    densita= 2.0, --min 1 max 5
+    fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
+    velocita= 900
+  }
+end
+
+
 
 
 -- inizio funzioni per la creazione della mapppa 
@@ -486,11 +504,11 @@ end
 
 
 
-function partitaS:prova()
+function partita:prova()
   print("****************************PartitaCorrettamenteImportato*****************************************************")
 end
 
-function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
+function partita:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   --lo scorelivello è un valore che verrà inviato sia se si ha finito il livello con il gameOver,in quel caso
   --poi verrà chiesto lo score definitivo e stampato a schermo
   --aggiungere un bonus prima di inviare lo score del livello se il giocatore lo ha portato a termine
@@ -502,58 +520,62 @@ function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   end
 end
 
-function partitaS:prossimolivello()
+function partita:prossimolivello()
 
   --return prossimolivello
 end
 
 
 --**************************************Funzioni per ritarnare le variabili locali*****************************************************
-function partitaS:provaVar()
+function partita:provaVar()
   return prova
 end
 
-function partitaS:stats()
-  return stats
+function partita:statsA()
+  return statsA
 end
 
-function partitaS:livello()
+function partita:statsS()
+  return statsS
+end
+
+function partita:livello()
   return livello
 end
 
-function partitaS:score()
+function partita:score()
   return score
 end
 
-function partitaS:personaggio()
+function partita:personaggio()
   return personaggio
 end
 
-function partitaS:torre()
+function partita:torre()
   return torre
 end
 
-function partitaS:volumeMusica()
+function partita:volumeMusica()
   return volumeMusica
 end
 
-function partitaS:volumeEffettoSonoro()
+function partita:volumeEffettoSonoro()
   return volumeEffettoSonoro
 end
 
 --**************************************Funzioni per settare le variabili locali**************************************************************
 
-function partitaS:setPG(pg)
+function partita:setPG(pg)
 personaggio=pg
 end
 
-function partitaS:aumentaVolumeMusica()
+function partita:aumentaVolumeMusica()
   if(volumeMusica<=0.9) then 
   volumeMusica= volumeMusica + 0.1
 end
 end
 
-function partitaS:diminuisciVolumeMusica()
+function partita:diminuisciVolumeMusica()
   if(volumeMusica>=0.1) then
   volumeMusica= volumeMusica - 0.1
   else 
@@ -561,13 +583,13 @@ function partitaS:diminuisciVolumeMusica()
 end
 end
 
-function partitaS:aumentaVolumeEffettoSonoro()
+function partita:aumentaVolumeEffettoSonoro()
   if(volumeEffettoSonoro<=0.9) then
   volumeEffettoSonoro= volumeEffettoSonoro + 0.1
 end
 end
 
-function partitaS:diminuisciVolumeEffettoSonoro()
+function partita:diminuisciVolumeEffettoSonoro()
   if(volumeEffettoSonoro>=0.1) then
   volumeEffettoSonoro= volumeEffettoSonoro - 0.1
 else 

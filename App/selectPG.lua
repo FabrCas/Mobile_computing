@@ -1,6 +1,6 @@
 --scena per scegliere il parsonaggio
 local composer = require( "composer" )
-require ("lib.partitaStoria")
+require ("lib.partita")
 require("lib.LD_LoaderX")
 local physics = require ("physics")
 local _W = display.contentWidth
@@ -33,9 +33,9 @@ local function onButtonClick(event)
   --print("tap esiste?")
   --print(tapSound==nil)
   local channel2= audio.findFreeChannel(2)
-  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.setVolume( partita:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
-  partitaS:setPG(nomePersonaggio)
+  partita:setPG(nomePersonaggio)
   pg= myLevel:getLayerObject("PGs", "cottonBall").view
   --timer.performWithDelay( 10000 , composer.gotoScene( "toPlay", options ))
   pg:play()

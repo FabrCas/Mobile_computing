@@ -1,9 +1,9 @@
 local M = {}
 local composer = require( "composer" )
 local physics = require ("physics")
-require ("lib.partitaStoria")
+require ("lib.partita")
 --arcade deve creare invece 
-local statistiche= partitaS:stats()
+local statistiche= partita:statsS()
 local numeroPalle = statistiche.numeroPalle
 local led_acceso
 isPaused = false
@@ -20,7 +20,7 @@ local vecchiaPalla
   _G.gruppoLivello = display.newGroup( )
     _G.canShoot = true 
     _G.potereAttivato = false
-    _G.numBallMax = partitaS:stats().numeroPalle
+    _G.numBallMax = partita:statsS().numeroPalle
   display.setDefault( "isAnchorClamped", false )
   cannon.x = display.contentWidth/2
     cannon.y = 60  --50
@@ -35,6 +35,7 @@ end
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 function caricaPalla()
+
   print("numeroPalle = ", numeroPalle)
   if vecchiaPalla ~= nil then
     vecchiaPalla= nil
@@ -63,12 +64,12 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
        function creaPalla(sx,sy,potereAttivato, angolo)
         if potereAttivato then
-   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", 15, 15)
-   partitaS:stats().danno = 10
-   --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
+   ball = display.newImageRect("images/PallaSpeciale"..partita:personaggio()..".png", 15, 15)
+   partita:statsS().danno = 10
+   --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})S
   else
     ball = display.newImageRect("images/default ball.png", 15, 15)
-    partitaS:stats().danno = 5
+    partita:statsS().danno = 1
         end
     ball.x  = display.contentWidth/2
     ball.y = 60-- 130
@@ -93,7 +94,7 @@ else physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8}) end
        normDeltaY = deltaY / math.sqrt(deltaX^2 + deltaY^2)
        speed = 700
        physics.setGravity(0, 0)
-       ball:setLinearVelocity( normDeltaX*speed,normDeltaY*speed )
+       ball:setLinearVelocity( normDeltaX * speed, normDeltaY * speed )
 end
 ---------------------------------------------------------------------------------
 -- FUNZIONE DI SHOOTING
@@ -162,11 +163,7 @@ function removeBrick(brick, mod)
 
    local function toNextLevel(event)
     scancellaTutto()
-    if mod=="tower" then 
     composer.gotoScene("levels.mappa")
-  else 
-    composer.gotoScene("arcade")
-    end
   end
 
     timer.performWithDelay( 1000, toNextLevel )
@@ -188,7 +185,7 @@ function hit(event, mod)
   physics.setGravity( 0, 46 )
           brick = event.target
           local vx, vy = event.other:getLinearVelocity()
-      brick.life = brick.life - (partitaS:stats().danno)
+      brick.life = brick.life - (partita:statsS().danno)
 
       if brick.life <= 0 then
                removeBrick(brick, mod)
@@ -227,7 +224,7 @@ function hit(event, mod)
  function finePartita()
   local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
   gruppoLivello:insert(txtFinePartita)
-  partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+  partita:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
 ---------------------------------------------------------------------------------
 --FUNZIONI PALLA
@@ -280,33 +277,33 @@ end
   local testoVolumeEffettoSonoro
   --listener
   local function onButtonClickUpMusica(event)
-      partitaS:aumentaVolumeMusica()
-      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+      partita:aumentaVolumeMusica()
+      audio.setVolume( partita:volumeMusica(), {channel=1}  )
+      testoVolumeMusica.text= (partita:volumeMusica() * 10)
   end
 
   local function onButtonClickDownMusica(event)
-      partitaS:diminuisciVolumeMusica()
-      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-      if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
+      partita:diminuisciVolumeMusica()
+      audio.setVolume( partita:volumeMusica(), {channel=1}  )
+      if (partita:volumeMusica()*10)>0 and (partita:volumeMusica()*10)<1  then
           testoVolumeMusica.text= 0
       else
-      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+      testoVolumeMusica.text= (partita:volumeMusica() * 10)
   end end
 
   local function onButtonClickDownEffettoSonoro(event)
-      partitaS:diminuisciVolumeEffettoSonoro()
-      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
-      if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
+      partita:diminuisciVolumeEffettoSonoro()
+      audio.setVolume(partita:volumeEffettoSonoro(), {channel=2}  )
+      if (partita:volumeEffettoSonoro()*10)>0 and (partita:volumeEffettoSonoro()*10)<1  then
           testoVolumeEffettoSonoro.txt=0
       else
-      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+      testoVolumeEffettoSonoro.text= (partita:volumeEffettoSonoro() * 10)
   end end
 
   local function onButtonClickUpEffettoSonoro(event)
-       partitaS:aumentaVolumeEffettoSonoro()
-      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
-      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+       partita:aumentaVolumeEffettoSonoro()
+      audio.setVolume(partita:volumeEffettoSonoro(), {channel=2} )
+      testoVolumeEffettoSonoro.text= (partita:volumeEffettoSonoro() * 10)
   end
 
    
@@ -319,9 +316,9 @@ immagine_pausa = pausa:getLayerObject("pulsanti", "finestra_pausa_0").view
 
 local rectMusica = pausa:getLayerObject("pulsanti", "rect_9").view
 local rectEffetti = pausa:getLayerObject("pulsanti", "rect_8").view
-testoVolumeMusica= display.newText((partitaS:volumeMusica() * 10),rectMusica.x,rectMusica.y)
+testoVolumeMusica= display.newText((partita:volumeMusica() * 10),rectMusica.x,rectMusica.y)
 testoVolumeMusica:setFillColor(0,0,0)
-testoVolumeEffettoSonoro= display.newText((partitaS:volumeEffettoSonoro() * 10),rectEffetti.x,rectEffetti.y)
+testoVolumeEffettoSonoro= display.newText((partita:volumeEffettoSonoro() * 10),rectEffetti.x,rectEffetti.y)
 testoVolumeEffettoSonoro:setFillColor(0,0,0)
 
 local fxp = pausa:getLayerObject("pulsanti", "volumeeffetti+").view
@@ -379,7 +376,7 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
       schermataStatistiche.x = _W/2 schermataStatistiche.y = _H/2
       local chiudi = display.newRect( 238,420, 75,75 )
       chiudi.alpha = 0.01
-      local stats = partitaS:stats()
+      local stats = partita:statsS()
       local gruppo_testo = display.newGroup( )
     local txt_damage  = display.newText( stats.danno , 240, 95 , native.systemFontBold,45 )
     local txt_balls   = display.newText( stats.numeroPalle , 240, 135 , native.systemFontBold,45 )

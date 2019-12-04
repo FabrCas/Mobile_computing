@@ -1,5 +1,5 @@
 local composer = require( "composer" )
-require ("lib.partitaStoria")
+require ("lib.partita")
 local scene = composer.newScene()
 local _w = display.contentWidth/2
 local _h = display.contentHeight/2
@@ -7,12 +7,12 @@ local _h = display.contentHeight/2
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
- partitaS:new()
+ partita:newS()
  local p1, p2, p3
- torre = partitaS:torre()
- p1 = partitaS:torre().primoPiano
- p2 = partitaS:torre().secondoPiano
- p3 = partitaS:torre().terzoPiano
+ torre = partita:torre()
+ p1 = torre.primoPiano
+ p2 = torre.secondoPiano
+ p3 = torre.terzoPiano
 
  lista= {}  --lista delle stanze da creare
  listaRect={}  --lista grafica delle stanze 
@@ -52,7 +52,7 @@ testoPiano.anchorX = 0
 local function onButtonClickStanzaSelezionata(event)
     local options =  { effect = "crossFade",
      time = 200,
-     params = {modalita= "tower"}
+     params = {modalita= 'tower'}
  }
     composer.gotoScene("levels.scene1", options)
   stanza= event.target.stanza

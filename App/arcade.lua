@@ -1,7 +1,8 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 local slideView = require("lib.carousel_livelli")
-require ("lib.partitaArcade")
+require ("lib.partita")
+menuSound= audio.loadStream("sounds/montage.mp3")
 
 local sceneGroup = nil -- main group for all page elements
 local _W = display.contentWidth; -- full width of the page
@@ -59,7 +60,10 @@ end
  
 -- show()
 function scene:show( event )
- 
+    if audio.isChannelActive( 1 )== false then
+    audio.setVolume( partita:volumeMusica(), {channel=channel1}  )
+    audio.play(menuSound, {loops=-1, channel=channel1,})
+end
     local sceneGroup = self.view
     local phase = event.phase
  

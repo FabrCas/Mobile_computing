@@ -1,5 +1,5 @@
 local composer = require( "composer" )
-require ("lib.partitaStoria")
+require ("lib.partita")
 require("lib.LD_LoaderX")
 local physics = require ("physics")
 physics.start()
@@ -34,40 +34,40 @@ function scene:create( event )
 
     --listener
 local function onButtonClickUpMusica(event)
-    partitaS:aumentaVolumeMusica()
-    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+    partita:aumentaVolumeMusica()
+    audio.setVolume( partita:volumeMusica(), {channel=1}  )
+    testoVolumeMusica.text= (partita:volumeMusica() * 10)
     audio.play(tapSound2,{channel= 2})
 
 end
 
 local function onButtonClickDownMusica(event)
-    partitaS:diminuisciVolumeMusica()
-    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-    if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
+    partita:diminuisciVolumeMusica()
+    audio.setVolume( partita:volumeMusica(), {channel=1}  )
+    if (partita:volumeMusica()*10)>0 and (partita:volumeMusica()*10)<1  then
         testoVolumeMusica.text= 0
     else
-    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+    testoVolumeMusica.text= (partita:volumeMusica() * 10)
 end
 audio.play(tapSound2,{channel= 2})
 end
 
 local function onButtonClickDownEffettoSonoro(event)
-    partitaS:diminuisciVolumeEffettoSonoro()
-    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
-    if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
+    partita:diminuisciVolumeEffettoSonoro()
+    audio.setVolume(partita:volumeEffettoSonoro(), {channel=2}  )
+    if (partita:volumeEffettoSonoro()*10)>0 and (partita:volumeEffettoSonoro()*10)<1  then
         testoVolumeEffettoSonoro.txt=0
     else
-    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+    testoVolumeEffettoSonoro.text= (partita:volumeEffettoSonoro() * 10)
 
 end
 audio.play(tapSound2,{channel= 2})
 end
 
 local function onButtonClickUpEffettoSonoro(event)
-     partitaS:aumentaVolumeEffettoSonoro()
-    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
-    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+     partita:aumentaVolumeEffettoSonoro()
+    audio.setVolume(partita:volumeEffettoSonoro(), {channel=2} )
+    testoVolumeEffettoSonoro.text= (partita:volumeEffettoSonoro() * 10)
     audio.play(tapSound2,{channel= 2})
 end
 
@@ -113,9 +113,9 @@ end
 --rect
     local rectValoreMusica = myLevel:getLayerObject("Layer 1", "rect_3").view
     local rectValoreEffettoSonoro = myLevel:getLayerObject("Layer 1", "rect_2").view
-    testoVolumeMusica= display.newText((partitaS:volumeMusica() * 10),rectValoreMusica.x,rectValoreMusica.y)
+    testoVolumeMusica= display.newText((partita:volumeMusica() * 10),rectValoreMusica.x,rectValoreMusica.y)
     testoVolumeMusica:setFillColor(0,0,0)
-    testoVolumeEffettoSonoro= display.newText((partitaS:volumeEffettoSonoro() * 10),rectValoreEffettoSonoro.x,rectValoreEffettoSonoro.y)
+    testoVolumeEffettoSonoro= display.newText((partita:volumeEffettoSonoro() * 10),rectValoreEffettoSonoro.x,rectValoreEffettoSonoro.y)
     testoVolumeEffettoSonoro:setFillColor(0,0,0)
     sceneGroup:insert(testoVolumeEffettoSonoro)
     sceneGroup:insert(testoVolumeMusica)
