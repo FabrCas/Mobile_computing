@@ -142,7 +142,7 @@ end
 ---------------------------------------------------------------------------------
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
-function removeBrick(brick)
+function removeBrick(brick, mod)
   brick.scritta:removeSelf()
   brick:removeSelf()
   brick = nil
@@ -151,13 +151,16 @@ function removeBrick(brick)
     local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     gruppoLivello:insert(txt)
 
-   local function toMappa(event)
+   local function toNextLevel(event)
     scancellaTutto()
+    if mod=="tower" then 
     composer.gotoScene("levels.mappa")
-    
+  else 
+    composer.gotoScene("arcade")
+    end
   end
 
-    timer.performWithDelay( 1000, toMappa )
+    timer.performWithDelay( 1000, toNextLevel )
 
   
    --DA SISTEMARE partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello)+tempoPausaTotale, numBallMax,false)
@@ -165,7 +168,7 @@ end end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
-function hit(event)
+function hit(event, mod)
   local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
   brick_colpito.x = event.target.x
   brick_colpito.y = event.target.y
@@ -179,7 +182,7 @@ function hit(event)
       brick.life = brick.life - (partitaS:stats().danno)
 
       if brick.life <= 0 then
-               removeBrick(brick)
+               removeBrick(brick, mod)
              else
                 brick.scritta.text= brick.life
              -- brick.alpha = (brick.life/(5*100))*50

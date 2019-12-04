@@ -22,7 +22,9 @@ local nextLevel
 
 
 local function chiamaProssimaScena()
-    local options = { effect = "crossFade", time = 200}
+    local options = { effect = "crossFade", time = 200,
+     params = {modalita= "arcade"}
+   }
     composer.gotoScene( "levels.scene" .. nextLevel, options )
 end
 

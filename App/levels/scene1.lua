@@ -19,7 +19,7 @@ local f = require("lib.funzioni")
 local damage = partitaS:stats().danno
 nMattoni = 0 --numero dei mattoni
 audio.stop()
-
+local modalita
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
@@ -30,7 +30,9 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
-  
+local params = event.params
+modalita = params.modalita
+print("la modalità è: ".. modalita) 
 
 	--[[ Touch event listener for button
 	function onButtonClick( event )
@@ -78,7 +80,7 @@ function scene:show( event )
   obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
   screenGroup:insert(obj[i].view.scritta)
   obj[i].view.scritta.rotation = obj[i].view.rotation
-	obj[i].view:addEventListener( "preCollision", function (event) f.hit(event) end)
+	obj[i].view:addEventListener( "preCollision", function (event) f.hit(event, modalita) end)
 	obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
 	obj[i] = obj[i].view
 	nMattoni = nMattoni + 1
@@ -89,6 +91,7 @@ function scene:show( event )
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
     if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
     if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
+    if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.

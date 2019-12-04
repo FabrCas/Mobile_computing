@@ -50,7 +50,11 @@ testoPiano.anchorX = 0
 
 
 local function onButtonClickStanzaSelezionata(event)
-    composer.gotoScene("levels.scene1")
+    local options =  { effect = "crossFade",
+     time = 200,
+     params = {modalita= "tower"}
+ }
+    composer.gotoScene("levels.scene1", options)
   stanza= event.target.stanza
   stanza.isCompleted = true 
   torre.stanzaAttuale= stanza
