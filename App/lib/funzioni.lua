@@ -9,6 +9,8 @@ tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+
+
 local vecchiaPalla
  function creaCannone(cannon)
   numeroPalle = statistiche.numeroPalle
@@ -21,6 +23,10 @@ local vecchiaPalla
     cannon.y = 60  --50
     cannon.anchorY = 0.35
       print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
+      local rect = display.newRect( 0, _H/2,50,50 )
+      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" )  end)
+      local rect = display.newRect( 0, _H/2 +50,50,50 )
+      rect:addEventListener( "tap", function() physics.setDrawMode( "normal" )  end)
 end
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
@@ -32,7 +38,7 @@ function caricaPalla()
   end
   numeroPalle= numeroPalle -1
     if numeroPalle>0 then
-  obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle -1)).view
+  obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle-1)).view
   obj:setLinearVelocity(150,0)
   print("obj = ",obj)
   vecchiaPalla= obj end end
@@ -121,7 +127,7 @@ gruppoLivello:insert(muroSinistra)
 gruppoLivello:insert(muroDestra)
 gruppoLivello:insert(muroInBasso)
 gruppoLivello:insert(muroInAlto)
-muroInBasso:addEventListener( "collision", function(event)
+muroInBasso:addEventListener( "collision", function(event) 
   event.other:removeSelf( )
   event.other = nil
   if numBallMax>0 then  --se ci sono palline
@@ -147,7 +153,7 @@ function removeBrick(brick, mod)
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
-  if nMattoni == 25 then
+  if nMattoni == 200 then
     local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     gruppoLivello:insert(txt)
 
@@ -196,10 +202,13 @@ function hit(event, mod)
       if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         getAngle(event.x,event.y,cannon)
-      elseif event.phase == 'ended' and canShoot then
+      elseif event.phase == 'ended' --and canShoot 
+      then
       numBallMax = numBallMax - 1
       shoot(event,potereAttivato,cannon) potereAttivato=false canShoot=false  end
-          end end
+          end 
+
+        end
 ---------------------------------------------------------------------------------
 --FUNZIONE TOUCH
 ---------------------------------------------------------------------------------
@@ -229,7 +238,7 @@ end
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
   _G.myUI = LD_Loader:new(screenGroup)
-  myUI:loadLevel("ui")
+  myUI:loadLevel("levels.ui")
   led_acceso = display.newImageRect("images/led acceso.png",  30,30 )
   gruppoLivello:insert(led_acceso)
   local buttonPausa = myUI:getLayerObject("invisible_layer", "buttonPausa").view

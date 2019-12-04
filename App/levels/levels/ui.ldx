@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="static part ui 3" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="ui">
+ <assets firstgid="1" name="ui glass" width="200" height="200">
+  <image source="../images/ui glass.png" width="200" height="200"/>
+  <asset frame="0" name="ui glass_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="2" name="ball" width="200" height="200">
+  <image source="../images/default ball.png" width="200" height="200"/>
+  <asset frame="0" name="ball_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="3" name="static part ui" width="640" height="960">
+  <image source="../images/static part ui.png" width="640" height="960"/>
+  <asset frame="0" name="static part ui_0" spritename="" class="" export="1" x="0" y="0" w="640" h="960">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="4" name="led spento" width="200" height="200">
+  <image source="../images/led spento.png" width="200" height="200"/>
+  <asset frame="0" name="led spento_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="ui_layer" gridX="16" gridY="16">
+  <object uid="{fa9150df-d2be-4791-ae95-7a752d77bf1c}" shape="6" name="static part ui_0" alpha="1" blendMode="0" idx="3" spriteName="" x="0" y="0" width="320" height="480" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{923162e1-5dbe-46fd-bf0d-5044422a5abd}" shape="6" name="ball_0" alpha="1" blendMode="0" idx="2" spriteName="" x="222.667" y="23.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{4e5eedfe-798d-4bca-9efe-ad22680c815e}" shape="6" name="ball_1" alpha="1" blendMode="0" idx="2" spriteName="" x="235.667" y="23.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{302f56a8-e159-4589-bdc5-3614df866d25}" shape="6" name="ball_3" alpha="1" blendMode="0" idx="2" spriteName="" x="261.667" y="23.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{c3da4aed-6e59-43ff-8fbb-29b518214fa4}" shape="6" name="ball_2" alpha="1" blendMode="0" idx="2" spriteName="" x="248.667" y="23.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{8484b255-5d6e-41df-a0ed-a8853b085c3d}" shape="6" name="ball_8" alpha="1" blendMode="0" idx="2" spriteName="" x="248.667" y="10.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{c8e444d2-3d1c-4789-8a8c-0fc30b086972}" shape="6" name="ball_7" alpha="1" blendMode="0" idx="2" spriteName="" x="235.667" y="10.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{224ce44a-c8cd-4ff9-9329-e13ce583d83b}" shape="6" name="ball_6" alpha="1" blendMode="0" idx="2" spriteName="" x="222.667" y="10.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{b38555de-4eec-4ba1-9224-f4d9d50a2d06}" shape="6" name="ball_9" alpha="1" blendMode="0" idx="2" spriteName="" x="261.667" y="10.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{1e3b4d04-83c3-4e39-8b35-3cacea1a2407}" shape="6" name="ball_4" alpha="1" blendMode="0" idx="2" spriteName="" x="274.667" y="23.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{634188ac-0a8c-40c1-aed8-63ce267b641c}" shape="6" name="ball_5" alpha="1" blendMode="0" idx="2" spriteName="" x="287.667" y="23.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{fbe8bce2-7703-442b-9202-2110add55d94}" shape="6" name="ball_10" alpha="1" blendMode="0" idx="2" spriteName="" x="274.729" y="10.1667" width="13" height="13" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{63da83bc-a1a1-400e-8ef9-6cd502115b69}" shape="6" name="ui glass_0" alpha="1" blendMode="0" idx="1" spriteName="" x="170" y="-80" width="200" height="200" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{d195e18e-8156-45a6-8d1a-3575dc7b5e82}" shape="6" name="led spento_0" alpha="1" blendMode="0" idx="4" spriteName="" x="83.3333" y="12.6667" width="28" height="28" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="invisible_layer" gridX="16" gridY="16">
+  <object uid="{eedc717d-9cab-455e-98ec-c832b5ea6e6d}" shape="3" name="buttonPausa" alpha="1" blendMode="0" spriteName="" x="3.58333" y="425.917" width="43.1667" height="42.3333" anchorX="0.5" anchorY="0.5" strokecolor="33554431" fillcolor="33554431" textcolor="4294967295">
+   <ellipse/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="1" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{c11fa7fa-9e98-4444-aff0-36bafe1ec442}" shape="3" name="buttonStats" alpha="1" blendMode="0" spriteName="" x="273.417" y="426.083" width="43.1667" height="42.3333" anchorX="0.5" anchorY="0.5" strokecolor="33554431" fillcolor="33554431" textcolor="4294967295">
+   <ellipse/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="1" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{82d37144-e9d1-4c19-850a-3e87a492b53c}" shape="0" name="rect_balls" alpha="1" blendMode="0" spriteName="" x="220.667" y="39.3333" width="99.3333" height="3.33333" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="33554431" fillcolor="0" textcolor="4294967295">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+</level>
