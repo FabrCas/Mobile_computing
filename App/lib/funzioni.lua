@@ -153,7 +153,7 @@ function removeBrick(brick, mod)
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
-  if nMattoni == 200 then
+  if nMattoni == 25 then
     local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     gruppoLivello:insert(txt)
 

@@ -18,7 +18,7 @@ local f = require("lib.funzioni")
 --livelloBase:new() -- qui viene creato il livello
 local damage = partitaS:stats().danno
 nMattoni = 0 --numero dei mattoni
-audio.stop()
+
 local modalita
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
@@ -30,6 +30,7 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
+audio.stop(1)
 local params = event.params
 modalita = params.modalita
 print("la modalità è: ".. modalita) 
@@ -53,7 +54,7 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:show( event )
 	local phase = event.phase
-
+audio.pause(1)
     if ( phase == "will" ) then
     	partitaS:prova()
   print(partitaS:provaVar())
@@ -90,16 +91,13 @@ function scene:show( event )
       print(partitaS:personaggio())
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
     if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
+     if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
     if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
     if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-	--	local prevScene = composer.getSceneName( "previous" )
-		-- remove previous scene's view
-	if (prevScene) then
-			composer.removeScene( prevScene )
-     	end
+
     end
 
 	print( "1: show event - ", phase )

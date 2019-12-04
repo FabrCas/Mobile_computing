@@ -69,7 +69,12 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         print("menuArcade-> show (did)")
         -- Code here runs when the scene is entirely on screen
-        if nil~= composer.getScene("Menu") then composer.removeScene("Menu", false) end
+        if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
+    local prevScene = composer.getSceneName( "previous" )
+        -- remove previous scene's view
+    if (prevScene) then
+            composer.removeScene( prevScene )
+        end
 
 local function runLevel(livello)
     local options =  { effect = "crossFade",

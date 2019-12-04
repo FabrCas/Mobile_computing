@@ -19,7 +19,6 @@ local _H = display.contentHeight; -- full height of the page
 -- create()
 function scene:create( event )
 
-audio.stop(1)
 
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
