@@ -1,6 +1,8 @@
 local M = {}
 local composer = require( "composer" )
 local physics = require ("physics")
+require ("lib.partitaStoria")
+--arcade deve creare invece 
 local statistiche= partitaS:stats()
 local numeroPalle = statistiche.numeroPalle
 local led_acceso
@@ -9,6 +11,7 @@ tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+
 
 
 local vecchiaPalla

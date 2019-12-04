@@ -1,7 +1,6 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 local slideView = require("lib.carousel_menu")
-require ("lib.partitaStoria")
 
 -- Initial settings and checkings
 local sceneGroup = nil -- main group for all page elements

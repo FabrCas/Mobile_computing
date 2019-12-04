@@ -6,20 +6,18 @@
 local composer = require( "composer" )
 --sceglieri qui partita storia o no
 
-require ("lib.partitaStoria")
 local scene = composer.newScene()
 require("lib.LD_LoaderX")
 require("lib.LD_HelperX")
 
 _W = display.contentWidth
 _H = display.contentHeight
-partitaS:new()
-local f = require("lib.funzioni")
+
+local f 
 --livelloBase:new() -- qui viene creato il livello
-local damage = partitaS:stats().danno
-nMattoni = 0 --numero dei mattoni
 
 local modalita
+nMattoni= 0
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
@@ -30,10 +28,17 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
-audio.stop(1)
 local params = event.params
 modalita = params.modalita
 print("la modalità è: ".. modalita) 
+if modalita== "tower" then 
+	f =  require("lib.funzioni")
+else 
+	f =  require("lib.funzioni")
+	--f = require("lib.funzioniArcade")
+end
+audio.stop(1)
+
 
 	--[[ Touch event listener for button
 	function onButtonClick( event )
@@ -56,8 +61,6 @@ function scene:show( event )
 	local phase = event.phase
 audio.pause(1)
     if ( phase == "will" ) then
-    	partitaS:prova()
-  print(partitaS:provaVar())
 	local screenGroup = self.view
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)
@@ -88,7 +91,6 @@ audio.pause(1)
 	end
         -- Called when the scene is still off screen (but is about to come on screen).
     elseif ( phase == "did" ) then
-      print(partitaS:personaggio())
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
     if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
      if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
