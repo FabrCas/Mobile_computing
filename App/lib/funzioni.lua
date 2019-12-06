@@ -3,16 +3,30 @@ local composer = require( "composer" )
 local physics = require ("physics")
 require ("lib.partita")
 --arcade deve creare invece 
-local statistiche= partita:statsS()
-local numeroPalle = statistiche.numeroPalle
+local statistiche
+local numeroPalle
 local led_acceso
+local isPaused
+local tempoInizioPausa
+local tempoFinePausa
+local tempoPausaTotale
+local tempoInizioLivello
+
+function startFunzioni()
+  print("starto funzione tower")
+statistiche= partita:statsS()
+numeroPalle = statistiche.numeroPalle
 isPaused = false
 tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+end
 
 
+function distruggiFunzioni()
+M= nil 
+end 
 
 local vecchiaPalla
  function creaCannone(cannon)
@@ -25,7 +39,7 @@ local vecchiaPalla
   cannon.x = display.contentWidth/2
     cannon.y = 60  --50
     cannon.anchorY = 0.35
-      print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
+     print(  "Tower funzioni invocata")
       local rect = display.newRect( 0, _H/2,50,50 )
       rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" )  end)
       local rect = display.newRect( 0, _H/2 +50,50,50 )
@@ -35,7 +49,6 @@ end
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 function caricaPalla()
-
   print("numeroPalle = ", numeroPalle)
   if vecchiaPalla ~= nil then
     vecchiaPalla= nil
@@ -364,6 +377,7 @@ backtomenu:addEventListener("tap", function()
 testoVolumeEffettoSonoro:removeSelf()
 testoVolumeEffettoSonoro= nil
 testoVolumeMusica= nil
+composer.removeScene("scene1")
     timer.performWithDelay(500, function() composer.gotoScene("toMenu") end )
   end)
 
@@ -410,6 +424,7 @@ M.creaCannone = creaCannone
 M.getAngle = getAngle
 M.shoot = shoot
 ---------------------------------------------------------------------------------
+M.startFunzioni = startFunzioni
 M.creaLivello = creaLivello
 M.removeBrick = removeBrick
 M.hit = hit
@@ -419,4 +434,7 @@ M.touch = touch
 M.finePartita = finePartita
 M.scancellaTutto = scancellaTutto
 M.creaUI = creaUI
+M.distruggiFunzioni= distruggiFunzioni
+
+
 return M

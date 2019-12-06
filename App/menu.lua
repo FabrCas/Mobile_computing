@@ -67,18 +67,19 @@ function scene:show( event )
       if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
       if nil~= composer.getScene("toOption") then composer.removeScene("toOption", false) end
       if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
-     -- if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
+      if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
+
 	local function runLevel(livello)
 	--	composer.gotoScene( "gestisciMenuPrimario" , { effect = "crossFade", time = 200})
   print("Run level eseguita")
   if livello == 1 then
-    composer.gotoScene( "selectPG", options)
+    composer.gotoScene( "selectPG")
     return true
   elseif livello == 2 then
-    composer.gotoScene( "arcade", options )   --in futuro: arcade
+    composer.gotoScene( "arcade" )   --in futuro: arcade
     return true
      elseif livello == 3 then
-    composer.gotoScene( "toOptions", options )
+    composer.gotoScene( "toOptions" )
     return true
 	end
 end

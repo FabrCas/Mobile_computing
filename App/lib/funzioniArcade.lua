@@ -1,22 +1,36 @@
-local M = {}
+local N = {}
 local composer = require( "composer" )
 local physics = require ("physics")
 require ("lib.partita")
-partita:newA()
-local statistiche= partita:statsA()
-local numeroPalle = statistiche.numeroPalle
+
+local statistiche1
+local numeroPalle
 local led_acceso
+local isPaused
+local tempoInizioPausa
+local tempoFinePausa
+local tempoPausaTotale
+local tempoInizioLivello
+
+function startFunzioni()
+    print("starto funzione arcade")
+statistiche1= partita:statsA()
+numeroPalle = statistiche1.numeroPalle
 isPaused = false
 tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+end 
 
 
+function distruggiFunzioni()
+N= nil 
+end 
 
 local vecchiaPalla
  function creaCannone(cannon)
-  numeroPalle = statistiche.numeroPalle
+  numeroPalle = statistiche1.numeroPalle
   _G.gruppoLivello = display.newGroup( )
     _G.canShoot = true 
     _G.potereAttivato = false
@@ -25,7 +39,7 @@ local vecchiaPalla
   cannon.x = display.contentWidth/2
     cannon.y = 60  --50
     cannon.anchorY = 0.35
-      print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
+      print(  "Arcade funzioni invocata")
       local rect = display.newRect( 0, _H/2,50,50 )
       rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" )  end)
       local rect = display.newRect( 0, _H/2 +50,50,50 )
@@ -35,7 +49,6 @@ end
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 function caricaPalla()
-
   print("numeroPalle = ", numeroPalle)
   if vecchiaPalla ~= nil then
     vecchiaPalla= nil
@@ -355,7 +368,7 @@ musicap:addEventListener("tap", onButtonClickDownMusica)
 fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
 fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
-  numeroPalle = statistiche.numeroPalle
+  numeroPalle = statistiche1.numeroPalle
   isPaused=false
     scancellaTutto() --rimuove gruppolivello e cannone
     gruppoPausa:removeSelf() print("tolto da backtomenu ")
@@ -363,6 +376,7 @@ backtomenu:addEventListener("tap", function()
 testoVolumeEffettoSonoro:removeSelf()
 testoVolumeEffettoSonoro= nil
 testoVolumeMusica= nil
+composer.removeScene("scene1")
     timer.performWithDelay(500, function() composer.gotoScene("toMenu") end )
   end)
 
@@ -404,18 +418,20 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
       chiudi:addEventListener("tap",function(event) gruppo_testo:removeSelf() gruppo_testo = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
 end
 
-M.testFunction = testFunction
-M.creaCannone = creaCannone
-M.getAngle = getAngle
-M.shoot = shoot
----------------------------------------------------------------------------------
-M.creaLivello = creaLivello
-M.removeBrick = removeBrick
-M.hit = hit
-M.hitMuro = hitMuro
-M.touchBg = touchBg
-M.touch = touch
-M.finePartita = finePartita
-M.scancellaTutto = scancellaTutto
-M.creaUI = creaUI
-return M
+N.testFunction = testFunction
+N.creaCannone = creaCannone
+N.getAngle = getAngle
+N.shoot = shoot
+--------------------------------------------------------------------------------
+N.creaLivello = creaLivello
+N.startFunzioni= startFunzioni
+N.removeBrick = removeBrick
+N.hit = hit
+N.hitMuro = hitMuro
+N.touchBg = touchBg
+N.touch = touch
+N.finePartita = finePartita
+N.scancellaTutto = scancellaTutto
+N.creaUI = creaUI
+N.distruggiFunzioni= distruggiFunzioni
+return N

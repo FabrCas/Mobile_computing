@@ -13,6 +13,8 @@ require("lib.LD_HelperX")
 _W = display.contentWidth
 _H = display.contentHeight
 
+local mode
+
  local f 
 --livelloBase:new() -- qui viene creato il livello
 
@@ -28,6 +30,18 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
+local params = event.params
+mode = params.modalita
+print("la modalità è: ".. mode) 
+if mode == 'tower' then
+print("richiesta funzioni tower") 
+	f =  fT
+	f.startFunzioni()
+elseif  mode=='arcade' then 
+	print("richiesta funzioni Arcade") 
+	f =  fA
+	f.startFunzioni()
+end
 
 audio.stop(1)
 
@@ -56,15 +70,7 @@ function scene:show( event )
 audio.pause(1)
     if ( phase == "will" ) then
 
-	local params = event.params
-local modalita = params.modalita
-print("la modalità è: ".. modalita) 
-if modalita== 'tower' then 
-	f =  require("lib.funzioni")
-else 
-	f =  require("lib.funzioniArcade")
-	--f = require("lib.funzioniArcade")
-end
+
 
 
 	local screenGroup = self.view
@@ -124,7 +130,7 @@ end
 
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroy( event )
-
+	f.distruggiFunzioni()
 	--myLevel = nil
 	print( "((destroying scene 1's view))" )
 end

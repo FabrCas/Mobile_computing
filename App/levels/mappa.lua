@@ -7,12 +7,9 @@ local _h = display.contentHeight/2
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
- partita:newS()
- local p1, p2, p3
- torre = partita:torre()
- p1 = torre.primoPiano
- p2 = torre.secondoPiano
- p3 = torre.terzoPiano
+
+ local p1, p2, p3, torre
+
 
  lista= {}  --lista delle stanze da creare
  listaRect={}  --lista grafica delle stanze 
@@ -24,6 +21,10 @@ local _h = display.contentHeight/2
 
 -- create()
 function scene:create( event )
+ torre = partita:torre()
+ p1 = torre.primoPiano
+ p2 = torre.secondoPiano
+ p3 = torre.terzoPiano
 
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -54,6 +55,7 @@ local function onButtonClickStanzaSelezionata(event)
      time = 200,
      params = {modalita= 'tower'}
  }
+ print ("partita preparata" .. options.params.modalita)
     composer.gotoScene("levels.scene1", options)
   stanza= event.target.stanza
   stanza.isCompleted = true 

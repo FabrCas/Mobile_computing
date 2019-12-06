@@ -31,7 +31,7 @@ end
 
 local function onButtonClick(event)
   nomePersonaggio= event.target.pg
-  print (nomePersonaggio)
+  print (nomePersonaggio .. "selectPGARCADE")
   --print("tap esiste?")
   --print(tapSound==nil)
   local channel2= audio.findFreeChannel(2)

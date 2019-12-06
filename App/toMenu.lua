@@ -10,6 +10,7 @@ local btnStart = nil
 menuSound= audio.loadStream("sounds/montage.mp3")
 
 
+
 -- Called when the scene's view does not exist:
 function scene:create( event )
     -- view is not yet visible
@@ -35,8 +36,10 @@ function scene:show( event )
 
    if event.phase == "did" then
       -- purges previous and next scenes
-      if nil~= composer.getScene("menu") then composer.removeScene("menu", true) end
-
+     if nil~= composer.getScene("menu") then composer.removeScene("menu", true) end
+     if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
+     if nil~= composer.getScene("scene1") then composer.removeScene("scene1", false) end
+    -- Button event listeners
 		-- Button event listeners
 
 		local function onstartEvent(event)

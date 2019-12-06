@@ -15,6 +15,14 @@ composer.musicDir = "sounds/"
 --variabili utili per la selezione delle scene
 --non di default
 composer.level = 1 --sei nel menu
+require ("lib.partita")
+
+partita:newA()
+partita:newS()
+
+_G.fT = require ("lib.funzioni")
+_G.fA = require ("lib.funzioniArcade")
+
 
 
 local function main()

@@ -40,7 +40,6 @@ function partita:newS()
   piano.altezza=0
   creazioneTorre()
   torre.stanzaAttuale= torre.primoPiano.start
-
 end
 
 
