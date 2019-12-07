@@ -50,7 +50,11 @@ testoPiano.anchorX = 0
 
 
 local function onButtonClickStanzaSelezionata(event)
-    composer.gotoScene("levels.scene1")
+    local options =  { effect = "crossFade",
+     time = 200,
+     params = {modalita= "tower"}
+ }
+    composer.gotoScene("levels.scene1", options)
   stanza= event.target.stanza
   stanza.isCompleted = true 
   torre.stanzaAttuale= stanza
@@ -66,8 +70,8 @@ local function onButtonClickStanzaSelezionata(event)
             if stanza.ovest ~= nil then
                 stanza.ovest.isLocked= false
             end
-            print("lista rect valore: ")
-            print (#listaRect)
+           -- print("lista rect valore: ")
+           -- print (#listaRect)
             cancellaMappa(listaRect, listaPorte)
             lista= nil
             lista= {}
@@ -79,7 +83,7 @@ local function onButtonClickStanzaSelezionataDadi(event)
 end
 
 local function onButtonClickStanzaSelezionataUscita(event)
-    print("uscita selezionata")
+   -- print("uscita selezionata")
     cancellaMappa(listaRect, listaPorte)
     lista= nil
     lista= {}
@@ -229,7 +233,7 @@ function scene:show( event )
  
     local sceneGroup = self.view
     local phase = event.phase
- 
+    audio.stop(1)
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
  

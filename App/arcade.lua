@@ -1,7 +1,6 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 local slideView = require("lib.carousel_livelli")
-require ("lib.partitaArcade")
 
 local sceneGroup = nil -- main group for all page elements
 local _W = display.contentWidth; -- full width of the page
@@ -69,7 +68,12 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         print("menuArcade-> show (did)")
         -- Code here runs when the scene is entirely on screen
-        if nil~= composer.getScene("Menu") then composer.removeScene("Menu", false) end
+        if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
+    local prevScene = composer.getSceneName( "previous" )
+        -- remove previous scene's view
+    if (prevScene) then
+            composer.removeScene( prevScene )
+        end
 
 local function runLevel(livello)
     local options =  { effect = "crossFade",
@@ -139,7 +143,7 @@ local function runLevel(livello)
      elseif livello == 30 then
         options.params.nomeLivello= 30
     end
-    composer.gotoScene( "selectPGArcade", options)
+    composer.gotoScene( "selectPG", options)
     return true
 end
 

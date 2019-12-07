@@ -46,22 +46,22 @@ function new( imageSet, slideBackground, top )
 
 		local valore
 		if counterDecine >= 10 and counterDecine < 20 then 
-			print("counterDecine >= 10")
+			--print("counterDecine >= 10")
 		    valore= 1
 			valore2= math.fmod (i, 10)
 		elseif counterDecine >= 20 and counterDecine < 30 then 
-			print("counterDecine >= 20")
+			--print("counterDecine >= 20")
 			valore= 2
 			valore2= math.fmod (i, 10)
 		elseif counterDecine >= 30 then
-			print("counterDecine >= 30")
+			--print("counterDecine >= 30")
 			valore= 3
 			valore2= math.fmod (i, 10)
 		else 
 			valore= i
 		end
 
-		print ("Valore "..valore)
+		--print ("Valore "..valore)
 
 		if counterDecine >= 10 then 
 		texture = display.newImage(myImages[valore].image)
@@ -116,7 +116,7 @@ function new( imageSet, slideBackground, top )
 
 		images[i] = p
 		counterDecine= counterDecine+1
-		print("cd"..counterDecine)
+		--print("cd"..counterDecine)
 	end
 
 	imgNum = 1
@@ -160,7 +160,7 @@ function new( imageSet, slideBackground, top )
 				else
 					cancelMove()
 					if (dragDistance == 0) then
-							print ("clicked item ", imgNum)
+							--print ("clicked item ", imgNum)
 							-- Sometime later, create an event and dispatch it
 							local event = { name="levelClicked", level=imgNum }
 							Runtime:dispatchEvent( event )

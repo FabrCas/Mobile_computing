@@ -6,20 +6,18 @@
 local composer = require( "composer" )
 --sceglieri qui partita storia o no
 
-require ("lib.partitaStoria")
 local scene = composer.newScene()
 require("lib.LD_LoaderX")
 require("lib.LD_HelperX")
 
 _W = display.contentWidth
 _H = display.contentHeight
-partitaS:new()
-local f = require("lib.funzioni")
---livelloBase:new() -- qui viene creato il livello
-local damage = partitaS:stats().danno
-nMattoni = 0 --numero dei mattoni
-audio.stop()
 
+local f 
+--livelloBase:new() -- qui viene creato il livello
+
+local modalita
+nMattoni= 0
 ---------------------------------------------------------------------------------
 -- BEGINNING OF YOUR IMPLEMENTATION
 ---------------------------------------------------------------------------------
@@ -30,8 +28,19 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
-  
 
+print("la modalità è: ".. mod_par) 
+if mod_par == "tower" then 
+	print("richiesta modalita tower = " .. mod_par)
+	f =  require("lib.funzioni")
+elseif mod_par == "arcade" then 
+	print("richiesta modalita arcade = " .. mod_par)
+	f =  require("lib.funzioni")
+	--f = require("lib.funzioniArcade")
+end
+audio.stop(1)
+
+local evento
 	--[[ Touch event listener for button
 	function onButtonClick( event )
 		print ("touch")
@@ -44,17 +53,16 @@ function scene:create( event )
 	-- btn = myLevel:getLayerObject( "layer1","btnNext" )
 	-- btn.onPress = onButtonClick ]]
 
-	print( "\n1: create event")
 end
 
 
 -- Called immediately after scene has moved onscreen:
 function scene:show( event )
+	evento=event
 	local phase = event.phase
-
+audio.pause(1)
     if ( phase == "will" ) then
-    	partitaS:prova()
-  print(partitaS:provaVar())
+    	print("scene1 show - " .. mod_par)
 	local screenGroup = self.view
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)
@@ -78,28 +86,23 @@ function scene:show( event )
   obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
   screenGroup:insert(obj[i].view.scritta)
   obj[i].view.scritta.rotation = obj[i].view.rotation
-	obj[i].view:addEventListener( "preCollision", function (event) f.hit(event) end)
+	obj[i].view:addEventListener( "preCollision", function (event) f.hit(event, modalita) end)
 	obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
 	obj[i] = obj[i].view
 	nMattoni = nMattoni + 1
 	end
         -- Called when the scene is still off screen (but is about to come on screen).
     elseif ( phase == "did" ) then
-      print(partitaS:personaggio())
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
     if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
+    if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
     if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
+    if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-	--	local prevScene = composer.getSceneName( "previous" )
-		-- remove previous scene's view
-	if (prevScene) then
-			composer.removeScene( prevScene )
-     	end
-    end
 
-	print( "1: show event - ", phase )
+    end
 
 
 end
@@ -108,7 +111,7 @@ end
 -- Called when scene is about to move offscreen:
 function scene:hide( event )
 
-	print( "1: hide event" )
+	print( "scene1 - hide event " .. mod_par )
 
 end
 
@@ -117,7 +120,7 @@ end
 function scene:destroy( event )
 
 	--myLevel = nil
-	print( "((destroying scene 1's view))" )
+	print( "scene 1 - destroy ".. mod_par)
 end
 
 ---------------------------------------------------------------------------------

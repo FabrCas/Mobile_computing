@@ -8,7 +8,7 @@ display.setStatusBar( display.HiddenStatusBar )
 
 --physics = require ("physics")
 --physics.start()
-
+_G.mod_par = nil
 local composer = require( "composer" )
 composer.imgDir = "images/"
 composer.musicDir = "sounds/"
@@ -17,9 +17,7 @@ composer.musicDir = "sounds/"
 composer.level = 1 --sei nel menu
 
 
-local function main()
-composer.gotoScene( "toMenu", "fade", 500 )
-   return true
-end
--- Begin
-main() 
+
+composer.gotoScene( "toMenu"
+	--, "fade", 500 
+	)

@@ -6,7 +6,7 @@ local physics = require ("physics")
 local _W = display.contentWidth
 local _H = display.contentHeight
 physics.start()
-tapSound= audio.loadSound("sounds/mb1.mp3")
+--tapSound= audio.loadSound("sounds/mb1.mp3")
 
 local scene = composer.newScene()
 
@@ -23,13 +23,14 @@ local scene = composer.newScene()
 
 local function chiamaProssimaScena()
     local options = { effect = "crossFade", time = 200}
-    composer.gotoScene( "toPlay", options )
+    if mod_par == "tower" then composer.gotoScene( "toPlay", options ) else
+      composer.gotoScene("levels.scene1",options) end
 end
 
 
 local function onButtonClick(event)
   nomePersonaggio= event.target.pg
-  print (nomePersonaggio)
+  print ("Select PG = " .. nomePersonaggio .. " " .. mod_par)
   --print("tap esiste?")
   --print(tapSound==nil)
   local channel2= audio.findFreeChannel(2)
@@ -39,7 +40,7 @@ local function onButtonClick(event)
   pg= myLevel:getLayerObject("PGs", "cottonBall").view
   --timer.performWithDelay( 10000 , composer.gotoScene( "toPlay", options ))
   pg:play()
-  timer.performWithDelay(000, chiamaProssimaScena)
+  chiamaProssimaScena()
   return true
 end
 

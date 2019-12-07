@@ -118,9 +118,11 @@ function new( imageSet, slideBackground, top )
 					cancelMove()
 					if (dragDistance == 0) then
 						if (myImages[imgNum].locked) then
-							print ("clicked locked item ", imgNum)
+							--print ("clicked locked item ", imgNum)
 						else
-							print ("clicked item ", imgNum)
+							--
+
+							--print ("clicked item ", imgNum)
 							-- Sometime later, create an event and dispatch it
 							local event = { name="levelClicked", level=imgNum }
 							Runtime:dispatchEvent( event )
@@ -260,7 +262,7 @@ function new( imageSet, slideBackground, top )
 	end
 
 	function g:cleanUp()
-		print("slides cleanUp")
+		--print("slides cleanUp")
 		background:removeEventListener("touch", touchListener)
 	end
 
