@@ -1,0 +1,15 @@
+main->toMenu->menu->
+->selectPG->toPlay->levels.mappa->sceneN->funzioniTower/Arcade
+->arcade->selectPGArcade->sceneN->funzioniTower/Arcade
+->toOptions->toCredits
+
+
+	local params = event.params
+local modalita = params.modalita
+print("la modalità è: ".. modalita) 
+if modalita == 'tower' then 
+	f =  require("lib.funzioni")
+else 
+	f =  require("lib.funzioniArcade")
+	--f = require("lib.funzioniArcade")
+end
