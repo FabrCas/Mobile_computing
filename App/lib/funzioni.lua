@@ -3,11 +3,14 @@ local composer = require( "composer" )
 local physics = require ("physics")
 require ("lib.partitaStoria")
 --arcade deve creare invece 
+
 partitaS:new()
-local statistiche=partitaS:stats()
-local numeroPalle = statistiche.numeroPalle
+
+local statistiche                              --=partitaS:stats()
+local numeroPalle                              --= statistiche.numeroPalle
+print("creazione partita - " .. mod_par)
 local led_acceso
-local pall_lanciata = nil
+local pall_lanciata --= nil
 local nTiri
 isPaused = false
 tempoInizioPausa = 0
@@ -15,10 +18,24 @@ tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 
+function creaPartita()
+partitaS:new()
+ statistiche=partitaS:stats()
+ numeroPalle = statistiche.numeroPalle
+print("creazione partita - creaPartita " .. mod_par)
+ pall_lanciata = nil
+isPaused = false
+tempoInizioPausa = 0
+tempoFinePausa = 0
+tempoPausaTotale = 0
+tempoInizioLivello = os.time()
+end
+
 local vecchiaPalla
  function creaCannone(cannon)
+  creaPartita()
 nTiri=0
-  print("numero tower = " .. statistiche.numeroPalle)
+  print("numero palle = " .. statistiche.numeroPalle .. mod_par)
   numeroPalle = statistiche.numeroPalle
   _G.gruppoLivello = display.newGroup( )
     _G.canShoot = true 
@@ -347,7 +364,7 @@ local pausa = {}
 pausa = LD_Loader:new(gruppoPausa)
 pausa:loadLevel("schermat_pausa_level")
 immagine_pausa = pausa:getLayerObject("pulsanti", "finestra_pausa_0").view
-print("messa pausa tower")
+print("messa pausa " .. mod_par)
 
 local rectMusica = pausa:getLayerObject("pulsanti", "rect_9").view
 local rectEffetti = pausa:getLayerObject("pulsanti", "rect_8").view

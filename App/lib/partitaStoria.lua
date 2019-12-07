@@ -42,15 +42,16 @@ function partitaS:new()
   piano={}
   piano.altezza=0
   creazioneTorre()
-  torre.stanzaAttuale= torre.primoPiano.start else
-  print ("arcade - arcade")
+  torre.stanzaAttuale= torre.primoPiano.start 
+else
+  print ("arcade - arcadeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     livelloAttuale= "/scene01"
   score=0
   stats = {
     danno= 5,
     numeroPalle= 12,
-    rimbalzo= 0.5,
-    grandezza= 5.0, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    rimbalzo= 1,
+    grandezza= 15.0, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 1.0,
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
