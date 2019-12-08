@@ -31,6 +31,8 @@ local testoVolumeEffettoSonoro
 
 -- create()
 function scene:create( event )
+local sceneGroup= self.view
+
 
     --listener
 local function onButtonClickUpMusica(event)
@@ -110,13 +112,38 @@ end
     bottoneCredits:addEventListener("tap", onButtonCrediti)
 
 
+function creaNumeroMusica(valore, rectValoreMusica) 
+    print ("valore :" .. valore )
+    local char1=valore:sub(0,1)
+if not valore[1]== nil then 
+    local char2=valore:sub(1,2)
+    --due oggetti
+end
+  num=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreMusica.x ,rectValoreMusica.y)
+   print (char1)
+   print (char2)
+   return num
+end
+
+function creaNumeroEffetto(valore, rectValoreEffettoSonoro)
+        print ("valore :" .. valore )
+    local char1=valore:sub(0,1)
+if not valore[1]== nil then 
+    local char2=valore:sub(1,2)
+    --due oggetti
+end
+num= display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreEffettoSonoro.x ,rectValoreEffettoSonoro.y)
+return num
+end
+
+
 --rect
     local rectValoreMusica = myLevel:getLayerObject("Layer 1", "rect_3").view
     local rectValoreEffettoSonoro = myLevel:getLayerObject("Layer 1", "rect_2").view
-    testoVolumeMusica= display.newText((partitaS:volumeMusica() * 10),rectValoreMusica.x,rectValoreMusica.y)
-    testoVolumeMusica:setFillColor(0,0,0)
-    testoVolumeEffettoSonoro= display.newText((partitaS:volumeEffettoSonoro() * 10),rectValoreEffettoSonoro.x,rectValoreEffettoSonoro.y)
-    testoVolumeEffettoSonoro:setFillColor(0,0,0)
+
+    testoVolumeMusica= creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)), rectValoreMusica)
+    testoVolumeEffettoSonoro= creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)),rectValoreEffettoSonoro)
+   
     sceneGroup:insert(testoVolumeEffettoSonoro)
     sceneGroup:insert(testoVolumeMusica)
 

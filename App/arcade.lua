@@ -9,7 +9,8 @@ local touch = {}
 local levelGroup=nil
 local clicked = 0
 local numeroPagineMenu= 30
-
+local x
+local y
 
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
@@ -23,6 +24,21 @@ local numeroPagineMenu= 30
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
  
+
+local function backClicked(event)
+    print("back clicked")
+  local options = { effect = "crossFade", time = 200}
+      composer.gotoScene("menu",options)
+  end
+
+
+local function salvaxy(event)
+    print ("background clicked")
+    x= event.x 
+    y= event.y
+end
+
+
 -- create()
 function scene:create( event )
  
@@ -32,8 +48,16 @@ function scene:create( event )
      local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
     background.anchorX = 0
     background.anchorY = 0
+    background:addEventListener("tap", salvaxy)
     sceneGroup:insert(background)
 
+    local back= display.newImage(composer.imgDir .. "back.png",296, 461)
+    back.width = 41
+    back.height = 31.5
+    --back.xScale=0.205
+   -- back.yScale= 0.1575
+    sceneGroup:insert(back)
+    back:addEventListener("tap", backClicked)
      local images = {}
 
   images[0] = {image = composer.imgDir .. "0.png"}
@@ -149,6 +173,11 @@ end
 
 
 local function onLevelSelected(event)
+print("eventi")
+print(x)
+print(y)
+
+if ( (x<300) and  (y<460)) then  
     clicked = clicked + 1
     if (clicked ==1) then
         Runtime:removeEventListener("levelClicked")
@@ -156,8 +185,9 @@ local function onLevelSelected(event)
         print (clicked, "clicked level", event.level)
         timer.performWithDelay(0,  runLevel(event.level) ,1)
     end
+end 
 end
-Runtime:addEventListener("levelClicked", onLevelSelected)
+Runtime:addEventListener("levelClicked", function() timer.performWithDelay(100,onLevelSelected) end)
  end
 end
 -- hide()

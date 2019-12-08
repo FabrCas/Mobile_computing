@@ -54,6 +54,9 @@ end -- ends scene:create
 -- Called when the scene's view is about to 'will/load' or 'did/appear':
 function scene:show( event )
 
+local arcade = composer.loadScene( "arcade", false)
+--local toOptions = composer.loadScene( "toOptions", false)
+
    local sceneGroup = self.view
    --if event.phase == "will" then
 
@@ -84,7 +87,7 @@ function scene:show( event )
     composer.gotoScene( "arcade" )   --in futuro: arcade
     return true
      elseif livello == 3 then
-    composer.gotoScene( "toOptions", options )
+    composer.gotoScene( "toOptions" )
     return true
 	end
 end

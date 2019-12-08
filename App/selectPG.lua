@@ -9,7 +9,7 @@ physics.start()
 --tapSound= audio.loadSound("sounds/mb1.mp3")
 
 local scene = composer.newScene()
-
+local arcade
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -44,10 +44,17 @@ local function onButtonClick(event)
   return true
 end
 
+local function backClicked(event)
+  local options = { effect = "crossFade", time = 200}
+    if mod_par == "tower" then composer.gotoScene( "menu", options ) else
+      composer.gotoScene("arcade",options) end
+  end
+
 -- create()
 function scene:create( event )
 
     local sceneGroup = self.view
+    
     display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
     -- Code here runs when the scene is first created but has not yet appeared on screen
     myLevel= LD_Loader:new(sceneGroup)
@@ -56,6 +63,7 @@ function scene:create( event )
 
 --aggungere gli altri bottoni per gli altri personaggi
       rectButton= myLevel:getLayerObject("backgrounds", "rect_pg1")
+      backButton= myLevel:getLayerObject("ui", "back_0").view
       --.view lo fa diventare un display object, per le proprietà io deve accedere alla table
       -- quindi non la devo mettere
     --  rectButton.view.alpha= 1
@@ -65,6 +73,13 @@ function scene:create( event )
   rectButton.view.pg= rectButton.property['pgName']
   --print (rectButton.view.pg)
       rectButton.view:addEventListener("tap", onButtonClick) --onButtonClick(event, rectButton.property['pgName']) end )
+      backButton:addEventListener("tap", backClicked)
+
+       if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
+         if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
+         if mod_par == "arcade" then
+      arcade = composer.loadScene( "arcade", false)
+    end
       --rectButton.onRelease= onButtonClick
 end
 
@@ -79,6 +94,7 @@ function scene:show( event )
 
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
+        if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
 
 
     end
