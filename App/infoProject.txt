@@ -1,15 +1,24 @@
+
+To do list:
+- numeri assets
+- pg nel cannone
+- rewards
+- you win(piano e finale)/you lose + score / asset finestra+ asset score + asset you win/lose 
+- fisica parte superiore ui
+- aggiungere effetti sonori
+- aggiungere altro personaggio
+- salvataggio dati tower
+- poteri personaggio
+- livelli * 29
+- score online con dbr
+- schermate inzio
+- crediti
+
+
+
+
+Strucuture:
 main->toMenu->menu->
 ->selectPG->toPlay->levels.mappa->sceneN->funzioniTower/Arcade
 ->arcade->selectPGArcade->sceneN->funzioniTower/Arcade
 ->toOptions->toCredits
-
-
-	local params = event.params
-local modalita = params.modalita
-print("la modalità è: ".. modalita) 
-if modalita == 'tower' then 
-	f =  require("lib.funzioni")
-else 
-	f =  require("lib.funzioniArcade")
-	--f = require("lib.funzioniArcade")
-end

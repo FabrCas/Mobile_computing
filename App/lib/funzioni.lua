@@ -44,7 +44,7 @@ nTiri=0
   display.setDefault( "isAnchorClamped", false )
   cannon.x = display.contentWidth/2
     cannon.y = 60  --50
-    cannon.anchorY = 0.35
+    cannon.anchorY = 0.33
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
       local rect = display.newRect( 0, _H/2,50,50 )
       rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" )  end)

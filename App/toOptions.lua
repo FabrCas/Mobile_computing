@@ -31,6 +31,19 @@ local testoVolumeEffettoSonoro
 
 -- create()
 function scene:create( event )
+    
+images{
+    zero= display.newImage("images/0.png")
+    uno= display.newImage("images/1.png")
+    due= display.newImage("images/2.png")
+    tre= display.newImage("images/3.png")
+    quattro= display.newImage("images/4.png")
+    cinque= display.newImage("images/5.png")
+    sei= display.newImage("images/6.png")
+    sette= display.newImage("images/7.png")
+    otto = display.newImage("images/8.png")
+    nove = display.newImage("images/9.png")
+}
 
     --listener
 local function onButtonClickUpMusica(event)
