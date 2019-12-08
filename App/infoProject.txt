@@ -3,13 +3,15 @@ To do list:
 - numeri assets
 - pg nel cannone
 - rewards
-- you win(piano e finale)/you lose + score / asset finestra+ asset score + asset you win/lose 
+- you win(piano e finale)/you lose + score / asset finestra+ asset score + asset you win/lose
 - fisica parte superiore ui
-- aggiungere effetti sonori
+
 - aggiungere altro personaggio
-- salvataggio dati tower
+- aggiungere effetti sonori
+
 - poteri personaggio
 - livelli * 29
+- salvataggio dati tower
 - score online con dbr
 - schermate inzio
 - crediti

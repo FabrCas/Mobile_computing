@@ -55,7 +55,7 @@ end -- ends scene:create
 function scene:show( event )
 
 local arcade = composer.loadScene( "arcade", false)
-local toOptions = composer.loadScene( "toOptions", false)
+--local toOptions = composer.loadScene( "toOptions", false)
 
    local sceneGroup = self.view
    --if event.phase == "will" then
