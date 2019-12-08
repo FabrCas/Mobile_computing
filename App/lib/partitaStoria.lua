@@ -24,14 +24,14 @@ partitaS_mt =  {__index = partitaS}
 function partitaS:new()
 
   print("creata partitaS - " .. mod_par)
-   if mod_par=='tower' then 
+   if mod_par=='tower' then
   livelloAttuale= "/scene01"
   score=0
   stats = {
     danno= 1.0,
     numeroPalle= 8,
-    rimbalzo= 0.5,
-    grandezza= 5.0, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    rimbalzo= 0.8,
+    grandezza= 10, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 1.0,
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
@@ -42,7 +42,7 @@ function partitaS:new()
   piano={}
   piano.altezza=0
   creazioneTorre()
-  torre.stanzaAttuale= torre.primoPiano.start 
+  torre.stanzaAttuale= torre.primoPiano.start
 else
   print ("arcade - arcadeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     livelloAttuale= "/scene01"
@@ -51,16 +51,16 @@ else
     danno= 5,
     numeroPalle= 12,
     rimbalzo= 1,
-    grandezza= 15.0, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    grandezza= 15, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 1.0,
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
-  } 
+  }
 end  end
 
 
 
--- inizio funzioni per la creazione della mapppa 
+-- inizio funzioni per la creazione della mapppa
 
 
 
@@ -90,13 +90,13 @@ math.random(); math.random(); math.random()
 --***************************************************************************************************************************
 
     --inizializzazione piano con la prima stanza
-    if (piano.altezza==0) then 
+    if (piano.altezza==0) then
     inizio = math.random(1, 10);
     piano.nStanze= math.random(5,8)
     elseif(piano.altezza==1) then
     inizio = math.random(10, 20);
     piano.nStanze= math.random(8,11)
-    else 
+    else
     inizio = math.random(20, 30);
     piano.nStanze= math.random(11,15)
     end
@@ -142,11 +142,11 @@ math.random(); math.random(); math.random()
       if esisteStanza==4 then
       local direzione= math.random(1,4)
       local stanzaSorteggiata
-      if (piano.altezza==0) then 
+      if (piano.altezza==0) then
     stanzaSorteggiata = math.random(1, 10);
     elseif(piano.altezza==1) then
     stanzaSorteggiata = math.random(10, 20);
-    else 
+    else
     stanzaSorteggiata = math.random(20, 30);
     end
 
@@ -256,12 +256,12 @@ for i=1, #pianoCartesianoStanze do
 end
 
 altezza= piano.altezza
-if (piano.altezza== 0) then 
+if (piano.altezza== 0) then
 torre.primoPiano= piano
 --print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
 bufferStampa= {}
 stampaPiano(torre.primoPiano.start, 0,bufferStampa)
-elseif (piano.altezza==1) then 
+elseif (piano.altezza==1) then
   torre.secondoPiano= piano
   --print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
 bufferStampa= {}
@@ -271,15 +271,15 @@ else
    --print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
 bufferStampa= {}
 stampaPiano(torre.terzoPiano.start, 0,bufferStampa)
-end 
+end
 
 piano=nil
 piano={}
 piano.altezza= altezza +1
 print ("***************************************fine creazione piano ********************************************************")
 creazioneTorre()
- else 
-  return true 
+ else
+  return true
 end
 end
 
@@ -319,17 +319,17 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
     --  print ("iterazione: "..string.format(i))
     --  print (esisteStanza==4)
 
- -- if math.abs(stanza.coordinate.x) <=3 and  math.abs(stanza.coordinate.y) <=3 then 
+ -- if math.abs(stanza.coordinate.x) <=3 and  math.abs(stanza.coordinate.y) <=3 then
     if esisteStanza==4 then
 
       local direzione= math.random(1,4)
       local stanzaSorteggiata    --= math.random(1,10)
 
-    if (piano.altezza==0) then 
+    if (piano.altezza==0) then
     stanzaSorteggiata = math.random(1, 10);
     elseif(piano.altezza==1) then
     stanzaSorteggiata = math.random(10, 20);
-    else 
+    else
     stanzaSorteggiata = math.random(20, 30);
     end
 
@@ -359,7 +359,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         if ((not nordSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-        if(stanzeRimanenti == 1)then 
+        if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.nord= stanzaTemp
@@ -379,7 +379,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         if ((not estSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-         if(stanzeRimanenti == 1)then 
+         if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.est= stanzaTemp
@@ -398,7 +398,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         if ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-         if(stanzeRimanenti == 1)then 
+         if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.sud = stanzaTemp
@@ -417,7 +417,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         if ((not ovestSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-         if(stanzeRimanenti == 1)then 
+         if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.ovest= stanzaTemp
@@ -434,7 +434,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       if CreazioneEseguita==false then        --per evitare il caso di buffer vuoto
          table.insert(bufferCreazione, stanza)
        end
-  end  --end for 
+  end  --end for
 end  --end controllo coordinate non maggiori a 3
 else
   return true
@@ -460,9 +460,9 @@ end
 
 
 function stampaPiano(stanza, ricorsiveNumber, buffer)
-  if (stanza == nil) then 
-    return true 
-  else 
+  if (stanza == nil) then
+    return true
+  else
  -- print("-----------------@------------------")
  -- print("nome stanza: "..stanza.nome)
  -- print("tipo stanza: "..stanza.tipo)
@@ -493,13 +493,13 @@ end
 
 ricorsiveNumber= ricorsiveNumber +1
 stampaPiano(buffer[ricorsiveNumber], ricorsiveNumber, buffer)
-end 
+end
 end
 
 
 
 
--- fine funzioni per la creazione della mapppa 
+-- fine funzioni per la creazione della mapppa
 
 
 
@@ -565,7 +565,7 @@ personaggio=pg
 end
 
 function partitaS:aumentaVolumeMusica()
-  if(volumeMusica<=0.9) then 
+  if(volumeMusica<=0.9) then
   volumeMusica= volumeMusica + 0.1
 end
 end
@@ -573,7 +573,7 @@ end
 function partitaS:diminuisciVolumeMusica()
   if(volumeMusica>=0.1) then
   volumeMusica= volumeMusica - 0.1
-  else 
+  else
   volumeMusica=0
 end
 end
@@ -587,7 +587,7 @@ end
 function partitaS:diminuisciVolumeEffettoSonoro()
   if(volumeEffettoSonoro>=0.1) then
   volumeEffettoSonoro= volumeEffettoSonoro - 0.1
-else 
+else
   volumeEffettoSonoro=0
 end
 end

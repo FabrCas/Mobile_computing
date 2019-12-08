@@ -13,7 +13,7 @@ require("lib.LD_HelperX")
 _W = display.contentWidth
 _H = display.contentHeight
 
-local f 
+local f
 --livelloBase:new() -- qui viene creato il livello
 
 local modalita
@@ -29,11 +29,11 @@ end
 -- Called when the scene's view does not exist:
 function scene:create( event )
 
-print("la modalità è: ".. mod_par) 
-if mod_par == "tower" then 
+print("la modalità è: ".. mod_par)
+if mod_par == "tower" then
 	print("richiesta modalita tower = " .. mod_par)
 	f =  require("lib.funzioni")
-elseif mod_par == "arcade" then 
+elseif mod_par == "arcade" then
 	print("richiesta modalita arcade = " .. mod_par)
 	f =  require("lib.funzioni")
 	--f = require("lib.funzioniArcade")
@@ -68,13 +68,13 @@ audio.pause(1)
 	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
 	myCannon = LD_Loader:new(self.view)
-	myCannon:loadLevel("shoot")
+	myCannon:loadLevel("cannon.shoot")
 	_G.cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
 
     f.creaCannone(cannone)
 	f.creaUI(self.view)
     f.creaLivello(cannone)
-    
+
     -- aggiunta listener ai mattoni
 	local obj = {}
 	for i=1,29 do

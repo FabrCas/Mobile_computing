@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="cannon_fire" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="shoot">
  <assets firstgid="1" name="cannon_fire" width="320" height="480">
-  <image source="../../../../Documents/cannon_fire.png" width="2240" height="960"/>
+  <image source="../images/cannon_fire.png" width="2240" height="960"/>
   <asset frame="0" name="cannon_fire_0" spritename="" class="" export="1" x="0" y="0" w="320" h="480">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="320" gridY="480">
+    <object uid="{93084766-724c-46a6-a87f-d8886564282b}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
+     <polygon points="184,3 226,13 267,41 312,116 315,190 290,248 226,302 134,316 65,283 17,217 8,148 26,69 84,18 124,5"/>
+     <physics enabled="1" bodytype="0" convex="1" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+    <object uid="{d54339e2-b81d-4eed-aaac-fabd24cc2eaf}" shape="1" name="polygon_2" alpha="1" blendMode="0" spriteName="" x="0" y="480" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
+     <polygon points="95,-142 114,-170 208,-174 224,-140 199,-17 169,-7 127,-15 116,-48"/>
+     <physics enabled="1" bodytype="0" convex="1" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
    <animations>
     <sequence name="sequence 1" loopCount="1" loopDirection="0" duration="500" default="1" play="0">
      <frames>
@@ -23,8 +37,8 @@
      </frames>
     </sequence>
    </animations>
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
   <asset frame="1" name="cannon_fire_1" spritename="" class="" export="0" x="320" y="0" w="320" h="480">

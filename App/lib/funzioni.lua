@@ -2,7 +2,7 @@ local M = {}
 local composer = require( "composer" )
 local physics = require ("physics")
 require ("lib.partitaStoria")
---arcade deve creare invece 
+--arcade deve creare invece
 
 partitaS:new()
 
@@ -38,7 +38,7 @@ nTiri=0
   print("numero palle = " .. statistiche.numeroPalle .. mod_par)
   numeroPalle = statistiche.numeroPalle
   _G.gruppoLivello = display.newGroup( )
-    _G.canShoot = true 
+    _G.canShoot = true
     _G.potereAttivato = false
     _G.numBallMax = partitaS:stats().numeroPalle
   display.setDefault( "isAnchorClamped", false )
@@ -60,7 +60,7 @@ function caricaPalla()
     vecchiaPalla= nil
   end
   print("numeroPalle = " .. numeroPalle)
-  numeroPalle= numeroPalle -1 
+  numeroPalle= numeroPalle -1
   physics.start()
     if numeroPalle>0 then
   obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle-1)).view
@@ -85,13 +85,14 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
        function creaPalla(sx,sy,potereAttivato, angolo)
         if potereAttivato then
-   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", 15, 15)
+   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
    partitaS:stats().danno = 10
    --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
   else
-    ball = display.newImageRect("images/default ball.png", 15, 15)
+    ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
+    --partitaS:stats().grandezza, partitaS:stats().grandezza)
+print("palla di grandezza" .. partitaS:stats().grandezza)
 
-    
     if mod_par == "tower" then
     partitaS:stats().danno = 1 else partitaS:stats().danno=5 end
         end
@@ -102,8 +103,8 @@ function caricaPalla()
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
     if potereAttivato then
-    physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
-else physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8}) end
+    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=partitaS:stats().rimbalzo,friction=0.3,density=partitaS:stats().densita})
+else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=partitaS:stats().rimbalzo,density=partitaS:stats().densita}) end
     ball.density= 0.73
     gruppoLivello:insert(ball)
     -- While the ball rests near the cannon, it's static
@@ -156,7 +157,7 @@ gruppoLivello:insert(muroSinistra)
 gruppoLivello:insert(muroDestra)
 gruppoLivello:insert(muroInBasso)
 gruppoLivello:insert(muroInAlto)
-muroInBasso:addEventListener( "collision", function(event) 
+muroInBasso:addEventListener( "collision", function(event)
   event.other:removeSelf( )
   event.other = nil
   if numBallMax>0 then  --se ci sono palline
@@ -188,16 +189,16 @@ function removeBrick(brick, mod)
 
    local function toNextLevel(event)
     scancellaTutto()
-    if mod_par =="tower" then 
+    if mod_par =="tower" then
     composer.gotoScene("levels.mappa")
-  else 
+  else
     composer.gotoScene("arcade")
     end
   end
 
     timer.performWithDelay( 500, toNextLevel )
 
-  
+
    --DA SISTEMARE partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello)+tempoPausaTotale, numBallMax,false)
 end end
 ---------------------------------------------------------------------------------
@@ -230,12 +231,12 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
- -- if isPaused ==false then physics.start() end 
+ -- if isPaused ==false then physics.start() end
  physics.start( )
  if nTiri==0 then canShoot = true else
  if event.phase == 'began' then
- if pall_lanciata~=nil  then 
-  if pall_lanciata:getLinearVelocity()~=nil 
+ if pall_lanciata~=nil  then
+  if pall_lanciata:getLinearVelocity()~=nil
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
  print("ge".. pall_lanciata.y .." " .. vy)
@@ -245,20 +246,20 @@ else print("primto tmiro") end
 
 
   if (pall_lanciata==nil or (pall_lanciata.y > 340 and vy <40)) and
-      numeroPalle>0 then 
+      numeroPalle>0 then
    canShoot = true end
-end --event.phase 
-end -- if ntiri
-
+end --event.phase
+end -- if nTiri
+canShoot = true --da cancellare dopo
       if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         getAngle(event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot
-      then  
+      then
       numBallMax = numBallMax - 1
-      shoot(event,potereAttivato,cannon) potereAttivato=false canShoot=false  
+      shoot(event,potereAttivato,cannon) potereAttivato=false canShoot=false
       end -- if palla lanciata ecc
-          end 
+          end
 
         end
 ---------------------------------------------------------------------------------
@@ -341,6 +342,7 @@ end
           testoVolumeMusica.text= 0
       else
       testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+
   end end
 
   local function onButtonClickDownEffettoSonoro(event)
@@ -358,7 +360,7 @@ end
       testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
   end
 
-   
+
 
 local pausa = {}
 pausa = LD_Loader:new(gruppoPausa)
@@ -393,7 +395,7 @@ gruppoPausa:insert(immagine_pausa) gruppoPausa:insert(fxp) gruppoPausa:insert(fx
 gruppoPausa:insert(musicap) gruppoPausa:insert(musicam) gruppoPausa:insert(backtomenu)
 gruppoPausa:insert(ok)
 ok.alpha = 0.01
-ok:addEventListener("tap",function(event) isPaused=false physics.start() 
+ok:addEventListener("tap",function(event) isPaused=false physics.start()
   physics.setGravity(0,40)
 gruppoPausa:removeSelf() print("tolto da 'ok' - tower") tempoFinePausa=os.time() --rimuove la pausa
 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
@@ -429,7 +431,7 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
       local chiudi = display.newRect( 238,420, 75,75 )
       chiudi.alpha = 0.01
       print("messe statistiche " ..  mod_par)
-      local stats = partitaS:stats() 
+      local stats = partitaS:stats()
       local gruppo_testo = display.newGroup( )
     local txt_damage  = display.newText( stats.danno , 240, 95 , native.systemFontBold,45 )
     local txt_balls   = display.newText( stats.numeroPalle , 240, 135 , native.systemFontBold,45 )
