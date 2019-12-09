@@ -12,6 +12,8 @@ local _W = display.contentWidth; -- full width of the page
 local _H = display.contentHeight; -- full height of the page
 local testoVolumeMusica
 local testoVolumeEffettoSonoro
+local rectValoreMusica
+local rectValoreEffettoSonoro
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -35,43 +37,63 @@ local sceneGroup= self.view
 
 
     --listener
+
+--*************************************up/down musica******************************************
 local function onButtonClickUpMusica(event)
+    sceneGroup:remove(testoVolumeMusica.fn)
+    if ( testoVolumeMusica.sn ~= nil) then 
+    sceneGroup:remove(testoVolumeMusica.sn)
+end 
     partitaS:aumentaVolumeMusica()
     audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+    creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
     audio.play(tapSound2,{channel= 2})
 
 end
 
 local function onButtonClickDownMusica(event)
+    sceneGroup:remove(testoVolumeMusica.fn)
+    if ( testoVolumeMusica.sn ~= nil) then 
+    sceneGroup:remove(testoVolumeMusica.sn)
+end 
     partitaS:diminuisciVolumeMusica()
     audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
     if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
-        testoVolumeMusica.text= 0
+       creaNumeroMusica(tostring(0))
     else
-    testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+    creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
 end
 audio.play(tapSound2,{channel= 2})
 end
 
+--************************************************up/down sound effect*****************************
 local function onButtonClickDownEffettoSonoro(event)
+    sceneGroup:remove(testoVolumeEffettoSonoro.fn)
+     if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+      sceneGroup:remove(testoVolumeEffettoSonoro.sn)
+  end 
     partitaS:diminuisciVolumeEffettoSonoro()
     audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
     if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
-        testoVolumeEffettoSonoro.txt=0
+        creaNumeroEffetto(tostring(0))
     else
-    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
-
+    creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
 end
 audio.play(tapSound2,{channel= 2})
 end
 
 local function onButtonClickUpEffettoSonoro(event)
-     partitaS:aumentaVolumeEffettoSonoro()
+    sceneGroup:remove(testoVolumeEffettoSonoro.fn)
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+        sceneGroup:remove(testoVolumeEffettoSonoro.sn)
+    end 
+    partitaS:aumentaVolumeEffettoSonoro()
     audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
-    testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
+    creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
     audio.play(tapSound2,{channel= 2})
 end
+--*********************************************************************************************************
+
 
 local function onButtonEsci(event)
     composer.gotoScene( "menu" , { effect = "crossFade", time = 200})
@@ -112,40 +134,63 @@ end
     bottoneCredits:addEventListener("tap", onButtonCrediti)
 
 
-function creaNumeroMusica(valore, rectValoreMusica) 
+function creaNumeroMusica(valore) 
     print ("valore :" .. valore )
+    local num1,num2
     local char1=valore:sub(0,1)
-if not valore[1]== nil then 
-    local char2=valore:sub(1,2)
-    --due oggetti
+    local char2= valore:sub(2,2)
+    print (char1)
+    print (char2)
+if char2 == "" then 
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreMusica.x ,rectValoreMusica.y)
+    num2=nil
+    print("case1")
+else
+     print("case2")
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreMusica.x - 11 ,rectValoreMusica.y)
+    num2= display.newImage(composer.imgDir .. char2 .. ".png" ,rectValoreMusica.x + 11 ,rectValoreMusica.y)
+    num2.width=45
+    num2.height= 45
+    sceneGroup:insert(num2)
 end
-  num=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreMusica.x ,rectValoreMusica.y)
-   print (char1)
-   print (char2)
-   return num
+num1.width=45 
+num1.height= 45
+sceneGroup:insert(num1)
+testoVolumeMusica={fn=num1,sn=num2}
 end
 
-function creaNumeroEffetto(valore, rectValoreEffettoSonoro)
-        print ("valore :" .. valore )
+function creaNumeroEffetto(valore)
+   print ("valore :" .. valore )
+    local num1,num2
     local char1=valore:sub(0,1)
-if not valore[1]== nil then 
-    local char2=valore:sub(1,2)
-    --due oggetti
+    local char2= valore:sub(2,2)
+    print (char1)
+    print (char2)
+if char2 == "" then 
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreEffettoSonoro.x ,rectValoreEffettoSonoro.y)
+    num2=nil
+    print("case1")
+else
+     print("case2")
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreEffettoSonoro.x - 11 ,rectValoreEffettoSonoro.y)
+    num2= display.newImage(composer.imgDir .. char2 .. ".png" ,rectValoreEffettoSonoro.x + 11 ,rectValoreEffettoSonoro.y)
+    num2.width=45
+    num2.height= 45
+    sceneGroup:insert(num2)
 end
-num= display.newImage(composer.imgDir .. char1 .. ".png" ,rectValoreEffettoSonoro.x ,rectValoreEffettoSonoro.y)
-return num
+num1.width=45 
+num1.height= 45
+sceneGroup:insert(num1)
+testoVolumeEffettoSonoro={fn=num1,sn=num2}
 end
 
 
 --rect
-    local rectValoreMusica = myLevel:getLayerObject("Layer 1", "rect_3").view
-    local rectValoreEffettoSonoro = myLevel:getLayerObject("Layer 1", "rect_2").view
+    rectValoreMusica = myLevel:getLayerObject("Layer 1", "rect_3").view
+    rectValoreEffettoSonoro = myLevel:getLayerObject("Layer 1", "rect_2").view
 
-    testoVolumeMusica= creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)), rectValoreMusica)
-    testoVolumeEffettoSonoro= creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)),rectValoreEffettoSonoro)
-   
-    sceneGroup:insert(testoVolumeEffettoSonoro)
-    sceneGroup:insert(testoVolumeMusica)
+creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)), rectValoreMusica)
+creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)),rectValoreEffettoSonoro)
 
 end
 
