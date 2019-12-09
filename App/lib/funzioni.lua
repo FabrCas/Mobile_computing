@@ -2,6 +2,7 @@ local M = {}
 local composer = require( "composer" )
 local physics = require ("physics")
 require ("lib.partitaStoria")
+tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 --arcade deve creare invece
 
 partitaS:new()
@@ -328,37 +329,119 @@ end
 
   local testoVolumeMusica
   local testoVolumeEffettoSonoro
+  local rectMusica 
+  local rectEffetti
+
   --listener
-  local function onButtonClickUpMusica(event)
-      partitaS:aumentaVolumeMusica()
-      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
-  end
+--*************************************up/down musica******************************************
+local function onButtonClickUpMusica(event)
+    testoVolumeMusica.fn:removeSelf()
+    testoVolumeMusica.fn= nil
+    if ( testoVolumeMusica.sn ~= nil) then 
+    testoVolumeMusica.sn:removeSelf()
+    testoVolumeMusica.sn= nil
+end 
+    partitaS:aumentaVolumeMusica()
+    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+    creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
+    audio.play(tapSound2,{channel= 2})
 
-  local function onButtonClickDownMusica(event)
-      partitaS:diminuisciVolumeMusica()
-      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-      if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
-          testoVolumeMusica.text= 0
-      else
-      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+end
 
-  end end
+local function onButtonClickDownMusica(event)
+    testoVolumeMusica.fn:removeSelf()
+    testoVolumeMusica.fn= nil
+    if ( testoVolumeMusica.sn ~= nil) then 
+    testoVolumeMusica.sn:removeSelf()
+    testoVolumeMusica.sn= nil
+end 
+    partitaS:diminuisciVolumeMusica()
+    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+    if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
+       creaNumeroMusica(tostring(0))
+    else
+    creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
+end
+audio.play(tapSound2,{channel= 2})
+end
 
-  local function onButtonClickDownEffettoSonoro(event)
-      partitaS:diminuisciVolumeEffettoSonoro()
-      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
-      if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
-          testoVolumeEffettoSonoro.txt=0
-      else
-      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
-  end end
+--************************************************up/down sound effect*****************************
+local function onButtonClickDownEffettoSonoro(event)
+     testoVolumeEffettoSonoro.fn:removeSelf()
+    testoVolumeEffettoSonoro.fn= nil
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+    testoVolumeEffettoSonoro.sn:removeSelf()
+    testoVolumeEffettoSonoro.sn= nil
+end 
+    partitaS:diminuisciVolumeEffettoSonoro()
+    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
+    if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
+        creaNumeroEffetto(tostring(0))
+    else
+    creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
+end
+audio.play(tapSound2,{channel= 2})
+end
 
-  local function onButtonClickUpEffettoSonoro(event)
-       partitaS:aumentaVolumeEffettoSonoro()
-      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
-      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
-  end
+local function onButtonClickUpEffettoSonoro(event)
+      testoVolumeEffettoSonoro.fn:removeSelf()
+    testoVolumeEffettoSonoro.fn= nil
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+    testoVolumeEffettoSonoro.sn:removeSelf()
+    testoVolumeEffettoSonoro.sn= nil
+end 
+    partitaS:aumentaVolumeEffettoSonoro()
+    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
+    creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
+    audio.play(tapSound2,{channel= 2})
+end
+--*********************************************************************************************************
+
+function creaNumeroMusica(valore) 
+    print ("valore :" .. valore )
+    local num1,num2
+    local char1=valore:sub(0,1)
+    local char2= valore:sub(2,2)
+    print (char1)
+    print (char2)
+if char2 == "" then 
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectMusica.x ,rectMusica.y)
+    num2=nil
+    print("case1")
+else
+     print("case2")
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectMusica.x - 11 ,rectMusica.y)
+    num2= display.newImage(composer.imgDir .. char2 .. ".png" ,rectMusica.x + 11 ,rectMusica.y)
+    num2.width=45
+    num2.height= 45
+end
+num1.width=45 
+num1.height= 45
+testoVolumeMusica={fn=num1,sn=num2}
+end
+
+function creaNumeroEffetto(valore)
+   print ("valore :" .. valore )
+    local num1,num2
+    local char1=valore:sub(0,1)
+    local char2= valore:sub(2,2)
+    print (char1)
+    print (char2)
+if char2 == "" then 
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectEffetti.x ,rectEffetti.y)
+    num2=nil
+    print("case1")
+else
+     print("case2")
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectEffetti.x - 11 ,rectEffetti.y)
+    num2= display.newImage(composer.imgDir .. char2 .. ".png" ,rectEffetti.x + 11 ,rectEffetti.y)
+    num2.width=45
+    num2.height= 45
+end
+num1.width=45 
+num1.height= 45
+testoVolumeEffettoSonoro={fn=num1,sn=num2}
+end
 
 
 
@@ -368,12 +451,11 @@ pausa:loadLevel("schermat_pausa_level")
 immagine_pausa = pausa:getLayerObject("pulsanti", "finestra_pausa_0").view
 print("messa pausa " .. mod_par)
 
-local rectMusica = pausa:getLayerObject("pulsanti", "rect_9").view
-local rectEffetti = pausa:getLayerObject("pulsanti", "rect_8").view
-testoVolumeMusica= display.newText((partitaS:volumeMusica() * 10),rectMusica.x,rectMusica.y)
-testoVolumeMusica:setFillColor(0,0,0)
-testoVolumeEffettoSonoro= display.newText((partitaS:volumeEffettoSonoro() * 10),rectEffetti.x,rectEffetti.y)
-testoVolumeEffettoSonoro:setFillColor(0,0,0)
+rectMusica = pausa:getLayerObject("pulsanti", "rect_9").view
+rectEffetti = pausa:getLayerObject("pulsanti", "rect_8").view
+
+creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
+creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
 
 local fxp = pausa:getLayerObject("pulsanti", "volumeeffetti+").view
 fxp.alpha = 0.01
@@ -400,10 +482,7 @@ ok:addEventListener("tap",function(event) isPaused=false physics.start()
 gruppoPausa:removeSelf() print("tolto da 'ok' - tower") tempoFinePausa=os.time() --rimuove la pausa
 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
 --print("tempo di pausa totale - tower",tempoPausaTotale)
-testoVolumeMusica:removeSelf()
-testoVolumeEffettoSonoro:removeSelf()
-testoVolumeEffettoSonoro= nil
-testoVolumeMusica= nil
+
 end)
 musicam:addEventListener("tap", onButtonClickUpMusica)
 musicap:addEventListener("tap", onButtonClickDownMusica)
@@ -414,10 +493,18 @@ backtomenu:addEventListener("tap", function()
   isPaused=false
     scancellaTutto() --rimuove gruppolivello e cannone
     gruppoPausa:removeSelf() print("tolto da backtomenu - tower")
-    testoVolumeMusica:removeSelf()
-testoVolumeEffettoSonoro:removeSelf()
-testoVolumeEffettoSonoro= nil
+
+testoVolumeEffettoSonoro.fn:removeSelf()
+testoVolumeMusica.fn:removeSelf()
+if testoVolumeEffettoSonoro.sn ~= nil then 
+testoVolumeEffettoSonoro.sn:removeSelf()
+end 
+if testoVolumeMusica.sn ~= nil then 
+testoVolumeMusica.sn:removeSelf()
+end
+
 testoVolumeMusica= nil
+testoVolumeEffettoSonoro= nil
     timer.performWithDelay(500, function() composer.gotoScene("toMenu") end )
   end)
 

@@ -189,8 +189,8 @@ end
     rectValoreMusica = myLevel:getLayerObject("Layer 1", "rect_3").view
     rectValoreEffettoSonoro = myLevel:getLayerObject("Layer 1", "rect_2").view
 
-creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)), rectValoreMusica)
-creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)),rectValoreEffettoSonoro)
+creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
+creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
 
 end
 
