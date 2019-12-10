@@ -98,9 +98,9 @@ print("palla di grandezza" .. partitaS:stats().grandezza)
     partitaS:stats().danno = 1 else partitaS:stats().danno=5 end
         end
     ball.x  = display.contentWidth/2
-    ball.y = 60-- 130
+    ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-    ball.anchorY= -4.83 --4,83
+    ball.anchorY= - 4.83 --4,83
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
     if potereAttivato then
@@ -491,17 +491,22 @@ fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
   numeroPalle = statistiche.numeroPalle
   isPaused=false
+
+  testoVolumeMusica.fn:removeSelf()
+    testoVolumeMusica.fn= nil
+    if ( testoVolumeMusica.sn ~= nil) then 
+    testoVolumeMusica.sn:removeSelf()
+    testoVolumeMusica.sn= nil
+end 
+testoVolumeEffettoSonoro.fn:removeSelf()
+    testoVolumeEffettoSonoro.fn= nil
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+    testoVolumeEffettoSonoro.sn:removeSelf()
+    testoVolumeEffettoSonoro.sn= nil
+end 
+
     scancellaTutto() --rimuove gruppolivello e cannone
     gruppoPausa:removeSelf() print("tolto da backtomenu - tower")
-
-testoVolumeEffettoSonoro.fn:removeSelf()
-testoVolumeMusica.fn:removeSelf()
-if testoVolumeEffettoSonoro.sn ~= nil then 
-testoVolumeEffettoSonoro.sn:removeSelf()
-end 
-if testoVolumeMusica.sn ~= nil then 
-testoVolumeMusica.sn:removeSelf()
-end
 
 testoVolumeMusica= nil
 testoVolumeEffettoSonoro= nil
@@ -513,38 +518,44 @@ end
 --FUNZIONE CHE CREA LA SCHERMATA DI STATISTICHE
 ---------------------------------------------------------------------------------
  function creaStatistiche()
+  local images={}
+
+local function creaScritta(valore,y)
+
+  for i = 1, #valore do
+    local c = valore:sub(i,i)
+   -- print(c)
+    -- do something with c
+    local num = display.newImage(composer.imgDir .. c .. ".png" , (200 + i*23) ,y)
+    num.width= 45
+    num.height= 45
+    table.insert(images, num)
+  end
+end 
+
 local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,480)
       schermataStatistiche.x = _W/2 schermataStatistiche.y = _H/2
       local chiudi = display.newRect( 238,420, 75,75 )
       chiudi.alpha = 0.01
       print("messe statistiche " ..  mod_par)
       local stats = partitaS:stats()
-      local gruppo_testo = display.newGroup( )
-    local txt_damage  = display.newText( stats.danno , 240, 95 , native.systemFontBold,45 )
-    local txt_balls   = display.newText( stats.numeroPalle , 240, 135 , native.systemFontBold,45 )
-    local txt_speed   = display.newText( stats.velocita , 240, 180 , native.systemFontBold,45 )
-    local txt_bounce  = display.newText( stats.rimbalzo , 240, 225 , native.systemFontBold,45 )
-    local txt_size    = display.newText( stats.grandezza , 240, 267 , native.systemFontBold,45 )
-    local txt_density = display.newText( stats.densita , 240, 310 , native.systemFontBold ,45)
-    local txt_luck    = display.newText( stats.fortuna , 240, 350 , native.systemFontBold ,45)
-    gruppo_testo:insert(txt_damage)
-    gruppo_testo:insert(txt_balls)
-    gruppo_testo:insert(txt_speed)
-    gruppo_testo:insert(txt_bounce)
-    gruppo_testo:insert(txt_size)
-    gruppo_testo:insert(txt_density)
-    gruppo_testo:insert(txt_luck)
-    txt_damage:setStrokeColor( 0, 0, 0 ,255)
-    txt_damage.strokeWidth = 80
-    txt_damage:setFillColor( 1, 0, 0 )
-    txt_damage:setFillColor(1,0,0)
-    txt_balls:setFillColor(1,0,0)
-    txt_speed:setFillColor(1,0,0)
-    txt_bounce:setFillColor(1,0,0)
-    txt_size:setFillColor(1,0,0)
-    txt_density:setFillColor(1,0,0)
-    txt_luck:setFillColor(1,0,0)
-      chiudi:addEventListener("tap",function(event) gruppo_testo:removeSelf() gruppo_testo = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
+      print(stats.danno) 
+       print(stats.numeroPalle) 
+        print(stats.velocita) 
+         print(stats.rimbalzo) 
+          print(stats.grandezza) 
+           print(stats.densita) 
+            print(stats.fortuna) 
+
+    creaScritta(tostring(stats.danno), 95)
+    creaScritta(tostring(stats.numeroPalle), 135)
+    creaScritta(tostring(stats.velocita), 180)   --max 999? poco spazio
+    creaScritta(tostring(stats.rimbalzo * 10), 225) --sennò valore con la virgola
+    creaScritta(tostring(stats.grandezza), 267)
+    creaScritta(tostring(stats.densita), 310)
+    creaScritta(tostring(stats.fortuna), 350)
+
+    chiudi:addEventListener("tap",function(event) for  i = 1, #images do images[i]:removeSelf() end  images = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
 end
 
 M.testFunction = testFunction
