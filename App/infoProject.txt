@@ -3,7 +3,7 @@ To do list:
 - numeri assets
 - pg nel cannone
 - rewards
-- you win(piano e finale)/you lose + score / asset finestra+ asset score + asset you win/lose
+- you win(piano e finale)/you lose + score / asset finestra+ asset score (scritta) + asset you win/lose
 - fisica parte superiore ui
 
 - aggiungere altro personaggio

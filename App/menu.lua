@@ -39,12 +39,12 @@ function scene:create( event )
 --  livelli.daLivello = 1 -- parto ad assegnare il livello 2, visto che il primo è del menu
 	levelGroup = slideView.new( images, nil, livelli)
 --print(composer.level)
-  
+
   -- this automatically move to the last selected level
   if (composer.level > 1 ) then
     levelGroup:jumpToImage(composer.level)
   end
-  
+
 
 	-- this automatically move to the last selected level
 	sceneGroup:insert(levelGroup)
@@ -71,13 +71,14 @@ local arcade = composer.loadScene( "arcade", false)
       if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
       if nil~= composer.getScene("toOption") then composer.removeScene("toOption", false) end
       if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
+      if nil~= composer.getScene("scene1") then composer.removeScene("scene1", false) end
 
 
 	local function runLevel(livello)
 	--	composer.gotoScene( "gestisciMenuPrimario" , { effect = "crossFade", time = 200})
  -- print("Run level eseguita")
   if livello == 1 then
-    mod_par="tower" 
+    mod_par="tower"
     print("modalita dal menu scelta tower = " .. mod_par)
     composer.gotoScene( "selectPG")
     return true

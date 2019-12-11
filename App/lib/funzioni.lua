@@ -2,6 +2,7 @@ local M = {}
 local composer = require( "composer" )
 local physics = require ("physics")
 require ("lib.partitaStoria")
+tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 --arcade deve creare invece
 
 partitaS:new()
@@ -98,9 +99,9 @@ print("palla di grandezza" .. partitaS:stats().grandezza)
     partitaS:stats().danno = 1 else partitaS:stats().danno=5 end
         end
     ball.x  = display.contentWidth/2
-    ball.y = 60-- 130
+    ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-    ball.anchorY= -4.83 --4,83
+    ball.anchorY= - 4.83 --4,83
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
     if potereAttivato then
@@ -329,37 +330,119 @@ end
 
   local testoVolumeMusica
   local testoVolumeEffettoSonoro
+  local rectMusica 
+  local rectEffetti
+
   --listener
-  local function onButtonClickUpMusica(event)
-      partitaS:aumentaVolumeMusica()
-      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
-  end
+--*************************************up/down musica******************************************
+local function onButtonClickUpMusica(event)
+    testoVolumeMusica.fn:removeSelf()
+    testoVolumeMusica.fn= nil
+    if ( testoVolumeMusica.sn ~= nil) then 
+    testoVolumeMusica.sn:removeSelf()
+    testoVolumeMusica.sn= nil
+end 
+    partitaS:aumentaVolumeMusica()
+    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+    creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
+    audio.play(tapSound2,{channel= 2})
 
-  local function onButtonClickDownMusica(event)
-      partitaS:diminuisciVolumeMusica()
-      audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
-      if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
-          testoVolumeMusica.text= 0
-      else
-      testoVolumeMusica.text= (partitaS:volumeMusica() * 10)
+end
 
-  end end
+local function onButtonClickDownMusica(event)
+    testoVolumeMusica.fn:removeSelf()
+    testoVolumeMusica.fn= nil
+    if ( testoVolumeMusica.sn ~= nil) then 
+    testoVolumeMusica.sn:removeSelf()
+    testoVolumeMusica.sn= nil
+end 
+    partitaS:diminuisciVolumeMusica()
+    audio.setVolume( partitaS:volumeMusica(), {channel=1}  )
+    if (partitaS:volumeMusica()*10)>0 and (partitaS:volumeMusica()*10)<1  then
+       creaNumeroMusica(tostring(0))
+    else
+    creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
+end
+audio.play(tapSound2,{channel= 2})
+end
 
-  local function onButtonClickDownEffettoSonoro(event)
-      partitaS:diminuisciVolumeEffettoSonoro()
-      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
-      if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
-          testoVolumeEffettoSonoro.txt=0
-      else
-      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
-  end end
+--************************************************up/down sound effect*****************************
+local function onButtonClickDownEffettoSonoro(event)
+     testoVolumeEffettoSonoro.fn:removeSelf()
+    testoVolumeEffettoSonoro.fn= nil
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+    testoVolumeEffettoSonoro.sn:removeSelf()
+    testoVolumeEffettoSonoro.sn= nil
+end 
+    partitaS:diminuisciVolumeEffettoSonoro()
+    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2}  )
+    if (partitaS:volumeEffettoSonoro()*10)>0 and (partitaS:volumeEffettoSonoro()*10)<1  then
+        creaNumeroEffetto(tostring(0))
+    else
+    creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
+end
+audio.play(tapSound2,{channel= 2})
+end
 
-  local function onButtonClickUpEffettoSonoro(event)
-       partitaS:aumentaVolumeEffettoSonoro()
-      audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
-      testoVolumeEffettoSonoro.text= (partitaS:volumeEffettoSonoro() * 10)
-  end
+local function onButtonClickUpEffettoSonoro(event)
+      testoVolumeEffettoSonoro.fn:removeSelf()
+    testoVolumeEffettoSonoro.fn= nil
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+    testoVolumeEffettoSonoro.sn:removeSelf()
+    testoVolumeEffettoSonoro.sn= nil
+end 
+    partitaS:aumentaVolumeEffettoSonoro()
+    audio.setVolume(partitaS:volumeEffettoSonoro(), {channel=2} )
+    creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
+    audio.play(tapSound2,{channel= 2})
+end
+--*********************************************************************************************************
+
+function creaNumeroMusica(valore) 
+    print ("valore :" .. valore )
+    local num1,num2
+    local char1=valore:sub(0,1)
+    local char2= valore:sub(2,2)
+    print (char1)
+    print (char2)
+if char2 == "" then 
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectMusica.x ,rectMusica.y)
+    num2=nil
+    print("case1")
+else
+     print("case2")
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectMusica.x - 11 ,rectMusica.y)
+    num2= display.newImage(composer.imgDir .. char2 .. ".png" ,rectMusica.x + 11 ,rectMusica.y)
+    num2.width=45
+    num2.height= 45
+end
+num1.width=45 
+num1.height= 45
+testoVolumeMusica={fn=num1,sn=num2}
+end
+
+function creaNumeroEffetto(valore)
+   print ("valore :" .. valore )
+    local num1,num2
+    local char1=valore:sub(0,1)
+    local char2= valore:sub(2,2)
+    print (char1)
+    print (char2)
+if char2 == "" then 
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectEffetti.x ,rectEffetti.y)
+    num2=nil
+    print("case1")
+else
+     print("case2")
+    num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectEffetti.x - 11 ,rectEffetti.y)
+    num2= display.newImage(composer.imgDir .. char2 .. ".png" ,rectEffetti.x + 11 ,rectEffetti.y)
+    num2.width=45
+    num2.height= 45
+end
+num1.width=45 
+num1.height= 45
+testoVolumeEffettoSonoro={fn=num1,sn=num2}
+end
 
 
 
@@ -369,12 +452,11 @@ pausa:loadLevel("schermat_pausa_level")
 immagine_pausa = pausa:getLayerObject("pulsanti", "finestra_pausa_0").view
 print("messa pausa " .. mod_par)
 
-local rectMusica = pausa:getLayerObject("pulsanti", "rect_9").view
-local rectEffetti = pausa:getLayerObject("pulsanti", "rect_8").view
-testoVolumeMusica= display.newText((partitaS:volumeMusica() * 10),rectMusica.x,rectMusica.y)
-testoVolumeMusica:setFillColor(0,0,0)
-testoVolumeEffettoSonoro= display.newText((partitaS:volumeEffettoSonoro() * 10),rectEffetti.x,rectEffetti.y)
-testoVolumeEffettoSonoro:setFillColor(0,0,0)
+rectMusica = pausa:getLayerObject("pulsanti", "rect_9").view
+rectEffetti = pausa:getLayerObject("pulsanti", "rect_8").view
+
+creaNumeroMusica(tostring((partitaS:volumeMusica() * 10)))
+creaNumeroEffetto(tostring((partitaS:volumeEffettoSonoro() * 10)))
 
 local fxp = pausa:getLayerObject("pulsanti", "volumeeffetti+").view
 fxp.alpha = 0.01
@@ -401,10 +483,7 @@ ok:addEventListener("tap",function(event) isPaused=false physics.start()
 gruppoPausa:removeSelf() print("tolto da 'ok' - tower") tempoFinePausa=os.time() --rimuove la pausa
 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
 --print("tempo di pausa totale - tower",tempoPausaTotale)
-testoVolumeMusica:removeSelf()
-testoVolumeEffettoSonoro:removeSelf()
-testoVolumeEffettoSonoro= nil
-testoVolumeMusica= nil
+
 end)
 musicam:addEventListener("tap", onButtonClickUpMusica)
 musicap:addEventListener("tap", onButtonClickDownMusica)
@@ -413,12 +492,25 @@ fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
   numeroPalle = statistiche.numeroPalle
   isPaused=false
+
+  testoVolumeMusica.fn:removeSelf()
+    testoVolumeMusica.fn= nil
+    if ( testoVolumeMusica.sn ~= nil) then 
+    testoVolumeMusica.sn:removeSelf()
+    testoVolumeMusica.sn= nil
+end 
+testoVolumeEffettoSonoro.fn:removeSelf()
+    testoVolumeEffettoSonoro.fn= nil
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+    testoVolumeEffettoSonoro.sn:removeSelf()
+    testoVolumeEffettoSonoro.sn= nil
+end 
+
     scancellaTutto() --rimuove gruppolivello e cannone
     gruppoPausa:removeSelf() print("tolto da backtomenu - tower")
-    testoVolumeMusica:removeSelf()
-testoVolumeEffettoSonoro:removeSelf()
-testoVolumeEffettoSonoro= nil
+
 testoVolumeMusica= nil
+testoVolumeEffettoSonoro= nil
     timer.performWithDelay(500, function() composer.gotoScene("toMenu") end )
   end)
 
@@ -427,38 +519,44 @@ end
 --FUNZIONE CHE CREA LA SCHERMATA DI STATISTICHE
 ---------------------------------------------------------------------------------
  function creaStatistiche()
+  local images={}
+
+local function creaScritta(valore,y)
+
+  for i = 1, #valore do
+    local c = valore:sub(i,i)
+   -- print(c)
+    -- do something with c
+    local num = display.newImage(composer.imgDir .. c .. ".png" , (200 + i*23) ,y)
+    num.width= 45
+    num.height= 45
+    table.insert(images, num)
+  end
+end 
+
 local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,480)
       schermataStatistiche.x = _W/2 schermataStatistiche.y = _H/2
       local chiudi = display.newRect( 238,420, 75,75 )
       chiudi.alpha = 0.01
       print("messe statistiche " ..  mod_par)
       local stats = partitaS:stats()
-      local gruppo_testo = display.newGroup( )
-    local txt_damage  = display.newText( stats.danno , 240, 95 , native.systemFontBold,45 )
-    local txt_balls   = display.newText( stats.numeroPalle , 240, 135 , native.systemFontBold,45 )
-    local txt_speed   = display.newText( stats.velocita , 240, 180 , native.systemFontBold,45 )
-    local txt_bounce  = display.newText( stats.rimbalzo , 240, 225 , native.systemFontBold,45 )
-    local txt_size    = display.newText( stats.grandezza , 240, 267 , native.systemFontBold,45 )
-    local txt_density = display.newText( stats.densita , 240, 310 , native.systemFontBold ,45)
-    local txt_luck    = display.newText( stats.fortuna , 240, 350 , native.systemFontBold ,45)
-    gruppo_testo:insert(txt_damage)
-    gruppo_testo:insert(txt_balls)
-    gruppo_testo:insert(txt_speed)
-    gruppo_testo:insert(txt_bounce)
-    gruppo_testo:insert(txt_size)
-    gruppo_testo:insert(txt_density)
-    gruppo_testo:insert(txt_luck)
-    txt_damage:setStrokeColor( 0, 0, 0 ,255)
-    txt_damage.strokeWidth = 80
-    txt_damage:setFillColor( 1, 0, 0 )
-    txt_damage:setFillColor(1,0,0)
-    txt_balls:setFillColor(1,0,0)
-    txt_speed:setFillColor(1,0,0)
-    txt_bounce:setFillColor(1,0,0)
-    txt_size:setFillColor(1,0,0)
-    txt_density:setFillColor(1,0,0)
-    txt_luck:setFillColor(1,0,0)
-      chiudi:addEventListener("tap",function(event) gruppo_testo:removeSelf() gruppo_testo = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
+      print(stats.danno) 
+       print(stats.numeroPalle) 
+        print(stats.velocita) 
+         print(stats.rimbalzo) 
+          print(stats.grandezza) 
+           print(stats.densita) 
+            print(stats.fortuna) 
+
+    creaScritta(tostring(stats.danno), 95)
+    creaScritta(tostring(stats.numeroPalle), 135)
+    creaScritta(tostring(stats.velocita), 180)   --max 999? poco spazio
+    creaScritta(tostring(stats.rimbalzo * 10), 225) --sennò valore con la virgola
+    creaScritta(tostring(stats.grandezza), 267)
+    creaScritta(tostring(stats.densita), 310)
+    creaScritta(tostring(stats.fortuna), 350)
+
+    chiudi:addEventListener("tap",function(event) for  i = 1, #images do images[i]:removeSelf() end  images = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
 end
 
 M.testFunction = testFunction
