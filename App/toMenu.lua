@@ -20,7 +20,7 @@ function scene:create( event )
 	display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
   --coloro il background di default
 
-	print ("toMenu")
+	print ("toMenu - create")
 	btnStart = display.newText("Touch the screen\n       to start", _W/2, (_H/2)+ 80,native.systemFontBold, 30)
 	btnStart:setFillColor(255, 255, 255)
 	sceneGroup:insert(btnStart)
@@ -33,8 +33,8 @@ function scene:show( event )
 
    if event.phase == "did" then
       -- purges previous and next scenes
-      if nil~= composer.getScene("menu") then composer.removeScene("menu", true) end
-
+      --if nil~= composer.getScene("menu") then composer.removeScene("menu", true) end
+print ("toMenu - show")
 		-- Button event listeners
 
 		local function onstartEvent(event)

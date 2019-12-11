@@ -19,7 +19,6 @@ local _H = display.contentHeight; -- full height of the page
 -- create()
 function scene:create( event )
 
-audio.stop(1)
 
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -34,7 +33,7 @@ audio.stop(1)
  local options = { effect = "crossFade", time = 200}
  self:removeEventListener( "tap", onClick )
  --composer.gotoScene( "levels.mappa")
- composer.gotoScene( "levels.scene1")
+ composer.gotoScene( "levels.mappa" )
  return true
 end
 
@@ -69,7 +68,7 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Code here runs immediately after the scene goes entirely off screen
-        print("toPlay page removed")
+        print("toPlay page removed (hide)")
     end
 end
 

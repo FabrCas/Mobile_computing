@@ -37,17 +37,59 @@ function new( imageSet, slideBackground, top )
 
 	images = {}
 
-	for i = 1,#myImages do
+	local counterDecine= 1
+	for i = 1, 30 do
+		
 		local texture = nil
 		local p = display.newSnapshot( w,h )
 		math.randomseed( 0 )
 
+		local valore
+		if counterDecine >= 10 and counterDecine < 20 then 
+			--print("counterDecine >= 10")
+		    valore= 1
+			valore2= math.fmod (i, 10)
+		elseif counterDecine >= 20 and counterDecine < 30 then 
+			--print("counterDecine >= 20")
+			valore= 2
+			valore2= math.fmod (i, 10)
+		elseif counterDecine >= 30 then
+			--print("counterDecine >= 30")
+			valore= 3
+			valore2= math.fmod (i, 10)
+		else 
+			valore= i
+		end
 
-			texture = display.newImage(myImages[i].image)
-			texture.xScale= 0.7
-			texture.yScale= 0.5
+		--print ("Valore "..valore)
+
+		if counterDecine >= 10 then 
+		texture = display.newImage(myImages[valore].image)
+		texture.xScale= 0.7
+		texture.yScale= 0.5
+		texture.y= 150
+		texture.x= texture.x -40
+
+		texture2= display.newImage(myImages[valore2].image)
+		texture2.xScale= 0.7
+		texture2.yScale= 0.5
+		texture2.y= 150
+		texture2.x= texture2.x +40
+
 
 		p.canvas:insert( texture )
+		p.canvas:insert( texture2 )
+
+	else
+
+
+		texture = display.newImage(myImages[valore].image)
+		texture.xScale= 0.7
+		texture.yScale= 0.5
+		texture.y= 150
+
+		p.canvas:insert( texture )
+	end
 		p:invalidate( "canvas" )
 		g:insert(p)
 
@@ -73,7 +115,8 @@ function new( imageSet, slideBackground, top )
 		p:toBack()
 
 		images[i] = p
-
+		counterDecine= counterDecine+1
+		--print("cd"..counterDecine)
 	end
 
 	imgNum = 1
@@ -117,17 +160,10 @@ function new( imageSet, slideBackground, top )
 				else
 					cancelMove()
 					if (dragDistance == 0) then
-						if (myImages[imgNum].locked) then
-							--print ("clicked locked item ", imgNum)
-						else
-							--
-
 							--print ("clicked item ", imgNum)
 							-- Sometime later, create an event and dispatch it
 							local event = { name="levelClicked", level=imgNum }
 							Runtime:dispatchEvent( event )
-						end
-
 					end
 				end
 
@@ -262,7 +298,7 @@ function new( imageSet, slideBackground, top )
 	end
 
 	function g:cleanUp()
-		--print("slides cleanUp")
+		print("slides cleanUp")
 		background:removeEventListener("touch", touchListener)
 	end
 

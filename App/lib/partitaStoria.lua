@@ -22,28 +22,45 @@ partitaS = {}
 partitaS_mt =  {__index = partitaS}
 
 function partitaS:new()
+
+  print("creata partitaS - " .. mod_par)
+   if mod_par=='tower' then
   livelloAttuale= "/scene01"
   score=0
   stats = {
     danno= 1.0,
     numeroPalle= 8,
-    rimbalzo= 0.5,
-    grandezza= 5.0, --raggio   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    rimbalzo= 0.8,
+    grandezza= 10, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 1.0,
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
     velocita= 500
   }
+    print("torre - tower")
   torre= {}
   torre.pianoAttuale= 0
   piano={}
   piano.altezza=0
   creazioneTorre()
   torre.stanzaAttuale= torre.primoPiano.start
+else
+  print ("arcade - arcadeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    livelloAttuale= "/scene01"
+  score=0
+  stats = {
+    danno= 5,
+    numeroPalle= 12,
+    rimbalzo= 1,
+    grandezza= 15, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    densita= 1.0,
+    fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
+    velocita= 500
+  }
+end  end
 
-end
 
 
--- inizio funzioni per la creazione della mapppa 
+-- inizio funzioni per la creazione della mapppa
 
 
 
@@ -59,7 +76,7 @@ end
 
 function creazioneTorre()
   if piano.altezza < 3 then --da  cancellare
-print ("******************************************inizio creazione piano ********************************************************")
+--print ("******************************************inizio creazione piano ********************************************************")
     local pianoCartesianoStanze= {} -- coppie (x,y) utilizzate per la corretta
     --toNord -> (-, +1)
     --toEst -> (+1, -)
@@ -73,13 +90,13 @@ math.random(); math.random(); math.random()
 --***************************************************************************************************************************
 
     --inizializzazione piano con la prima stanza
-    if (piano.altezza==0) then 
+    if (piano.altezza==0) then
     inizio = math.random(1, 10);
     piano.nStanze= math.random(5,8)
     elseif(piano.altezza==1) then
     inizio = math.random(10, 20);
     piano.nStanze= math.random(8,11)
-    else 
+    else
     inizio = math.random(20, 30);
     piano.nStanze= math.random(11,15)
     end
@@ -97,8 +114,8 @@ math.random(); math.random(); math.random()
     piano.start= stanza
     local stanzeRimaste= piano.nStanze --ho creato la stanza iniziale, quindi -1
 
-    print("numero stanze di partenza: "..string.format(stanzeRimaste))
-    print("stanza iniziale: ".. stanza.nome)
+   -- print("numero stanze di partenza: "..string.format(stanzeRimaste))
+   -- print("stanza iniziale: ".. stanza.nome)
     stanzeRimaste= (piano.nStanze - 1) --ho creato la stanza iniziale, quindi -1
     local delta=0 --variabile che evita il blocco nella creazione delle stanza
 
@@ -117,19 +134,19 @@ math.random(); math.random(); math.random()
     for i=1, 4 do
       esisteStanza= math.random((1+ delta),4)  --delta ci assicura che almeno una stanza verrà creata per la stanza di partenza, nella quarta iterazione
 
-      print("---------------------")
-      print ("iterazione: "..string.format(i))
-      print (esisteStanza==4)
+     --print("---------------------")
+     --print ("iterazione: "..string.format(i))
+     --print (esisteStanza==4)
 
 
       if esisteStanza==4 then
       local direzione= math.random(1,4)
       local stanzaSorteggiata
-      if (piano.altezza==0) then 
+      if (piano.altezza==0) then
     stanzaSorteggiata = math.random(1, 10);
     elseif(piano.altezza==1) then
     stanzaSorteggiata = math.random(10, 20);
-    else 
+    else
     stanzaSorteggiata = math.random(20, 30);
     end
 
@@ -148,9 +165,9 @@ math.random(); math.random(); math.random()
     end
 
 
-      print ("direzione: "..direzione)
-      print ("stanza sorteggiata: "..stanzaSorteggiata)
-      print("---------------------")
+      --print ("direzione: "..direzione)
+      --print ("stanza sorteggiata: "..stanzaSorteggiata)
+      --print("---------------------")
 
       if direzione==1 then
         if (not nordSorteggiato) then
@@ -207,26 +224,26 @@ math.random(); math.random(); math.random()
 
 --stampe prova
 if (stanza.nord ~= nil) then
-print (stanza.nord.nome)
+--print (stanza.nord.nome)
 end
 if (stanza.est ~= nil) then
-print (stanza.est.nome)
+--print (stanza.est.nome)
 end
 if (stanza.sud ~= nil) then
-print (stanza.sud.nome)
+--print (stanza.sud.nome)
 end
 if (stanza.ovest ~= nil) then
-print (stanza.ovest.nome)
+--print (stanza.ovest.nome)
 end
 
-print("numero stanze dopo la prima creazione: "..string.format(stanzeRimaste))
-print ("coordinate utilizzate:")
+--print("numero stanze dopo la prima creazione: "..string.format(stanzeRimaste))
+--print ("coordinate utilizzate:")
 for i=1, #pianoCartesianoStanze do
-  print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
+ -- print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
 end
-print("prossime stanze nella creazione:")
+--print("prossime stanze nella creazione:")
 for i=1, #listaCreazione do
-  print (string.format(listaCreazione[i].nome))
+--  print (string.format(listaCreazione[i].nome))
 end
 
 --------------------------------crazione altre stanze
@@ -235,56 +252,56 @@ creaStanze(stanzeRimaste, pianoCartesianoStanze, listaCreazione, ricorsioneN, pi
 -----------------------------------------------------
 
 for i=1, #pianoCartesianoStanze do
-  print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
+ -- print (string.format(pianoCartesianoStanze[i].x).." "..string.format(pianoCartesianoStanze[i].y))
 end
 
 altezza= piano.altezza
-if (piano.altezza== 0) then 
+if (piano.altezza== 0) then
 torre.primoPiano= piano
-print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
+--print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
 bufferStampa= {}
 stampaPiano(torre.primoPiano.start, 0,bufferStampa)
-elseif (piano.altezza==1) then 
+elseif (piano.altezza==1) then
   torre.secondoPiano= piano
-  print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
+  --print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
 bufferStampa= {}
 stampaPiano(torre.secondoPiano.start, 0,bufferStampa)
 else
   torre.terzoPiano= piano
-   print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
+   --print("avvio stampa di prova per piano: ".. string.format(piano.altezza))
 bufferStampa= {}
 stampaPiano(torre.terzoPiano.start, 0,bufferStampa)
-end 
+end
 
 piano=nil
 piano={}
 piano.altezza= altezza +1
 print ("***************************************fine creazione piano ********************************************************")
 creazioneTorre()
- else 
-  return true 
+ else
+  return true
 end
 end
 
 
 
 function creaStanze(stanzeRimaste, coordinateStanze, listaCreazione, numero, stanzeTotali) --stanze rimanenti è un numero
-  print("***************************/////*******************")
-  print ("ciclo di creazione: "..numero)
+ -- print("***************************/////*******************")
+ -- print ("ciclo di creazione: "..numero)
 
 local stanzeRimanenti=stanzeRimaste
 local pianoCartesiano= coordinateStanze
 local bufferCreazione= listaCreazione
-print ("stanze rimaste: ".. stanzeRimanenti)
+--print ("stanze rimaste: ".. stanzeRimanenti)
 valori_buffer= (#listaCreazione - numero)
-print ("numero buffer: ".. valori_buffer)
+--print ("numero buffer: ".. valori_buffer)
 num= numero
 
 if stanzeRimanenti > 0  then --and valori_buffer>0 then
   local stanza= bufferCreazione[num]  --risolvere problema buffer vuoto
 
-  print (stanza.coordinate.x)
-  print (stanza.coordinate.y)
+--print (stanza.coordinate.x)
+--print (stanza.coordinate.y)
   delta = 0
   --variabili per evitare di creare più stanze nella stessa direzione
     local nordSorteggiato= false
@@ -298,21 +315,21 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
 
     local CreazioneEseguita= false
     esisteStanza= math.random((1+ delta),4)
-     print("---------------------")
-      print ("iterazione: "..string.format(i))
-      print (esisteStanza==4)
+    -- print("---------------------")
+    --  print ("iterazione: "..string.format(i))
+    --  print (esisteStanza==4)
 
- -- if math.abs(stanza.coordinate.x) <=3 and  math.abs(stanza.coordinate.y) <=3 then 
+ -- if math.abs(stanza.coordinate.x) <=3 and  math.abs(stanza.coordinate.y) <=3 then
     if esisteStanza==4 then
 
       local direzione= math.random(1,4)
       local stanzaSorteggiata    --= math.random(1,10)
 
-    if (piano.altezza==0) then 
+    if (piano.altezza==0) then
     stanzaSorteggiata = math.random(1, 10);
     elseif(piano.altezza==1) then
     stanzaSorteggiata = math.random(10, 20);
-    else 
+    else
     stanzaSorteggiata = math.random(20, 30);
     end
 
@@ -320,10 +337,10 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       stanzaTemp.coordinate={}
       local coordinateUtilizzate= {}
 
-      print ("direzione: "..direzione)
-      print ("stanza sorteggiata: "..stanzaSorteggiata)
-      print("**********verifica stanza**************|")
-
+      --print ("direzione: "..direzione)
+      --print ("stanza sorteggiata: "..stanzaSorteggiata)
+      --print("**********verifica stanza**************|")
+--
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
       stanzaTemp.isCompleted = false
@@ -337,12 +354,12 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       if direzione==1 then
         coordinateUtilizzate.x= stanza.coordinate.x
         coordinateUtilizzate.y= (stanza.coordinate.y + 1)
-        print ("is valida:")
-        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
+       --print ("is valida:")
+       --print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not nordSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-        if(stanzeRimanenti == 1)then 
+        if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.nord= stanzaTemp
@@ -350,19 +367,19 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         table.insert(bufferCreazione, stanza.nord)
         nordSorteggiato= true
         CreazioneEseguita= true
-        print("stanze decrementate")
+        --print("stanze decrementate")
         stanzeRimanenti = stanzeRimanenti -1
 
       end
       elseif direzione==2 then
         coordinateUtilizzate.x= (stanza.coordinate.x + 1)
         coordinateUtilizzate.y= stanza.coordinate.y
-        print ("is valida:")
-        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
+      -- print ("is valida:")
+      -- print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not estSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-         if(stanzeRimanenti == 1)then 
+         if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.est= stanzaTemp
@@ -370,18 +387,18 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         table.insert(bufferCreazione, stanza.est)
         estSorteggiato= true
         CreazioneEseguita= true
-        print("stanze decrementate")
+        --print("stanze decrementate")
          stanzeRimanenti = stanzeRimanenti -1
       end
       elseif direzione== 3 then
         coordinateUtilizzate.x= stanza.coordinate.x
         coordinateUtilizzate.y= (stanza.coordinate.y -1)
-        print ("is valida:")
-        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
+      -- print ("is valida:")
+      -- print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-         if(stanzeRimanenti == 1)then 
+         if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.sud = stanzaTemp
@@ -389,18 +406,18 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         table.insert(bufferCreazione, stanza.sud)
         sudSorteggiato = true
         CreazioneEseguita= true
-        print("stanze decrementate")
+        --print("stanze decrementate")
         stanzeRimanenti = stanzeRimanenti -1
       end
       else
         coordinateUtilizzate.x= (stanza.coordinate.x -1)
         coordinateUtilizzate.y= stanza.coordinate.y
-        print ("is valida:")
-        print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
+      -- print ("is valida:")
+      -- print ((not sudSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0))
         if ((not ovestSorteggiato) and (verificaCoordinate(coordinateUtilizzate, pianoCartesiano)) and (stanzeRimanenti>0)) then
         stanzaTemp.coordinate.x= coordinateUtilizzate.x
         stanzaTemp.coordinate.y= coordinateUtilizzate.y
-         if(stanzeRimanenti == 1)then 
+         if(stanzeRimanenti == 1)then
           stanzaTemp.tipo ="uscita"
         end
         stanza.ovest= stanzaTemp
@@ -408,7 +425,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
         table.insert(bufferCreazione, stanza.ovest)
         ovestSorteggiato= true
         CreazioneEseguita= true
-        print("stanze decrementate")
+      --  print("stanze decrementate")
         stanzeRimanenti = stanzeRimanenti -1
       end
       end
@@ -417,7 +434,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       if CreazioneEseguita==false then        --per evitare il caso di buffer vuoto
          table.insert(bufferCreazione, stanza)
        end
-  end  --end for 
+  end  --end for
 end  --end controllo coordinate non maggiori a 3
 else
   return true
@@ -443,46 +460,46 @@ end
 
 
 function stampaPiano(stanza, ricorsiveNumber, buffer)
-  if (stanza == nil) then 
-    return true 
-  else 
-  print("-----------------@------------------")
-  print("nome stanza: "..stanza.nome)
-  print("tipo stanza: "..stanza.tipo)
-  print("coordinate: ")
-  print(stanza.coordinate.x)
-  print(stanza.coordinate.y)
-  print("è bloccata:")
-  print(stanza.isLocked)
-  print("è completata:")
-  print(stanza.isCompleted)
+  if (stanza == nil) then
+    return true
+  else
+ -- print("-----------------@------------------")
+ -- print("nome stanza: "..stanza.nome)
+ -- print("tipo stanza: "..stanza.tipo)
+ -- print("coordinate: ")
+ -- print(stanza.coordinate.x)
+ -- print(stanza.coordinate.y)
+ -- print("è bloccata:")
+ -- print(stanza.isLocked)
+ -- print("è completata:")
+ -- print(stanza.isCompleted)
 
   if (stanza.nord ~= nil) then
-print ("stanza nord: "..stanza.nord.nome)
+--print ("stanza nord: "..stanza.nord.nome)
 table.insert(buffer, stanza.nord)
 end
 if (stanza.est ~= nil) then
-print ("stanza est: "..stanza.est.nome)
+--print ("stanza est: "..stanza.est.nome)
 table.insert(buffer, stanza.est)
 end
 if (stanza.sud ~= nil) then
-print ("stanza sud: "..stanza.sud.nome)
+--print ("stanza sud: "..stanza.sud.nome)
 table.insert(buffer, stanza.sud)
 end
 if (stanza.ovest ~= nil) then
-print ("stanza ovest: "..stanza.ovest.nome)
+--print ("stanza ovest: "..stanza.ovest.nome)
 table.insert(buffer, stanza.ovest)
 end
 
 ricorsiveNumber= ricorsiveNumber +1
 stampaPiano(buffer[ricorsiveNumber], ricorsiveNumber, buffer)
-end 
+end
 end
 
 
 
 
--- fine funzioni per la creazione della mapppa 
+-- fine funzioni per la creazione della mapppa
 
 
 
@@ -548,7 +565,7 @@ personaggio=pg
 end
 
 function partitaS:aumentaVolumeMusica()
-  if(volumeMusica<=0.9) then 
+  if(volumeMusica<=0.9) then
   volumeMusica= volumeMusica + 0.1
 end
 end
@@ -556,7 +573,7 @@ end
 function partitaS:diminuisciVolumeMusica()
   if(volumeMusica>=0.1) then
   volumeMusica= volumeMusica - 0.1
-  else 
+  else
   volumeMusica=0
 end
 end
@@ -570,7 +587,7 @@ end
 function partitaS:diminuisciVolumeEffettoSonoro()
   if(volumeEffettoSonoro>=0.1) then
   volumeEffettoSonoro= volumeEffettoSonoro - 0.1
-else 
+else
   volumeEffettoSonoro=0
 end
 end

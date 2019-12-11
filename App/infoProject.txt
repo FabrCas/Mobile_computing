@@ -1,0 +1,26 @@
+
+To do list:
+- numeri assets
+- pg nel cannone
+- rewards
+- you win(piano e finale)/you lose + score / asset finestra+ asset score (scritta) + asset you win/lose
+- fisica parte superiore ui
+
+- aggiungere altro personaggio
+- aggiungere effetti sonori
+
+- poteri personaggio
+- livelli * 29
+- salvataggio dati tower
+- score online con dbr
+- schermate inzio
+- crediti
+
+
+
+
+Strucuture:
+main->toMenu->menu->
+->selectPG->toPlay->levels.mappa->sceneN->funzioniTower/Arcade
+->arcade->selectPGArcade->sceneN->funzioniTower/Arcade
+->toOptions->toCredits

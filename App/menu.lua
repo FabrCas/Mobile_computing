@@ -1,7 +1,6 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 local slideView = require("lib.carousel_menu")
-require ("lib.partitaStoria")
 
 -- Initial settings and checkings
 local sceneGroup = nil -- main group for all page elements
@@ -10,34 +9,36 @@ local _H = display.contentHeight; -- full height of the page
 local touch = {}
 local levelGroup=nil
 local clicked = 0
-local numeroPagineMenu= 2
+local numeroPagineMenu= 3
 
 -- Called when the scene's view does not exist:
 function scene:create( event )
+  print("menu - create")
     -- view is not yet visible
     local sceneGroup = self.view
 
 --	menuSound= audio.loadStream("sounds/montage.mp3")
 
-print("menu-> create")
+--print("menu-> create")
 
 	-- Insert your own background
 	 local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
 	background.anchorX = 0
-    background.anchorY = 0
+  background.anchorY = 0
 	sceneGroup:insert(background)
 
 	--set images for carousel
 	-- table item is { unlocked image, locked image, locked}
 	local images = {
-	{image = composer.imgDir .. "play.png"},
-	{image = composer.imgDir .. "options.png"}
+	{image = composer.imgDir .. "TowerMode.png"},
+	{image = composer.imgDir .. "ArcadeMode.png"},
+  {image = composer.imgDir .. "Options_n.png"}
 	}
 
 --  livelli.livelliDaCreare = numeroPagineMenu
 --  livelli.daLivello = 1 -- parto ad assegnare il livello 2, visto che il primo è del menu
 	levelGroup = slideView.new( images, nil, livelli)
-print(composer.level)
+--print(composer.level)
 
   -- this automatically move to the last selected level
   if (composer.level > 1 ) then
@@ -53,6 +54,9 @@ end -- ends scene:create
 -- Called when the scene's view is about to 'will/load' or 'did/appear':
 function scene:show( event )
 
+local arcade = composer.loadScene( "arcade", false)
+--local toOptions = composer.loadScene( "toOptions", false)
+
    local sceneGroup = self.view
    --if event.phase == "will" then
 
@@ -61,8 +65,8 @@ function scene:show( event )
    -- audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
 
    if event.phase == "did" then
-     print("menu-> show (did)")
-
+     --print("menu-> show (did)")
+ print("menu - show")
       -- purges previous and next scenes
       if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
       if nil~= composer.getScene("toOption") then composer.removeScene("toOption", false) end
@@ -72,12 +76,19 @@ function scene:show( event )
 
 	local function runLevel(livello)
 	--	composer.gotoScene( "gestisciMenuPrimario" , { effect = "crossFade", time = 200})
-  print("Run level eseguita")
+ -- print("Run level eseguita")
   if livello == 1 then
-    composer.gotoScene( "selectPG", options)
+    mod_par="tower"
+    print("modalita dal menu scelta tower = " .. mod_par)
+    composer.gotoScene( "selectPG")
     return true
   elseif livello == 2 then
-    composer.gotoScene( "toOptions", options )
+    mod_par="arcade"
+    print("modalita dal menu scelta arcade = " .. mod_par)
+    composer.gotoScene( "arcade" )   --in futuro: arcade
+    return true
+     elseif livello == 3 then
+    composer.gotoScene( "toOptions" )
     return true
 	end
 end
@@ -86,8 +97,8 @@ end
 		clicked = clicked + 1
 		if (clicked ==1) then
 			Runtime:removeEventListener("levelClicked")
-			levelGroup:cleanUp()
-			print (clicked, "clicked level", event.level)
+			--levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
+			--print (clicked, "clicked level", event.level)
 			timer.performWithDelay(0,  runLevel(event.level) ,1)
 		end
 	end
@@ -99,17 +110,17 @@ end
 end -- ends scene:show
 
 function scene:hide( event )
-  print("menu-> hide")
+ -- print("menu-> hide")
    -- all disposal happens here
  if event.phase == "will" then
 Runtime:removeEventListener("levelClicked")
 
-levelGroup:cleanUp()
+--levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
 
  elseif event.phase == "did" then
       composer.test = nil
 levelGroup = nil
-print ("page_2 destroyed")
+--print ("page_2 destroyed")
  end
 
 
