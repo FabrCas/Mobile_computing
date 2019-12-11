@@ -119,6 +119,14 @@
    </physics>
   </asset>
  </assets>
+ <assets firstgid="19" name="back" width="200" height="200">
+  <image source="../../App/images/back.png" width="200" height="200"/>
+  <asset frame="0" name="back_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
  <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="backgrounds" gridX="16" gridY="16">
   <object uid="{e98cfec2-15b7-4d62-bc2d-7eaf26506a22}" shape="0" name="rect_pg1" alpha="1" blendMode="0" spriteName="" x="14" y="31.5" width="135.5" height="188.5" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4278190080" textcolor="4294967295">
    <properties>
@@ -167,6 +175,13 @@
    </physics>
   </object>
   <object uid="{0e224a4d-e5c9-41cf-b324-44213e911e92}" shape="6" name="scroll-b_0" alpha="1" blendMode="0" idx="18" spriteName="" x="-27.5" y="76.5" width="222.5" height="237.5" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="ui" gridX="16" gridY="16">
+  <object uid="{6f2f023d-7ebf-4f14-9cec-0f2f12d215d5}" shape="6" name="back_0" alpha="1" blendMode="0" idx="19" spriteName="" x="276.5" y="446.5" width="41" height="31.5" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
