@@ -68,10 +68,10 @@ audio.pause(1)
 	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
 	myCannon = LD_Loader:new(self.view)
-	myCannon:loadLevel("shoot")
+	myCannon:loadLevel("cannon.shoot")
 	cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
-
-    f.creaCannone(cannone)
+	cerchio = myCannon:getLayerObject("LayerCannone", "ellipse_2")
+    f.creaCannone(cannone,cerchio)
 	f.creaUI(self.view)
     f.creaLivello(cannone)
 
