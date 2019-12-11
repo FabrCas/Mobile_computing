@@ -8,7 +8,10 @@ local composer = require( "composer" )
 
 local scene = composer.newScene()
 require("lib.LD_LoaderX")
+<<<<<<< HEAD
+=======
 require("lib.LD_HelperX")
+>>>>>>> 05579849e50885a4dba71a94881f108423736b8a
 
 _W = display.contentWidth
 _H = display.contentHeight
@@ -68,10 +71,10 @@ audio.pause(1)
 	myLevel = LD_Loader:new(self.view)
 	myLevel:loadLevel("Level01") -- set your scene/level name here
 	myCannon = LD_Loader:new(self.view)
-	myCannon:loadLevel("shoot")
+	myCannon:loadLevel("cannon.shoot")
 	cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
-
-    f.creaCannone(cannone)
+	cerchio = myCannon:getLayerObject("LayerCannone", "ellipse_2")
+    f.creaCannone(cannone,cerchio)
 	f.creaUI(self.view)
     f.creaLivello(cannone)
 

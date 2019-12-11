@@ -38,7 +38,7 @@ tempoInizioLivello = os.time()
 end
 
 local vecchiaPalla
- function creaCannone(cannon)
+ function creaCannone(cannon,cerchio)
   creaPartita()
 nTiri=0
   print("numero palle = " .. statistiche.numeroPalle .. mod_par)
@@ -51,6 +51,7 @@ nTiri=0
   cannon.x = display.contentWidth/2
     cannon.y = 60  --50
     cannon.anchorY = 0.33
+    cerchio.view.x = cannon.x cerchio.view.y=60
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
       local rect = display.newRect( 0, _H/2,50,50 )
       rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" )  end)
@@ -357,6 +358,9 @@ else print("primto tmiro") end
    canShoot = true end
 end --event.phase
 end -- if nTiri
+
+--canShoot = true --da cancellare dopo
+
       if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         getAngle(event.x,event.y,cannon)
@@ -400,7 +404,7 @@ end
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
   _G.myUI = LD_Loader:new(screenGroup)
-  myUI:loadLevel("ui")
+  myUI:loadLevel("ui.ui")
   led_acceso = display.newImageRect("images/led acceso.png",  30,30 )
   gruppoLivello:insert(led_acceso)
   local buttonPausa = myUI:getLayerObject("invisible_layer", "buttonStats").view --PAUSA (anche se c'è scritto buttonStats)
