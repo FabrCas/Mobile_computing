@@ -38,12 +38,12 @@ print("menu-> create")
 --  livelli.daLivello = 1 -- parto ad assegnare il livello 2, visto che il primo è del menu
 	levelGroup = slideView.new( images, nil, livelli)
 print(composer.level)
-  
+
   -- this automatically move to the last selected level
   if (composer.level > 1 ) then
     levelGroup:jumpToImage(composer.level)
   end
-  
+
 
 	-- this automatically move to the last selected level
 	sceneGroup:insert(levelGroup)
@@ -67,6 +67,7 @@ function scene:show( event )
       if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
       if nil~= composer.getScene("toOption") then composer.removeScene("toOption", false) end
       if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
+      if nil~= composer.getScene("scene1") then composer.removeScene("scene1", false) end
 
 
 	local function runLevel(livello)

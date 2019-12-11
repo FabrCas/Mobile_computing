@@ -109,7 +109,7 @@ backtomenu.alpha = 0.01
 local ok = pausa:getLayerObject("pulsanti", "ok").view
 gruppo:insert(immagine_pausa) gruppo:insert(fxp) gruppo:insert(fxm) gruppo:insert(musicap) gruppo:insert(musicam) gruppo:insert(backtomenu) gruppo:insert(ok)
 ok.alpha = 0.01
-ok:addEventListener("tap",function(event) isPaused=false physics.start() gruppo:removeSelf() tempoFinePausa=os.time() --rimuove la pausa
+ok:addEventListener("tap",function(event) isPaused=false physics.start() physics.setGravity( 0, 46 )gruppo:removeSelf() tempoFinePausa=os.time() --rimuove la pausa
 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
 print("tempo di pausa totale",tempoPausaTotale)
 testoVolumeMusica:removeSelf()

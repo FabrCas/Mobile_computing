@@ -9,8 +9,7 @@ local composer = require( "composer" )
 require ("lib.partitaStoria")
 local scene = composer.newScene()
 require("lib.LD_LoaderX")
-physics = require ("physics")
-physics.start()
+
 _W = display.contentWidth
 _H = display.contentHeight
 partitaS:new()
@@ -29,6 +28,7 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
+
   partitaS:prova()
   print(partitaS:provaVar())
 	local screenGroup = self.view
