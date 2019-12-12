@@ -16,7 +16,7 @@
    </physics>
   </asset>
  </assets>
- <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="1" gridY="1">
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" visible="0" gridX="1" gridY="1">
   <object uid="{1e543bb8-3f6c-48e0-94c1-6d5a1d242733}" shape="6" name="finestraFineL_0" alpha="1" blendMode="0" idx="1" spriteName="" x="2" y="2" width="320" height="480" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
@@ -28,7 +28,7 @@
    </physics>
   </object>
  </layer>
- <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Rects" gridX="1" gridY="1">
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Rects" visible="0" gridX="1" gridY="1">
   <object uid="{064baf68-6cbf-4dcb-9177-dfcec9ccdd7f}" shape="0" name="rect_1" alpha="1" blendMode="0" spriteName="" x="220.333" y="312.333" width="68.6667" height="69" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="33554431" fillcolor="16777216" textcolor="4294967295">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>

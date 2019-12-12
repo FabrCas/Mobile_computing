@@ -17,7 +17,7 @@ local _h = display.contentHeight/2
  lista= {}  --lista delle stanze da creare
  listaRect={}  --lista grafica delle stanze 
  listaPorte={}  --lista grafica delle porte, da levare? 
-
+ local gruppo_schermata = display.newGroup()
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
@@ -83,14 +83,9 @@ local function onButtonClickStanzaSelezionataDadi(event)
 end
 
 local function onButtonClickStanzaSelezionataUscita(event)
-   -- print("uscita selezionata")
-    cancellaMappa(listaRect, listaPorte)
-    lista= nil
-    lista= {}
-    sceneGroup:remove(testoPiano)
-    testoPiano:removeSelf()
-    testoPiano= nil
-    if (torre.pianoAttuale<2) then 
+  print("bottone finestra fine piano tappato")
+
+      if (torre.pianoAttuale<=2) then 
     torre.pianoAttuale= torre.pianoAttuale+1
     if (torre.pianoAttuale==1) then
         testoPiano = display.newImage(composer.imgDir .. "secondoPiano.png", 0, 38, true)
@@ -107,12 +102,66 @@ local function onButtonClickStanzaSelezionataUscita(event)
         testoPiano.height= 25
     sceneGroup:insert(testoPiano)
 end
-
-    creazione()
+gruppo_schermata:removeSelf()
+gruppo_schermata= display.newGroup()
+creazione()
 else
     return true  --aggiungere schermata di vittoria o boss fight finale 
 end
 end
+
+local function creaScore(valore,x,y)
+
+  for i = 1, #valore do
+    local c = valore:sub(i,i)
+   -- print(c)
+    -- do something with c
+    local num = display.newImage(composer.imgDir .. c .. ".png" , (x + i*23) ,y)
+    num.width= 45
+    num.height= 45
+    gruppo_schermata:insert(num)
+  end
+end 
+
+local function vaiNuovoPiano()
+   -- print("uscita selezionata")
+    cancellaMappa(listaRect, listaPorte)
+    lista= nil
+    lista= {}
+    sceneGroup:remove(testoPiano)
+    testoPiano:removeSelf()
+    testoPiano= nil
+
+    myLevel= LD_Loader:new(gruppo_schermata)
+  myLevel:loadLevel("finestra")
+  local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
+  local rectScritta= myLevel:getLayerObject("Rects", "rect_2").view
+  local rectScore= myLevel:getLayerObject("Rects", "rect_3").view
+  --local finestra= myLevel:getLayerObject("Layer 1", "finestraFineL_0").view
+ -- local scrittaScore= myLevel:getLayerObject("Layer 1", "score_0").view
+
+  local scritta = display.newImage( composer.imgDir .. "floorCompleted.png" , rectScritta.x ,rectScritta.y + 12 )
+  scritta.width= 320
+  scritta.height= 40 
+  local scorep
+  if mod_par=="tower" then 
+  scorep=partitaS:score()
+else 
+  scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+end 
+  creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
+  gruppo_schermata:insert(scritta)
+  gruppo_schermata:insert(rectButton)
+  gruppo_schermata:insert(rectScritta)
+ -- gruppo_schermata:insert(finestra)
+  --gruppo_schermata:insert(scrittaScore)
+
+  rectButton:addEventListener("tap", onButtonClickStanzaSelezionataUscita)
+
+end
+
+--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 local function creaMappa(stanza, iter)
     --margine -> per distaccare le stanza
@@ -145,7 +194,7 @@ elseif stanza.tipo == "uscita" then
     table.insert(listaRect, rect)
     sceneGroup:insert(rect)
     --prossimo piano se 1 o 2, vittoria se 3
-    rect:addEventListener("tap", onButtonClickStanzaSelezionataUscita)
+    rect:addEventListener("tap", vaiNuovoPiano)
 else
 rect = display.newImage( composer.imgDir .."stanzaSbloccata.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
 table.insert(listaRect, rect)

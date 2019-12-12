@@ -8,10 +8,8 @@ local composer = require( "composer" )
 
 local scene = composer.newScene()
 require("lib.LD_LoaderX")
-<<<<<<< HEAD
-=======
 require("lib.LD_HelperX")
->>>>>>> 05579849e50885a4dba71a94881f108423736b8a
+
 
 _W = display.contentWidth
 _H = display.contentHeight
