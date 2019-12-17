@@ -2,8 +2,6 @@
 To do list:
 - pg nel cannone
 - rewards
-- you win(piano e finale)/you lose + score / asset finestra+ asset score (scritta) + asset you win/lose
-- fisica parte superiore ui
 
 - aggiungere altro personaggio
 - aggiungere effetti sonori

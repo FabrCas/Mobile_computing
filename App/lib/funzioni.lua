@@ -6,6 +6,7 @@ tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 --arcade deve creare invece
 
 
+local isDefeatedWon
 
 local statistiche                              --=partitaS:stats()
 local numeroPalle                              --= statistiche.numeroPalle
@@ -35,6 +36,7 @@ tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+isDefeatedWon= false 
 end
 
 local vecchiaPalla
@@ -55,8 +57,10 @@ nTiri=0
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
       local rect = display.newRect( 0, _H/2,50,50 )
       rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" )  end)
-      local rect = display.newRect( 0, _H/2 +50,50,50 )
-      rect:addEventListener( "tap", function() physics.setDrawMode( "normal" )  end)
+      local rect1 = display.newRect( 0, _H/2 +50,50,50 )
+      rect1:addEventListener( "tap", function() physics.setDrawMode( "normal" )  end)
+      gruppoLivello:insert(rect)
+      gruppoLivello:insert(rect1)
 end
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
@@ -151,10 +155,10 @@ end
 -- FUNZIONE DI SHOOTING
 ---------------------------------------------------------------------------------
   function shoot(event,potereAttivato,cannon)
-    if (numBallMax) < 0 then
+  -- if (numBallMax) < 0 then
 
-      finePartita()
-    else 
+  --   finePartita()
+  -- else 
     caricaPalla()
     --print("cannon:shoot",potereAttivato)
     sx,sy= event.x , event.y
@@ -163,7 +167,7 @@ end
  -- if ball and not ball.isLaunched then
     cannon:play()
   --  ball:launch()
-    end
+    --end
   end 
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA
@@ -192,7 +196,7 @@ muroInBasso:addEventListener( "collision", function(event)
   event.other = nil
   if numBallMax>0 then  --se ci sono palline
     canShoot = true   --si può sparare di nuovo
-    else finePartita() end
+    end
     if potereAttivato then
     led_acceso.alpha=1
   else led_acceso.alpha = 0
@@ -213,7 +217,7 @@ function removeBrick(brick, mod)
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
-  if nMattoni == 25 then
+  if nMattoni == 0 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then 
@@ -260,6 +264,7 @@ end
 
 function schermataVittoria()
    -- timer.performWithDelay( 500, toNextLevel )
+   if isDefeatedWon == false then
    bg:removeSelf()
    bg= nil 
   myLevel= LD_Loader:new(gruppoLivello)
@@ -282,9 +287,12 @@ end
   gruppoLivello:insert(rectButton)
   gruppoLivello:insert(rectScritta)
   rectButton:addEventListener("tap", onButtonClick)
+  isDefeatedWon= true
+end 
   end 
 
 function schermataSconfitta()
+  if isDefeatedWon == false then
   bg:removeSelf()
   bg= nil 
   myLevel= LD_Loader:new(gruppoLivello)
@@ -307,6 +315,8 @@ end
   gruppoLivello:insert(rectButton)
   gruppoLivello:insert(rectScritta)
   rectButton:addEventListener("tap", onButtonClickLose)
+  isDefeatedWon= true 
+end 
   end 
 
 ---------------------------------------------------------------------------------

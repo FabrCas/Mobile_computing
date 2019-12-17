@@ -3,6 +3,7 @@ require ("lib.partitaStoria")
 local scene = composer.newScene()
 local _w = display.contentWidth/2
 local _h = display.contentHeight/2
+ladderSound= audio.loadStream("sounds/cambio_piano.mp3")
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -79,11 +80,38 @@ local function onButtonClickStanzaSelezionata(event)
 end
 
 local function onButtonClickStanzaSelezionataDadi(event)
-
+      local options =  { effect = "crossFade",
+     time = 200,
+     params = {modalita= "tower"}
+ }
+    composer.gotoScene("levels.rewards", options)
+  stanza= event.target.stanza
+  stanza.isCompleted = true 
+  torre.stanzaAttuale= stanza
+            if stanza.nord ~= nil then
+                stanza.nord.isLocked= false
+            end
+            if stanza.est ~= nil then
+                stanza.est.isLocked= false
+            end
+            if stanza.sud ~= nil then
+                stanza.sud.isLocked= false
+            end
+            if stanza.ovest ~= nil then
+                stanza.ovest.isLocked= false
+            end
+           -- print("lista rect valore: ")
+           -- print (#listaRect)
+            cancellaMappa(listaRect, listaPorte)
+            lista= nil
+            lista= {}
+            creazione()
 end
 
 local function onButtonClickStanzaSelezionataUscita(event)
   print("bottone finestra fine piano tappato")
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel= 2}  )
+audio.play(ladderSound, {loops= 1, channel=2})
 
       if (torre.pianoAttuale<=2) then 
     torre.pianoAttuale= torre.pianoAttuale+1
@@ -188,7 +216,7 @@ elseif stanza.tipo== "tesoro" then
     rect = display.newImage( composer.imgDir .."stanzaPremio.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
     sceneGroup:insert(rect)
     table.insert(listaRect, rect)
-    rect:addEventListener("tap", onButtonClickStanzaSelezionata)
+    rect:addEventListener("tap", onButtonClickStanzaSelezionataDadi)
 elseif stanza.tipo == "uscita" then
     rect = display.newImage( composer.imgDir .."stanzaUscita.png", _w + (stanza.coordinate.x* (larghezza + margine)), _h - (stanza.coordinate.y *(larghezza + margine)))
     table.insert(listaRect, rect)
