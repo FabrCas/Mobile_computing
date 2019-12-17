@@ -1,6 +1,5 @@
 
 To do list:
-- pg nel cannone
 - rewards
 
 - aggiungere altro personaggio

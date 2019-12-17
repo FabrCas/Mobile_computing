@@ -28,7 +28,7 @@ function partitaS:new()
   livelloAttuale= "/scene01"
   score=0
   stats = {
-    danno= 5,
+    danno= 1,
     numeroPalle= 8,
     rimbalzo= 0.8,
     grandezza= 10, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
