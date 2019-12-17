@@ -4,9 +4,14 @@ local physics = require ("physics")
 require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 --arcade deve creare invece
+require("lib.LD_HelperX")
+require("lib.LD_LoaderX")
+local _W = display.contentWidth
+local _H = display.contentHeight
 
-
-
+local a = 225
+local gruppoLivello
+local pg 
 local statistiche                              --=partitaS:stats()
 local numeroPalle                              --= statistiche.numeroPalle
 print("creazione partita - " .. mod_par)
@@ -40,15 +45,31 @@ end
 local vecchiaPalla
  function creaCannone(cannon,cerchio)
   creaPartita()
-nTiri=0
+  nTiri=0
   print("numero palle = " .. statistiche.numeroPalle .. mod_par)
   numeroPalle = statistiche.numeroPalle
-  _G.gruppoLivello = display.newGroup( )
+
+   gruppoLivello = display.newGroup( )
+
+   local circle = display.newCircle( _W/2, 60, 40 )
+   gruppoLivello:insert(circle)
+   circle:toFront( )
+   circle:setFillColor( 0,0,0 )
+   livelloPG = LD_Loader:new(gruppoLivello)
+   livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
+   pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
+
+   pg.x = _W/2
+   pg.y= 60
+   print("FDHSKJFS pg.w " , pg.width .. " pg.h" , pg.height)
+ --  pg.width = a
+ --  pg.height = a
+   print("il frame e " , pg.frame)
     _G.canShoot = true
     _G.potereAttivato = false
     _G.numBallMax = partitaS:stats().numeroPalle
   display.setDefault( "isAnchorClamped", false )
-  cannon.x = display.contentWidth/2
+  cannon.x = _W/2
     cannon.y = 60  --50
     cannon.anchorY = 0.33
     cerchio.view.x = cannon.x cerchio.view.y=60
@@ -110,6 +131,7 @@ end
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    end
         if potereAttivato then
+        	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
    
    partitaS:stats().danno = 10
@@ -151,10 +173,10 @@ end
 -- FUNZIONE DI SHOOTING
 ---------------------------------------------------------------------------------
   function shoot(event,potereAttivato,cannon)
-    if (numBallMax) < 0 then
+    --if (numBallMax) < 0 then
 
-      finePartita()
-    else 
+    --finePartita()
+    --else 
     caricaPalla()
     --print("cannon:shoot",potereAttivato)
     sx,sy= event.x , event.y
@@ -163,7 +185,7 @@ end
  -- if ball and not ball.isLaunched then
     cannon:play()
   --  ball:launch()
-    end
+    --end
   end 
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA
@@ -213,7 +235,7 @@ function removeBrick(brick, mod)
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
-  if nMattoni == 25 then
+  if nMattoni == 5 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then 
@@ -285,6 +307,7 @@ end
   end 
 
 function schermataSconfitta()
+	print("stampa schermata")
   bg:removeSelf()
   bg= nil 
   myLevel= LD_Loader:new(gruppoLivello)
@@ -355,6 +378,7 @@ else print("primto tmiro") end
 
   if (pall_lanciata==nil or (pall_lanciata.y > 340 and vy <40)) and
       numeroPalle>0 then
+      if pg.isPlaying then pg:pause() pg:setFrame(1) end
    canShoot = true end
 end --event.phase
 end -- if nTiri
@@ -368,7 +392,7 @@ end -- if nTiri
       then
       numBallMax = numBallMax - 1
       print("numero palle" .. numBallMax)
-      shoot(event,potereAttivato,cannon) potereAttivato=false  canShoot=false
+      shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=false
       end -- if palla lanciata ecc
           end
 

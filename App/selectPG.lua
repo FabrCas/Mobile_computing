@@ -37,7 +37,7 @@ local function onButtonClick(event)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
   partitaS:setPG(nomePersonaggio)
-  pg= myLevel:getLayerObject("PGs", "cottonBall").view
+  pg= myLevel:getLayerObject("PGs", "cottonBall").view --sostituire "cottonBall" con nomePersonaggio
   --timer.performWithDelay( 10000 , composer.gotoScene( "toPlay", options ))
   pg:play()
   chiamaProssimaScena()
