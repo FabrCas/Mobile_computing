@@ -10,7 +10,6 @@ local scene = composer.newScene()
 require("lib.LD_LoaderX")
 require("lib.LD_HelperX")
 
-
 _W = display.contentWidth
 _H = display.contentHeight
 
