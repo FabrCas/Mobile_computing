@@ -9,7 +9,7 @@ local score
 local prova="gianna"
 local torre
 local piano -- var di appoggio per la creazione della torre
-
+local preference = require "lib.preference"
 local volumeMusica = 0.5
 local volumeEffettoSonoro = 0.5
 --local tipiStanza= {"normale", "tesoro", "uscita"}
@@ -28,21 +28,27 @@ function partitaS:new()
   livelloAttuale= "/scene01"
   score=0
   stats = {
-    danno= 1,
-    numeroPalle= 8,
-    rimbalzo= 0.8,
-    grandezza= 10, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
-    densita= 1.0,
-    fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
-    velocita= 500
+    danno= preference.getValue("danno"), --1
+    numeroPalle= preference.getValue("numeroPalle"), --8
+    rimbalzo= preference.getValue("rimbalzo"),--0.8
+    grandezza= preference.getValue("grandezza"), --diametro 10  --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    densita= preference.getValue("densita"), --1
+    fortuna= preference.getValue("fortuna"),  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
+    velocita= preference.getValue("velocita") --500
   }
     print("torre - tower")
+    print("valore tower", preference.getValue("tower"))
+    if preference.getValue("tower")==123 then
+      print("tower in preference nil quindi si crea")
   torre= {}
   torre.pianoAttuale= 0
   piano={}
   piano.altezza=0
   creazioneTorre()
   torre.stanzaAttuale= torre.primoPiano.start
+  preference.save{tower=torre} else
+    print("esiste tower quindi non viene creata")
+    torre=preference.getValue("tower")end
 else
   print ("arcade - arcadeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
     livelloAttuale= "/scene01"
@@ -344,7 +350,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
       stanzaTemp.isCompleted = false
-      sorteggioStanzaTesoro = math.random(1,6) 
+      sorteggioStanzaTesoro = math.random(1,6)
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else
@@ -524,7 +530,7 @@ function partitaS:getScore(scoreLivello, tempo, palleRimaste, isGameOver)
   scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
   scoreParziale = scoreParziale + (palleRimaste*500)
   return scoreParziale
-end 
+end
 
 function partitaS:prossimolivello()
 
