@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="5Sheet" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="Slot">
+ <assets firstgid="1" name="windowR" width="640" height="960">
+  <image source="../images/windowR.png" width="640" height="960"/>
+  <asset frame="0" name="windowR_0" spritename="" class="" export="1" x="0" y="0" w="640" h="960">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="2" name="1Sheet" width="200" height="200">
+  <image source="../images/1Sheet.png" width="600" height="200"/>
+  <asset frame="0" name="1Sheet_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <animations>
+    <sequence name="1+" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="2"/>
+     </frames>
+    </sequence>
+    <sequence name="1-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="1Sheet_1" spritename="" class="" export="0" x="200" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="1Sheet_2" spritename="" class="" export="0" x="400" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="5" name="2Sheet" width="200" height="200">
+  <image source="../images/2Sheet.png" width="600" height="200"/>
+  <asset frame="0" name="2Sheet_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <animations>
+    <sequence name="2+" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="2"/>
+     </frames>
+    </sequence>
+    <sequence name="2-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="2Sheet_1" spritename="" class="" export="0" x="200" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="2Sheet_2" spritename="" class="" export="0" x="400" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="8" name="3Sheet" width="200" height="200">
+  <image source="../images/3Sheet.png" width="600" height="200"/>
+  <asset frame="0" name="3Sheet_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <animations>
+    <sequence name="3+" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="2"/>
+     </frames>
+    </sequence>
+    <sequence name="3-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="3Sheet_1" spritename="" class="" export="0" x="200" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="3Sheet_2" spritename="" class="" export="0" x="400" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="11" name="4Sheet" width="200" height="200">
+  <image source="../images/4Sheet.png" width="600" height="200"/>
+  <asset frame="0" name="4Sheet_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <animations>
+    <sequence name="4+" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="2"/>
+     </frames>
+    </sequence>
+    <sequence name="4-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="4Sheet_1" spritename="" class="" export="0" x="200" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="4Sheet_2" spritename="" class="" export="0" x="400" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="14" name="5Sheet" width="200" height="200">
+  <image source="../images/5Sheet.png" width="600" height="200"/>
+  <asset frame="0" name="5Sheet_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <animations>
+    <sequence name="5+" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="2"/>
+     </frames>
+    </sequence>
+    <sequence name="5-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="5Sheet_1" spritename="" class="" export="0" x="200" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="5Sheet_2" spritename="" class="" export="0" x="400" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="17" name="downSheet" width="200" height="200">
+  <image source="../images/downSheet.png" width="400" height="200"/>
+  <asset frame="0" name="downSheet_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <animations>
+    <sequence name="selected" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="downSheet_1" spritename="" class="" export="0" x="200" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="19" name="upSheet" width="200" height="200">
+  <image source="../images/upSheet.png" width="400" height="200"/>
+  <asset frame="0" name="upSheet_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <animations>
+    <sequence name="selected" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="upSheet_1" spritename="" class="" export="0" x="200" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="21" name="statSheet" width="600" height="400">
+  <image source="../images/statSheet.png" width="1800" height="1200"/>
+  <asset frame="0" name="statSheet_0" spritename="" class="" export="1" x="0" y="0" w="600" h="400">
+   <animations>
+    <sequence name="roll" loopCount="0" loopDirection="0" duration="200" default="0" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+      <frame idx="2"/>
+      <frame idx="3"/>
+      <frame idx="4"/>
+      <frame idx="5"/>
+      <frame idx="6"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="statSheet_1" spritename="" class="" export="0" x="600" y="0" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="statSheet_2" spritename="" class="" export="0" x="1200" y="0" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="3" name="statSheet_3" spritename="" class="" export="0" x="0" y="400" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="4" name="statSheet_4" spritename="" class="" export="0" x="600" y="400" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="5" name="statSheet_5" spritename="" class="" export="0" x="1200" y="400" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="6" name="statSheet_6" spritename="" class="" export="0" x="0" y="800" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="7" name="statSheet_7" spritename="" class="" export="0" x="600" y="800" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="8" name="statSheet_8" spritename="" class="" export="0" x="1200" y="800" w="600" h="400">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="1" gridY="1">
+  <object uid="{e154570a-36bc-4edb-ba3d-8815905fa67c}" shape="6" name="windowR_0" alpha="1" blendMode="0" idx="1" spriteName="" x="0" y="0" width="320" height="480" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{6c58d1a8-87db-4094-aa2c-7123c1925d97}" shape="6" name="1Sheet_0" alpha="1" blendMode="0" idx="2" spriteName="" x="30" y="343" width="60" height="60" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{df6171ff-3c1b-4911-b39b-8cf89fc8fd4c}" shape="6" name="2Sheet_0" alpha="1" blendMode="0" idx="5" spriteName="" x="130" y="343" width="60" height="60" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{4e742d15-3038-4280-8b14-48adcc8376f3}" shape="6" name="3Sheet_0" alpha="1" blendMode="0" idx="8" spriteName="" x="230" y="343" width="60" height="60" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{42200e2d-7c06-482c-9ae2-f28516a59aad}" shape="6" name="4Sheet_0" alpha="1" blendMode="0" idx="11" spriteName="" x="78" y="406" width="60" height="60" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{d697caa4-cdc5-43c0-8371-abbbbcbec6dd}" shape="6" name="5Sheet_0" alpha="1" blendMode="0" idx="14" spriteName="" x="182" y="406" width="60" height="60" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{3fab577e-1654-40d5-90f7-d08eac2e2da8}" shape="6" name="downSheet_0" alpha="1" blendMode="0" idx="17" spriteName="" x="44" y="227" width="100" height="100" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{beb864e0-9a21-4f2f-860d-a330f7f66332}" shape="6" name="upSheet_0" alpha="1" blendMode="0" idx="19" spriteName="" x="175" y="227" width="100" height="100" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{e8e4f308-39b8-42c7-9674-ec0f55213f23}" shape="6" name="statSheet_0" alpha="1" blendMode="0" idx="21" spriteName="" x="10" y="12" width="300" height="200" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+</level>

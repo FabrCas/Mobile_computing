@@ -5,7 +5,17 @@ require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 --arcade deve creare invece
 
-partitaS:new()
+
+local isDefeatedWon
+
+require("lib.LD_HelperX")
+require("lib.LD_LoaderX")
+local _W = display.contentWidth
+local _H = display.contentHeight
+
+local a = 225
+local gruppoLivello
+local pg 
 
 local statistiche                              --=partitaS:stats()
 local numeroPalle                              --= statistiche.numeroPalle
@@ -13,14 +23,19 @@ print("creazione partita - " .. mod_par)
 local led_acceso
 local pall_lanciata --= nil
 local nTiri
+local bg
 isPaused = false
 tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+local danno
 
 function creaPartita()
+if mod_par=="arcade" then 
 partitaS:new()
+end 
+danno = partitaS:stats().danno
  statistiche=partitaS:stats()
  numeroPalle = statistiche.numeroPalle
 print("creazione partita - creaPartita " .. mod_par)
@@ -30,28 +45,47 @@ tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+isDefeatedWon= false 
 end
 
 local vecchiaPalla
  function creaCannone(cannon,cerchio)
   creaPartita()
-nTiri=0
+  nTiri=0
   print("numero palle = " .. statistiche.numeroPalle .. mod_par)
   numeroPalle = statistiche.numeroPalle
-  _G.gruppoLivello = display.newGroup( )
+
+   gruppoLivello = display.newGroup( )
+
+   local circle = display.newCircle( _W/2, 60, 40 )
+   gruppoLivello:insert(circle)
+   circle:toFront( )
+   circle:setFillColor( 0,0,0 )
+   livelloPG = LD_Loader:new(gruppoLivello)
+   livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
+   pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
+
+   pg.x = _W/2
+   pg.y= 60
+   print("FDHSKJFS pg.w " , pg.width .. " pg.h" , pg.height)
+ --  pg.width = a
+ --  pg.height = a
+   print("il frame e " , pg.frame)
     _G.canShoot = true
     _G.potereAttivato = false
     _G.numBallMax = partitaS:stats().numeroPalle
   display.setDefault( "isAnchorClamped", false )
-  cannon.x = display.contentWidth/2
+  cannon.x = _W/2
     cannon.y = 60  --50
     cannon.anchorY = 0.33
     cerchio.view.x = cannon.x cerchio.view.y=60
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
       local rect = display.newRect( 0, _H/2,50,50 )
       rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" )  end)
-      local rect = display.newRect( 0, _H/2 +50,50,50 )
-      rect:addEventListener( "tap", function() physics.setDrawMode( "normal" )  end)
+      local rect1 = display.newRect( 0, _H/2 +50,50,50 )
+      rect1:addEventListener( "tap", function() physics.setDrawMode( "normal" )  end)
+      gruppoLivello:insert(rect)
+      gruppoLivello:insert(rect1)
 end
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
@@ -68,7 +102,9 @@ function caricaPalla()
   obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle-1)).view
   obj:setLinearVelocity(150,0)
   print("obj = ",obj)
-  vecchiaPalla= obj else  canShoot=false end   end
+  vecchiaPalla= obj else  canShoot=false 
+  end 
+  end
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
@@ -85,9 +121,27 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER CREAZIONE PALLA
 ---------------------------------------------------------------------------------
+function listenerUltimaPalla(event)
+  print("lister ultima palla")
+   if pall_lanciata:getLinearVelocity()~=nil
+    then vx,vy = pall_lanciata:getLinearVelocity( ) end
+  if vy<0 then vy=-vy end
+  if vy < 100 then 
+    finePartita()
+    Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
+  end 
+end
+
+
+
        function creaPalla(sx,sy,potereAttivato, angolo)
+        if numBallMax == 0 then
+     Runtime:addEventListener("enterFrame", listenerUltimaPalla)
+   end
         if potereAttivato then
+        	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+   
    partitaS:stats().danno = 10
    --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
   else
@@ -95,8 +149,7 @@ function caricaPalla()
     --partitaS:stats().grandezza, partitaS:stats().grandezza)
 print("palla di grandezza" .. partitaS:stats().grandezza)
 
-    if mod_par == "tower" then
-    partitaS:stats().danno = 1 else partitaS:stats().danno=5 end
+    partitaS:stats().danno = danno 
         end
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
@@ -128,6 +181,11 @@ end
 -- FUNZIONE DI SHOOTING
 ---------------------------------------------------------------------------------
   function shoot(event,potereAttivato,cannon)
+  -- if (numBallMax) < 0 then
+
+  --   finePartita()
+  -- else 
+
     caricaPalla()
     --print("cannon:shoot",potereAttivato)
     sx,sy= event.x , event.y
@@ -136,7 +194,8 @@ end
  -- if ball and not ball.isLaunched then
     cannon:play()
   --  ball:launch()
-    end
+    --end
+  end 
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA
 ---------------------------------------------------------------------------------
@@ -164,7 +223,7 @@ muroInBasso:addEventListener( "collision", function(event)
   event.other = nil
   if numBallMax>0 then  --se ci sono palline
     canShoot = true   --si può sparare di nuovo
-    else finePartita() end
+    end
     if potereAttivato then
     led_acceso.alpha=1
   else led_acceso.alpha = 0
@@ -172,7 +231,7 @@ muroInBasso:addEventListener( "collision", function(event)
  end )
 muroSinistra:addEventListener( "preCollision", hitMuro)
 muroDestra:addEventListener( "preCollision", hitMuro)
-local bg = display.newRect( _W/2, _H/2, _W, _H )
+bg = display.newRect( _W/2, _H/2, _W, _H )
 bg.alpha=0.01 bg.name="bg"
 bg:addEventListener("touch", function(event) touch(event,cannon) end )
 gruppoLivello:insert(bg)
@@ -186,23 +245,108 @@ function removeBrick(brick, mod)
   brick = nil
   nMattoni = nMattoni - 1
   if nMattoni == 0 then
-    local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
-    gruppoLivello:insert(txt)
+   -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
+    --gruppoLivello:insert(txt)
+       if mod_par=="tower" then 
+  partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+end
+     schermataVittoria()
+   --DA SISTEMARE 
 
-   local function toNextLevel(event)
-    scancellaTutto()
-    if mod_par =="tower" then
-    composer.gotoScene("levels.mappa")
-  else
-    composer.gotoScene("arcade")
-    end
-  end
-
-    timer.performWithDelay( 500, toNextLevel )
-
-
-   --DA SISTEMARE partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello)+tempoPausaTotale, numBallMax,false)
 end end
+
+
+local function onButtonClick(event)
+  print("bottone vinto tappato")
+  local options = { effect = "crossFade", time = 200}
+   scancellaTutto()
+    if mod_par =="tower" then
+    composer.gotoScene("levels.mappa", options)
+  else
+    composer.gotoScene("arcade", options)
+    end
+end 
+
+local function onButtonClickLose(event)
+  local options = { effect = "crossFade", time = 200}
+  scancellaTutto()
+  print("bottone vinto tappato")
+  composer.gotoScene("menu",options )
+end 
+
+
+
+local function creaScore(valore,x,y)
+
+  for i = 1, #valore do
+    local c = valore:sub(i,i)
+   -- print(c)
+    -- do something with c
+    local num = display.newImage(composer.imgDir .. c .. ".png" , (x + i*23) ,y)
+    num.width= 45
+    num.height= 45
+    gruppoLivello:insert(num)
+  end
+end 
+
+function schermataVittoria()
+   -- timer.performWithDelay( 500, toNextLevel )
+   if isDefeatedWon == false then
+   bg:removeSelf()
+   bg= nil 
+  myLevel= LD_Loader:new(gruppoLivello)
+  myLevel:loadLevel("finestra")
+  local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
+  local rectScritta= myLevel:getLayerObject("Rects", "rect_2").view
+  local rectScore= myLevel:getLayerObject("Rects", "rect_3").view
+
+  local scritta = display.newImage( composer.imgDir .. "youWin.png" , rectScritta.x ,rectScritta.y + 12 )
+  scritta.width= 320
+  scritta.height= 40 
+  local scorep
+  if mod_par=="tower" then 
+  scorep=partitaS:score()
+else 
+  scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+end 
+  creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
+  gruppoLivello:insert(scritta)
+  gruppoLivello:insert(rectButton)
+  gruppoLivello:insert(rectScritta)
+  rectButton:addEventListener("tap", onButtonClick)
+  isDefeatedWon= true
+end 
+  end 
+
+function schermataSconfitta()
+  if isDefeatedWon == false then
+	print("stampa schermata")
+  bg:removeSelf()
+  bg= nil 
+  myLevel= LD_Loader:new(gruppoLivello)
+  myLevel:loadLevel("finestra")
+  local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
+  local rectScritta= myLevel:getLayerObject("Rects", "rect_2").view
+  local rectScore= myLevel:getLayerObject("Rects", "rect_3").view
+
+  local scritta = display.newImage( composer.imgDir .. "youLose.png" , rectScritta.x ,rectScritta.y + 12 )
+  scritta.width= 320
+  scritta.height= 40 
+    local scorep
+  if mod_par=="tower" then 
+  scorep=partitaS:score()
+else 
+  scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+end 
+  creaScore(tostring(scorep),(rectScore.x -30), rectScore.y)
+  gruppoLivello:insert(scritta)
+  gruppoLivello:insert(rectButton)
+  gruppoLivello:insert(rectScritta)
+  rectButton:addEventListener("tap", onButtonClickLose)
+  isDefeatedWon= true 
+end 
+  end 
+
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
@@ -249,17 +393,21 @@ else print("primto tmiro") end
 
   if (pall_lanciata==nil or (pall_lanciata.y > 340 and vy <40)) and
       numeroPalle>0 then
+      if pg.isPlaying then pg:pause() pg:setFrame(1) end
    canShoot = true end
 end --event.phase
 end -- if nTiri
+
 --canShoot = true --da cancellare dopo
+
       if not isPaused then
       if event.phase == 'began' or event.phase == 'moved' then
         getAngle(event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot
       then
       numBallMax = numBallMax - 1
-      shoot(event,potereAttivato,cannon) potereAttivato=false canShoot=false
+      print("numero palle" .. numBallMax)
+      shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=false
       end -- if palla lanciata ecc
           end
 
@@ -277,10 +425,12 @@ end -- if nTiri
 --FUNZIONE FINE PARTITA
 ---------------------------------------------------------------------------------
  function finePartita()
-  local txtFinePartita = display.newText( "Hai perso, coglione!", _W/2, _H/2 , native.systemFont,12 )
-  gruppoLivello:insert(txtFinePartita)
+    if mod_par=="tower" then 
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
-end
+end  
+  schermataSconfitta()
+end 
+ 
 ---------------------------------------------------------------------------------
 --FUNZIONI PALLA
 ---------------------------------------------------------------------------------
@@ -480,6 +630,19 @@ gruppoPausa:insert(ok)
 ok.alpha = 0.01
 ok:addEventListener("tap",function(event) isPaused=false physics.start()
   physics.setGravity(0,40)
+
+   testoVolumeMusica.fn:removeSelf()
+    testoVolumeMusica.fn= nil
+    if ( testoVolumeMusica.sn ~= nil) then 
+    testoVolumeMusica.sn:removeSelf()
+    testoVolumeMusica.sn= nil
+end 
+testoVolumeEffettoSonoro.fn:removeSelf()
+    testoVolumeEffettoSonoro.fn= nil
+    if ( testoVolumeEffettoSonoro.sn ~= nil) then 
+    testoVolumeEffettoSonoro.sn:removeSelf()
+    testoVolumeEffettoSonoro.sn= nil
+end 
 gruppoPausa:removeSelf() print("tolto da 'ok' - tower") tempoFinePausa=os.time() --rimuove la pausa
 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
 --print("tempo di pausa totale - tower",tempoPausaTotale)
@@ -558,8 +721,8 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
 
     chiudi:addEventListener("tap",function(event) for  i = 1, #images do images[i]:removeSelf() end  images = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
 end
-
 M.testFunction = testFunction
+
 M.creaCannone = creaCannone
 M.getAngle = getAngle
 M.shoot = shoot

@@ -23,12 +23,12 @@ partitaS_mt =  {__index = partitaS}
 
 function partitaS:new()
 
-  print("creata partitaS - " .. mod_par)
+  print("creata partitaS - " .. mod_par .. "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
    if mod_par=='tower' then
   livelloAttuale= "/scene01"
   score=0
   stats = {
-    danno= 1.0,
+    danno= 1,
     numeroPalle= 8,
     rimbalzo= 0.8,
     grandezza= 10, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
@@ -50,7 +50,7 @@ else
   stats = {
     danno= 5,
     numeroPalle= 12,
-    rimbalzo= 1,
+    rimbalzo= 0.8,
     grandezza= 15, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 1.0,
     fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
@@ -157,7 +157,7 @@ math.random(); math.random(); math.random()
       local coordinateUtilizzate= {}
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
-      sorteggioStanzaTesoro = math.random(1,6)
+      sorteggioStanzaTesoro = math.random(2,2)  --1,6
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else
@@ -344,7 +344,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
       stanzaTemp.isCompleted = false
-      sorteggioStanzaTesoro = math.random(1,6)
+      sorteggioStanzaTesoro = math.random(1,6) 
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else
@@ -511,13 +511,20 @@ function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   --lo scorelivello è un valore che verrà inviato sia se si ha finito il livello con il gameOver,in quel caso
   --poi verrà chiesto lo score definitivo e stampato a schermo
   --aggiungere un bonus prima di inviare lo score del livello se il giocatore lo ha portato a termine
-  local scoreParziale
+  local scoreParziale= 0
   scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
   scoreParziale = scoreParziale + (palleRimaste*500)
   if(scoreParziale > 0) then
     score = score + scoreParziale
   end
 end
+
+function partitaS:getScore(scoreLivello, tempo, palleRimaste, isGameOver)
+ local scoreParziale= 0
+  scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
+  scoreParziale = scoreParziale + (palleRimaste*500)
+  return scoreParziale
+end 
 
 function partitaS:prossimolivello()
 
