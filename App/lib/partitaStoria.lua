@@ -30,11 +30,11 @@ function partitaS:new()
   stats = {
     danno= preference.getValue("danno"), --1
     numeroPalle= preference.getValue("numeroPalle"), --8
+    velocita= preference.getValue("velocita"), --500
     rimbalzo= preference.getValue("rimbalzo"),--0.8
     grandezza= preference.getValue("grandezza"), --diametro 10  --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= preference.getValue("densita"), --1
-    fortuna= preference.getValue("fortuna"),  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
-    velocita= preference.getValue("velocita") --500
+    fortuna= preference.getValue("fortuna")  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5] 
   }
     print("torre - tower")
     print("valore tower", preference.getValue("tower"))
@@ -56,11 +56,11 @@ else
   stats = {
     danno= 5,
     numeroPalle= 12,
+    velocita= 500,
     rimbalzo= 0.8,
     grandezza= 15, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 1.0,
-    fortuna= 0,  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
-    velocita= 500
+    fortuna= 0  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
   }
 end  end
 
@@ -350,7 +350,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
       stanzaTemp.isCompleted = false
-      sorteggioStanzaTesoro = math.random(1,6)
+      sorteggioStanzaTesoro = math.random(6,6) --1,6
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else

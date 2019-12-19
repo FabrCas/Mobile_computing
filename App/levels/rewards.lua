@@ -18,6 +18,10 @@ local cinque
 local slot
 local up
 local down
+local statistiche= {partitaS:stats().danno, partitaS:stats().numeroPalle, partitaS:stats().velocita, partitaS:stats().rimbalzo, partitaS:stats().grandezza, partitaS:stats().densita, partitaS:stats().fortuna}
+local fortuna = statistiche.fortuna
+
+
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -30,35 +34,51 @@ local down
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
  local function animazioneValori()
+    print("animazione valori attiva")
     local valori = {uno,due, tre, quattro, cinque}
+    local counter = 2
 
 local function mySpriteListener( event )
-
+    if ( event.phase == "ended" ) then
+    print ("counter" .. counter)
+        if counter == 6 then
+            print("valore vero")
+            cinque:removeEventListener( "sprite", mySpriteListener )
+            valori[terzaEstrazione]:setFrame(2)
+        else
+        valori[counter]:play()
+        valori[counter - 1]:removeEventListener( "sprite", mySpriteListener )
+        counter= counter + 1 
+    end 
+    end 
+    
 end
-
 
     --scelgo l'animazione giusta in base a se sia uscito up o down
     if secondaEstrazione == 1 then 
+        print("animazione per down")
         uno:setSequence( "1-" )
         due:setSequence( "2-" )
         tre:setSequence( "3-" )
         quattro:setSequence( "4-" )
         cinque:setSequence( "5-" )
     else
+        print("animazione per up")
         uno:setSequence( "1+" )
         due:setSequence( "2+" )
         tre:setSequence( "3+" )
         quattro:setSequence( "4+" )
         cinque:setSequence( "5+" )
     end
+
     uno:addEventListener( "sprite", mySpriteListener )
     due:addEventListener( "sprite", mySpriteListener )
     tre:addEventListener( "sprite", mySpriteListener )
     quattro:addEventListener( "sprite", mySpriteListener )
     cinque:addEventListener( "sprite", mySpriteListener )
+    uno:play()
 
-
- end
+end
 
 
 
@@ -136,8 +156,29 @@ end
    timer.performWithDelay(1000 , function() slot:play() end)
 end
 
+function elaboraEstrazione(valore)
+    if (valore >= 30) then   --questa struttura così dopo sommo la fortuna a questi valore
+        terzaEstrazione=5
+    elseif ((valore >= 26) and (valore <= 29)) then
+        terzaEstrazione=4
+    elseif ((valore >= 20) and (valore <= 25)) then 
+        terzaEstrazione=3
+    elseif ((valore >= 13) and (valore <=19)) then 
+        terzaEstrazione=2
+    elseif  ((valore>= 1) and (valore<=12))then 
+         terzaEstrazione= 1 
+    end
+    print (terzaEstrazione)
+end 
 
 
+function modificaStatistiche()
+    if secondaEstrazione == 1 then 
+        statistiche[primaEstrazione]= statistiche[primaEstrazione] - terzaEstrazione
+    else
+        statistiche[primaEstrazione]= statistiche[primaEstrazione] + terzaEstrazione
+    end
+end
 
 -- create()
 function scene:create( event )
@@ -149,10 +190,12 @@ function scene:create( event )
 
     primaEstrazione = math.random(1, 7)
     secondaEstrazione = math.random(1,2)
-    terzaEstrazione = math.random(1,30) -- 1-12 +1  13-19 +2  20-25 +3  26-29 +4  30 = +5
+    terzoValore = math.random(1,30) -- 1-12 +1  13-19 +2  20-25 +3  26-29 +4  30 = +5
     print("prima estrazione".. primaEstrazione)
-    print("seconda estrazione".. secondaEstrazione)
-    print("terza estrazione".. terzaEstrazione)
+    print("seconda estrazione".. secondaEstrazione) -- 1 = -
+    print("valore per la terza estrazione".. terzoValore)
+    elaboraEstrazione(terzoValore)
+    
 
     uno= myLevel:getLayerObject("Layer 1", "1Sheet_0").view
     due=myLevel:getLayerObject("Layer 1", "2Sheet_0").view
@@ -162,6 +205,20 @@ function scene:create( event )
     slot = myLevel:getLayerObject("Layer 1", "statSheet_0").view
     up =myLevel:getLayerObject("Layer 1", "upSheet_0").view
     down = myLevel:getLayerObject("Layer 1", "downSheet_0").view
+
+    modificaStatistiche()
+    print ("statistiche*******************")
+    print (partitaS:stats().danno)
+    print (partitaS:stats().numeroPalle)
+    print(partitaS:stats().velocita)
+    print (partitaS:stats().rimbalzo)
+    print (partitaS:stats().grandezza)
+    print  (partitaS:stats().densita)
+    print  (partitaS:stats().fortuna)
+
+   timer.performWithDelay(10000, function()
+   composer.gotoScene("levels.mappa")
+    end)
 end
  
  
@@ -177,8 +234,9 @@ function scene:show( event )
  
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
- animazioneSlot()
- --animazioneUpDown()
+
+    animazioneSlot()
+
 
 
 

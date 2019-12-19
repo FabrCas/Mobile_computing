@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="downSheet" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="Slot">
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="5Sheet" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="Slot">
  <assets firstgid="1" name="windowR" width="640" height="960">
   <image source="../images/windowR.png" width="640" height="960"/>
   <asset frame="0" name="windowR_0" spritename="" class="" export="1" x="0" y="0" w="640" h="960">
@@ -16,12 +16,14 @@
      <frames>
       <frame idx="0"/>
       <frame idx="2"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
-    <sequence name="1-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+    <sequence name="1-" loopCount="1" loopDirection="0" duration="500" default="0" play="0">
      <frames>
       <frame idx="0"/>
       <frame idx="1"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
    </animations>
@@ -48,12 +50,14 @@
      <frames>
       <frame idx="0"/>
       <frame idx="2"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
-    <sequence name="2-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+    <sequence name="2-" loopCount="1" loopDirection="0" duration="500" default="0" play="0">
      <frames>
       <frame idx="0"/>
       <frame idx="1"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
    </animations>
@@ -80,12 +84,14 @@
      <frames>
       <frame idx="0"/>
       <frame idx="2"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
-    <sequence name="3-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+    <sequence name="3-" loopCount="1" loopDirection="0" duration="500" default="0" play="0">
      <frames>
       <frame idx="0"/>
       <frame idx="1"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
    </animations>
@@ -112,12 +118,14 @@
      <frames>
       <frame idx="0"/>
       <frame idx="2"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
-    <sequence name="4-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+    <sequence name="4-" loopCount="1" loopDirection="0" duration="500" default="0" play="0">
      <frames>
       <frame idx="0"/>
       <frame idx="1"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
    </animations>
@@ -144,12 +152,14 @@
      <frames>
       <frame idx="0"/>
       <frame idx="2"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
-    <sequence name="5-" loopCount="0" loopDirection="0" duration="500" default="0" play="0">
+    <sequence name="5-" loopCount="1" loopDirection="0" duration="500" default="0" play="0">
      <frames>
       <frame idx="0"/>
       <frame idx="1"/>
+      <frame idx="0"/>
      </frames>
     </sequence>
    </animations>
