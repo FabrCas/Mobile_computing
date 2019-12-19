@@ -317,6 +317,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
         if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
+        if nil~= composer.getScene("levels.rewards") then composer.removeScene("levels.rewards", false) end
         -- Code here runs when the scene is entirely on screen
  
     end

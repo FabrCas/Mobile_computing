@@ -18,8 +18,8 @@ local cinque
 local slot
 local up
 local down
-local statistiche= {partitaS:stats().danno, partitaS:stats().numeroPalle, partitaS:stats().velocita, partitaS:stats().rimbalzo, partitaS:stats().grandezza, partitaS:stats().densita, partitaS:stats().fortuna}
-local fortuna = statistiche.fortuna
+local statistiche= {"danno","numeroPalle", "velocita", "rimbalzo", "grandezza", "densita", "fortuna"}
+local fortuna = partitaS:stats().fortuna
 
 
 -- -----------------------------------------------------------------------------------
@@ -34,15 +34,12 @@ local fortuna = statistiche.fortuna
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
  local function animazioneValori()
-    print("animazione valori attiva")
     local valori = {uno,due, tre, quattro, cinque}
     local counter = 2
 
 local function mySpriteListener( event )
     if ( event.phase == "ended" ) then
-    print ("counter" .. counter)
         if counter == 6 then
-            print("valore vero")
             cinque:removeEventListener( "sprite", mySpriteListener )
             valori[terzaEstrazione]:setFrame(2)
         else
@@ -56,14 +53,12 @@ end
 
     --scelgo l'animazione giusta in base a se sia uscito up o down
     if secondaEstrazione == 1 then 
-        print("animazione per down")
         uno:setSequence( "1-" )
         due:setSequence( "2-" )
         tre:setSequence( "3-" )
         quattro:setSequence( "4-" )
         cinque:setSequence( "5-" )
     else
-        print("animazione per up")
         uno:setSequence( "1+" )
         due:setSequence( "2+" )
         tre:setSequence( "3+" )
@@ -101,9 +96,11 @@ local function mySpriteListener( event )
         else
             up:play()
         end
-        animazioneValori()
+         timer.performWithDelay(500, function()
+   animazioneValori()
+    end)
+        
     else
-    print("target "..event.target.name .. "*****")
     if event.target.name == "downSheet_0" then 
     up:play()
     counter= counter + 1
@@ -153,17 +150,17 @@ end
     end
 
    slot:addEventListener( "sprite", mySpriteListener )
-   timer.performWithDelay(1000 , function() slot:play() end)
+   timer.performWithDelay(200 , function() slot:play() end)
 end
 
-function elaboraEstrazione(valore)
-    if (valore >= 30) then   --questa struttura così dopo sommo la fortuna a questi valore
+function elaboraEstrazioneDopoUp(valore)
+    if (valore >= 30 - fortuna) then   --questa struttura così dopo sommo la fortuna a questi valore
         terzaEstrazione=5
-    elseif ((valore >= 26) and (valore <= 29)) then
+    elseif ((valore >= 26 - fortuna) and (valore <= 29)) then
         terzaEstrazione=4
-    elseif ((valore >= 20) and (valore <= 25)) then 
+    elseif ((valore >= 20 -fortuna) and (valore <= 25)) then 
         terzaEstrazione=3
-    elseif ((valore >= 13) and (valore <=19)) then 
+    elseif ((valore >= 13 - fortuna) and (valore <=19)) then 
         terzaEstrazione=2
     elseif  ((valore>= 1) and (valore<=12))then 
          terzaEstrazione= 1 
@@ -172,11 +169,30 @@ function elaboraEstrazione(valore)
 end 
 
 
+function elaboraEstrazioneDopoDown(valore)
+    if ((valore>= 1) and (valore<= 12 + fortuna)) then   --questa struttura così dopo sommo la fortuna a questi valore
+        terzaEstrazione= 1
+    elseif ((valore >= 13) and (valore <=19 + fortuna)) then 
+        terzaEstrazione=2
+    elseif ((valore >= 20) and (valore <= 25 + fortuna)) then 
+        terzaEstrazione=3
+    elseif ((valore >= 26) and (valore <= 29 + fortuna)) then
+        terzaEstrazione=4
+    elseif (valore >= 30 + fortuna)  then  --quindi giaà con luch ad 1 il -5 non può capitare
+        terzaEstrazione=5
+    end
+    print (terzaEstrazione)
+end 
+
+
 function modificaStatistiche()
+
     if secondaEstrazione == 1 then 
-        statistiche[primaEstrazione]= statistiche[primaEstrazione] - terzaEstrazione
+        partitaS:stats()[statistiche[primaEstrazione]]= partitaS:stats()[statistiche[primaEstrazione]] - terzaEstrazione
+        print (statistiche[primaEstrazione].. " - " .. terzaEstrazione)
     else
-        statistiche[primaEstrazione]= statistiche[primaEstrazione] + terzaEstrazione
+        partitaS:stats()[statistiche[primaEstrazione]]= partitaS:stats()[statistiche[primaEstrazione]] + terzaEstrazione
+        print (statistiche[primaEstrazione].. " + " .. terzaEstrazione)
     end
 end
 
@@ -189,12 +205,16 @@ function scene:create( event )
     myLevel:loadLevel("slot")
 
     primaEstrazione = math.random(1, 7)
-    secondaEstrazione = math.random(1,2)
+    secondaEstrazione = math.random(1,3 + fortuna)
     terzoValore = math.random(1,30) -- 1-12 +1  13-19 +2  20-25 +3  26-29 +4  30 = +5
     print("prima estrazione".. primaEstrazione)
     print("seconda estrazione".. secondaEstrazione) -- 1 = -
     print("valore per la terza estrazione".. terzoValore)
-    elaboraEstrazione(terzoValore)
+    if secondaEstrazione == 1 then 
+        elaboraEstrazioneDopoDown(terzoValore)
+    else
+    elaboraEstrazioneDopoUp(terzoValore)
+    end 
     
 
     uno= myLevel:getLayerObject("Layer 1", "1Sheet_0").view
@@ -206,8 +226,8 @@ function scene:create( event )
     up =myLevel:getLayerObject("Layer 1", "upSheet_0").view
     down = myLevel:getLayerObject("Layer 1", "downSheet_0").view
 
-    modificaStatistiche()
-    print ("statistiche*******************")
+    
+    print ("statistiche*******prima di rolling************")
     print (partitaS:stats().danno)
     print (partitaS:stats().numeroPalle)
     print(partitaS:stats().velocita)
@@ -216,9 +236,11 @@ function scene:create( event )
     print  (partitaS:stats().densita)
     print  (partitaS:stats().fortuna)
 
-   timer.performWithDelay(10000, function()
-   composer.gotoScene("levels.mappa")
-    end)
+    modificaStatistiche()
+
+    print ("luck attiva per il roll: " .. fortuna)
+
+   
 end
  
  
@@ -237,7 +259,9 @@ function scene:show( event )
 
     animazioneSlot()
 
-
+    timer.performWithDelay(12000, function()
+   composer.gotoScene("levels.mappa")
+    end)
 
 
     end

@@ -161,8 +161,8 @@ print("palla di grandezza" .. partitaS:stats().grandezza)
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
     if potereAttivato then
-    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=partitaS:stats().rimbalzo,friction=0.3,density=partitaS:stats().densita})
-else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=partitaS:stats().rimbalzo,density=partitaS:stats().densita}) end
+    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/10),friction=0.3,density=partitaS:stats().densita})
+else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/10),density=partitaS:stats().densita}) end
     ball.density= 0.73
     gruppoLivello:insert(ball)
     -- While the ball rests near the cannon, it's static
@@ -173,7 +173,7 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
        deltaY = sy
        normDeltaX = deltaX / math.sqrt(deltaX^2 + deltaY^2)
        normDeltaY = deltaY / math.sqrt(deltaX^2 + deltaY^2)
-       speed = 700
+       speed = (partitaS:stats().velocita*100)
        physics.setGravity(0, 0)
        ball:setLinearVelocity( normDeltaX*speed,normDeltaY*speed )
        pall_lanciata = ball
@@ -708,16 +708,16 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
       local stats = partitaS:stats()
       print(stats.danno)
        print(stats.numeroPalle)
-        print(stats.velocita)
-         print(stats.rimbalzo)
+        print(stats.velocita*10)
+         print(stats.rimbalzo/10)
           print(stats.grandezza)
            print(stats.densita)
             print(stats.fortuna)
 
     creaScritta(tostring(stats.danno), 95)
     creaScritta(tostring(stats.numeroPalle), 135)
-    creaScritta(tostring(stats.velocita), 180)   --max 999? poco spazio
-    creaScritta(tostring(stats.rimbalzo * 10), 225) --sennò valore con la virgola
+    creaScritta(tostring(stats.velocita*10), 180)   --max 999? poco spazio
+    creaScritta(tostring(stats.rimbalzo), 225) --sennò valore con la virgola
     creaScritta(tostring(stats.grandezza), 267)
     creaScritta(tostring(stats.densita), 310)
     creaScritta(tostring(stats.fortuna), 350)

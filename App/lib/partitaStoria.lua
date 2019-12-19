@@ -56,10 +56,10 @@ else
   stats = {
     danno= 5,
     numeroPalle= 12,
-    velocita= 500,
-    rimbalzo= 0.8,
+    velocita= 5, --fare * 100 
+    rimbalzo= 8,   --fare fratto 10 poi (valori da 0 a 1 )
     grandezza= 15, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
-    densita= 1.0,
+    densita= 1,
     fortuna= 0  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
   }
 end  end
@@ -163,7 +163,7 @@ math.random(); math.random(); math.random()
       local coordinateUtilizzate= {}
 
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
-      sorteggioStanzaTesoro = math.random(2,2)  --1,6
+      sorteggioStanzaTesoro = math.random(1,2)  --1,6
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else
@@ -350,7 +350,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
       stanzaTemp.isCompleted = false
-      sorteggioStanzaTesoro = math.random(6,6) --1,6
+      sorteggioStanzaTesoro =  math.random(1,3) 
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else

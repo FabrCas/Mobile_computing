@@ -10,12 +10,12 @@ local preference = require "lib.preference"
 --Store numbers
 preference.save{danno=1}
 preference.save{numeroPalle=8}
-preference.save{rimbalzo=0.8}
+preference.save{rimbalzo=8} --/10
 preference.save{grandezza=10} --diametro
 preference.save{densita=1}
 preference.save{fortuna=0}
-preference.save{velocita=500}
---preference.save{tower=123} --mettere a commento se si vuole salvare la torre x successive partite
+preference.save{velocita=5} --*100
+preference.save{tower=123} --mettere a commento se si vuole salvare la torre x successive partite
     print("valore tower", preference.getValue("tower"))
 --Store Tables
 --preference.save{d = {1,"2",true}}
