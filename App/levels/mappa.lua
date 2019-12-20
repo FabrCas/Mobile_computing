@@ -178,6 +178,9 @@ else
   scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end 
   creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
+  partitaS:stats().danno= partitaS:stats().danno + 1
+  print("danno aumentato dopo aver completato il livello")
+  --creaDanno
   gruppo_schermata:insert(scritta)
   gruppo_schermata:insert(rectButton)
   gruppo_schermata:insert(rectScritta)
