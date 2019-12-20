@@ -113,13 +113,24 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
   function getAngle(sx,sy,cannon) --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
          local angolo
+         sy= sy - 60
          local latoVerticale = sy
          local latoObliquo = math.sqrt(math.pow((display.contentWidth/2 - sx),2)+math.pow(( - sy),2))
          angoloRad = (math.acos(latoVerticale/latoObliquo))  --radianti
          angolo= ((angoloRad*180)/3.14)
          if (sx < display.contentWidth/2) then
+          if angolo>= 90 then 
+            cannon.rotation = 90
+          else
          cannon.rotation = angolo
-       else cannon.rotation = -angolo end
+       end 
+       else
+         if angolo>= 90 then 
+            cannon.rotation = -90
+          else
+        cannon.rotation = -angolo 
+      end
+      end 
        end --FINE FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER CREAZIONE PALLA
@@ -407,6 +418,7 @@ end -- if nTiri
       if event.phase == 'began' or event.phase == 'moved' then
         getAngle(event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot
+      and event.x == event.xStart and event.y== event.yStart --tap
       then
       numBallMax = numBallMax - 1
       print("numero palle" .. numBallMax)
@@ -421,7 +433,7 @@ end -- if nTiri
  function touch(event,cannon)
   if not isPaused then
     if event.target.name == "bg" then
-      if not((event.x < 32 and event.y > 415) or (event.x > 256 and event.y > 415)) then
+      if not((event.x <60  and event.y > 415) or (event.x > 270 and event.y > 415) or (event.y > 460) ) then
       touchBg(event,cannon) end end
     end end
 ---------------------------------------------------------------------------------

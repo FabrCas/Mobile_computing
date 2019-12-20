@@ -1,6 +1,8 @@
 
 To do list:
-- rewards
+- posizionare correttamente la pallina
+- + 1 damage quando fai un livello 
+- bilancimento stats
 
 - aggiungere altro personaggio
 - aggiungere effetti sonori
