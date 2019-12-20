@@ -1,6 +1,7 @@
 
 To do list:
-- rewards
+- fare scritta + 1 danno
+- bilancimento stats, bounce, speed, palle max 12, danno <1 no, luck <0 no, grandezza freeeeee
 
 - aggiungere altro personaggio
 - aggiungere effetti sonori
