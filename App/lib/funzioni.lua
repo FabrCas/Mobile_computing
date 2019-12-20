@@ -16,7 +16,7 @@ local _H = display.contentHeight
 local a = 225
 local gruppoLivello
 local pg
-
+_G.fisicaCannone=true
 local statistiche                              --=partitaS:stats()
 local numeroPalle                              --= statistiche.numeroPalle
 print("creazione partita - " .. mod_par)
@@ -46,6 +46,12 @@ tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 isDefeatedWon= false
+end
+
+local function nebulaCollide( self,event )
+    -- Query the position (and state) from "shieldStates" table
+        event.contact.isEnabled = false  -- Use physics contact to void collision
+        --self:removeEventListener("nebulaCollide",preCollision)
 end
 
 local vecchiaPalla
@@ -79,13 +85,17 @@ local vecchiaPalla
     cannon.y = 60  --50
     cannon.anchorY = 0.33
     cerchio.view.x = cannon.x cerchio.view.y=60
+
+cannon.preCollision = nebulaCollide
+cannon:addEventListener( "preCollision", cannon )
+
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
       local rect = display.newRect( 0, _H/2,50,50 )
-      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) preference.save{b="500"}
+      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true preference.save{b="500"}
 value = preference.getValue("b")
 print("Retrieving string b from rect: ",value)  end)
       local rect1 = display.newRect( 0, _H/2 +50,50,50 )
-      rect1:addEventListener( "tap", function() physics.setDrawMode( "normal" ) value = preference.getValue("b")
+      rect1:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=false value = preference.getValue("b")
       print("Retrieving string b from rect1 : ",value)  end)
       gruppoLivello:insert(rect)
       gruppoLivello:insert(rect1)
@@ -157,7 +167,8 @@ print("palla di grandezza" .. partitaS:stats().grandezza)
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-    ball.anchorY= - 4.83 --4,83
+    --grandezza arcade raggio 15 tower 10
+    ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
     if potereAttivato then
@@ -179,6 +190,8 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
        pall_lanciata = ball
        gruppoLivello:insert(pall_lanciata)
        nTiri = nTiri + 1
+       --ball.preCollision = nebulaCollide
+      -- ball:addEventListener( "preCollision", ball )
 end
 ---------------------------------------------------------------------------------
 -- FUNZIONE DI SHOOTING
@@ -410,7 +423,7 @@ end -- if nTiri
       then
       numBallMax = numBallMax - 1
       print("numero palle" .. numBallMax)
-      shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=false
+      shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=true --rimettere false
       end -- if palla lanciata ecc
           end
 
