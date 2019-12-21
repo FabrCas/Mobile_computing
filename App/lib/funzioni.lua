@@ -33,6 +33,7 @@ local danno
 local lx
 local ly 
 
+print ("modalità in funzioni " .. mod_par .. "*********************************************************************************")
 function creaPartita()
 if mod_par=="arcade" then
 partitaS:new()
@@ -415,7 +416,6 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
-  print (event.phase)
  -- if isPaused ==false then physics.start() end
  local timeBegan
  if event.phase == 'began' then
@@ -453,7 +453,7 @@ end -- if nTiri
         getAngle(event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot
       and event.x == event.xStart and event.y== event.yStart --tap
-      and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
+      -- and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
       then
       print ("tempo evento" .. event.time)
       numBallMax = numBallMax - 1
@@ -706,7 +706,7 @@ fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
   numeroPalle = statistiche.numeroPalle
   isPaused=false
-
+  partitaS:stats().danno=danno
   testoVolumeMusica.fn:removeSelf()
     testoVolumeMusica.fn= nil
     if ( testoVolumeMusica.sn ~= nil) then
