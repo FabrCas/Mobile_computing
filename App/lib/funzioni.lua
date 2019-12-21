@@ -30,6 +30,8 @@ tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 local danno
+local lx
+local ly 
 
 function creaPartita()
 if mod_par=="arcade" then
@@ -123,6 +125,8 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
   function getAngle(sx,sy,cannon) --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
          local angolo
+         lx= sx
+         ly=sy
          sy= sy - 60
          local latoVerticale = sy
          local latoObliquo = math.sqrt(math.pow((display.contentWidth/2 - sx),2)+math.pow(( - sy),2))
@@ -159,6 +163,7 @@ end
 
 
        function creaPalla(sx,sy,potereAttivato, angolo)
+        local sy= sy - 60 
         if numBallMax == 0 then
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    end
@@ -215,9 +220,15 @@ end
 
     caricaPalla()
     --print("cannon:shoot",potereAttivato)
-    sx,sy= event.x , event.y
-    getAngle(sx,sy,cannon)
-    local ball = creaPalla(sx,sy,potereAttivato, cannon.rotation)
+   -- sx,sy= event.x , event.y
+   -- getAngle(sx,sy,cannon)
+   if lx == nil then 
+    lx= event.x 
+  end 
+  if ly== nil then 
+    ly= event.y 
+  end 
+    local ball = creaPalla(lx,ly,potereAttivato, cannon.rotation)
  -- if ball and not ball.isLaunched then
     cannon:play()
   --  ball:launch()
@@ -404,7 +415,14 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
+  print (event.phase)
  -- if isPaused ==false then physics.start() end
+ local timeBegan
+ if event.phase == 'began' then
+  timeBegan = event.time
+   print ("time began" .. timeBegan)
+end
+
  physics.start( )
  if nTiri==0 then canShoot = true else
  if event.phase == 'began' then
@@ -428,11 +446,16 @@ end -- if nTiri
 --canShoot = true --da cancellare dopo
 
       if not isPaused then
-      if event.phase == 'began' or event.phase == 'moved' then
+
+      if  --((event.phase == 'began') and (os.time() >= timeBegan + 500)) or  spostati dopo un po' che stai con il dito sullo stesso punto
+        event.phase == 'moved' or ((event.phase == 'ended') and
+        (not (event.x == event.xStart and event.y== event.yStart))) then --event.phase == 'began'
         getAngle(event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot
       and event.x == event.xStart and event.y== event.yStart --tap
+      and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
       then
+      print ("tempo evento" .. event.time)
       numBallMax = numBallMax - 1
       print("numero palle" .. numBallMax)
       shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=true --rimettere false
