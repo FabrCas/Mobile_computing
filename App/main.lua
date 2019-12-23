@@ -10,9 +10,9 @@ local preference = require "lib.preference"
 --Store numbers
 preference.save{danno=1}
 preference.save{numeroPalle=8}
-preference.save{rimbalzo=8} --/10
+preference.save{rimbalzo=80} --/100
 preference.save{grandezza=10} --diametro
-preference.save{densita=1}
+preference.save{densita=5} --/10
 preference.save{fortuna=0}
 preference.save{velocita=5} --*100
 preference.save{tower=123} --mettere a commento se si vuole salvare la torre x successive partite

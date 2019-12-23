@@ -189,9 +189,9 @@ print("palla di grandezza" .. partitaS:stats().grandezza)
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
     if potereAttivato then
-    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/10),friction=0.3,density=partitaS:stats().densita})
-else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/10),density=partitaS:stats().densita}) end
-    ball.density= 0.73
+    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
+else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),density=(partitaS:stats().densita)/10}) end
+   -- ball.density= 0.73
     gruppoLivello:insert(ball)
     -- While the ball rests near the cannon, it's static
     ball.isLaunched = false
@@ -756,10 +756,10 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
       local stats = partitaS:stats()
       print(stats.danno)
        print(stats.numeroPalle)
-        print(stats.velocita*10)
-         print(stats.rimbalzo/10)
+        print(stats.velocita*100)
+         print(stats.rimbalzo/100)
           print(stats.grandezza)
-           print(stats.densita)
+           print(stats.densita/10)
             print(stats.fortuna)
 
     creaScritta(tostring(stats.danno), 95)

@@ -185,6 +185,55 @@ function elaboraEstrazioneDopoDown(valore)
 end 
 
 
+function correggiStat()
+   if statistiche[primaEstrazione]== "danno" then 
+    if partitaS:stats()[statistiche[primaEstrazione]] <= 0 then 
+        partitaS:stats()[statistiche[primaEstrazione]] = 1
+    end
+
+   elseif statistiche[primaEstrazione]== "numeroPalle" then 
+    if partitaS:stats()[statistiche[primaEstrazione]] < 2 then
+        partitaS:stats()[statistiche[primaEstrazione]] = 2
+    end
+    if partitaS:stats()[statistiche[primaEstrazione]] > 12 then
+        partitaS:stats()[statistiche[primaEstrazione]] = 12
+    end
+
+   elseif statistiche[primaEstrazione]== "velocita" then 
+       if partitaS:stats()[statistiche[primaEstrazione]] <= 0 then 
+        partitaS:stats()[statistiche[primaEstrazione]] = 1
+    end
+
+   elseif statistiche[primaEstrazione]== "rimbalzo" then
+    if partitaS:stats()[statistiche[primaEstrazione]] <= 20 then 
+        partitaS:stats()[statistiche[primaEstrazione]] = 20
+    end
+    if partitaS:stats()[statistiche[primaEstrazione]] > 95 then 
+        partitaS:stats()[statistiche[primaEstrazione]] = 95
+    end
+
+   elseif statistiche[primaEstrazione]== "grandezza" then
+       if partitaS:stats()[statistiche[primaEstrazione]] <= 2 then
+           partitaS:stats()[statistiche[primaEstrazione]] = 2
+       end
+       if partitaS:stats()[statistiche[primaEstrazione]] >= 25 then
+           partitaS:stats()[statistiche[primaEstrazione]] = 25
+       end
+
+   elseif statistiche[primaEstrazione]== "densita" then 
+    if partitaS:stats()[statistiche[primaEstrazione]] <= 0 then
+        partitaS:stats()[statistiche[primaEstrazione]] = 0
+    end
+
+elseif statistiche[primaEstrazione]== "fortuna" then 
+    if partitaS:stats()[statistiche[primaEstrazione]] <= 0 then
+        partitaS:stats()[statistiche[primaEstrazione]] = 0
+    end
+end
+
+end
+
+
 function modificaStatistiche()
 
     if secondaEstrazione == 1 then 
@@ -237,6 +286,7 @@ function scene:create( event )
     print  (partitaS:stats().fortuna)
 
     modificaStatistiche()
+    correggiStat()
 
     print ("luck attiva per il roll: " .. fortuna)
 

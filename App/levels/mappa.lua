@@ -151,6 +151,26 @@ local function creaScore(valore,x,y)
   end
 end 
 
+
+local function creaScrittaDannoUp()
+
+   local up= display.newImage(composer.imgDir .. "upL.png", 198, 215)
+   --up.x= 130 
+   -- up.y= 190
+    up.width= 40
+    up.height= 40
+   local unoTxt= display.newImage(composer.imgDir .. 1 .. ".png", 236, 215)
+   unoTxt.width= 45
+   unoTxt.height= 45
+   local damageTxt= display.newImage(composer.imgDir .. "damageTxt.png", 135,215)
+   damageTxt.width= 220
+   damageTxt.height= 38
+   gruppo_schermata:insert(up)
+   gruppo_schermata:insert(unoTxt)
+   gruppo_schermata:insert(damageTxt)
+
+  end 
+
 local function vaiNuovoPiano()
    -- print("uscita selezionata")
     cancellaMappa(listaRect, listaPorte)
@@ -169,6 +189,8 @@ local function vaiNuovoPiano()
  -- local scrittaScore= myLevel:getLayerObject("Layer 1", "score_0").view
 
   local scritta = display.newImage( composer.imgDir .. "floorCompleted.png" , rectScritta.x ,rectScritta.y + 12 )
+  print("*******************************"..rectScritta.x)
+  print("*******************************"..rectScritta.y + 12 )
   scritta.width= 320
   scritta.height= 40 
   local scorep
@@ -181,6 +203,10 @@ end
   partitaS:stats().danno= partitaS:stats().danno + 1
   print("danno aumentato dopo aver completato il livello")
   --creaDanno
+  creaScrittaDannoUp()
+
+  
+
   gruppo_schermata:insert(scritta)
   gruppo_schermata:insert(rectButton)
   gruppo_schermata:insert(rectScritta)
