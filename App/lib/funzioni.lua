@@ -31,8 +31,33 @@ tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 local danno
 local lx
-local ly 
+local ly
+--------------------------------------------------------------------------------
+local function onLocalCollision( self, event )
+  print("funzione collisione chiamata")
+    if ( self.myName == "circle" ) then
+        local forcex = event.other.x-self.x
+        local forcey = event.other.y-self.y-20
+        if(forcex < 0) then
+            forcex = 0-(80 + forcex)-12
+        else
+            forcex = 80 - forcex+12
+        end
+        event.other:applyForce( forcex+500, forcey+400, self.x, self.y )
+    end
+end
 
+local function setBomb ( event )
+--if(event.other.name == "ball") then
+    circle = display.newCircle( _W/2, 420, 50 )
+            circle.myName = "circle"
+    circle:setFillColor(0,0,0, 1)
+    timer.performWithDelay( 200, function() physics.addBody( circle, "static", {isSensor = true} ) end)
+    circle.collision = onLocalCollision
+    circle:addEventListener( "collision", circle )
+--end
+end
+--------------------------------------------------------------------------------
 print ("modalità in funzioni " .. mod_par .. "*********************************************************************************")
 function creaPartita()
 if mod_par=="arcade" then
@@ -134,18 +159,18 @@ function caricaPalla()
          angoloRad = (math.acos(latoVerticale/latoObliquo))  --radianti
          angolo= ((angoloRad*180)/3.14)
          if (sx < display.contentWidth/2) then
-          if angolo>= 90 then 
+          if angolo>= 90 then
             cannon.rotation = 90
           else
          cannon.rotation = angolo
-       end 
+       end
        else
-         if angolo>= 90 then 
+         if angolo>= 90 then
             cannon.rotation = -90
           else
-        cannon.rotation = -angolo 
+        cannon.rotation = -angolo
       end
-      end 
+      end
        end --FINE FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER CREAZIONE PALLA
@@ -164,7 +189,7 @@ end
 
 
        function creaPalla(sx,sy,potereAttivato, angolo)
-        local sy= sy - 60 
+        local sy= sy - 60
         if numBallMax == 0 then
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    end
@@ -223,12 +248,12 @@ end
     --print("cannon:shoot",potereAttivato)
    -- sx,sy= event.x , event.y
    -- getAngle(sx,sy,cannon)
-   if lx == nil then 
-    lx= event.x 
-  end 
-  if ly== nil then 
-    ly= event.y 
-  end 
+   if lx == nil then
+    lx= event.x
+  end
+  if ly== nil then
+    ly= event.y
+  end
     local ball = creaPalla(lx,ly,potereAttivato, cannon.rotation)
  -- if ball and not ball.isLaunched then
     cannon:play()
@@ -394,6 +419,7 @@ function hit(event, mod)
   brick_colpito.x = event.target.x
   brick_colpito.y = event.target.y
   if event.target.name == 'speciale' then
+    setBomb()
     potereAttivato = true
     led_acceso.alpha=1
     end
