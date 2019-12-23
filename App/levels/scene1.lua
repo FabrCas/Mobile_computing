@@ -13,7 +13,7 @@ require("lib.LD_HelperX")
 _W = display.contentWidth
 _H = display.contentHeight
 
-local f
+
 --livelloBase:new() -- qui viene creato il livello
 
 local modalita
