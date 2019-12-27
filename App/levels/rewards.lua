@@ -250,6 +250,11 @@ function scene:create( event )
  
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
+
+    local background = display.newImage(composer.imgDir .. "bgRewards.jpg", 0, 0, true)
+    background.anchorX = 0
+    background.anchorY = 0
+    sceneGroup:insert(background)
     myLevel= LD_Loader:new(sceneGroup)
     myLevel:loadLevel("slot")
 

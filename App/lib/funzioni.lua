@@ -13,8 +13,12 @@ require("lib.LD_LoaderX")
 local _W = display.contentWidth
 local _H = display.contentHeight
 
+math.randomseed(os.time())
+math.random(); math.random(); math.random()
+
 local a = 225
 local gruppoLivello
+local gruppoScena
 local pg
 _G.fisicaCannone=true
 local statistiche                              --=partitaS:stats()
@@ -24,11 +28,14 @@ local led_acceso
 local pall_lanciata --= nil
 local nTiri
 local bg
+local mattoni
+turnoPotere = false
 isPaused = false
 tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+
 local danno
 local lx
 local ly
@@ -56,6 +63,121 @@ local function setBomb ( event )
     circle.collision = onLocalCollision
     circle:addEventListener( "collision", circle )
 --end
+end
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+local function dannoXY(event, mod)
+  local rainbowColor= {
+    {255,0,0},
+    {255,127,0},
+    {255,255,0},
+    {127,255,0},
+    {0,255,0},
+    {0,255,127},
+    {0,255,255},
+    {0,127,255},
+    {0,0,255},
+    {127,0,255},
+    {255,0,255},
+    {255,0,127}
+  }
+  local brickColpiti= {}
+
+  local n1 = math.random(1,12)
+  local c1 = rainbowColor[n1]
+
+  local n2 = math.random(1,12)
+  local c2 = rainbowColor[n2]
+
+  local n3 = math.random(1,12)
+  local c3 = rainbowColor[n3]
+
+  local n4 = math.random(1,12)
+  local c4 = rainbowColor[n4]
+
+  local xHit=event.target.x
+  local yHit=event.target.y
+  local hHit= event.target.height * (event.target.yScale)
+  local wHit= event.target.width * (event.target.xScale)
+
+  local asseHitxUp= display.newRect(xHit + 160, yHit, 320, 1 )  
+  local asseHitxDown= display.newRect(xHit - 160 , yHit, -320, 1 )
+  local asseHityUp= display.newRect(xHit, yHit + 240, 1, 480 )
+  local asseHityDown= display.newRect(xHit, yHit - 240, 1, -480 )
+
+  asseHitxUp:setFillColor(c1[1], c1[2], c1[3])
+  asseHitxDown:setFillColor(c2[1], c2[2], c2[3])
+  asseHityUp:setFillColor(c3[1], c3[2], c4[3])
+  asseHityDown:setFillColor(c4[1], c4[2], c4[3])
+
+  gruppoScena:insert(asseHitxUp)
+  asseHitxUp:toBack()
+  gruppoScena:insert(asseHitxDown)
+  asseHitxDown:toBack()
+  gruppoScena:insert(asseHityUp)
+  asseHityUp:toBack()
+  gruppoScena:insert(asseHityDown)
+  asseHityDown:toBack()
+
+  print ("x ".. xHit)
+  print ("y ".. yHit)
+  print ("h ".. hHit)
+  print ("w ".. wHit)
+  print ("*****************************************°°°******")
+  for i=1, #mattoni do  --ancoraggio mattoni x e y su 0.5 
+    if (mattoni[i].x ~= nil)  then
+  print ("x ".. mattoni[i].x)
+  print ("y ".. mattoni[i].y)
+  print ("w ".. mattoni[i].width * (mattoni[i].xScale))
+  print ("h ".. mattoni[i].height * (mattoni[i].yScale))
+      local larghezza= mattoni[i].width * (mattoni[i].xScale)
+      local altezza= mattoni[i].height * (mattoni[i].yScale)
+     if --(((yHit - (hHit/2)) <= (mattoni[i].y + (mattoni[i].height/2))) or ((yHit + (hHit/2)) >= (mattoni[i].y - (mattoni[i].height/2))) )
+     ((xHit >= (mattoni[i].x - (larghezza/2))) and (xHit <= (mattoni[i].x + (larghezza/2))))  --controllo sulla y
+       or ((yHit >= (mattoni[i].y - (altezza/2))) and (yHit <= (mattoni[i].y + (altezza/2))))
+     then 
+      local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
+      brick_colpito.x = mattoni[i].x
+      brick_colpito.y = mattoni[i].y
+      if mattoni[i].name == 'speciale' then
+        potereAttivato = true
+        led_acceso.alpha=1
+  end
+  if event.target.name == "static part ui_0" then print('funziona') end
+  physics.setGravity( 0, 46 )
+  if partitaS:stats().danno > 1 then 
+      mattoni[i].life = mattoni[i].life - (math.floor(partitaS:stats().danno/2))
+    else 
+      mattoni[i].life = mattoni[i].life - 1 
+    end 
+
+      if mattoni[i].life <= 0 then
+               removeBrick(mattoni[i], mod)
+             else
+              mattoni[i].scritta.text = mattoni[i].life
+             --brick.alpha = (brick.life/(5*100))*50
+             end
+        timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
+   end 
+ end
+end
+   
+         timer.performWithDelay( 100, function() 
+          gruppoScena:remove(asseHitxUp)
+          asseHitxUp:removeSelf()
+          asseHitxUp.alpha = 0 
+          gruppoScena:remove(asseHitxDown)
+          asseHitxDown:removeSelf()
+          asseHitxDown.alpha = 0 
+          gruppoScena:remove(asseHityUp)
+          asseHityUp:removeSelf()
+          asseHityUp.alpha = 0
+          gruppoScena:remove(asseHityDown)
+          asseHityDown:removeSelf()
+          asseHityDown.alpha = 0
+
+          end )
+      
 end
 --------------------------------------------------------------------------------
 print ("modalità in funzioni " .. mod_par .. "*********************************************************************************")
@@ -189,6 +311,8 @@ end
 
 
        function creaPalla(sx,sy,potereAttivato, angolo)
+        --turnoPotere= false da rimettere
+        turnoPotere = false
         local sy= sy - 60
         if numBallMax == 0 then
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
@@ -196,8 +320,9 @@ end
         if potereAttivato then
         	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+   turnoPotere= true 
 
-   partitaS:stats().danno = 10
+  -- partitaS:stats().danno = 10
    --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
   else
     ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
@@ -269,7 +394,8 @@ end
 ---------------------------------------------------------------------------------
 -- FUNZIONI LIVELLO
 ---------------------------------------------------------------------------------
-function creaLivello(cannon)
+function creaLivello(cannon, objMattoni)
+mattoni = objMattoni
 local muroSinistra = display.newRect( 0, _H/2, 0 ,_H )
 local muroDestra = display.newRect( _W, _H/2, 0 , _H)
 local muroInBasso = display.newRect( _W/2, _H+15, _W, 0 )
@@ -415,11 +541,19 @@ end
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
 function hit(event, mod)
+  print ("is turno potere")
+  print (turnoPotere)
+  if turnoPotere == true  then
+    print ("hgghghg"..event.target.x)
+    dannoXY(event, mod)
+  else
+
   local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
   brick_colpito.x = event.target.x
   brick_colpito.y = event.target.y
   if event.target.name == 'speciale' then
-    setBomb()
+    --setBomb()  potere esplosione
+   -- dannoXY()
     potereAttivato = true
     led_acceso.alpha=1
     end
@@ -437,6 +571,7 @@ function hit(event, mod)
              -- brick.alpha = (brick.life/(5*100))*50
              end
              timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
+          end
            end
 ---------------------------------------------------------------------------------
 --FUNZIONI TOUCH AUSILIARIE
@@ -519,6 +654,7 @@ end
 --FUNZIONE CREAZIONE UI
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
+  gruppoScena= screenGroup
   _G.myUI = LD_Loader:new(screenGroup)
   myUI:loadLevel("ui.ui")
   led_acceso = display.newImageRect("images/led acceso.png",  30,30 )

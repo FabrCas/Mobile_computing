@@ -71,17 +71,14 @@ audio.pause(1)
 	myCannon:loadLevel("cannon.shoot")
 	cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
 	cerchio = myCannon:getLayerObject("LayerCannone", "ellipse_2")
-    f.creaCannone(cannone,cerchio)
-	f.creaUI(self.view)
-    f.creaLivello(cannone)
 
-    -- aggiunta listener ai mattoni
+	    -- aggiunta listener ai mattoni
 	local obj = {}
 	for i=1,29 do
 	obj[i] = {}
 	obj[i] = myLevel:getLayerObject("Layer 1","Brick_"..string.format(i))
 	screenGroup:insert(obj[i].view)
-	obj[i].view.name= obj[i].property['tipo']
+	obj[i].view.name = obj[i].property['tipo']
     obj[i].view.life = 5
   obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
   screenGroup:insert(obj[i].view.scritta)
@@ -91,6 +88,12 @@ audio.pause(1)
 	obj[i] = obj[i].view
 	nMattoni = nMattoni + 1
 	end
+
+    f.creaCannone(cannone,cerchio)
+	f.creaUI(self.view)
+    f.creaLivello(cannone,obj)
+
+
         -- Called when the scene is still off screen (but is about to come on screen).
     elseif ( phase == "did" ) then
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
