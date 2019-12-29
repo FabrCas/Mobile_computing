@@ -15,41 +15,20 @@ ladderSound= audio.loadStream("sounds/cambio_piano.mp3")
  p2 = partitaS:torre().secondoPiano
  p3 = partitaS:torre().terzoPiano
 
+ local stanzaSelezionata
+ local sceneGroup
+
  lista= {}  --lista delle stanze da creare
  listaRect={}  --lista grafica delle stanze 
  listaPorte={}  --lista grafica delle porte, da levare? 
  local gruppo_schermata = display.newGroup()
+
+ local testoPiano
+ local background
+ local testoSchermata
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
-
--- create()
-function scene:create( event )
-
-    local sceneGroup = self.view
-    -- Code here runs when the scene is first created but has not yet appeared on screen
-local background = display.newImage(composer.imgDir .. "scrollBg.jpg", 0, 0, true)
-    background.anchorX = 0
-    background.anchorY = 0
-    background.width= 320
-    background.height= 480
-    sceneGroup:insert(background)
-
-local testoSchermata = display.newImage(composer.imgDir .. "testoMappa.png", 0, 0, true)
-testoSchermata.anchorX = 0
-    testoSchermata.anchorY = 0
-    testoSchermata.width= 320
-    testoSchermata.height= 480
-    sceneGroup:insert(testoSchermata)
-
-local testoPiano = display.newImage(composer.imgDir .. "primoPiano.png", 0, 38, true)
-testoPiano.anchorX = 0
-    testoPiano.anchorY = 0
-    testoPiano.width= 320
-    testoPiano.height= 25
-    sceneGroup:insert(testoPiano)
-
-
 local function onButtonClickStanzaSelezionata(event)
     local options =  { effect = "crossFade",
      time = 200,
@@ -57,19 +36,45 @@ local function onButtonClickStanzaSelezionata(event)
  }
     composer.gotoScene("levels.scene1", options)
   stanza= event.target.stanza
-  stanza.isCompleted = true 
-  torre.stanzaAttuale= stanza
-            if stanza.nord ~= nil then
-                stanza.nord.isLocked= false
+  stanzaSelezionata= stanza
+end
+
+--  stanza.isCompleted = true 
+--  torre.stanzaAttuale= stanza
+--            if stanza.nord ~= nil then
+--                stanza.nord.isLocked= false
+--            end
+--            if stanza.est ~= nil then
+--                stanza.est.isLocked= false
+--            end
+--            if stanza.sud ~= nil then
+--                stanza.sud.isLocked= false
+--            end
+--            if stanza.ovest ~= nil then
+--                stanza.ovest.isLocked= false
+--            end
+--           -- print("lista rect valore: ")
+--           -- print (#listaRect)
+--            cancellaMappa(listaRect, listaPorte)
+--            lista= nil
+--            lista= {}
+--            creazione()
+
+
+local function stanzaSuperata() 
+    stanzaSelezionata.isCompleted = true 
+  torre.stanzaAttuale= stanzaSelezionata
+            if stanzaSelezionata.nord ~= nil then
+                stanzaSelezionata.nord.isLocked= false
             end
-            if stanza.est ~= nil then
-                stanza.est.isLocked= false
+            if stanzaSelezionata.est ~= nil then
+                stanzaSelezionata.est.isLocked= false
             end
-            if stanza.sud ~= nil then
-                stanza.sud.isLocked= false
+            if stanzaSelezionata.sud ~= nil then
+                stanzaSelezionata.sud.isLocked= false
             end
-            if stanza.ovest ~= nil then
-                stanza.ovest.isLocked= false
+            if stanzaSelezionata.ovest ~= nil then
+                stanzaSelezionata.ovest.isLocked= false
             end
            -- print("lista rect valore: ")
            -- print (#listaRect)
@@ -77,7 +82,8 @@ local function onButtonClickStanzaSelezionata(event)
             lista= nil
             lista= {}
             creazione()
-end
+
+end 
 
 local function onButtonClickStanzaSelezionataDadi(event)
       local options =  { effect = "crossFade",
@@ -328,6 +334,36 @@ else
 end
 end
 
+
+
+
+
+-- create()
+function scene:create( event )
+
+    sceneGroup = self.view
+    -- Code here runs when the scene is first created but has not yet appeared on screen
+background = display.newImage(composer.imgDir .. "scrollBg.jpg", 0, 0, true)
+    background.anchorX = 0
+    background.anchorY = 0
+    background.width= 320
+    background.height= 480
+    sceneGroup:insert(background)
+
+testoSchermata = display.newImage(composer.imgDir .. "testoMappa.png", 0, 0, true)
+testoSchermata.anchorX = 0
+    testoSchermata.anchorY = 0
+    testoSchermata.width= 320
+    testoSchermata.height= 480
+    sceneGroup:insert(testoSchermata)
+
+testoPiano = display.newImage(composer.imgDir .. "primoPiano.png", 0, 38, true)
+testoPiano.anchorX = 0
+    testoPiano.anchorY = 0
+    testoPiano.width= 320
+    testoPiano.height= 25
+    sceneGroup:insert(testoPiano)
+
  creazione()
 
 end --fine create()
@@ -341,6 +377,14 @@ function scene:show( event )
     local phase = event.phase
     audio.stop(1)
     if ( phase == "will" ) then
+
+      if not (event.params==nil) then 
+  print("ci sono parametri")
+if event.params.livelloCompletato then 
+  print ("stanzaSuperataaaaaaaaaaaaaaaaaaaaaaa")
+   stanzaSuperata() 
+end
+end 
         -- Code here runs when the scene is still off screen (but is about to come on screen)
  
     elseif ( phase == "did" ) then

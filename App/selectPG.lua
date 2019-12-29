@@ -44,11 +44,11 @@ local function onButtonClick(event)
 elseif nomePersonaggio=="crimson" then
   pg= myLevel:getLayerObject("PGs", "crimson").view 
   pg:play()
-  timer.performWithDelay( 70  , function() 
-  transition.to( pg, { time=3500, x=(pg.x+ 140), onComplete=chiamaProssimaScena} )
-  end)
+ -- timer.performWithDelay( 70  , function() 
+ -- transition.to( pg, { time=3500, x=(pg.x+ 140), onComplete=chiamaProssimaScena} )
+ -- end)
 end 
-   chiamaProssimaScena()
+   chiamaProssimaScena()  -- DA TOGLIERE POI E RIMETTERE PARTI COMMENTANTE SOPRA 
   return true
 end
 

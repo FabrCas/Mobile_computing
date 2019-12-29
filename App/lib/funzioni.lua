@@ -35,6 +35,9 @@ tempoInizioPausa = 0
 tempoFinePausa = 0
 tempoPausaTotale = 0
 tempoInizioLivello = os.time()
+local circle
+local crimson
+local livelloPG
 
 local danno
 local lx
@@ -213,16 +216,22 @@ local vecchiaPalla
 
    gruppoLivello = display.newGroup( )
 
-   local circle = display.newCircle( _W/2, 60, 40 )
+   circle = display.newCircle( _W/2, 60, 40 )
    gruppoLivello:insert(circle)
    circle:toFront( )
-   circle:setFillColor( 0,0,0 )
+   circle:setFillColor(0,0,0)
    livelloPG = LD_Loader:new(gruppoLivello)
    livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
    pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
-
+   if partitaS:personaggio() == "cottonBall" then
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
    pg.x = _W/2
    pg.y= 60
+ elseif partitaS:personaggio() == "crimson" then
+  crimson= pg
+  pg.x = _W/2 + 3
+  pg.y= 45
+ end 
    print("FDHSKJFS pg.w " , pg.width .. " pg.h" , pg.height)
  --  pg.width = a
  --  pg.height = a
@@ -318,6 +327,10 @@ end
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    end
         if potereAttivato then
+           if not (crimson==nil) then 
+            crimson:setFillColor(1,0,0)
+            --circle:setFillColor(0.66, 0.29, 0.38)
+          end
         	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
    turnoPotere= true 
@@ -325,6 +338,14 @@ end
   -- partitaS:stats().danno = 10
    --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
   else
+    --crimson= nil
+    --crimson = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
+if not (crimson==nil) then 
+    crimson: setFillColor(1,1,1)
+    circle:setFillColor(0,0,0)
+    crimson.x = _W/2 + 3
+    crimson.y= 45
+    end 
     ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
     --partitaS:stats().grandezza, partitaS:stats().grandezza)
 print("palla di grandezza" .. partitaS:stats().grandezza)
@@ -434,7 +455,7 @@ function removeBrick(brick, mod)
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
-  if nMattoni == 0 then
+  if nMattoni == 25 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
@@ -448,7 +469,9 @@ end end
 
 local function onButtonClick(event)
   print("bottone vinto tappato")
-  local options = { effect = "crossFade", time = 200}
+  local options = { effect = "crossFade", time = 200, params = {
+    livelloCompletato = true 
+    }}
    scancellaTutto()
     if mod_par =="tower" then
     composer.gotoScene("levels.mappa", options)
