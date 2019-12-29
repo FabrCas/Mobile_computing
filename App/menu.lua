@@ -81,7 +81,11 @@ local arcade = composer.loadScene( "arcade", false)
   if livello == 1 then
     mod_par="tower"
     print("modalita dal menu scelta tower = " .. mod_par)
-    composer.gotoScene( "selectPG")
+    if partitaS:personaggio()==nil then 
+    composer.gotoScene("selectPG")
+  else 
+    composer.gotoScene("toPlay")
+  end
     return true
   elseif livello == 2 then
     mod_par="arcade"

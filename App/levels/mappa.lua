@@ -8,12 +8,10 @@ ladderSound= audio.loadStream("sounds/cambio_piano.mp3")
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
- partitaS:new()
+ 
  local p1, p2, p3
- torre = partitaS:torre()
- p1 = partitaS:torre().primoPiano
- p2 = partitaS:torre().secondoPiano
- p3 = partitaS:torre().terzoPiano
+ local torre
+
 
  local stanzaSelezionata
  local sceneGroup
@@ -340,6 +338,12 @@ end
 
 -- create()
 function scene:create( event )
+   print ("createeeee mappaaaaaaaaaaaaaaaaa stronzoooooooooooooooooooooooooooo")
+  partitaS:new()
+  torre = partitaS:torre()
+   p1 = partitaS:torre().primoPiano
+   p2 = partitaS:torre().secondoPiano
+   p3 = partitaS:torre().terzoPiano
 
     sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -372,7 +376,6 @@ end --fine create()
  
 -- show()
 function scene:show( event )
- 
     local sceneGroup = self.view
     local phase = event.phase
     audio.stop(1)

@@ -9,7 +9,7 @@ local preference = require "lib.preference"
 
 --Store numbers
 preference.save{danno=1}
-preference.save{numeroPalle=8}
+preference.save{numeroPalle=8} --8
 preference.save{rimbalzo=80} --/100
 preference.save{grandezza=10} --diametro
 preference.save{densita=5} --/10

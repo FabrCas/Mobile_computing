@@ -79,18 +79,18 @@ end
 --------------------------------------------------------------------------------
 local function dannoXY(event, mod)
   local rainbowColor= {
-    {255,0,0},
-    {255,127,0},
-    {255,255,0},
-    {127,255,0},
-    {0,255,0},
-    {0,255,127},
-    {0,255,255},
-    {0,127,255},
-    {0,0,255},
-    {127,0,255},
-    {255,0,255},
-    {255,0,127}
+    {1,0,0},
+    {1,0.5,0},
+    {1,1,0},
+    {0.5,1,0},
+    {0,1,0},
+    {0,1,0.5},
+    {0,1,1},
+    {0,0.5,1},
+    {0,0,1},
+    {0.5,0,1},
+    {1,0,1},
+    {1,0,0.5}
   }
   local brickColpiti= {}
 
@@ -320,7 +320,7 @@ function listenerUltimaPalla(event)
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
-  if (pall_lanciata.y > 340 and vy <200 and vx < 200) then --qui
+  if (pall_lanciata.y > 340 and vy <100 and vx < 100) then --qui
     finePartita()
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
   end
@@ -364,7 +364,7 @@ end
     --crimson= nil
     --crimson = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
 if not (crimson==nil) then 
-    crimson: setFillColor(1,1,1)
+    crimson:setFillColor(1,1,1)
     circle:setFillColor(0,0,0)
     crimson.x = _W/2 + 3
     crimson.y= 45
@@ -479,7 +479,7 @@ function removeBrick(brick, mod)
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
-  if nMattoni == 25 then
+  if nMattoni == 0 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
@@ -689,7 +689,11 @@ end -- if nTiri
     if mod_par=="tower" then
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
-  schermataSconfitta()
+if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
+--partitaS:new()
+preference.save{tower=123}
+partitaS:cancellaPersonaggio()
+schermataSconfitta()
 end
 
 ---------------------------------------------------------------------------------
