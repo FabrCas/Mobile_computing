@@ -79,18 +79,18 @@ end
 --------------------------------------------------------------------------------
 local function dannoXY(event, mod)
   local rainbowColor= {
-    {255,0,0},
-    {255,127,0},
-    {255,255,0},
-    {127,255,0},
-    {0,255,0},
-    {0,255,127},
-    {0,255,255},
-    {0,127,255},
-    {0,0,255},
-    {127,0,255},
-    {255,0,255},
-    {255,0,127}
+    {1,0,0},
+    {1,0.5,0},
+    {1,1,0},
+    {0.5,1,0},
+    {0,1,0},
+    {0,1,0.5},
+    {0,1,1},
+    {0,0.5,1},
+    {0,0,1},
+    {0.5,0,1},
+    {1,0,1},
+    {1,0,0.5}
   }
   local brickColpiti= {}
 
@@ -689,7 +689,11 @@ end -- if nTiri
     if mod_par=="tower" then
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
-  schermataSconfitta()
+if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
+--partitaS:new()
+preference.save{tower=123}
+partitaS:cancellaPersonaggio()
+schermataSconfitta()
 end
 
 ---------------------------------------------------------------------------------

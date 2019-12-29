@@ -39,7 +39,7 @@ function partitaS:new()
     print("torre - tower")
     print("valore tower", preference.getValue("tower"))
     if preference.getValue("tower")==123 then
-      print("tower in preference nil quindi si crea")
+      print("tower si crea")
   torre= {}
   torre.pianoAttuale= 0
   piano={}
@@ -532,13 +532,14 @@ function partitaS:getScore(scoreLivello, tempo, palleRimaste, isGameOver)
   return scoreParziale
 end
 
-function partitaS:prossimolivello()
+function cancellaDatiParitita()
 
-  --return prossimolivello
-end
+end 
 
 
---**************************************Funzioni per ritarnare le variabili locali*****************************************************
+
+
+--**************************************Funzioni per ritornare le variabili locali*****************************************************
 function partitaS:provaVar()
   return prova
 end
@@ -604,6 +605,10 @@ else
   volumeEffettoSonoro=0
 end
 end
+
+function partitaS:cancellaPersonaggio()
+personaggio= nil
+end 
 
 
 
