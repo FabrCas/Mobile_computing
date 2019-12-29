@@ -29,6 +29,7 @@ local pall_lanciata --= nil
 local nTiri
 local bg
 local mattoni
+local daColpire -- vera se la palla deve essere ancora lanciata, false se la palla e' stata lanciata e ha colpito il cannone
 turnoPotere = false
 isPaused = false
 tempoInizioPausa = 0
@@ -42,7 +43,7 @@ local ly
 --------------------------------------------------------------------------------
 local function onLocalCollision( self, event )
   print("funzione collisione chiamata")
-    if ( self.myName == "circle" ) then
+    if ( self.myName == "exp" ) then
         local forcex = event.other.x-self.x
         local forcey = event.other.y-self.y-20
         if(forcex < 0) then
@@ -50,18 +51,25 @@ local function onLocalCollision( self, event )
         else
             forcex = 80 - forcex+12
         end
-        event.other:applyForce( forcex+500, forcey+400, self.x, self.y )
+      event.other:applyForce( forcex, forcey, self.x, self.y )
+
     end
 end
 
 local function setBomb ( event )
 --if(event.other.name == "ball") then
-    circle = display.newCircle( _W/2, 420, 50 )
-            circle.myName = "circle"
-    circle:setFillColor(0,0,0, 1)
-    timer.performWithDelay( 200, function() physics.addBody( circle, "static", {isSensor = true} ) end)
-    circle.collision = onLocalCollision
-    circle:addEventListener( "collision", circle )
+    exp = display.newCircle( _W/2, 420, 50 )
+            exp.myName = "exp"
+    exp:setFillColor(0,0,0, 1)
+    print("esplosione fatta")
+  --  timer.performWithDelay( 200, function()
+      physics.addBody( exp, "static", {isSensor = true} )
+    -- end)
+    exp.collision = onLocalCollision
+    exp:addEventListener( "collision", exp )
+    timer.performWithDelay( 100, function()
+    exp:removeSelf() exp=nil
+    end)
 --end
 end
 --------------------------------------------------------------------------------
@@ -100,7 +108,7 @@ local function dannoXY(event, mod)
   local hHit= event.target.height * (event.target.yScale)
   local wHit= event.target.width * (event.target.xScale)
 
-  local asseHitxUp= display.newRect(xHit + 160, yHit, 320, 1 )  
+  local asseHitxUp= display.newRect(xHit + 160, yHit, 320, 1 )
   local asseHitxDown= display.newRect(xHit - 160 , yHit, -320, 1 )
   local asseHityUp= display.newRect(xHit, yHit + 240, 1, 480 )
   local asseHityDown= display.newRect(xHit, yHit - 240, 1, -480 )
@@ -124,7 +132,7 @@ local function dannoXY(event, mod)
   print ("h ".. hHit)
   print ("w ".. wHit)
   print ("*****************************************°°°******")
-  for i=1, #mattoni do  --ancoraggio mattoni x e y su 0.5 
+  for i=1, #mattoni do  --ancoraggio mattoni x e y su 0.5
     if (mattoni[i].x ~= nil)  then
   print ("x ".. mattoni[i].x)
   print ("y ".. mattoni[i].y)
@@ -135,7 +143,7 @@ local function dannoXY(event, mod)
      if --(((yHit - (hHit/2)) <= (mattoni[i].y + (mattoni[i].height/2))) or ((yHit + (hHit/2)) >= (mattoni[i].y - (mattoni[i].height/2))) )
      ((xHit >= (mattoni[i].x - (larghezza/2))) and (xHit <= (mattoni[i].x + (larghezza/2))))  --controllo sulla y
        or ((yHit >= (mattoni[i].y - (altezza/2))) and (yHit <= (mattoni[i].y + (altezza/2))))
-     then 
+     then
       local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
       brick_colpito.x = mattoni[i].x
       brick_colpito.y = mattoni[i].y
@@ -145,11 +153,11 @@ local function dannoXY(event, mod)
   end
   if event.target.name == "static part ui_0" then print('funziona') end
   physics.setGravity( 0, 46 )
-  if partitaS:stats().danno > 1 then 
+  if partitaS:stats().danno > 1 then
       mattoni[i].life = mattoni[i].life - (math.floor(partitaS:stats().danno/2))
-    else 
-      mattoni[i].life = mattoni[i].life - 1 
-    end 
+    else
+      mattoni[i].life = mattoni[i].life - 1
+    end
 
       if mattoni[i].life <= 0 then
                removeBrick(mattoni[i], mod)
@@ -158,17 +166,17 @@ local function dannoXY(event, mod)
              --brick.alpha = (brick.life/(5*100))*50
              end
         timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
-   end 
+   end
  end
 end
-   
-         timer.performWithDelay( 100, function() 
+
+         timer.performWithDelay( 100, function()
           gruppoScena:remove(asseHitxUp)
           asseHitxUp:removeSelf()
-          asseHitxUp.alpha = 0 
+          asseHitxUp.alpha = 0
           gruppoScena:remove(asseHitxDown)
           asseHitxDown:removeSelf()
-          asseHitxDown.alpha = 0 
+          asseHitxDown.alpha = 0
           gruppoScena:remove(asseHityUp)
           asseHityUp:removeSelf()
           asseHityUp.alpha = 0
@@ -177,7 +185,7 @@ end
           asseHityDown.alpha = 0
 
           end )
-      
+
 end
 --------------------------------------------------------------------------------
 print ("modalità in funzioni " .. mod_par .. "*********************************************************************************")
@@ -200,7 +208,8 @@ end
 
 local function nebulaCollide( self,event )
     -- Query the position (and state) from "shieldStates" table
-        event.contact.isEnabled = false  -- Use physics contact to void collision
+    if daColpire then
+        event.contact.isEnabled = false daColpire=false end -- Use physics contact to void collision
         --self:removeEventListener("nebulaCollide",preCollision)
 end
 
@@ -241,7 +250,7 @@ cannon:addEventListener( "preCollision", cannon )
 
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
       local rect = display.newRect( 0, _H/2,50,50 )
-      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true preference.save{b="500"}
+      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true potereAttivato=true preference.save{b="500"}
 value = preference.getValue("b")
 print("Retrieving string b from rect: ",value)  end)
       local rect1 = display.newRect( 0, _H/2 +50,50,50 )
@@ -298,17 +307,28 @@ function caricaPalla()
 -- FUNZIONE PER CREAZIONE PALLA
 ---------------------------------------------------------------------------------
 function listenerUltimaPalla(event)
-  print("lister ultima palla")
    if pall_lanciata:getLinearVelocity()~=nil
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
-  if vy < 100 then
+  if vx<0 then vx=-vx end
+  if (pall_lanciata.y > 340 and vy <200 and vx < 200) then --qui
     finePartita()
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
   end
 end
 
-
+function listenerPallaSpeciale(event)
+   if pall_lanciata:getLinearVelocity()~=nil
+    then vx,vy = pall_lanciata:getLinearVelocity( ) end
+  if vy<0 then vy=-vy end
+  if vx<0 then vx=-vx end
+--  if (pall_lanciata.y > 450 and (pall_lanciata.x>135 and pall_lanciata.x<205) and vy <100 and vx < 10) then --qui
+    if (pall_lanciata.y > 400 and vy <100 and vx < 100) then
+      print("ueue")
+    setBomb()
+    Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
+  end
+end
 
        function creaPalla(sx,sy,potereAttivato, angolo)
         --turnoPotere= false da rimettere
@@ -320,7 +340,10 @@ end
         if potereAttivato then
         	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
-   turnoPotere= true 
+   if partitaS:personaggio() == "crimson" then
+   Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
+   end
+   turnoPotere= true
 
   -- partitaS:stats().danno = 10
    --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
@@ -370,6 +393,7 @@ end
   -- else
 
     caricaPalla()
+    daColpire=true
     --print("cannon:shoot",potereAttivato)
    -- sx,sy= event.x , event.y
    -- getAngle(sx,sy,cannon)
@@ -577,6 +601,7 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
+   print(" x= " .. event.x .. " y= " .. event.y)
  -- if isPaused ==false then physics.start() end
  local timeBegan
  if event.phase == 'began' then
@@ -591,6 +616,7 @@ end
   if pall_lanciata:getLinearVelocity()~=nil
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
+  if vx<0 then vx=-vx end
  print("ge".. pall_lanciata.y .." " .. vy)
 else print("primto tmiro") end
 
@@ -619,7 +645,7 @@ end -- if nTiri
       print ("tempo evento" .. event.time)
       numBallMax = numBallMax - 1
       print("numero palle" .. numBallMax)
-      shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=true --rimettere false
+      shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=false --tempr mettere true per sparare sempree
       end -- if palla lanciata ecc
           end
 
@@ -687,6 +713,10 @@ end
 --FUNZIONE CHE CREA LA PAUSA
 ---------------------------------------------------------------------------------
  function creaPausa()
+      if partitaS:personaggio() == "crimson" then
+     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
+   end
+     Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
   tempoInizioPausa = os.time()
   gruppoPausa = creaGruppo()
   isPaused=true
@@ -841,7 +871,8 @@ gruppoPausa:insert(immagine_pausa) gruppoPausa:insert(fxp) gruppoPausa:insert(fx
 gruppoPausa:insert(musicap) gruppoPausa:insert(musicam) gruppoPausa:insert(backtomenu)
 gruppoPausa:insert(ok)
 ok.alpha = 0.01
-ok:addEventListener("tap",function(event) isPaused=false physics.start()
+ok:addEventListener("tap",function(event)  Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
+ Runtime:addEventListener("enterFrame", listenerUltimaPalla) isPaused=false physics.start()
   physics.setGravity(0,40)
 
    testoVolumeMusica.fn:removeSelf()
@@ -867,7 +898,6 @@ fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
 fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
   numeroPalle = statistiche.numeroPalle
-  isPaused=false
   partitaS:stats().danno=danno
   testoVolumeMusica.fn:removeSelf()
     testoVolumeMusica.fn= nil

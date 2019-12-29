@@ -1,7 +1,6 @@
 
 To do list:
 
-- problema errore sometimes quando vuoi tornare indietro dai livelli arcade
 
 - aggiungere altro personaggio
 - aggiungere effetti sonori

@@ -16,14 +16,14 @@ local y
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
- 
- 
- 
- 
+
+
+
+
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
- 
+
 
 local function backClicked(event)
     print("back clicked")
@@ -34,14 +34,14 @@ local function backClicked(event)
 
 local function salvaxy(event)
     print ("background clicked")
-    x= event.x 
+    x= event.x
     y= event.y
 end
 
 
 -- create()
 function scene:create( event )
- 
+
     local sceneGroup = self.view
     print("menuArcade-> create")
 
@@ -78,17 +78,17 @@ function scene:create( event )
   sceneGroup:insert(levelGroup)
 
 end
- 
- 
+
+
 -- show()
 function scene:show( event )
- 
+
     local sceneGroup = self.view
     local phase = event.phase
- 
+
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
-    
+
     elseif ( phase == "did" ) then
         print("menuArcade-> show (did)")
         -- Code here runs when the scene is entirely on screen
@@ -176,8 +176,8 @@ local function onLevelSelected(event)
 print("eventi")
 print(x)
 print(y)
-
-if ( (x<300) and  (y<460)) then  
+if (x~=nil and y~=nil) then
+if ( (x<300) and  (y<460)) then
     clicked = clicked + 1
     if (clicked ==1) then
         Runtime:removeEventListener("levelClicked")
@@ -185,7 +185,7 @@ if ( (x<300) and  (y<460)) then
         print (clicked, "clicked level", event.level)
         timer.performWithDelay(0,  runLevel(event.level) ,1)
     end
-end 
+end end --nuovo end messo qui
 end
 Runtime:addEventListener("levelClicked", function() timer.performWithDelay(100,onLevelSelected) end)
  end
@@ -195,7 +195,7 @@ function scene:hide( event )
    print("menuArcade-> hide")
     local sceneGroup = self.view
     local phase = event.phase
- 
+
     if ( phase == "will" ) then
         -- Code here runs when the scene is on screen (but is about to go off screen)
  Runtime:removeEventListener("levelClicked")
@@ -206,17 +206,17 @@ print (" page_Arcade destroyed")
     end
 
 end
- 
- 
+
+
 -- destroy()
 function scene:destroy( event )
- 
+
     local sceneGroup = self.view
     -- Code here runs prior to the removal of scene's view
- 
+
 end
- 
- 
+
+
 -- -----------------------------------------------------------------------------------
 -- Scene event function listeners
 -- -----------------------------------------------------------------------------------
@@ -225,5 +225,5 @@ scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
 -- -----------------------------------------------------------------------------------
- 
+
 return scene
