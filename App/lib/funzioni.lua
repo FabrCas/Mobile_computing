@@ -54,8 +54,8 @@ local function onLocalCollision( self, event )
         else
             forcex = 80 - forcex+12
         end
-      event.other:applyForce( forcex, forcey, self.x, self.y )
-
+      --event.other:applyForce( 0, forcey+150, self.x, self.y )
+      event.other:setLinearVelocity(200,1500)
     end
 end
 
@@ -70,9 +70,9 @@ local function setBomb ( event )
     -- end)
     exp.collision = onLocalCollision
     exp:addEventListener( "collision", exp )
-    timer.performWithDelay( 100, function()
-    exp:removeSelf() exp=nil
-    end)
+ timer.performWithDelay( 1, function() exp:removeSelf() exp=nil end )
+
+
 --end
 end
 --------------------------------------------------------------------------------
@@ -240,7 +240,7 @@ local vecchiaPalla
   crimson= pg
   pg.x = _W/2 + 3
   pg.y= 45
- end 
+ end
    print("FDHSKJFS pg.w " , pg.width .. " pg.h" , pg.height)
  --  pg.width = a
  --  pg.height = a
@@ -320,7 +320,7 @@ function listenerUltimaPalla(event)
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
-  if (pall_lanciata.y > 340 and vy <100 and vx < 100) then --qui
+  if (pall_lanciata.y > 380 and vy <200 and vx < 200) then --qui
     finePartita()
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
   end
@@ -332,7 +332,7 @@ function listenerPallaSpeciale(event)
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
 --  if (pall_lanciata.y > 450 and (pall_lanciata.x>135 and pall_lanciata.x<205) and vy <100 and vx < 10) then --qui
-    if (pall_lanciata.y > 400 and vy <100 and vx < 100) then
+    if (pall_lanciata.y > 320 and vy <200 and vx < 200) then
       print("ueue")
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
@@ -347,13 +347,13 @@ end
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    end
         if potereAttivato then
-           if not (crimson==nil) then 
+           if not (crimson==nil) then
             crimson:setFillColor(1,0,0)
             --circle:setFillColor(0.66, 0.29, 0.38)
           end
         	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
-   if partitaS:personaggio() == "crimson" then
+   if partitaS:personaggio() == "crimson" and potereAttivato then
    Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
    end
    turnoPotere= true
@@ -363,12 +363,12 @@ end
   else
     --crimson= nil
     --crimson = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
-if not (crimson==nil) then 
-    crimson:setFillColor(1,1,1)
+if not (crimson==nil) then
+    crimson: setFillColor(1,1,1)
     circle:setFillColor(0,0,0)
     crimson.x = _W/2 + 3
     crimson.y= 45
-    end 
+    end
     ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
     --partitaS:stats().grandezza, partitaS:stats().grandezza)
 print("palla di grandezza" .. partitaS:stats().grandezza)
@@ -384,7 +384,7 @@ print("palla di grandezza" .. partitaS:stats().grandezza)
     ball.rotation=  angolo
     if potereAttivato then
     physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
-else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),density=(partitaS:stats().densita)/10}) end
+else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0,density=(partitaS:stats().densita)/10}) end
    -- ball.density= 0.73
     gruppoLivello:insert(ball)
     -- While the ball rests near the cannon, it's static
@@ -497,7 +497,7 @@ end end
 local function onButtonClick(event)
   print("bottone vinto tappato")
   local options = { effect = "crossFade", time = 200, params = {
-    livelloCompletato = true 
+    livelloCompletato = true
     }}
    scancellaTutto()
     if mod_par =="tower" then
@@ -591,9 +591,9 @@ end
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA BLOCCHI E PALLA
 ---------------------------------------------------------------------------------
 function hit(event, mod)
-  print ("is turno potere")
-  print (turnoPotere)
-  if turnoPotere == true  then
+  --print ("is turno potere")
+  --print (turnoPotere)
+  if turnoPotere == true and partitaS:personaggio() == "cottonBall" then
     print ("hgghghg"..event.target.x)
     dannoXY(event, mod)
   else
@@ -627,7 +627,7 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
-   print(" x= " .. event.x .. " y= " .. event.y)
+   --print(" x= " .. event.x .. " y= " .. event.y)
  -- if isPaused ==false then physics.start() end
  local timeBegan
  if event.phase == 'began' then
@@ -649,8 +649,8 @@ else print("primto tmiro") end
 
 
 
-  if (pall_lanciata==nil or (pall_lanciata.y > 340 and vy <400)) and
-      numeroPalle>0 then
+  if ((pall_lanciata==nil or (pall_lanciata.y > 380 and vy <2000 and vx < 2000)) and
+      numeroPalle>0) then
       if pg.isPlaying then pg:pause() pg:setFrame(1) end
    canShoot = true end
 end --event.phase
@@ -668,7 +668,7 @@ end -- if nTiri
       and event.x == event.xStart and event.y== event.yStart --tap
       -- and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
       then
-      print ("tempo evento" .. event.time)
+      --print ("tempo evento" .. event.time)
       numBallMax = numBallMax - 1
       print("numero palle" .. numBallMax)
       shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=false --tempr mettere true per sparare sempree
@@ -901,7 +901,7 @@ gruppoPausa:insert(immagine_pausa) gruppoPausa:insert(fxp) gruppoPausa:insert(fx
 gruppoPausa:insert(musicap) gruppoPausa:insert(musicam) gruppoPausa:insert(backtomenu)
 gruppoPausa:insert(ok)
 ok.alpha = 0.01
-ok:addEventListener("tap",function(event)  Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
+ok:addEventListener("tap",function(event)  if partitaS:personaggio() == "crimson" and potereAttivato then Runtime:addEventListener("enterFrame", listenerPallaSpeciale) end
  Runtime:addEventListener("enterFrame", listenerUltimaPalla) isPaused=false physics.start()
   physics.setGravity(0,40)
 
