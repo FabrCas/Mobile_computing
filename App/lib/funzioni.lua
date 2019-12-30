@@ -424,9 +424,12 @@ end
   if ly== nil then
     ly= event.y
   end
-    local ball = creaPalla(lx,ly,potereAttivato, cannon.rotation)
+  cannon:play()
+  local ball 
  -- if ball and not ball.isLaunched then
-    cannon:play()
+    timer.performWithDelay(225, function()
+    ball = creaPalla(lx,ly,potereAttivato, cannon.rotation)
+    end)
   --  ball:launch()
     --end
   end
