@@ -5,7 +5,9 @@ require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 --arcade deve creare invece
 local preference = require "lib.preference"
-
+local velx = 200 
+local vely = 200
+local py = 360
 local isDefeatedWon
 
 require("lib.LD_HelperX")
@@ -130,17 +132,17 @@ local function dannoXY(event, mod)
   gruppoScena:insert(asseHityDown)
   asseHityDown:toBack()
 
-  print ("x ".. xHit)
-  print ("y ".. yHit)
-  print ("h ".. hHit)
-  print ("w ".. wHit)
-  print ("*****************************************°°°******")
+  --print ("x ".. xHit)
+  --print ("y ".. yHit)
+  --print ("h ".. hHit)
+  --print ("w ".. wHit)
+  --print ("*****************************************°°°******")
   for i=1, #mattoni do  --ancoraggio mattoni x e y su 0.5
     if (mattoni[i].x ~= nil)  then
-  print ("x ".. mattoni[i].x)
-  print ("y ".. mattoni[i].y)
-  print ("w ".. mattoni[i].width * (mattoni[i].xScale))
-  print ("h ".. mattoni[i].height * (mattoni[i].yScale))
+  --print ("x ".. mattoni[i].x)
+  --print ("y ".. mattoni[i].y)
+  --print ("w ".. mattoni[i].width * (mattoni[i].xScale))
+  --print ("h ".. mattoni[i].height * (mattoni[i].yScale))
       local larghezza= mattoni[i].width * (mattoni[i].xScale)
       local altezza= mattoni[i].height * (mattoni[i].yScale)
      if --(((yHit - (hHit/2)) <= (mattoni[i].y + (mattoni[i].height/2))) or ((yHit + (hHit/2)) >= (mattoni[i].y - (mattoni[i].height/2))) )
@@ -191,7 +193,7 @@ end
 
 end
 --------------------------------------------------------------------------------
-print ("modalità in funzioni " .. mod_par .. "*********************************************************************************")
+--print ("modalità in funzioni " .. mod_par .. "*********************************************************************************")
 function creaPartita()
 if mod_par=="arcade" then
 partitaS:new()
@@ -199,7 +201,7 @@ end
 danno = partitaS:stats().danno
  statistiche=partitaS:stats()
  numeroPalle = statistiche.numeroPalle
-print("creazione partita - creaPartita " .. mod_par)
+--print("creazione partita - creaPartita " .. mod_par)
  pall_lanciata = nil
 isPaused = false
 tempoInizioPausa = 0
@@ -220,12 +222,12 @@ local vecchiaPalla
  function creaCannone(cannon,cerchio)
   creaPartita()
   nTiri=0
-  print("numero palle = " .. statistiche.numeroPalle .. mod_par)
+  --print("numero palle = " .. statistiche.numeroPalle .. mod_par)
   numeroPalle = statistiche.numeroPalle
 
    gruppoLivello = display.newGroup( )
 
-   circle = display.newCircle( _W/2, 60, 40 )
+   circle = display.newCircle( _W/2, 60, 40 ) --cerchio del pg
    gruppoLivello:insert(circle)
    circle:toFront( )
    circle:setFillColor(0,0,0)
@@ -233,7 +235,7 @@ local vecchiaPalla
    livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
    pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
    if partitaS:personaggio() == "cottonBall" then
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+   -- print("aaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
    pg.x = _W/2
    pg.y= 60
  elseif partitaS:personaggio() == "crimson" then
@@ -241,10 +243,10 @@ local vecchiaPalla
   pg.x = _W/2 + 3
   pg.y= 45
  end
-   print("FDHSKJFS pg.w " , pg.width .. " pg.h" , pg.height)
+  -- print("FDHSKJFS pg.w " , pg.width .. " pg.h" , pg.height)
  --  pg.width = a
  --  pg.height = a
-   print("il frame e " , pg.frame)
+  -- print("il frame e " , pg.frame)
     _G.canShoot = true
     _G.potereAttivato = false
     _G.numBallMax = partitaS:stats().numeroPalle
@@ -276,13 +278,13 @@ function caricaPalla()
   if vecchiaPalla ~= nil then
     vecchiaPalla= nil
   end
-  print("numeroPalle = " .. numeroPalle)
+  --print("numeroPalle = " .. numeroPalle)
   numeroPalle= numeroPalle -1
   physics.start()
     if numeroPalle>0 then
   obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle-1)).view
   obj:setLinearVelocity(150,0)
-  print("obj = ",obj)
+  --print("obj = ",obj)
   vecchiaPalla= obj else  canShoot=false
   end
   end
@@ -316,28 +318,31 @@ function caricaPalla()
 -- FUNZIONE PER CREAZIONE PALLA
 ---------------------------------------------------------------------------------
 function listenerUltimaPalla(event)
+	if not isPaused then
+	if not(pall_lanciata==nil) then
    if pall_lanciata:getLinearVelocity()~=nil
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
-  if (pall_lanciata.y > 380 and vy <200 and vx < 200) then --qui
+  if (pall_lanciata.y > py and vy <vely and vx < velx) then --qui
     finePartita()
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
-  end
-end
+  end end
+end end
 
 function listenerPallaSpeciale(event)
+	if not isPaused then
    if pall_lanciata:getLinearVelocity()~=nil
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
 --  if (pall_lanciata.y > 450 and (pall_lanciata.x>135 and pall_lanciata.x<205) and vy <100 and vx < 10) then --qui
-    if (pall_lanciata.y > 320 and vy <200 and vx < 200) then
-      print("ueue")
+    if (pall_lanciata.y > py and vy <vely and vx < velx) then
+    
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
   end
-end
+end end
 
        function creaPalla(sx,sy,potereAttivato, angolo)
         --turnoPotere= false da rimettere
@@ -347,10 +352,10 @@ end
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    end
         if potereAttivato then
-           if not (crimson==nil) then
+           if partitaS:personaggio()=="crimson" then
             crimson:setFillColor(1,0,0)
             --circle:setFillColor(0.66, 0.29, 0.38)
-          end
+         else crimson = nil end
         	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
    if partitaS:personaggio() == "crimson" and potereAttivato then
@@ -364,14 +369,14 @@ end
     --crimson= nil
     --crimson = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
 if not (crimson==nil) then
-    crimson: setFillColor(1,1,1)
+    crimson:setFillColor(1,1,1)
     circle:setFillColor(0,0,0)
     crimson.x = _W/2 + 3
     crimson.y= 45
     end
     ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
     --partitaS:stats().grandezza, partitaS:stats().grandezza)
-print("palla di grandezza" .. partitaS:stats().grandezza)
+--print("palla di grandezza" .. partitaS:stats().grandezza)
 
     partitaS:stats().danno = danno
         end
@@ -557,7 +562,7 @@ end
 
 function schermataSconfitta()
   if isDefeatedWon == false then
-	print("stampa schermata")
+	--print("stampa schermata")
   bg:removeSelf()
   bg= nil
   myLevel= LD_Loader:new(gruppoLivello)
@@ -591,7 +596,7 @@ function hit(event, mod)
   --print ("is turno potere")
   --print (turnoPotere)
   if turnoPotere == true and partitaS:personaggio() == "cottonBall" then
-    print ("hgghghg"..event.target.x)
+   -- print ("hgghghg"..event.target.x)
     dannoXY(event, mod)
   else
 
@@ -626,10 +631,13 @@ function hit(event, mod)
  function touchBg(event,cannon)
    --print(" x= " .. event.x .. " y= " .. event.y)
  -- if isPaused ==false then physics.start() end
+  if pall_lanciata~=nil  then print("x=,y=",pall_lanciata.x,pall_lanciata.y) end
+ print("canShoot",canShoot)
+ print("isPaused",isPaused)
  local timeBegan
  if event.phase == 'began' then
   timeBegan = event.time
-   print ("time began" .. timeBegan)
+  -- print ("time began" .. timeBegan)
 end
 
  physics.start( )
@@ -640,13 +648,14 @@ end
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
- print("ge".. pall_lanciata.y .." " .. vy)
-else print("primto tmiro") end
+ --print("ge".. pall_lanciata.y .." " .. vy)
+else-- print("primto tmiro")
+ end
 
 
 
 
-  if ((pall_lanciata==nil or (pall_lanciata.y > 380 and vy <2000 and vx < 2000)) and
+  if ((pall_lanciata==nil or (pall_lanciata.y > py and vy < vely and vx < velx)) and
       numeroPalle>0) then
       if pg.isPlaying then pg:pause() pg:setFrame(1) end
    canShoot = true end
@@ -667,7 +676,7 @@ end -- if nTiri
       then
       --print ("tempo evento" .. event.time)
       numBallMax = numBallMax - 1
-      print("numero palle" .. numBallMax)
+      --print("numero palle" .. numBallMax)
       shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=false --tempr mettere true per sparare sempree
       end -- if palla lanciata ecc
           end
@@ -733,7 +742,7 @@ function creaUI(screenGroup)
 end
 function creaGruppo()
 gruppo=display.newGroup( )
-print("creaGruppo - tower")
+--print("creaGruppo - tower")
   return gruppo
 end
 ---------------------------------------------------------------------------------
@@ -819,18 +828,18 @@ end
 --*********************************************************************************************************
 
 function creaNumeroMusica(valore)
-    print ("valore :" .. valore )
+    --print ("valore :" .. valore )
     local num1,num2
     local char1=valore:sub(0,1)
     local char2= valore:sub(2,2)
-    print (char1)
-    print (char2)
+    --print (char1)
+    --print (char2)
 if char2 == "" then
     num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectMusica.x ,rectMusica.y)
     num2=nil
-    print("case1")
+    --print("case1")
 else
-     print("case2")
+     --print("case2")
     num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectMusica.x - 11 ,rectMusica.y)
     num2= display.newImage(composer.imgDir .. char2 .. ".png" ,rectMusica.x + 11 ,rectMusica.y)
     num2.width=45
@@ -898,8 +907,7 @@ gruppoPausa:insert(immagine_pausa) gruppoPausa:insert(fxp) gruppoPausa:insert(fx
 gruppoPausa:insert(musicap) gruppoPausa:insert(musicam) gruppoPausa:insert(backtomenu)
 gruppoPausa:insert(ok)
 ok.alpha = 0.01
-ok:addEventListener("tap",function(event)  if partitaS:personaggio() == "crimson" and potereAttivato then Runtime:addEventListener("enterFrame", listenerPallaSpeciale) end
- Runtime:addEventListener("enterFrame", listenerUltimaPalla) isPaused=false physics.start()
+ok:addEventListener("tap",function(event) isPaused=false physics.start()
   physics.setGravity(0,40)
 
    testoVolumeMusica.fn:removeSelf()
