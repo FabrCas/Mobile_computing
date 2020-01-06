@@ -368,7 +368,7 @@ end end
   else
     --crimson= nil
     --crimson = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
-if not (crimson==nil) then
+if partitaS:personaggio()=="crimson" then
     crimson:setFillColor(1,1,1)
     circle:setFillColor(0,0,0)
     crimson.x = _W/2 + 3
@@ -490,6 +490,9 @@ function removeBrick(brick, mod)
        if mod_par=="tower" then
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
+     if(mod_par=="arcade") then 
+		partitaS:cancellaPersonaggio()
+	end
      schermataVittoria()
    --DA SISTEMARE
 
@@ -598,7 +601,7 @@ function hit(event, mod)
   if turnoPotere == true and partitaS:personaggio() == "cottonBall" then
    -- print ("hgghghg"..event.target.x)
     dannoXY(event, mod)
-  else
+  end
 
   local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
   brick_colpito.x = event.target.x
@@ -623,7 +626,7 @@ function hit(event, mod)
              -- brick.alpha = (brick.life/(5*100))*50
              end
              timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
-          end
+         -- end
            end
 ---------------------------------------------------------------------------------
 --FUNZIONI TOUCH AUSILIARIE
@@ -932,6 +935,9 @@ musicap:addEventListener("tap", onButtonClickDownMusica)
 fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
 fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
+	if(mod_par=="arcade") then 
+		partitaS:cancellaPersonaggio()
+	end
   numeroPalle = statistiche.numeroPalle
   partitaS:stats().danno=danno
   testoVolumeMusica.fn:removeSelf()
