@@ -425,6 +425,7 @@ end
     ly= event.y
   end
   cannon:play()
+  canShoot= false
   local ball 
  -- if ball and not ball.isLaunched then
     timer.performWithDelay(225, function()
@@ -689,6 +690,8 @@ end -- if nTiri
 --FUNZIONE FINE PARTITA
 ---------------------------------------------------------------------------------
  function finePartita()
+  crimson= nil
+  livelloPg= nil
     if mod_par=="tower" then
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
@@ -743,6 +746,7 @@ end
 --FUNZIONE CHE CREA LA PAUSA
 ---------------------------------------------------------------------------------
  function creaPausa()
+  print ("pg".. partitaS:personaggio() )
       if partitaS:personaggio() == "crimson" then
      Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
    end
