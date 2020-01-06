@@ -354,6 +354,7 @@ end end
         if potereAttivato then
            if partitaS:personaggio()=="crimson" then
             crimson:setFillColor(1,0,0)
+             partitaS:stats().danno = 10
             --circle:setFillColor(0.66, 0.29, 0.38)
          else crimson = nil end
         	pg:play() --pg.width = a pg.height = a
@@ -417,7 +418,8 @@ end
 
   --   finePartita()
   -- else
-
+  if canShoot then
+    numBallMax = numBallMax - 1
     caricaPalla()
     daColpire=true
     --print("cannon:shoot",potereAttivato)
@@ -430,14 +432,15 @@ end
     ly= event.y
   end
   cannon:play()
-  canShoot= false
+
+ 
   local ball 
  -- if ball and not ball.isLaunched then
-    timer.performWithDelay(225, function()
     ball = creaPalla(lx,ly,potereAttivato, cannon.rotation)
-    end)
+
+  canShoot = false 
   --  ball:launch()
-    --end
+    end
   end
 ---------------------------------------------------------------------------------
 --FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA
@@ -665,7 +668,8 @@ else-- print("primto tmiro")
   if ((pall_lanciata==nil or (pall_lanciata.y > py and vy < vely and vx < velx)) and
       numeroPalle>0) then
       if pg.isPlaying then pg:pause() pg:setFrame(1) end
-   canShoot = true end
+   canShoot = true 
+ end
 end --event.phase
 end -- if nTiri
 
@@ -682,9 +686,20 @@ end -- if nTiri
       -- and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
       then
       --print ("tempo evento" .. event.time)
-      numBallMax = numBallMax - 1
+      
       --print("numero palle" .. numBallMax)
-      shoot(event,potereAttivato,cannon) led_acceso.alpha=0 potereAttivato=false  canShoot=false --tempr mettere true per sparare sempree
+      if canShoot == true then 
+
+        timer.performWithDelay(225, function() 
+          shoot(event,potereAttivato,cannon) 
+          led_acceso.alpha=0
+      potereAttivato=false
+      canShoot=false
+          end)
+      
+       --tempr mettere true per sparare sempree
+
+      end 
       end -- if palla lanciata ecc
           end
 
