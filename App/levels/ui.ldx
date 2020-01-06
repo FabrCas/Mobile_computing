@@ -63,7 +63,7 @@
      </physics>
     </object>
    </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="0">
+   <physics enabled="0" bodytype="0" convex="0" linked="0">
     <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
@@ -145,6 +145,71 @@
   <object uid="{d195e18e-8156-45a6-8d1a-3575dc7b5e82}" shape="6" name="led spento_0" alpha="1" blendMode="0" idx="4" spriteName="" x="83.3333" y="12.6667" width="28" height="28" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{e389a558-d591-458a-a84a-580f3cbe598d}" shape="0" name="rect_15" alpha="1" blendMode="0" spriteName="" x="-1.7266" y="419.193" width="30.7613" height="9.27362" rotation="3" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{7357c884-2547-405f-b565-9346f951f8aa}" shape="0" name="rect_16" alpha="1" blendMode="0" spriteName="" x="28.8689" y="420.887" width="34.6" height="2.7412" rotation="-328" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{f9cddb19-a07c-49b0-b62f-4a30649e399a}" shape="0" name="rect_17" alpha="1" blendMode="0" spriteName="" x="53.2824" y="436.977" width="35.047" height="3.62556" rotation="24" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{895abe4c-eb3f-498e-af3a-8df82c75ab89}" shape="0" name="rect_18" alpha="1" blendMode="0" spriteName="" x="78.1931" y="448.645" width="30.4" height="3.6" rotation="-344" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0" bounce="0" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{7e05215f-6e61-49a0-98a1-7d7eebe6e073}" shape="0" name="rect_19" alpha="1" blendMode="0" spriteName="" x="103.686" y="456.021" width="30.4" height="3.6" rotation="-349" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{06368184-9905-4115-9fe0-2d9b13dcbf0d}" shape="0" name="rect_20" alpha="1" blendMode="0" spriteName="" x="114.934" y="459.314" width="45.6754" height="5.40893" rotation="-356" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{e6c16354-2e8d-43c2-a6bc-d18dec205e1c}" shape="0" name="rect_21" alpha="1" blendMode="0" spriteName="" x="176.543" y="461.668" width="30.4" height="3.6" rotation="-6" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{4bbdbbb8-2428-4bb6-939f-1053835a828b}" shape="0" name="rect_22" alpha="1" blendMode="0" spriteName="" x="203.259" y="459.042" width="30.4" height="3.6" rotation="-14" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{96f85905-f2d8-42c0-ad1a-addb044c2805}" shape="0" name="rect_23" alpha="1" blendMode="0" spriteName="" x="227.959" y="453.094" width="35.047" height="3.62556" rotation="336" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{4ad5cdfa-bdfe-4c80-a70a-90f83e4ac21d}" shape="0" name="rect_24" alpha="1" blendMode="0" spriteName="" x="256.848" y="440.417" width="35.047" height="3.62556" rotation="329" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{7b625904-b01e-4017-ae14-c7986a234814}" shape="0" name="rect_25" alpha="1" blendMode="0" spriteName="" x="260.893" y="437.986" width="35.047" height="3.62556" rotation="329" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{386d0b7f-9854-4405-863d-62bc9715a0f8}" shape="0" name="rect_28" alpha="1" blendMode="0" spriteName="" x="290.785" y="419.94" width="28.9774" height="2.99767" rotation="358" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{c3d758b3-5202-43fe-822a-d5a73ad35566}" shape="0" name="rect_26" alpha="1" blendMode="0" spriteName="" x="159.43" y="462.472" width="45.6754" height="5.40893" rotation="-3" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="0" textcolor="4294967295">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="999" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
  </layer>
