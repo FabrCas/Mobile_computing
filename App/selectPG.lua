@@ -72,6 +72,7 @@ function scene:create( event )
 --aggungere gli altri bottoni per gli altri personaggi
       rectButton= myLevel:getLayerObject("backgrounds", "rect_pg1")
       rectButton2= myLevel:getLayerObject("backgrounds", "rect_pg2")
+
       crimson= myLevel:getLayerObject("PGs", "crimson").view 
       crimsonScroll= myLevel:getLayerObject("PGs", "scroll-crimson_0").view
       cb= myLevel:getLayerObject("PGs", "cottonBall").view
@@ -86,7 +87,7 @@ function scene:create( event )
       sceneGroup:insert(crimsonScroll)
       sceneGroup:insert(cb)
       sceneGroup:insert(cbScroll)
-      sceneGroup:insert(back)
+
 
 
       --crimson:toBack()
