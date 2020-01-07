@@ -50,22 +50,22 @@ local ly
 --------------------------------------------------------------------------------
 local function onLocalCollision( self, event )
   print("funzione collisione chiamata")
-    if ( self.myName == "exp" ) then
-        local forcex = event.other.x-self.x
-        local forcey = event.other.y-self.y-20
-        if(forcex < 0) then
-            forcex = 0-(80 + forcex)-12
-        else
-            forcex = 80 - forcex+12
-        end
-      --event.other:applyForce( 0, forcey+150, self.x, self.y )
-      event.other:setLinearVelocity(200,1500)
-    end
+  --  if ( self.myName == "exp" ) then
+  --      local forcex = event.other.x-self.x
+  --      local forcey = event.other.y-self.y-20
+  --      if(forcex < 0) then
+  --          forcex = 0-(80 + forcex)-12
+  --      else
+  --          forcex = 80 - forcex+12
+  --      end
+      --event.other:applyForce( 100, forcey+150, self.x, self.y )
+      event.other:setLinearVelocity(200,15000)
+  --  end
 end
 
 local function setBomb ( event )
 --if(event.other.name == "ball") then
-    exp = display.newCircle( _W/2, 420, 50 )
+    exp = display.newCircle( _W/2, 430, 50 )
             exp.myName = "exp"
     exp:setFillColor(0,0,0, 1)
     print("esplosione fatta")
@@ -407,6 +407,7 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
        --physics.setGravity(0, 46) --modificare
        ball:setLinearVelocity( normDeltaX*speed,normDeltaY*speed )
        pall_lanciata = ball
+      -- pall_lanciata.isSleepingAllowed = false
        gruppoLivello:insert(pall_lanciata)
        nTiri = nTiri + 1
        --ball.preCollision = nebulaCollide
@@ -435,12 +436,12 @@ end
   end
   cannon:play()
 
- 
-  local ball 
+
+  local ball
  -- if ball and not ball.isLaunched then
     ball = creaPalla(lx,ly,potereAttivato, cannon.rotation)
 
-  canShoot = false 
+  canShoot = false
   --  ball:launch()
     end
   end
@@ -664,7 +665,7 @@ else-- print("primto tmiro")
   if ((pall_lanciata==nil or (pall_lanciata.y > py and vy < vely and vx < velx)) and
       numeroPalle>0) then
       if pg.isPlaying then pg:pause() pg:setFrame(1) end
-   canShoot = true 
+   canShoot = true
  end
 end --event.phase
 end -- if nTiri
@@ -682,20 +683,20 @@ end -- if nTiri
       -- and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
       then
       --print ("tempo evento" .. event.time)
-      
-      --print("numero palle" .. numBallMax)
-      if canShoot == true then 
 
-        timer.performWithDelay(225, function() 
-          shoot(event,potereAttivato,cannon) 
+      --print("numero palle" .. numBallMax)
+      if canShoot == true then
+
+        timer.performWithDelay(225, function()
+          shoot(event,potereAttivato,cannon)
           led_acceso.alpha=0
       potereAttivato=false
       canShoot=false
           end)
-      
+
        --tempr mettere true per sparare sempree
 
-      end 
+      end
       end -- if palla lanciata ecc
           end
 
@@ -741,10 +742,13 @@ function creaUI(screenGroup)
   myUI:loadLevel("ui.ui")
   led_acceso = display.newImageRect("images/led acceso.png",  30,30 )
   gruppoLivello:insert(led_acceso)
-  	for i=16,26 do
-  local rectCentrale = myUI:getLayerObject("ui_layer", "rect_"..i ).view
-  rectCentrale:addEventListener("collision",function(event) local vx, vy = event.other:getLinearVelocity() vx = vx/2 vy = vy/2 event.other:setLinearVelocity(vx,vy) end)
-   end
+  	for i=28,31 do --20 26 centrali
+  local rectVarie = myUI:getLayerObject("ui_layer", "rect_"..i ).view
+
+  if (i==29) then rectVarie:addEventListener("postCollision",function(event) print("blala") local vx, vy = event.other:getLinearVelocity() end) else
+  rectVarie:addEventListener("postCollision",function(event) local vx, vy = event.other:getLinearVelocity() end)
+end end
+
   local buttonPausa = myUI:getLayerObject("invisible_layer", "buttonStats").view --PAUSA (anche se c'è scritto buttonStats)
     local buttonStats = myUI:getLayerObject("invisible_layer", "buttonPausa").view --STATS (anche se c'è scritto buttonPause)
     local rectBalls = myUI:getLayerObject("invisible_layer", "rect_balls").view
@@ -773,7 +777,7 @@ end
 --FUNZIONE CHE CREA LA PAUSA
 ---------------------------------------------------------------------------------
  function creaPausa()
-  print ("pg".. partitaS:personaggio() )
+  --print ("pg".. partitaS:personaggio() )
       if partitaS:personaggio() == "crimson" then
      Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
    end
@@ -1021,8 +1025,8 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
     creaScritta(tostring(stats.velocita*10), 180)   --max 999? poco spazio
     creaScritta(tostring(stats.rimbalzo), 225) --sennò valore con la virgola
     creaScritta(tostring(stats.grandezza), 267)
-    creaScritta(tostring(stats.densita), 310)
-    creaScritta(tostring(stats.fortuna), 350)
+    creaScritta(tostring(stats.densita), 315)
+    creaScritta(tostring(stats.fortuna), 354)
 
     chiudi:addEventListener("tap",function(event) for  i = 1, #images do images[i]:removeSelf() end  images = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
 end
