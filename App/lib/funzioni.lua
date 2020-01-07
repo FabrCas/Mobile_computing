@@ -340,6 +340,7 @@ function listenerPallaSpeciale(event)
  valorey= ball.y
 
   fire.x, fire.y= ball:localToContent(0,0)
+  fire.x= fire.x + 1
  -- ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza))
 
 	if not isPaused then
@@ -352,13 +353,15 @@ function listenerPallaSpeciale(event)
 
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
-    gruppoLivello:remove(fire)
     fire:removeSelf()
+    gruppoLivello:remove(fire)
+    
   end
 end end
 
        function creaPalla(sx,sy,potereAttivato, angolo)
         --turnoPotere= false da rimettere
+        fire= nil
 
         local creaCorpo = true 
         turnoPotere = false
@@ -386,10 +389,14 @@ end end
        local sequenceData = {
          name = "firing", start= 1, count= 60, time = 1300, loopCount= 0
        }
-
+       
        fire = display.newSprite (sheetFire, sequenceData)
-
+     --  fire.height= fire.height
+      -- fire.width= fire.width
        fire:play()
+
+       ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+       gruppoLivello:insert(fire)
 
 print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
       
@@ -422,7 +429,6 @@ if partitaS:personaggio()=="crimson" then
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
 
-    if creaCorpo then 
 
     if potereAttivato then
     physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
@@ -430,7 +436,6 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
    -- ball.density= 0.73
       --grandezza arcade raggio 15 tower 10
 
-    end 
  
     gruppoLivello:insert(ball)
     -- While the ball rests near the cannon, it's static
@@ -991,7 +996,9 @@ end
 gruppoPausa:removeSelf() print("tolto da 'ok' - tower") tempoFinePausa=os.time() --rimuove la pausa
 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
 --print("tempo di pausa totale - tower",tempoPausaTotale)
-
+if  not (fire==nil) then 
+Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
+end 
 end)
 musicam:addEventListener("tap", onButtonClickUpMusica)
 musicap:addEventListener("tap", onButtonClickDownMusica)
