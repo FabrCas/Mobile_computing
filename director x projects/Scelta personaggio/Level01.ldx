@@ -1,166 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="back" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="sceltaPersonaggio">
- <assets firstgid="1" name="wall" width="320" height="480">
-  <image source="images/wallPGs.png" width="320" height="480"/>
-  <asset frame="0" name="wall_0" spritename="" class="" export="1" x="0" y="0" w="320" h="480">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
- </assets>
- <assets firstgid="2" name="b" width="470" height="472" spacing="2" margin="1">
-  <image source="images/batuffolo.png" width="1888" height="1896"/>
-  <asset frame="0" name="b_0" spritename="" class="" export="0" x="1" y="1" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="1" name="b_1" spritename="" class="" export="1" x="473" y="1" w="470" h="472">
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="fireBall">
+ <assets firstgid="1" name="16_sunburn_spritesheet" width="100" height="100">
+  <image source="../../App/images/16_sunburn_spritesheet.png" width="800" height="800"/>
+  <asset frame="0" name="16_sunburn_spritesheet_0" spritename="" class="" export="1" x="0" y="0" w="100" h="100">
    <animations>
-    <sequence name="colorfull" loopCount="0" loopDirection="0" duration="1200" default="1" play="0">
+    <sequence name="firing" loopCount="0" loopDirection="0" duration="1300" default="1" play="1">
      <frames>
+      <frame idx="0"/>
       <frame idx="1"/>
       <frame idx="2"/>
-      <frame idx="0"/>
       <frame idx="3"/>
-      <frame idx="5"/>
-      <frame idx="9"/>
-      <frame idx="13"/>
-      <frame idx="6"/>
-      <frame idx="7"/>
-      <frame idx="10"/>
-      <frame idx="14"/>
-      <frame idx="4"/>
-      <frame idx="8"/>
-      <frame idx="12"/>
-     </frames>
-    </sequence>
-   </animations>
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="2" name="b_2" spritename="" class="" export="0" x="945" y="1" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="3" name="b_3" spritename="" class="" export="0" x="1417" y="1" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="4" name="b_4" spritename="" class="" export="0" x="1" y="475" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="5" name="b_5" spritename="" class="" export="0" x="473" y="475" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="6" name="b_6" spritename="" class="" export="0" x="945" y="475" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="7" name="b_7" spritename="" class="" export="0" x="1417" y="475" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="8" name="b_8" spritename="" class="" export="0" x="1" y="949" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="9" name="b_9" spritename="" class="" export="0" x="473" y="949" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="10" name="b_10" spritename="" class="" export="0" x="945" y="949" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="11" name="b_11" spritename="" class="" export="0" x="1417" y="949" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="12" name="b_12" spritename="" class="" export="0" x="1" y="1423" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="13" name="b_13" spritename="" class="" export="0" x="473" y="1423" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="14" name="b_14" spritename="" class="" export="0" x="945" y="1423" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="15" name="b_15" spritename="" class="" export="0" x="1417" y="1423" w="470" h="472">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
- </assets>
- <assets firstgid="18" name="scroll-b" width="400" height="400" spacing="11">
-  <image source="images/scroll-cottonBall.png" width="400" height="400"/>
-  <asset frame="0" name="scroll-b_0" spritename="" class="" export="1" x="0" y="0" w="400" h="400">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
- </assets>
- <assets firstgid="19" name="back" width="200" height="200">
-  <image source="../../App/images/back.png" width="200" height="200"/>
-  <asset frame="0" name="back_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
- </assets>
- <assets firstgid="20" name="scroll-crimson" width="400" height="400">
-  <image source="../../App/images/scroll-crimson.png" width="400" height="400"/>
-  <asset frame="0" name="scroll-crimson_0" spritename="" class="" export="1" x="0" y="0" w="400" h="400">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
- </assets>
- <assets firstgid="21" name="crimsonWalk" width="700" height="500">
-  <image source="../../App/images/crimsonWalk.png" width="3500" height="2000"/>
-  <asset frame="0" name="crimsonWalk_0" spritename="" class="" export="0" x="0" y="0" w="700" h="500">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="1" name="crimsonWalk_1" spritename="" class="" export="0" x="700" y="0" w="700" h="500">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="2" name="crimsonWalk_2" spritename="" class="" export="0" x="1400" y="0" w="700" h="500">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="3" name="crimsonWalk_3" spritename="" class="" export="0" x="2100" y="0" w="700" h="500">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="4" name="crimsonWalk_4" spritename="" class="" export="1" x="2800" y="0" w="700" h="500">
-   <animations>
-    <sequence name="walking" loopCount="0" loopDirection="0" duration="1000" default="1" play="0">
-     <frames>
       <frame idx="4"/>
       <frame idx="5"/>
       <frame idx="6"/>
@@ -175,176 +24,375 @@
       <frame idx="15"/>
       <frame idx="16"/>
       <frame idx="17"/>
-      <frame idx="0"/>
-      <frame idx="1"/>
-      <frame idx="2"/>
-      <frame idx="3"/>
+      <frame idx="18"/>
+      <frame idx="19"/>
+      <frame idx="20"/>
+      <frame idx="21"/>
+      <frame idx="22"/>
+      <frame idx="23"/>
+      <frame idx="24"/>
+      <frame idx="25"/>
+      <frame idx="26"/>
+      <frame idx="27"/>
+      <frame idx="27"/>
+      <frame idx="28"/>
+      <frame idx="29"/>
+      <frame idx="30"/>
+      <frame idx="31"/>
+      <frame idx="32"/>
+      <frame idx="33"/>
+      <frame idx="34"/>
+      <frame idx="35"/>
+      <frame idx="36"/>
+      <frame idx="37"/>
+      <frame idx="38"/>
+      <frame idx="39"/>
+      <frame idx="40"/>
+      <frame idx="41"/>
+      <frame idx="42"/>
+      <frame idx="43"/>
+      <frame idx="44"/>
+      <frame idx="45"/>
+      <frame idx="46"/>
+      <frame idx="47"/>
+      <frame idx="48"/>
+      <frame idx="49"/>
+      <frame idx="50"/>
+      <frame idx="51"/>
+      <frame idx="52"/>
+      <frame idx="53"/>
+      <frame idx="54"/>
+      <frame idx="55"/>
+      <frame idx="56"/>
+      <frame idx="57"/>
+      <frame idx="58"/>
+      <frame idx="59"/>
+      <frame idx="60"/>
      </frames>
     </sequence>
    </animations>
+   <physics enabled="0" bodytype="1" convex="0" linked="1">
+    <body bodyshape="1" friction="0.3" bounce="0.2" density="1" radius="15" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="16_sunburn_spritesheet_1" spritename="" class="" export="0" x="100" y="0" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="5" name="crimsonWalk_5" spritename="" class="" export="0" x="0" y="500" w="700" h="500">
+  <asset frame="2" name="16_sunburn_spritesheet_2" spritename="" class="" export="0" x="200" y="0" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="6" name="crimsonWalk_6" spritename="" class="" export="0" x="700" y="500" w="700" h="500">
+  <asset frame="3" name="16_sunburn_spritesheet_3" spritename="" class="" export="0" x="300" y="0" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="7" name="crimsonWalk_7" spritename="" class="" export="0" x="1400" y="500" w="700" h="500">
+  <asset frame="4" name="16_sunburn_spritesheet_4" spritename="" class="" export="0" x="400" y="0" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="8" name="crimsonWalk_8" spritename="" class="" export="0" x="2100" y="500" w="700" h="500">
+  <asset frame="5" name="16_sunburn_spritesheet_5" spritename="" class="" export="0" x="500" y="0" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="9" name="crimsonWalk_9" spritename="" class="" export="0" x="2800" y="500" w="700" h="500">
+  <asset frame="6" name="16_sunburn_spritesheet_6" spritename="" class="" export="0" x="600" y="0" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="10" name="crimsonWalk_10" spritename="" class="" export="0" x="0" y="1000" w="700" h="500">
+  <asset frame="7" name="16_sunburn_spritesheet_7" spritename="" class="" export="0" x="700" y="0" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="11" name="crimsonWalk_11" spritename="" class="" export="0" x="700" y="1000" w="700" h="500">
+  <asset frame="8" name="16_sunburn_spritesheet_8" spritename="" class="" export="0" x="0" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="12" name="crimsonWalk_12" spritename="" class="" export="0" x="1400" y="1000" w="700" h="500">
+  <asset frame="9" name="16_sunburn_spritesheet_9" spritename="" class="" export="0" x="100" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="13" name="crimsonWalk_13" spritename="" class="" export="0" x="2100" y="1000" w="700" h="500">
+  <asset frame="10" name="16_sunburn_spritesheet_10" spritename="" class="" export="0" x="200" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="14" name="crimsonWalk_14" spritename="" class="" export="0" x="2800" y="1000" w="700" h="500">
+  <asset frame="11" name="16_sunburn_spritesheet_11" spritename="" class="" export="0" x="300" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="15" name="crimsonWalk_15" spritename="" class="" export="0" x="0" y="1500" w="700" h="500">
+  <asset frame="12" name="16_sunburn_spritesheet_12" spritename="" class="" export="0" x="400" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="16" name="crimsonWalk_16" spritename="" class="" export="0" x="700" y="1500" w="700" h="500">
+  <asset frame="13" name="16_sunburn_spritesheet_13" spritename="" class="" export="0" x="500" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="17" name="crimsonWalk_17" spritename="" class="" export="0" x="1400" y="1500" w="700" h="500">
+  <asset frame="14" name="16_sunburn_spritesheet_14" spritename="" class="" export="0" x="600" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="18" name="crimsonWalk_18" spritename="" class="" export="0" x="2100" y="1500" w="700" h="500">
+  <asset frame="15" name="16_sunburn_spritesheet_15" spritename="" class="" export="0" x="700" y="100" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="19" name="crimsonWalk_19" spritename="" class="" export="0" x="2800" y="1500" w="700" h="500">
+  <asset frame="16" name="16_sunburn_spritesheet_16" spritename="" class="" export="0" x="0" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="17" name="16_sunburn_spritesheet_17" spritename="" class="" export="0" x="100" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="18" name="16_sunburn_spritesheet_18" spritename="" class="" export="0" x="200" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="19" name="16_sunburn_spritesheet_19" spritename="" class="" export="0" x="300" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="20" name="16_sunburn_spritesheet_20" spritename="" class="" export="0" x="400" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="21" name="16_sunburn_spritesheet_21" spritename="" class="" export="0" x="500" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="22" name="16_sunburn_spritesheet_22" spritename="" class="" export="0" x="600" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="23" name="16_sunburn_spritesheet_23" spritename="" class="" export="0" x="700" y="200" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="24" name="16_sunburn_spritesheet_24" spritename="" class="" export="0" x="0" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="25" name="16_sunburn_spritesheet_25" spritename="" class="" export="0" x="100" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="26" name="16_sunburn_spritesheet_26" spritename="" class="" export="0" x="200" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="27" name="16_sunburn_spritesheet_27" spritename="" class="" export="0" x="300" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="28" name="16_sunburn_spritesheet_28" spritename="" class="" export="0" x="400" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="29" name="16_sunburn_spritesheet_29" spritename="" class="" export="0" x="500" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="30" name="16_sunburn_spritesheet_30" spritename="" class="" export="0" x="600" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="31" name="16_sunburn_spritesheet_31" spritename="" class="" export="0" x="700" y="300" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="32" name="16_sunburn_spritesheet_32" spritename="" class="" export="0" x="0" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="33" name="16_sunburn_spritesheet_33" spritename="" class="" export="0" x="100" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="34" name="16_sunburn_spritesheet_34" spritename="" class="" export="0" x="200" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="35" name="16_sunburn_spritesheet_35" spritename="" class="" export="0" x="300" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="36" name="16_sunburn_spritesheet_36" spritename="" class="" export="0" x="400" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="37" name="16_sunburn_spritesheet_37" spritename="" class="" export="0" x="500" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="38" name="16_sunburn_spritesheet_38" spritename="" class="" export="0" x="600" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="39" name="16_sunburn_spritesheet_39" spritename="" class="" export="0" x="700" y="400" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="40" name="16_sunburn_spritesheet_40" spritename="" class="" export="0" x="0" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="41" name="16_sunburn_spritesheet_41" spritename="" class="" export="0" x="100" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="42" name="16_sunburn_spritesheet_42" spritename="" class="" export="0" x="200" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="43" name="16_sunburn_spritesheet_43" spritename="" class="" export="0" x="300" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="44" name="16_sunburn_spritesheet_44" spritename="" class="" export="0" x="400" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="45" name="16_sunburn_spritesheet_45" spritename="" class="" export="0" x="500" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="46" name="16_sunburn_spritesheet_46" spritename="" class="" export="0" x="600" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="47" name="16_sunburn_spritesheet_47" spritename="" class="" export="0" x="700" y="500" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="48" name="16_sunburn_spritesheet_48" spritename="" class="" export="0" x="0" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="49" name="16_sunburn_spritesheet_49" spritename="" class="" export="0" x="100" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="50" name="16_sunburn_spritesheet_50" spritename="" class="" export="0" x="200" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="51" name="16_sunburn_spritesheet_51" spritename="" class="" export="0" x="300" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="52" name="16_sunburn_spritesheet_52" spritename="" class="" export="0" x="400" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="53" name="16_sunburn_spritesheet_53" spritename="" class="" export="0" x="500" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="54" name="16_sunburn_spritesheet_54" spritename="" class="" export="0" x="600" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="55" name="16_sunburn_spritesheet_55" spritename="" class="" export="0" x="700" y="600" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="56" name="16_sunburn_spritesheet_56" spritename="" class="" export="0" x="0" y="700" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="57" name="16_sunburn_spritesheet_57" spritename="" class="" export="0" x="100" y="700" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="58" name="16_sunburn_spritesheet_58" spritename="" class="" export="0" x="200" y="700" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="59" name="16_sunburn_spritesheet_59" spritename="" class="" export="0" x="300" y="700" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="60" name="16_sunburn_spritesheet_60" spritename="" class="" export="0" x="400" y="700" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="61" name="16_sunburn_spritesheet_61" spritename="" class="" export="0" x="500" y="700" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="62" name="16_sunburn_spritesheet_62" spritename="" class="" export="0" x="600" y="700" w="100" h="100">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="63" name="16_sunburn_spritesheet_63" spritename="" class="" export="0" x="700" y="700" w="100" h="100">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
  </assets>
- <assets firstgid="41" name="notAvailable" width="200" height="200">
-  <image source="../../App/images/notAvailable.png" width="200" height="200"/>
-  <asset frame="0" name="notAvailable_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
- </assets>
- <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="backgrounds" gridX="16" gridY="16">
-  <object uid="{e98cfec2-15b7-4d62-bc2d-7eaf26506a22}" shape="0" name="rect_pg1" alpha="1" blendMode="0" spriteName="" x="14" y="31.5" width="135.5" height="188.5" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4278190080" textcolor="4294967295">
-   <properties>
-    <property name="pgName" value="cottonBall"/>
-   </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{cb7518c1-446f-40a0-9de6-86313bcf6aa1}" shape="0" name="rect_pg2" alpha="1" blendMode="0" spriteName="" x="174.25" y="32" width="127.25" height="188" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4278190080" textcolor="4294967295">
-   <properties>
-    <property name="pgName" value="crimson"/>
-   </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{6cb71f8a-0a6d-4e5f-b1a8-cf373e755d9c}" shape="0" name="rect_pg4" alpha="1" blendMode="0" spriteName="" x="179.5" y="264" width="125.25" height="189.25" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4283979864" textcolor="4294967295">
-   <properties>
-    <property name="pgName" value=""/>
-   </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{03fb61b8-6d28-4bab-a1d9-03bea7b3a7e8}" shape="0" name="rect_pg3" alpha="1" blendMode="0" spriteName="" x="16.5" y="265" width="130.625" height="188.375" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4283979864" textcolor="4294967295">
-   <properties>
-    <property name="pgName" value=""/>
-   </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
- </layer>
- <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="wallPGs" gridX="16" gridY="16">
-  <object uid="{a2940e19-479e-4dd4-84b7-66e647178b57}" shape="6" name="wall_0" alpha="1" blendMode="0" idx="1" spriteName="" x="0" y="0" width="320" height="480" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
- </layer>
- <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="PGs" gridX="16" gridY="16">
-  <object uid="{a879197d-7669-48d0-94f7-700515912455}" shape="6" name="cottonBall" alpha="1" blendMode="0" idx="3" spriteName="" x="10.5" y="30.5" width="141" height="138.5" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{0e224a4d-e5c9-41cf-b324-44213e911e92}" shape="6" name="scroll-b_0" alpha="1" blendMode="0" idx="18" spriteName="" x="-27.5" y="76.5" width="222.5" height="237.5" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{7a2e6842-dffa-4fba-bb2c-4058a918115f}" shape="6" name="scroll-crimson_0" alpha="1" blendMode="0" idx="20" spriteName="" x="128" y="76.5" width="222" height="237" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{5bad3863-0f94-402f-8143-87c519df0016}" shape="6" name="crimson" alpha="1" blendMode="0" idx="25" spriteName="" x="118" y="31.8571" width="241" height="172.143" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{68bc1dc0-9e14-4bc9-b7e6-232fabce77db}" shape="6" name="notAvailable_0" alpha="1" blendMode="0" idx="41" spriteName="" x="30.5" y="316" width="100" height="100" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{6bc19a05-0c09-4354-b6fa-a8980004772a}" shape="6" name="notAvailable_1" alpha="1" blendMode="0" idx="41" spriteName="" x="189.5" y="316" width="100" height="100" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
- </layer>
- <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="ui" gridX="16" gridY="16">
-  <object uid="{6f2f023d-7ebf-4f14-9cec-0f2f12d215d5}" shape="6" name="back_0" alpha="1" blendMode="0" idx="19" spriteName="" x="276.5" y="446.5" width="41" height="31.5" anchorX="0.5" anchorY="0.5">
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="1" gridY="1">
+  <object uid="{33d66556-ac17-48f5-b46d-e2dbd5fc564f}" shape="6" name="16_sunburn_spritesheet_0" alpha="1" blendMode="0" idx="1" spriteName="" x="105" y="175" width="100" height="100" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>

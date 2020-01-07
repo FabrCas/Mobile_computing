@@ -355,10 +355,24 @@ end end
            if partitaS:personaggio()=="crimson" then
             crimson:setFillColor(1,0,0)
              partitaS:stats().danno = 10
+             livello= LD_Loader:new(gruppoLivello)
+             livello:loadLevel("fireBall")
+             x= ball.x 
+             y= ball.y
+             ancoraggio= ball.anchorY
+
+             ball= livello:getLayerObject("Layer 1", "16_sunburn_spritesheet_0").view
+             ball.x= x 
+             ball.y= y
+             physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
+            --  ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+           
+
             --circle:setFillColor(0.66, 0.29, 0.38)
-         else crimson = nil end
+         else crimson = nil 
         	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+   end
    if partitaS:personaggio() == "crimson" and potereAttivato then
    Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
    end
