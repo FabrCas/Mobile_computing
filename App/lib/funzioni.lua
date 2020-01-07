@@ -327,8 +327,9 @@ function listenerUltimaPalla(event)
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
   if (pall_lanciata.y > py and vy <vely and vx < velx) then --qui
+    if turnoPotere then timer.performWithDelay( 5000, function(event) Runtime:removeEventListener("enterFrame", listenerUltimaPalla) finePartita()  end ) else
     finePartita()
-    Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
+    Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
   end end
 end end
 
