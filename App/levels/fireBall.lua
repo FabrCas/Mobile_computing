@@ -75,7 +75,7 @@ function M:loadAssets()
 		sheetContentWidth=800,
 		sheetContentHeight=800
 	}
-	assets['16_sunburn_spritesheet_0']={file ='16_sunburn_spritesheet.png',name='16_sunburn_spritesheet_0',class='',aX=0.5,aY=0.5,width=100,height=100,frame=1,spriteSheetName='16_sunburn_spritesheet',frameCount=64,
+	assets['16_sunburn_spritesheet_0']={file ='16_sunburn_spritesheet.png',name='16_sunburn_spritesheet_0',class='',width=100,height=100,frame=1,spriteSheetName='16_sunburn_spritesheet',frameCount=64,
 		sequenceData={{name='firing',frames={ 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61 },time =1300,loopCount=0,loopDirection='forward' },},
 		sequenceInfo={default='firing',play=true },
 		 }
@@ -97,14 +97,12 @@ function M:createLevel(LD_Helper_Instance)
 		level.view=instance.viewGroup
 	end
 	level.view.anchorChildren =false 
-	display.setDefault( 'background',102/255,102/255,102/255,255/255)
-	display.setDefault( "anchorX",0.5 )
-	display.setDefault( "anchorY",0.5 )	
 	display.setDrawMode("wireframe",false)
 	level.name='fireBall' 
 	-- Load Assets
 	level.assets=self:loadAssets()
 	-- Physics properties
+	display.setDefault( "isAnchorClamped", false )
 	physics.setGravity(0,9.8) 
 	physics.setDrawMode('normal')
 	physics.setPositionIterations(8)	
