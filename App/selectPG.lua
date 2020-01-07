@@ -87,6 +87,7 @@ function scene:create( event )
       sceneGroup:insert(crimsonScroll)
       sceneGroup:insert(cb)
       sceneGroup:insert(cbScroll)
+      sceneGroup:insert(back)
 
 
 

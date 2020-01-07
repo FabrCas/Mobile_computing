@@ -40,7 +40,9 @@ tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 local circle
 local crimson
+local fire 
 local livelloPG
+local ball
 
 local danno
 local lx
@@ -334,6 +336,13 @@ function listenerUltimaPalla(event)
 end end
 
 function listenerPallaSpeciale(event)
+  print("pddpfkdfkdofdofdfodjfodfjoooooooooooooooooooooooooooooooooooooooo")
+ valorex= ball.x
+ valorey= ball.y
+
+  fire.x, fire.y= ball:localToContent(0,0)
+ -- ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza))
+
 	if not isPaused then
    if pall_lanciata:getLinearVelocity()~=nil
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
@@ -344,11 +353,15 @@ function listenerPallaSpeciale(event)
 
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
+    gruppoLivello:remove(fire)
+    fire:removeSelf()
   end
 end end
 
        function creaPalla(sx,sy,potereAttivato, angolo)
         --turnoPotere= false da rimettere
+
+        local creaCorpo = true 
         turnoPotere = false
         local sy= sy - 60
         if numBallMax == 0 then
@@ -356,22 +369,43 @@ end end
    end
         if potereAttivato then
            if partitaS:personaggio()=="crimson" then
+
             crimson:setFillColor(1,0,0)
              partitaS:stats().danno = 10
-            --circle:setFillColor(0.66, 0.29, 0.38)
-         else crimson = nil end
+             crimson:play()
+
+       local options= {
+         width= 100,
+         height= 100,
+         numFrames= 60,
+         sheetContenteWidth= 800,
+         sheetContenteHeight= 800
+       }
+
+       local sheetFire = graphics.newImageSheet(composer.imgDir.."16_sunburn_spritesheet.png", options)
+
+       local sequenceData = {
+         name = "firing", start= 1, count= 60, time = 1300, loopCount= 0
+       }
+
+       fire = display.newSprite (sheetFire, sequenceData)
+
+       fire:play()
+
+print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+      
+         else crimson = nil 
         	pg:play() --pg.width = a pg.height = a
    ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+   end
    if partitaS:personaggio() == "crimson" and potereAttivato then
    Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
    end
    turnoPotere= true
 
-  -- partitaS:stats().danno = 10
-   --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
+
   else
-    --crimson= nil
-    --crimson = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
+
 if partitaS:personaggio()=="crimson" then
     crimson:setFillColor(1,1,1)
     circle:setFillColor(0,0,0)
@@ -379,22 +413,26 @@ if partitaS:personaggio()=="crimson" then
     crimson.y= 45
     end
     ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
-    --partitaS:stats().grandezza, partitaS:stats().grandezza)
---print("palla di grandezza" .. partitaS:stats().grandezza)
 
     partitaS:stats().danno = danno
         end
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-    --grandezza arcade raggio 15 tower 10
     ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
+
+    if creaCorpo then 
+
     if potereAttivato then
     physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
 else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0,density=(partitaS:stats().densita)/10}) end
    -- ball.density= 0.73
+      --grandezza arcade raggio 15 tower 10
+
+    end 
+ 
     gruppoLivello:insert(ball)
     -- While the ball rests near the cannon, it's static
     ball.isLaunched = false
