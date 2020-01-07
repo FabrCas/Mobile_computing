@@ -40,15 +40,16 @@ tempoPausaTotale = 0
 tempoInizioLivello = os.time()
 local circle
 local crimson
-local fire 
+local fire
 local livelloPG
 local ball
 
 local danno
 local lx
 local ly
-
-
+local firex
+local firey
+local fire
 --------------------------------------------------------------------------------
 local function onLocalCollision( self, event )
   print("funzione collisione chiamata")
@@ -67,16 +68,18 @@ end
 
 local function setBomb ( event )
 --if(event.other.name == "ball") then
-    exp = display.newCircle( _W/2, 430, 50 )
+    exp = display.newCircle( firex, firey, 50 )
             exp.myName = "exp"
-    exp:setFillColor(0,0,0, 1)
+    exp.alpha=0.01
     print("esplosione fatta")
+    fire.width = 50
+    fire.height =50
   --  timer.performWithDelay( 200, function()
       physics.addBody( exp, "static", {isSensor = true} )
     -- end)
     exp.collision = onLocalCollision
     exp:addEventListener( "collision", exp )
- timer.performWithDelay( 1, function() exp:removeSelf() exp=nil end )
+ timer.performWithDelay( 1000, function() exp:removeSelf() exp=nil end )
 
 
 --end
@@ -268,8 +271,8 @@ cannon:addEventListener( "preCollision", cannon )
       rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true potereAttivato=true preference.save{b="500"}
 value = preference.getValue("b")
 print("Retrieving string b from rect: ",value)  end)
-      local rect1 = display.newRect( 0, _H/2 +50,50,50 )
-      rect1:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=false value = preference.getValue("b")
+      local rect1 = display.newRect( _W, _H/2 +50,50,50 )
+      rect1:addEventListener( "tap", function() physics.setDrawMode( "debug" ) fisicaCannone=false value = preference.getValue("b")
       print("Retrieving string b from rect1 : ",value)  end)
       gruppoLivello:insert(rect)
       gruppoLivello:insert(rect1)
@@ -336,20 +339,20 @@ function listenerUltimaPalla(event)
 end end
 
 function listenerPallaSpeciale(event)
-  print("pddpfkdfkdofdofdfodjfodfjoooooooooooooooooooooooooooooooooooooooo")
  valorex= ball.x
  valorey= ball.y
 
   fire.x, fire.y= ball:localToContent(0,0)
  -- ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza))
-
+ firex = fire.x
+ firey = fire.y
 	if not isPaused then
    if pall_lanciata:getLinearVelocity()~=nil
     then vx,vy = pall_lanciata:getLinearVelocity( ) end
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
 --  if (pall_lanciata.y > 450 and (pall_lanciata.x>135 and pall_lanciata.x<205) and vy <100 and vx < 10) then --qui
-    if (pall_lanciata.y > py and vy <vely and vx < velx) then
+    if (pall_lanciata.y > py and vy+574389 <vely and vx < velx) then
 
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
@@ -361,7 +364,7 @@ end end
        function creaPalla(sx,sy,potereAttivato, angolo)
         --turnoPotere= false da rimettere
 
-        local creaCorpo = true 
+      --  local creaCorpo = true
         turnoPotere = false
         local sy= sy - 60
         if numBallMax == 0 then
@@ -389,14 +392,15 @@ end end
        }
 
        fire = display.newSprite (sheetFire, sequenceData)
-
+       gruppoLivello:insert(fire)
+       fire:toFront()
        fire:play()
 
 print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-      
-         else crimson = nil 
+
+         else crimson = nil
         	pg:play() --pg.width = a pg.height = a
-   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+   --ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
    end
    if partitaS:personaggio() == "crimson" and potereAttivato then
    Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
@@ -423,7 +427,7 @@ if partitaS:personaggio()=="crimson" then
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
 
-    if creaCorpo then 
+
 
     if potereAttivato then
     physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
@@ -431,9 +435,9 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
    -- ball.density= 0.73
       --grandezza arcade raggio 15 tower 10
 
-    end 
- 
-    gruppoLivello:insert(ball)
+
+
+     gruppoLivello:insert(ball)
     -- While the ball rests near the cannon, it's static
     ball.isLaunched = false
      ball.isLaunched = true
@@ -976,7 +980,7 @@ gruppoPausa:insert(musicap) gruppoPausa:insert(musicam) gruppoPausa:insert(backt
 gruppoPausa:insert(ok)
 ok.alpha = 0.01
 ok:addEventListener("tap",function(event) isPaused=false physics.start()
-  --physics.setGravity(0,46)
+  physics.setGravity(0,46)
    testoVolumeMusica.fn:removeSelf()
     testoVolumeMusica.fn= nil
     if ( testoVolumeMusica.sn ~= nil) then
