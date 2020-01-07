@@ -5,9 +5,9 @@ require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 --arcade deve creare invece
 local preference = require "lib.preference"
-local velx = 200 
+local velx = 200
 local vely = 200
-local py = 360
+local py = 360 --(y effettivo - 50)
 local isDefeatedWon
 
 require("lib.LD_HelperX")
@@ -45,6 +45,8 @@ local livelloPG
 local danno
 local lx
 local ly
+
+
 --------------------------------------------------------------------------------
 local function onLocalCollision( self, event )
   print("funzione collisione chiamata")
@@ -156,8 +158,8 @@ local function dannoXY(event, mod)
         potereAttivato = true
         led_acceso.alpha=1
   end
-  if event.target.name == "static part ui_0" then print('funziona') end
-  physics.setGravity( 0, 46 )
+  --if event.target.name == "static part ui_0" then print('funziona') end
+  --physics.setGravity( 0, 46 )
   if partitaS:stats().danno > 1 then
       mattoni[i].life = mattoni[i].life - (math.floor(partitaS:stats().danno/2))
     else
@@ -338,7 +340,7 @@ function listenerPallaSpeciale(event)
   if vx<0 then vx=-vx end
 --  if (pall_lanciata.y > 450 and (pall_lanciata.x>135 and pall_lanciata.x<205) and vy <100 and vx < 10) then --qui
     if (pall_lanciata.y > py and vy <vely and vx < velx) then
-    
+
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
   end
@@ -416,7 +418,7 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
        normDeltaX = deltaX / math.sqrt(deltaX^2 + deltaY^2)
        normDeltaY = deltaY / math.sqrt(deltaX^2 + deltaY^2)
        speed = (partitaS:stats().velocita*100)
-       physics.setGravity(0, 0)
+       --physics.setGravity(0, 46) --modificare
        ball:setLinearVelocity( normDeltaX*speed,normDeltaY*speed )
        pall_lanciata = ball
        gruppoLivello:insert(pall_lanciata)
@@ -457,15 +459,10 @@ end
     end
   end
 ---------------------------------------------------------------------------------
---FUNZIONE QUANDO AVVIENE COLLISIONE TRA MURI E PALLA
----------------------------------------------------------------------------------
-function hitMuro(event)
-physics.setGravity( 0, 46 )
-end
----------------------------------------------------------------------------------
 -- FUNZIONI LIVELLO
 ---------------------------------------------------------------------------------
 function creaLivello(cannon, objMattoni)
+  physics.setGravity(0, 46)
 mattoni = objMattoni
 local muroSinistra = display.newRect( 0, _H/2, 0 ,_H )
 local muroDestra = display.newRect( _W, _H/2, 0 , _H)
@@ -490,8 +487,6 @@ muroInBasso:addEventListener( "collision", function(event)
   else led_acceso.alpha = 0
    end
  end )
-muroSinistra:addEventListener( "preCollision", hitMuro)
-muroDestra:addEventListener( "preCollision", hitMuro)
 bg = display.newRect( _W/2, _H/2, _W, _H )
 bg.alpha=0.01 bg.name="bg"
 bg:addEventListener("touch", function(event) touch(event,cannon) end )
@@ -511,7 +506,7 @@ function removeBrick(brick, mod)
        if mod_par=="tower" then
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
-     if(mod_par=="arcade") then 
+     if(mod_par=="arcade") then
 		partitaS:cancellaPersonaggio()
 	end
      schermataVittoria()
@@ -619,6 +614,7 @@ end
 function hit(event, mod)
   --print ("is turno potere")
   --print (turnoPotere)
+
   if turnoPotere == true and partitaS:personaggio() == "cottonBall" then
    -- print ("hgghghg"..event.target.x)
     dannoXY(event, mod)
@@ -634,8 +630,8 @@ function hit(event, mod)
     led_acceso.alpha=1
     end
     --print("coplito")
-   if event.target.name == "static part ui_0" then print('funziona') end
-  physics.setGravity( 0, 46 )
+  -- if event.target.name == "static part ui_0" then print('funziona') end
+--  physics.setGravity( 0, 46 )
           brick = event.target
           local vx, vy = event.other:getLinearVelocity()
       brick.life = brick.life - (partitaS:stats().danno)
@@ -653,9 +649,9 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
-   --print(" x= " .. event.x .. " y= " .. event.y)
+   print("evento x= " .. event.x .. " y= " .. event.y)
  -- if isPaused ==false then physics.start() end
-  if pall_lanciata~=nil  then print("x=,y=",pall_lanciata.x,pall_lanciata.y) end
+ if pall_lanciata~=nil  then print("palla lanciata x=,y=",pall_lanciata.x,pall_lanciata.y) end
  print("canShoot",canShoot)
  print("isPaused",isPaused)
  local timeBegan
@@ -759,6 +755,10 @@ function creaUI(screenGroup)
   myUI:loadLevel("ui.ui")
   led_acceso = display.newImageRect("images/led acceso.png",  30,30 )
   gruppoLivello:insert(led_acceso)
+  	for i=16,26 do
+  local rectCentrale = myUI:getLayerObject("ui_layer", "rect_"..i ).view
+  rectCentrale:addEventListener("collision",function(event) local vx, vy = event.other:getLinearVelocity() vx = vx/2 vy = vy/2 event.other:setLinearVelocity(vx,vy) end)
+   end
   local buttonPausa = myUI:getLayerObject("invisible_layer", "buttonStats").view --PAUSA (anche se c'è scritto buttonStats)
     local buttonStats = myUI:getLayerObject("invisible_layer", "buttonPausa").view --STATS (anche se c'è scritto buttonPause)
     local rectBalls = myUI:getLayerObject("invisible_layer", "rect_balls").view
@@ -947,8 +947,7 @@ gruppoPausa:insert(musicap) gruppoPausa:insert(musicam) gruppoPausa:insert(backt
 gruppoPausa:insert(ok)
 ok.alpha = 0.01
 ok:addEventListener("tap",function(event) isPaused=false physics.start()
-  physics.setGravity(0,40)
-
+  --physics.setGravity(0,46)
    testoVolumeMusica.fn:removeSelf()
     testoVolumeMusica.fn= nil
     if ( testoVolumeMusica.sn ~= nil) then
@@ -971,7 +970,7 @@ musicap:addEventListener("tap", onButtonClickDownMusica)
 fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
 fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
-	if(mod_par=="arcade") then 
+	if(mod_par=="arcade") then
 		partitaS:cancellaPersonaggio()
 	end
   numeroPalle = statistiche.numeroPalle
@@ -1050,7 +1049,6 @@ M.shoot = shoot
 M.creaLivello = creaLivello
 M.removeBrick = removeBrick
 M.hit = hit
-M.hitMuro = hitMuro
 M.touchBg = touchBg
 M.touch = touch
 M.finePartita = finePartita
