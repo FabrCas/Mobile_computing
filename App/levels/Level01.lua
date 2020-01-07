@@ -51,7 +51,7 @@ function M:loadAssets()
 	assets['Brick_12']={file ='Breakout_Tile_Free.png',name='Brick_12',class='',aX=0.5,aY=0.5,width=385,height=129,frame=13,spriteSheetName='Brick',frameCount=35,
 		physics={isEnabled=true,source='Asset',bodyType='static',isFixedRotation=false,isSleepingAllowed=false,isSensor=false,linearDamping=0,angularDamping=0,gravityScale=1,isBullet=false,shapes={{bodyShape='Polygon',shape={-193,-65,192,-65,192,64,-193,64,-193,-65},bounce=0.2,friction=0.3,density=1,radius=0,categoryBits=0,maskBits=0,groupIndex=0},}	}  }
 	return assets
-end -- loadAssets 
+end -- loadAssets
 
 ------------------------------------------
 function M:createLevel(LD_Helper_Instance)
@@ -61,40 +61,40 @@ function M:createLevel(LD_Helper_Instance)
 	local level={}
     local obj=nil
 	local k=0
-	local objects = nil 
+	local objects = nil
 	if (instance.viewGroup == nil) then
-		level.view=display.newGroup() 
+		level.view=display.newGroup()
 	else
 		level.view=instance.viewGroup
 	end
-	level.view.anchorChildren =false 
+	level.view.anchorChildren =false
 	display.setDefault( 'background',102/255,102/255,102/255,255/255)
 	display.setDefault( "anchorX",0.5 )
-	display.setDefault( "anchorY",0.5 )	
+	display.setDefault( "anchorY",0.5 )
 	display.setDrawMode("wireframe",false)
-	level.name='Level01' 
+	level.name='Level01'
 	-- Load Assets
 	level.assets=self:loadAssets()
 	-- Physics properties
-	physics.setGravity(0,9.8) 
+	physics.setGravity(0,9.8)
 	physics.setDrawMode('normal')
-	physics.setPositionIterations(8)	
-	physics.setVelocityIterations(3)	
+	physics.setPositionIterations(8)
+	physics.setVelocityIterations(3)
 	level.parallaxEnabled=false
 	-- Layers --
-	level.layers={} 
+	level.layers={}
 	---- Layer 1 ------------------------------------------------------------------------------------
-	level.layers['Layer 1']={} 
-	level.layers['Layer 1'].view=display.newGroup() 
-	level.layers['Layer 1'].name='Layer 1' 
+	level.layers['Layer 1']={}
+	level.layers['Layer 1'].view=display.newGroup()
+	level.layers['Layer 1'].name='Layer 1'
 	if (level.parallaxEnabled) then
 		level.layers['Layer 1'].speed={x=0,y=0}
 		level.layers['Layer 1'].repeated=false
 		level.layers['Layer 1'].cullingMethod=0
 	else
-		level.layers['Layer 1'].cullingMethod=0 
+		level.layers['Layer 1'].cullingMethod=0
 	end
-	level.layers['Layer 1'].objects={} 
+	level.layers['Layer 1'].objects={}
 	objects = {
 	{name='Brick_12',objType='LDImage',class='',width=29.8441,height=14.922,x=52,y=169,xScale=0.0775171*1,yScale=0.115674*1,assetName='Brick_12',
 		userProps = {},
@@ -186,7 +186,7 @@ function M:createLevel(LD_Helper_Instance)
 	{name='Brick_1',objType='LDImage',class='',width=29.8441,height=14.922,x=239,y=326,xScale=0.0775171*1,yScale=0.115674*1,assetName='Brick_12',
 		userProps = {},
 		},
-	{name='Brick_29',objType='LDImage',class='',width=126.837,height=14.922,x=161,y=139,xScale=0.329447*1,yScale=0.115674*1,assetName='Brick_2',
+	{name='Brick_29',objType='LDImage',class='',width=126.837,height=14.922,x=50,y=120,xScale=0.329447*1,yScale=0.115674*1,assetName='Brick_2',
 		userProps = {{name= 'tipo', value='speciale' },},
 		},
 	}
@@ -196,9 +196,9 @@ function M:createLevel(LD_Helper_Instance)
 		if (obj and objProps.userProps) then
 			obj.property = {}
 			for u, userProp in pairs (objProps.userProps) do
-				obj.property[userProp.name] = userProp.value 
-			end 
-		end 
+				obj.property[userProp.name] = userProp.value
+			end
+		end
 	end
 	instance:insertLayer(level,level.layers['Layer 1'])
 	--level.ldVersion=1.1.0	-- Level Director Version
@@ -213,4 +213,3 @@ function M:createLevel(LD_Helper_Instance)
 	return level
 end -- createLevel
 return M
-
