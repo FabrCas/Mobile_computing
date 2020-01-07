@@ -336,12 +336,10 @@ end end
 
 function listenerPallaSpeciale(event)
   print("pddpfkdfkdofdofdfodjfodfjoooooooooooooooooooooooooooooooooooooooo")
-
  valorex= ball.x
  valorey= ball.y
 
- -- fire.x= valorex
- -- fire.y= valorey
+  fire.x, fire.y= ball:localToContent(0,0)
  -- ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza))
 
 	if not isPaused then
@@ -389,25 +387,11 @@ end end
          name = "firing", start= 1, count= 60, time = 1300, loopCount= 0
        }
 
-       ball = display.newSprite (sheetFire, sequenceData)
+       fire = display.newSprite (sheetFire, sequenceData)
 
-       ball:play()
+       fire:play()
 
 print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-
-  --    livello= LD_Loader:new(gruppoLivello)
-  --    livello:loadLevel("fireBall")
-  --    x= ball.x 
-  --    y= ball.y
-
-  --    ball= livello:getLayerObject("Layer 1", "16_sunburn_spritesheet_0").view
-  --    ball.x= x 
-  --    ball.y= y
-  --   -- fire.anchorY= -6
-  -- --  fire.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza))
-  --   ball.bodyType= "dynamic"
-  --   creaCorpo = false 
-    gruppoLivello:insert(ball)
       
          else crimson = nil 
         	pg:play() --pg.width = a pg.height = a
@@ -418,11 +402,9 @@ print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    end
    turnoPotere= true
 
-  -- partitaS:stats().danno = 10
-   --physics.addBody(ball, 'static' , {radius=7.5,bounce=0.8,friction=0.3})
+
   else
-    --crimson= nil
-    --crimson = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
+
 if partitaS:personaggio()=="crimson" then
     crimson:setFillColor(1,1,1)
     circle:setFillColor(0,0,0)
