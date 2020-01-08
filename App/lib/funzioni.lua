@@ -17,7 +17,7 @@ local _H = display.contentHeight
 
 math.randomseed(os.time())
 math.random(); math.random(); math.random()
-
+local palleUsate
 local a = 225
 local gruppoLivello
 local gruppoScena
@@ -72,14 +72,13 @@ local function setBomb ( event )
             exp.myName = "exp"
     exp.alpha=0.01
     print("esplosione fatta")
-    fire.width = 50
-    fire.height =50
+
   --  timer.performWithDelay( 200, function()
       physics.addBody( exp, "static", {isSensor = true} )
     -- end)
     exp.collision = onLocalCollision
     exp:addEventListener( "collision", exp )
- timer.performWithDelay( 1000, function() exp:removeSelf() exp=nil end )
+ timer.performWithDelay( 1, function() exp:removeSelf() exp=nil end )
 
 
 --end
@@ -268,9 +267,7 @@ cannon:addEventListener( "preCollision", cannon )
 
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
       local rect = display.newRect( 0, _H/2,50,50 )
-      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true potereAttivato=true preference.save{b="500"}
-value = preference.getValue("b")
-print("Retrieving string b from rect: ",value)  end)
+      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true potereAttivato=true end)
       local rect1 = display.newRect( _W, _H/2 +50,50,50 )
       rect1:addEventListener( "tap", function() physics.setDrawMode( "debug" ) fisicaCannone=false value = preference.getValue("b")
       print("Retrieving string b from rect1 : ",value)  end)
@@ -353,13 +350,13 @@ function listenerPallaSpeciale(event)
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
 --  if (pall_lanciata.y > 450 and (pall_lanciata.x>135 and pall_lanciata.x<205) and vy <100 and vx < 10) then --qui
-    if (pall_lanciata.y > py and vy+574389 <vely and vx < velx) then
-
+    if (firey > py+60 and vy <vely and vx < velx) then
+    print("fire.y="..firey.."py="..py)
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
     fire:removeSelf()
     gruppoLivello:remove(fire)
-    
+
   end
 end end
 
@@ -393,7 +390,7 @@ end end
        local sequenceData = {
          name = "firing", start= 1, count= 60, time = 1300, loopCount= 0
        }
-       
+
        fire = display.newSprite (sheetFire, sequenceData)
 
        gruppoLivello:insert(fire)
@@ -444,9 +441,9 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
    -- ball.density= 0.73
       --grandezza arcade raggio 15 tower 10
 
- 
+
     gruppoLivello:insert(ball)
-    
+
     -- While the ball rests near the cannon, it's static
     ball.isLaunched = false
      ball.isLaunched = true
@@ -676,7 +673,8 @@ function hit(event, mod)
       brick.life = brick.life - (partitaS:stats().danno)
 
       if brick.life <= 0 then
-               removeBrick(brick, mod)
+        if not (turnoPotere and partitaS:personaggio()=="cottonBall") then
+               removeBrick(brick, mod) end
              else
                 brick.scritta.text = brick.life
              -- brick.alpha = (brick.life/(5*100))*50
@@ -688,11 +686,12 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
-   print("evento x= " .. event.x .. " y= " .. event.y)
+   --print("evento x= " .. event.x .. " y= " .. event.y)
  -- if isPaused ==false then physics.start() end
- if pall_lanciata~=nil  then print("palla lanciata x=,y=",pall_lanciata.x,pall_lanciata.y) end
- print("canShoot",canShoot)
- print("isPaused",isPaused)
+ if pall_lanciata~=nil  then --print("palla lanciata x=,y=",pall_lanciata.x,pall_lanciata.y)
+  end
+-- print("canShoot",canShoot)
+ --print("isPaused",isPaused)
  local timeBegan
  if event.phase == 'began' then
   timeBegan = event.time
@@ -797,7 +796,7 @@ function creaUI(screenGroup)
   	for i=28,31 do --20 26 centrali
   local rectVarie = myUI:getLayerObject("ui_layer", "rect_"..i ).view
 
-  if (i==29) then rectVarie:addEventListener("postCollision",function(event) print("blala") local vx, vy = event.other:getLinearVelocity() end) else
+  if (i==29) then rectVarie:addEventListener("postCollision",function(event) local vx, vy = event.other:getLinearVelocity() end) else
   rectVarie:addEventListener("postCollision",function(event) local vx, vy = event.other:getLinearVelocity() end)
 end end
 
@@ -1005,9 +1004,9 @@ end
 gruppoPausa:removeSelf() print("tolto da 'ok' - tower") tempoFinePausa=os.time() --rimuove la pausa
 tempoPausaTotale = tempoPausaTotale + (tempoFinePausa - tempoInizioPausa)
 --print("tempo di pausa totale - tower",tempoPausaTotale)
-if  not (fire==nil) then 
+if  not (fire==nil) then
 Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
-end 
+end
 end)
 musicam:addEventListener("tap", onButtonClickUpMusica)
 musicap:addEventListener("tap", onButtonClickDownMusica)
