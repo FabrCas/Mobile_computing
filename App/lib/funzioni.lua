@@ -3,12 +3,14 @@ local composer = require( "composer" )
 local physics = require ("physics")
 require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
+gameOverSound= audio.loadSound("sounds/game_over.mp3")
 --arcade deve creare invece
 local preference = require "lib.preference"
 local velx = 200
 local vely = 200
 local py = 360 --(y effettivo - 50)
 local isDefeatedWon
+local win
 
 require("lib.LD_HelperX")
 require("lib.LD_LoaderX")
@@ -20,6 +22,7 @@ math.random(); math.random(); math.random()
 local palleUsate
 local a = 225
 local gruppoLivello
+local gruppoVittoria
 local gruppoScena
 local pg
 _G.fisicaCannone=true
@@ -78,7 +81,7 @@ local function setBomb ( event )
     -- end)
     exp.collision = onLocalCollision
     exp:addEventListener( "collision", exp )
- timer.performWithDelay( 1, function() exp:removeSelf() exp=nil end )
+ timer.performWithDelay( 100, function() exp:removeSelf() exp=nil end )
 
 
 --end
@@ -169,6 +172,7 @@ local function dannoXY(event, mod)
     else
       mattoni[i].life = mattoni[i].life - 1
     end
+
 
       if mattoni[i].life <= 0 then
                removeBrick(mattoni[i], mod)
@@ -336,8 +340,7 @@ function listenerUltimaPalla(event)
 end end
 
 function listenerPallaSpeciale(event)
- valorex= ball.x
- valorey= ball.y
+  if not (fire==nil) then
 
   fire.x, fire.y= ball:localToContent(0,0)
   fire.x= fire.x + 1
@@ -354,22 +357,28 @@ function listenerPallaSpeciale(event)
     print("fire.y="..firey.."py="..py)
     setBomb()
     Runtime:removeEventListener("enterFrame", listenerPallaSpeciale)
+
     fire:removeSelf()
     gruppoLivello:remove(fire)
+    fire=nil
+  end
 
   end
 end end
 
        function creaPalla(sx,sy,potereAttivato, angolo)
         --turnoPotere= false da rimettere
-        fire= nil
+      --  fire= nil
 
-      --  local creaCorpo = true
+        partitaS:stats().danno = danno
+
         turnoPotere = false
         local sy= sy - 60
+
         if numBallMax == 0 then
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    end
+
         if potereAttivato then
            if partitaS:personaggio()=="crimson" then
 
@@ -404,7 +413,7 @@ print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
          else crimson = nil
         	pg:play() --pg.width = a pg.height = a
-   --ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
    end
    if partitaS:personaggio() == "crimson" and potereAttivato then
    Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
@@ -422,7 +431,7 @@ if partitaS:personaggio()=="crimson" then
     end
     ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
 
-    partitaS:stats().danno = danno
+
         end
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
@@ -442,7 +451,7 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
       --grandezza arcade raggio 15 tower 10
 
 
-    gruppoLivello:insert(ball)
+   -- gruppoLivello:insert(ball)
 
     -- While the ball rests near the cannon, it's static
     ball.isLaunched = false
@@ -532,10 +541,14 @@ end
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
 function removeBrick(brick, mod)
+  print(brick)
+ -- mattoni:remove(brick)
   brick.scritta:removeSelf()
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
+
+  print(nMattoni)
   if nMattoni == 0 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
@@ -547,6 +560,7 @@ end
 	end
      schermataVittoria()
    --DA SISTEMARE
+
 
 end end
 
@@ -582,22 +596,28 @@ local function creaScore(valore,x,y)
     local num = display.newImage(composer.imgDir .. c .. ".png" , (x + i*23) ,y)
     num.width= 45
     num.height= 45
+    if win then
+      gruppoVittoria:insert(num)
+    else
     gruppoLivello:insert(num)
+  end
   end
 end
 
 function schermataVittoria()
    -- timer.performWithDelay( 500, toNextLevel )
+   gruppoVittoria= display.newGroup()
+   win= true
    if isDefeatedWon == false then
    bg:removeSelf()
    bg= nil
-  myLevel= LD_Loader:new(gruppoLivello)
+  myLevel= LD_Loader:new(gruppoVittoria)
   myLevel:loadLevel("finestra")
   local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
   local rectScritta= myLevel:getLayerObject("Rects", "rect_2").view
   local rectScore= myLevel:getLayerObject("Rects", "rect_3").view
 
-  local scritta = display.newImage( composer.imgDir .. "youWin.png" , rectScritta.x ,rectScritta.y + 12 )
+  local scritta = display.newImage( composer.imgDir .. "youWin.png" , rectScritta.x ,rectScritta.y + 20 )
   scritta.width= 320
   scritta.height= 40
   local scorep
@@ -607,16 +627,31 @@ else
   scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
   creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
-  gruppoLivello:insert(scritta)
-  gruppoLivello:insert(rectButton)
-  gruppoLivello:insert(rectScritta)
+
+  gruppoVittoria:insert(scritta)
+  gruppoVittoria:insert(rectScritta)
+  gruppoVittoria:insert(rectButton)
+
   rectButton:addEventListener("tap", onButtonClick)
   isDefeatedWon= true
 end
+gruppoVittoria.alpha=0
+transition.fadeIn( gruppoVittoria, {time= 1500} )
+win= nil
   end
 
 function schermataSconfitta()
+
   if isDefeatedWon == false then
+
+
+  local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(gameOverSound,{channel= channel2})
+  blackBg= display.newRect(_W/2, _H/2, 320, 480)
+  blackBg:setFillColor(0,0,0)
+  gruppoLivello:insert(blackBg)
+
 	--print("stampa schermata")
   bg:removeSelf()
   bg= nil
@@ -626,7 +661,9 @@ function schermataSconfitta()
   local rectScritta= myLevel:getLayerObject("Rects", "rect_2").view
   local rectScore= myLevel:getLayerObject("Rects", "rect_3").view
 
-  local scritta = display.newImage( composer.imgDir .. "youLose.png" , rectScritta.x ,rectScritta.y + 12 )
+
+  local scritta = display.newImage( composer.imgDir .. "youLose.png" , rectScritta.x ,rectScritta.y + 20 ) --12
+
   scritta.width= 320
   scritta.height= 40
     local scorep
@@ -642,6 +679,9 @@ end
   rectButton:addEventListener("tap", onButtonClickLose)
   isDefeatedWon= true
 end
+gruppoLivello.alpha=0
+transition.fadeIn( gruppoLivello, {time= 1500} )
+
   end
 
 ---------------------------------------------------------------------------------
@@ -686,12 +726,12 @@ function hit(event, mod)
 --FUNZIONI TOUCH AUSILIARIE
 ---------------------------------------------------------------------------------
  function touchBg(event,cannon)
-   --print("evento x= " .. event.x .. " y= " .. event.y)
+  -- print("evento x= " .. event.x .. " y= " .. event.y)
  -- if isPaused ==false then physics.start() end
- if pall_lanciata~=nil  then --print("palla lanciata x=,y=",pall_lanciata.x,pall_lanciata.y)
-  end
+-- if pall_lanciata~=nil  then print("palla lanciata x=,y=",pall_lanciata.x,pall_lanciata.y)
+ --end
 -- print("canShoot",canShoot)
- --print("isPaused",isPaused)
+-- print("isPaused",isPaused)
  local timeBegan
  if event.phase == 'began' then
   timeBegan = event.time
@@ -782,6 +822,9 @@ end
 ---------------------------------------------------------------------------------
 function scancellaTutto()
 gruppoLivello:removeSelf( )
+if not (gruppoVittoria == nil) then
+gruppoVittoria:removeSelf()
+end
 cannone:removeSelf()
 end
 ---------------------------------------------------------------------------------
@@ -908,12 +951,12 @@ end
 --*********************************************************************************************************
 
 function creaNumeroMusica(valore)
-    --print ("valore :" .. valore )
+    print ("valore M:" .. valore )
     local num1,num2
     local char1=valore:sub(0,1)
     local char2= valore:sub(2,2)
-    --print (char1)
-    --print (char2)
+    print (char1)
+    print (char2)
 if char2 == "" then
     num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,rectMusica.x ,rectMusica.y)
     num2=nil
@@ -931,7 +974,7 @@ testoVolumeMusica={fn=num1,sn=num2}
 end
 
 function creaNumeroEffetto(valore)
-   print ("valore :" .. valore )
+   print ("valore E:" .. valore )
     local num1,num2
     local char1=valore:sub(0,1)
     local char2= valore:sub(2,2)

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="crimsonBreath" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="crimson">
+ <assets firstgid="1" name="crimsonBreath" width="700" height="500" spacing="2" margin="2">
+  <image source="../../App/images/crimsonBreath.png" width="2808" height="1506"/>
+  <asset frame="0" name="crimsonBreath_0" spritename="" class="" export="1" x="2" y="2" w="700" h="500">
+   <animations>
+    <sequence name="breath" loopCount="0" loopDirection="0" duration="700" default="1" play="0">
+     <frames>
+      <frame idx="0"/>
+      <frame idx="1"/>
+      <frame idx="2"/>
+      <frame idx="3"/>
+      <frame idx="4"/>
+      <frame idx="5"/>
+      <frame idx="6"/>
+      <frame idx="7"/>
+      <frame idx="8"/>
+      <frame idx="9"/>
+      <frame idx="10"/>
+      <frame idx="11"/>
+      <frame idx="0"/>
+     </frames>
+    </sequence>
+   </animations>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="crimsonBreath_1" spritename="" class="" export="0" x="704" y="2" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="crimsonBreath_2" spritename="" class="" export="0" x="1406" y="2" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="3" name="crimsonBreath_3" spritename="" class="" export="0" x="2108" y="2" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="4" name="crimsonBreath_4" spritename="" class="" export="0" x="2" y="504" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="5" name="crimsonBreath_5" spritename="" class="" export="0" x="704" y="504" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="6" name="crimsonBreath_6" spritename="" class="" export="0" x="1406" y="504" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="7" name="crimsonBreath_7" spritename="" class="" export="0" x="2108" y="504" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="8" name="crimsonBreath_8" spritename="" class="" export="0" x="2" y="1006" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="9" name="crimsonBreath_9" spritename="" class="" export="0" x="704" y="1006" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="10" name="crimsonBreath_10" spritename="" class="" export="0" x="1406" y="1006" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="11" name="crimsonBreath_11" spritename="" class="" export="0" x="2108" y="1006" w="700" h="500">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="1" gridY="1">
+  <object uid="{45fe1ee6-62ea-4e46-8619-97449a8cb30f}" shape="6" name="crimson" alpha="1" blendMode="0" idx="1" spriteName="" x="89" y="-4.42857" width="156" height="111.429" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+</level>

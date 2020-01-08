@@ -40,15 +40,15 @@ local function onButtonClick(event)
   if nomePersonaggio== "cottonBall" then
   pg= myLevel:getLayerObject("PGs", "cottonBall").view --sostituire "cottonBall" con nomePersonaggio
   pg:play()
-  --timer.performWithDelay( 10000 , composer.gotoScene( "toPlay", options ))
+  timer.performWithDelay( 1000 , function() chiamaProssimaScena() end)
 elseif nomePersonaggio=="crimson" then
   pg= myLevel:getLayerObject("PGs", "crimson").view 
   pg:play()
- -- timer.performWithDelay( 70  , function() 
- -- transition.to( pg, { time=3500, x=(pg.x+ 140), onComplete=chiamaProssimaScena} )
- -- end)
+  timer.performWithDelay( 70  , function() 
+  transition.to( pg, { time=3500, x=(pg.x+ 140), onComplete=chiamaProssimaScena} )
+  end)
 end 
-   chiamaProssimaScena()  -- DA TOGLIERE POI E RIMETTERE PARTI COMMENTANTE SOPRA 
+  -- chiamaProssimaScena()  -- DA TOGLIERE POI E RIMETTERE PARTI COMMENTANTE SOPRA 
   return true
 end
 
