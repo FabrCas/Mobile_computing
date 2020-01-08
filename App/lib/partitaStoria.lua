@@ -350,7 +350,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
       stanzaTemp.isCompleted = false
-      sorteggioStanzaTesoro =  math.random(1,3) 
+      sorteggioStanzaTesoro =  math.random(1,4) 
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else

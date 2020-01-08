@@ -1,6 +1,7 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 local slideView = require("lib.carousel_menu")
+tapSound= audio.loadSound("sounds/mb1.mp3")
 
 -- Initial settings and checkings
 local sceneGroup = nil -- main group for all page elements
@@ -78,22 +79,25 @@ local arcade = composer.loadScene( "arcade", false)
 	local function runLevel(livello)
 	--	composer.gotoScene( "gestisciMenuPrimario" , { effect = "crossFade", time = 200})
  -- print("Run level eseguita")
+ local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
   if livello == 1 then
     mod_par="tower"
     print("modalita dal menu scelta tower = " .. mod_par)
     if partitaS:personaggio()==nil then 
-    composer.gotoScene("selectPG")
+    composer.gotoScene("selectPG", { effect = "crossFade", time = 200})
   else 
-    composer.gotoScene("toPlay")
+    composer.gotoScene("toPlay", { effect = "crossFade", time = 200})
   end
     return true
   elseif livello == 2 then
     mod_par="arcade"
     print("modalita dal menu scelta arcade = " .. mod_par)
-    composer.gotoScene( "arcade" )   --in futuro: arcade
+    composer.gotoScene( "arcade",{ effect = "crossFade", time = 200} )   --in futuro: arcade
     return true
      elseif livello == 3 then
-    composer.gotoScene( "toOptions" )
+    composer.gotoScene( "toOptions", { effect = "crossFade", time = 200})
     return true
 	end
 end
