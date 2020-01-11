@@ -4,6 +4,8 @@ local physics = require ("physics")
 require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 gameOverSound= audio.loadSound("sounds/game_over.mp3")
+suonoMattone = audio.loadSound("sounds/Negative_Sound_Tone_Hit_4.mp3")
+suonoMattoneSpeciale= audio.loadSound("sounds/Vibrant_Game_Cartoon_Game_Laser_Hit_4.mp3")
 --arcade deve creare invece
 local preference = require "lib.preference"
 local velx = 200
@@ -183,6 +185,13 @@ local function dannoXY(event, mod)
         timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
    end
  end
+-- local channel2= audio.findFreeChannel(2)
+--  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+-- if event.target.name == 'speciale' then 
+--  audio.play(suonoMattoneSpeciale,{channel= channel2})
+--else 
+--audio.play(suonoMattone,{channel= channel2})
+--end 
 end
 
          timer.performWithDelay( 100, function()
@@ -696,6 +705,7 @@ function hit(event, mod)
     dannoXY(event, mod)
   end
 
+
   local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
   brick_colpito.x = event.target.x
   brick_colpito.y = event.target.y
@@ -721,6 +731,13 @@ function hit(event, mod)
              end
              timer.performWithDelay( 100, function() brick_colpito.alpha = 0 end )
          -- end
+          local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+ if event.target.name == 'speciale' then 
+  audio.play(suonoMattoneSpeciale,{channel= channel2})
+else 
+audio.play(suonoMattone,{channel= channel2})
+end 
            end
 ---------------------------------------------------------------------------------
 --FUNZIONI TOUCH AUSILIARIE
@@ -824,6 +841,7 @@ function scancellaTutto()
 gruppoLivello:removeSelf( )
 if not (gruppoVittoria == nil) then
 gruppoVittoria:removeSelf()
+gruppoVittoria= nil
 end
 cannone:removeSelf()
 end
@@ -1075,6 +1093,7 @@ testoVolumeEffettoSonoro.fn:removeSelf()
 end
 
     scancellaTutto() --rimuove gruppolivello e cannone
+    
     gruppoPausa:removeSelf() print("tolto da backtomenu - tower")
 
 testoVolumeMusica= nil

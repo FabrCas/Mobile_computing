@@ -11,6 +11,7 @@ local clicked = 0
 local numeroPagineMenu= 30
 local x
 local y
+menuSound= audio.loadStream("sounds/montage.mp3")
 
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
@@ -90,6 +91,13 @@ function scene:show( event )
         -- Code here runs when the scene is still off screen (but is about to come on screen)
 
     elseif ( phase == "did" ) then
+
+local isChannel1Active = audio.isChannelActive( 1 )
+if not (isChannel1Active) then
+      local channel1 = audio.findFreeChannel(1)
+    audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
+    audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
+end
         print("menuArcade-> show (did)")
         -- Code here runs when the scene is entirely on screen
         if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end

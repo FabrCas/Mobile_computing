@@ -60,7 +60,10 @@ end
 function scene:show( event )
 	evento=event
 	local phase = event.phase
-audio.pause(1)
+local isChannel1Active = audio.isChannelActive( 1 )
+if isChannel1Active then
+    audio.stop( 1 )
+end
     if ( phase == "will" ) then
     	print("scene1 show - " .. mod_par)
 	local screenGroup = self.view
