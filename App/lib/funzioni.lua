@@ -7,6 +7,7 @@ gameOverSound= audio.loadSound("sounds/game_over.mp3")
 shootC= audio.loadSound("sounds/cannon.mp3")
 suonoMattone = audio.loadSound("sounds/Negative_Sound_Tone_Hit_4.mp3")
 suonoMattoneSpeciale= audio.loadSound("sounds/Vibrant_Game_Cartoon_Game_Laser_Hit_4.mp3")
+tapSound= audio.loadSound("sounds/mb1.mp3")
 --arcade deve creare invece
 local preference = require "lib.preference"
 local velx = 200
@@ -580,6 +581,9 @@ end end
 
 local function onButtonClick(event)
   print("bottone vinto tappato")
+  local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
   local options = { effect = "crossFade", time = 200, params = {
     livelloCompletato = true
     }}
@@ -592,6 +596,10 @@ local function onButtonClick(event)
 end
 
 local function onButtonClickLose(event)
+  local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
+
   local options = { effect = "crossFade", time = 200}
   scancellaTutto()
   print("bottone vinto tappato")
@@ -871,8 +879,16 @@ end end
     rectBalls.alpha= 0;
     led_acceso.x = myUI:getLayerObject("ui_layer" ,"led spento_0").view.x led_acceso.y = myUI:getLayerObject("ui_layer" ,"led spento_0").view.y
     led_acceso.alpha = 0
-    buttonPausa:addEventListener('tap',function(event) if isPaused == false then physics.pause() isPaused=true creaPausa() end end)
-    buttonStats:addEventListener('tap',function(event) if isPaused == false then physics.pause() isPaused=true creaStatistiche() end end)
+    buttonPausa:addEventListener('tap',function(event) 
+        local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
+      if isPaused == false then physics.pause() isPaused=true creaPausa() end end)
+    buttonStats:addEventListener('tap',function(event) 
+        local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
+      if isPaused == false then physics.pause() isPaused=true creaStatistiche() end end)
     gruppoLivello:insert(buttonPausa)
     gruppoLivello:insert(buttonStats)
 
@@ -1053,6 +1069,9 @@ gruppoPausa:insert(musicap) gruppoPausa:insert(musicam) gruppoPausa:insert(backt
 gruppoPausa:insert(ok)
 ok.alpha = 0.01
 ok:addEventListener("tap",function(event) isPaused=false physics.start()
+    local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
   physics.setGravity(0,46)
    testoVolumeMusica.fn:removeSelf()
     testoVolumeMusica.fn= nil
@@ -1078,6 +1097,9 @@ musicap:addEventListener("tap", onButtonClickDownMusica)
 fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
 fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
+  local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
 	if(mod_par=="arcade") then
 		partitaS:cancellaPersonaggio()
 	end
@@ -1147,7 +1169,11 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
     creaScritta(tostring(stats.densita), 315)
     creaScritta(tostring(stats.fortuna), 354)
 
-    chiudi:addEventListener("tap",function(event) for  i = 1, #images do images[i]:removeSelf() end  images = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
+    chiudi:addEventListener("tap",function(event)
+      local channel2= audio.findFreeChannel(2)
+      audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+      audio.play(tapSound,{channel= channel2})
+     for  i = 1, #images do images[i]:removeSelf() end  images = nil isPaused=false physics.start() chiudi:removeSelf() chiudi = nil schermataStatistiche:removeSelf( ) schermataStatistiche=nil end)
 end
 M.testFunction = testFunction
 
