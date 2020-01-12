@@ -8,12 +8,7 @@ suonoMattone = audio.loadSound("sounds/suonoMattone.mp3")
 suonoMattoneSpeciale= audio.loadSound("sounds/suonoMattoneSpeciale.mp3")
 suonoEsplosione = audio.loadSound("sounds/explosion.mp3")
 shootC= audio.loadSound("sounds/cannon.mp3")
-<<<<<<< HEAD
-suonoMattone = audio.loadSound("sounds/Negative_Sound_Tone_Hit_4.mp3")
-suonoMattoneSpeciale= audio.loadSound("sounds/Vibrant_Game_Cartoon_Game_Laser_Hit_4.mp3")
 tapSound= audio.loadSound("sounds/mb1.mp3")
-=======
->>>>>>> 0cf1e3e665da577cef5bf821f27d896f5a3a6414
 --arcade deve creare invece
 local preference = require "lib.preference"
 local velx = 200
@@ -935,12 +930,12 @@ end end
     rectBalls.alpha= 0;
     led_acceso.x = myUI:getLayerObject("ui_layer" ,"led spento_0").view.x led_acceso.y = myUI:getLayerObject("ui_layer" ,"led spento_0").view.y
     led_acceso.alpha = 0
-    buttonPausa:addEventListener('tap',function(event) 
+    buttonPausa:addEventListener('tap',function(event)
         local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
       if isPaused == false then physics.pause() isPaused=true creaPausa() end end)
-    buttonStats:addEventListener('tap',function(event) 
+    buttonStats:addEventListener('tap',function(event)
         local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
