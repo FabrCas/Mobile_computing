@@ -9,6 +9,7 @@ suonoMattoneSpeciale= audio.loadSound("sounds/suonoMattoneSpeciale.mp3")
 suonoEsplosione = audio.loadSound("sounds/explosion.mp3")
 shootC= audio.loadSound("sounds/cannon.mp3")
 tapSound= audio.loadSound("sounds/mb1.mp3")
+
 --arcade deve creare invece
 local preference = require "lib.preference"
 local velx = 200
@@ -393,7 +394,7 @@ function listenerPallaLanciata(event)
     caricaPalla()
   timer.performWithDelay( 1000, function()
     circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
-    canShoot=true caricare=true
+    canShoot=true
      timer.performWithDelay( 500, function()
       circle:setFillColor(0,0,0)
     end
@@ -442,6 +443,7 @@ end end
         if numBallMax == 0 then
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    else Runtime:addEventListener("enterFrame",listenerPallaLanciata)
+     caricare=true
    end
 
         if potereAttivato then
@@ -620,7 +622,7 @@ function removeBrick(brick, mod)
   nMattoni = nMattoni - 1
 
   print(nMattoni)
-  if nMattoni == 25 then
+  if nMattoni == 0 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
