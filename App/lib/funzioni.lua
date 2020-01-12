@@ -4,10 +4,16 @@ local physics = require ("physics")
 require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 gameOverSound= audio.loadSound("sounds/game_over.mp3")
+suonoMattone = audio.loadSound("sounds/suonoMattone.mp3")
+suonoMattoneSpeciale= audio.loadSound("sounds/suonoMattoneSpeciale.mp3")
+suonoEsplosione = audio.loadSound("sounds/explosion.mp3")
 shootC= audio.loadSound("sounds/cannon.mp3")
+<<<<<<< HEAD
 suonoMattone = audio.loadSound("sounds/Negative_Sound_Tone_Hit_4.mp3")
 suonoMattoneSpeciale= audio.loadSound("sounds/Vibrant_Game_Cartoon_Game_Laser_Hit_4.mp3")
 tapSound= audio.loadSound("sounds/mb1.mp3")
+=======
+>>>>>>> 0cf1e3e665da577cef5bf821f27d896f5a3a6414
 --arcade deve creare invece
 local preference = require "lib.preference"
 local velx = 200
@@ -15,7 +21,7 @@ local vely = 200
 local py = 360 --(y effettivo - 50)
 local isDefeatedWon
 local win
-
+local caricare
 require("lib.LD_HelperX")
 require("lib.LD_LoaderX")
 local _W = display.contentWidth
@@ -69,12 +75,15 @@ local function onLocalCollision( self, event )
   --          forcex = 80 - forcex+12
   --      end
       --event.other:applyForce( 100, forcey+150, self.x, self.y )
+
+
       event.other:setLinearVelocity(200,15000)
   --  end
 end
 
 local function setBomb ( event )
 --if(event.other.name == "ball") then
+
     exp = display.newCircle( firex, firey, 50 )
             exp.myName = "exp"
     exp.alpha=0.01
@@ -84,9 +93,35 @@ local function setBomb ( event )
       physics.addBody( exp, "static", {isSensor = true} )
     -- end)
     exp.collision = onLocalCollision
-    exp:addEventListener( "collision", exp )
- timer.performWithDelay( 100, function() exp:removeSelf() exp=nil end )
+    ----------------------------------------------------------------------------
+    local options= {
+      width= 55,
+      height= 57,
+      numFrames= 6,
+      sheetContenteWidth= 165,
+      sheetContenteHeight= 114
+    }
 
+    local sheetExplosion = graphics.newImageSheet(composer.imgDir.."explosion.png", options)
+
+    local sequenceData = {
+      name = "firing", start= 1, count= 5, time = 300, loopCount= 1
+    }
+    explosion = display.newSprite (sheetExplosion, sequenceData)
+    explosion:addEventListener( "sprite", function(event) print(event.phase) if (event.phase == "ended") then print("lalalla") explosion:removeSelf() explosion=nil end end )
+    explosion.x = firex
+    explosion.y = firey
+    explosion:scale( 2.5, 2.5)
+    local channel2= audio.findFreeChannel(2)
+    audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+    audio.play(suonoEsplosione,{channel= channel2})
+    gruppoLivello:insert(explosion)
+
+    explosion:toFront()
+    explosion:play()
+    ----------------------------------------------------------------------------
+    exp:addEventListener( "collision", exp )
+ timer.performWithDelay( 10, function() exp:removeSelf() exp=nil end )
 
 --end
 end
@@ -189,11 +224,11 @@ local function dannoXY(event, mod)
  end
 -- local channel2= audio.findFreeChannel(2)
 --  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
--- if event.target.name == 'speciale' then 
+-- if event.target.name == 'speciale' then
 --  audio.play(suonoMattoneSpeciale,{channel= channel2})
---else 
+--else
 --audio.play(suonoMattone,{channel= channel2})
---end 
+--end
 end
 
          timer.performWithDelay( 100, function()
@@ -299,12 +334,12 @@ function caricaPalla()
   end
   --print("numeroPalle = " .. numeroPalle)
   numeroPalle= numeroPalle -1
-  physics.start()
     if numeroPalle>0 then
   obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle-1)).view
   obj:setLinearVelocity(150,0)
   --print("obj = ",obj)
-  vecchiaPalla= obj else  canShoot=false
+  vecchiaPalla= obj
+  canShoot=false
   end
   end
 ---------------------------------------------------------------------------------
@@ -349,6 +384,23 @@ function listenerUltimaPalla(event)
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
   end end
 end end
+function listenerPallaLanciata(event)
+  if not isPaused then
+  if not(pall_lanciata==nil) then
+   if pall_lanciata:getLinearVelocity()~=nil
+    then vx,vy = pall_lanciata:getLinearVelocity( ) end
+  if vy<0 then vy=-vy end
+  if vx<0 then vx=-vx end
+  if (pall_lanciata.y > py and vy <vely and vx < velx and caricare) then --qui
+    Runtime:removeEventListener("enterFrame", listenerPallaLanciata)
+    caricare=false
+    print("listener attivato")
+    caricaPalla()
+  timer.performWithDelay( 1000, function() canShoot=true caricare=true  end )
+
+  end end --palla nil
+end --ispaused
+end
 
 function listenerPallaSpeciale(event)
   if not (fire==nil) then
@@ -385,9 +437,9 @@ end end
 
         turnoPotere = false
         local sy= sy - 60
-
         if numBallMax == 0 then
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
+   else Runtime:addEventListener("enterFrame",listenerPallaLanciata)
    end
 
         if potereAttivato then
@@ -477,7 +529,9 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
        ball:setLinearVelocity( normDeltaX*speed,normDeltaY*speed )
        pall_lanciata = ball
       -- pall_lanciata.isSleepingAllowed = false
+      if not(pall_lanciata==nil)then
        gruppoLivello:insert(pall_lanciata)
+     end
        nTiri = nTiri + 1
        --ball.preCollision = nebulaCollide
       -- ball:addEventListener( "preCollision", ball )
@@ -492,7 +546,7 @@ end
   -- else
   if canShoot then
     numBallMax = numBallMax - 1
-    caricaPalla()
+    --caricaPalla()
     daColpire=true
     --print("cannon:shoot",potereAttivato)
    -- sx,sy= event.x , event.y
@@ -521,6 +575,7 @@ end
 -- FUNZIONI LIVELLO
 ---------------------------------------------------------------------------------
 function creaLivello(cannon, objMattoni)
+  caricare=true
   physics.setGravity(0, 46)
 mattoni = objMattoni
 local muroSinistra = display.newRect( 0, _H/2, 0 ,_H )
@@ -627,6 +682,7 @@ end
 
 function schermataVittoria()
    -- timer.performWithDelay( 500, toNextLevel )
+   isPaused=true
    gruppoVittoria= display.newGroup()
    win= true
    if isDefeatedWon == false then
@@ -662,7 +718,7 @@ win= nil
   end
 
 function schermataSconfitta()
-
+ isPaused=true
   if isDefeatedWon == false then
 
 
@@ -745,11 +801,11 @@ function hit(event, mod)
          -- end
           local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
- if event.target.name == 'speciale' then 
+ if event.target.name == 'speciale' then
   audio.play(suonoMattoneSpeciale,{channel= channel2})
-else 
+else
 audio.play(suonoMattone,{channel= channel2})
-end 
+end
            end
 ---------------------------------------------------------------------------------
 --FUNZIONI TOUCH AUSILIARIE
@@ -785,7 +841,7 @@ else-- print("primto tmiro")
   if ((pall_lanciata==nil or (pall_lanciata.y > py and vy < vely and vx < velx)) and
       numeroPalle>0) then
       if pg.isPlaying then pg:pause() pg:setFrame(1) end
-   canShoot = true
+--   canShoot = true
  end
 end --event.phase
 end -- if nTiri
@@ -1119,7 +1175,7 @@ testoVolumeEffettoSonoro.fn:removeSelf()
 end
 
     scancellaTutto() --rimuove gruppolivello e cannone
-    
+
     gruppoPausa:removeSelf() print("tolto da backtomenu - tower")
 
 testoVolumeMusica= nil
