@@ -54,6 +54,9 @@ end
 
 local function backClicked(event)
   local options = { effect = "crossFade", time = 200}
+   local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
     if mod_par == "tower" then composer.gotoScene( "menu", options ) else
       composer.gotoScene("arcade",options) end
   end

@@ -96,13 +96,18 @@ end
 
 
 local function onButtonEsci(event)
+      local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound1,{channel= channel2})
     composer.gotoScene( "menu" , { effect = "crossFade", time = 200})
     audio.play(tapSound,{channel= 2})
 end
 
 local function onButtonCrediti(event)
+    local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound1,{channel= channel2})
     composer.gotoScene( "toCredits" , { effect = "crossFade", time = 200})
-    audio.play(tapSound,{channel= 2})
 end
 
     local sceneGroup = self.view

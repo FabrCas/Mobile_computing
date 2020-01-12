@@ -262,37 +262,61 @@
    </physics>
   </asset>
  </assets>
+ <assets firstgid="41" name="notAvailable" width="200" height="200">
+  <image source="../../App/images/notAvailable.png" width="200" height="200"/>
+  <asset frame="0" name="notAvailable_0" spritename="" class="" export="1" x="0" y="0" w="200" h="200">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="42" name="sky" width="320" height="256">
+  <image source="../../App/images/sky.png" width="320" height="256"/>
+  <asset frame="0" name="sky_0" spritename="" class="" export="1" x="0" y="0" w="320" h="256">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="43" name="landScape" width="640" height="486">
+  <image source="../../App/images/landScape.jpg" width="640" height="486"/>
+  <asset frame="0" name="landScape_0" spritename="" class="" export="1" x="0" y="0" w="640" h="486">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
  <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="backgrounds" gridX="16" gridY="16">
-  <object uid="{e98cfec2-15b7-4d62-bc2d-7eaf26506a22}" shape="0" name="rect_pg1" alpha="1" blendMode="0" spriteName="" x="14" y="31.5" width="135.5" height="188.5" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4278190080" textcolor="4294967295">
+  <object uid="{6cb71f8a-0a6d-4e5f-b1a8-cf373e755d9c}" shape="0" name="rect_pg4" alpha="1" blendMode="0" spriteName="" x="179.5" y="264" width="125.25" height="189.25" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4281413937" textcolor="4294967295">
+   <properties>
+    <property name="pgName" value=""/>
+   </properties>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{03fb61b8-6d28-4bab-a1d9-03bea7b3a7e8}" shape="0" name="rect_pg3" alpha="1" blendMode="0" spriteName="" x="16.5" y="265" width="130.625" height="188.375" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4281413937" textcolor="4294967295">
+   <properties>
+    <property name="pgName" value=""/>
+   </properties>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{61e336b8-97a6-42d0-b5dc-7de84eff02b1}" shape="6" name="rect_pg1" alpha="1" blendMode="0" idx="42" spriteName="" x="13" y="33" width="134" height="166" anchorX="0.5" anchorY="0.5">
    <properties>
     <property name="pgName" value="cottonBall"/>
    </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{cb7518c1-446f-40a0-9de6-86313bcf6aa1}" shape="0" name="rect_pg2" alpha="1" blendMode="0" spriteName="" x="174.25" y="32" width="127.25" height="188" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4278190080" textcolor="4294967295">
+  <object uid="{b44cf0e9-30ba-4267-9f87-189ba1b673ae}" shape="6" name="rect_pg2" alpha="1" blendMode="0" idx="43" spriteName="" x="167" y="20.5" width="145" height="181.946" anchorX="0.5" anchorY="0.5">
    <properties>
     <property name="pgName" value="crimson"/>
    </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{6cb71f8a-0a6d-4e5f-b1a8-cf373e755d9c}" shape="0" name="rect_pg4" alpha="1" blendMode="0" spriteName="" x="179.5" y="264" width="125.25" height="189.25" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4278190080" textcolor="4294967295">
-   <properties>
-    <property name="pgName" value=""/>
-   </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{03fb61b8-6d28-4bab-a1d9-03bea7b3a7e8}" shape="0" name="rect_pg3" alpha="1" blendMode="0" spriteName="" x="16.5" y="265" width="130.625" height="188.375" anchorX="0.5" anchorY="0.5" cornerRadius="0" strokecolor="4294967295" fillcolor="4278190080" textcolor="4294967295">
-   <properties>
-    <property name="pgName" value=""/>
-   </properties>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="1" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
  </layer>
@@ -320,6 +344,16 @@
    </physics>
   </object>
   <object uid="{5bad3863-0f94-402f-8143-87c519df0016}" shape="6" name="crimson" alpha="1" blendMode="0" idx="25" spriteName="" x="118" y="31.8571" width="241" height="172.143" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{8e073363-aaa6-4b8d-b986-e81863104755}" shape="6" name="notAvailable_0" alpha="1" blendMode="0" idx="41" spriteName="" x="32" y="314" width="96" height="96" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{5e845f7d-3707-4064-95fd-7a5e99b8b4d1}" shape="6" name="notAvailable_6" alpha="1" blendMode="0" idx="41" spriteName="" x="192.5" y="314" width="96" height="96" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
