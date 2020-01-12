@@ -5,6 +5,9 @@ local scene = composer.newScene()
 local primaEstrazione
 local secondaEstrazione
 local terzaEstrazione
+suonoSlot= audio.loadSound("sounds/slot.mp3")
+posSlot= audio.loadSound("sounds/posSlot.mp3")
+negSlot= audio.loadSound("sounds/negSlot.mp3")
 
 math.randomseed(os.time())
 math.random(); math.random(); math.random()
@@ -259,7 +262,7 @@ function scene:create( event )
     myLevel:loadLevel("slot")
 
     primaEstrazione = math.random(1, 7)
-    secondaEstrazione = math.random(1,3 + fortuna)
+    secondaEstrazione =  math.random(1,3 + fortuna)
     terzoValore = math.random(1,30) -- 1-12 +1  13-19 +2  20-25 +3  26-29 +4  30 = +5
     print("prima estrazione".. primaEstrazione)
     print("seconda estrazione".. secondaEstrazione) -- 1 = -
@@ -311,8 +314,26 @@ function scene:show( event )
  
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
+    local channel1= audio.findFreeChannel(1)
+  audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
+  audio.play(suonoSlot,{channel= channel1})
 
     animazioneSlot()
+
+    local isChannel1Active = audio.isChannelActive( 1 )
+    function attivaEffettoSonoro()
+if isChannel1Active then
+    audio.stop( 1 )
+ end
+ local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+    if secondaEstrazione > 1 then 
+  audio.play(posSlot,{channel= channel2})
+else  
+audio.play(negSlot,{channel= channel2})
+end 
+end
+timer.performWithDelay(8500,attivaEffettoSonoro)
 
     timer.performWithDelay(12000, function()
    composer.gotoScene("levels.mappa")

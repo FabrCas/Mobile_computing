@@ -391,14 +391,21 @@ function listenerPallaLanciata(event)
     caricare=false
     print("listener attivato")
     caricaPalla()
-  timer.performWithDelay( 1000, function() canShoot=true caricare=true  end )
+  timer.performWithDelay( 1000, function()
+    circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
+    canShoot=true caricare=true
+     timer.performWithDelay( 500, function()
+      circle:setFillColor(0,0,0)
+    end
+      )
+     end )
 
   end end --palla nil
 end --ispaused
 end
 
 function listenerPallaSpeciale(event)
-  if not (fire==nil) then
+  if not (fire==nil or ball==nil) then
 
   fire.x, fire.y= ball:localToContent(0,0)
   fire.x= fire.x + 1
@@ -613,7 +620,7 @@ function removeBrick(brick, mod)
   nMattoni = nMattoni - 1
 
   print(nMattoni)
-  if nMattoni == 0 then
+  if nMattoni == 25 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
@@ -901,6 +908,7 @@ end
 --FUNZIONI PALLA
 ---------------------------------------------------------------------------------
 function scancellaTutto()
+partitaS:stats().danno = danno
 gruppoLivello:removeSelf( )
 if not (gruppoVittoria == nil) then
 gruppoVittoria:removeSelf()
