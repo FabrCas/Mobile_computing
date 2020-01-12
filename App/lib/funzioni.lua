@@ -4,6 +4,7 @@ local physics = require ("physics")
 require ("lib.partitaStoria")
 tapSound2= audio.loadSound("sounds/brickStricked.mp3")
 gameOverSound= audio.loadSound("sounds/game_over.mp3")
+shootC= audio.loadSound("sounds/cannon.mp3")
 suonoMattone = audio.loadSound("sounds/Negative_Sound_Tone_Hit_4.mp3")
 suonoMattoneSpeciale= audio.loadSound("sounds/Vibrant_Game_Cartoon_Game_Laser_Hit_4.mp3")
 --arcade deve creare invece
@@ -502,6 +503,9 @@ end
     ly= event.y
   end
   cannon:play()
+  local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(shootC,{channel= channel2})
 
 
   local ball

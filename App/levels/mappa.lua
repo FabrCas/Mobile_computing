@@ -4,6 +4,7 @@ local scene = composer.newScene()
 local _w = display.contentWidth/2
 local _h = display.contentHeight/2
 ladderSound= audio.loadStream("sounds/cambio_piano.mp3")
+openMappa= audio.loadSound("sounds/scroll.mp3")
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -394,6 +395,9 @@ end
         if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
         if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
         if nil~= composer.getScene("levels.rewards") then composer.removeScene("levels.rewards", false) end
+        local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(openMappa,{channel= channel2})
         -- Code here runs when the scene is entirely on screen
  
     end

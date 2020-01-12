@@ -12,6 +12,7 @@ local numeroPagineMenu= 30
 local x
 local y
 menuSound= audio.loadStream("sounds/montage.mp3")
+tapSound= audio.loadSound("sounds/mb1.mp3")
 
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
@@ -28,6 +29,9 @@ menuSound= audio.loadStream("sounds/montage.mp3")
 
 local function backClicked(event)
     print("back clicked")
+    local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
   local options = { effect = "crossFade", time = 200}
       composer.gotoScene("menu",options)
   end
@@ -112,6 +116,9 @@ local function runLevel(livello)
      time = 200,
      params = { nomeLivello = 1}
  }
+  local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
   print("Run level (Arcade) eseguita")
 
     if livello == 1 then
