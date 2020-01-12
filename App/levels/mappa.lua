@@ -25,6 +25,7 @@ openMappa= audio.loadSound("sounds/scroll.mp3")
  local testoPiano
  local background
  local testoSchermata
+ local attivaEffettoMappa= true
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
@@ -323,6 +324,7 @@ end
 
 
 function creazione()
+  
     local indicePartenza= 0
 if (torre.pianoAttuale==0) then 
     creaMappa(p1.start,indicePartenza )
@@ -395,9 +397,14 @@ end
         if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
         if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
         if nil~= composer.getScene("levels.rewards") then composer.removeScene("levels.rewards", false) end
+
+        if attivaEffettoMappa then 
         local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(openMappa,{channel= channel2})
+  attivaEffettoMappa= false 
+end
+         
         -- Code here runs when the scene is entirely on screen
  
     end

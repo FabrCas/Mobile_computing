@@ -8,12 +8,8 @@ suonoMattone = audio.loadSound("sounds/suonoMattone.mp3")
 suonoMattoneSpeciale= audio.loadSound("sounds/suonoMattoneSpeciale.mp3")
 suonoEsplosione = audio.loadSound("sounds/explosion.mp3")
 shootC= audio.loadSound("sounds/cannon.mp3")
-<<<<<<< HEAD
-suonoMattone = audio.loadSound("sounds/Negative_Sound_Tone_Hit_4.mp3")
-suonoMattoneSpeciale= audio.loadSound("sounds/Vibrant_Game_Cartoon_Game_Laser_Hit_4.mp3")
 tapSound= audio.loadSound("sounds/mb1.mp3")
-=======
->>>>>>> 0cf1e3e665da577cef5bf821f27d896f5a3a6414
+
 --arcade deve creare invece
 local preference = require "lib.preference"
 local velx = 200
@@ -396,14 +392,21 @@ function listenerPallaLanciata(event)
     caricare=false
     print("listener attivato")
     caricaPalla()
-  timer.performWithDelay( 1000, function() canShoot=true caricare=true  end )
+  timer.performWithDelay( 1000, function() 
+    circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
+    canShoot=true caricare=true 
+     timer.performWithDelay( 500, function() 
+      circle:setFillColor(0,0,0)
+    end
+      )
+     end )
 
   end end --palla nil
 end --ispaused
 end
 
 function listenerPallaSpeciale(event)
-  if not (fire==nil) then
+  if not (fire==nil or ball==nil) then
 
   fire.x, fire.y= ball:localToContent(0,0)
   fire.x= fire.x + 1
@@ -618,7 +621,7 @@ function removeBrick(brick, mod)
   nMattoni = nMattoni - 1
 
   print(nMattoni)
-  if nMattoni == 0 then
+  if nMattoni == 25 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
@@ -906,6 +909,7 @@ end
 --FUNZIONI PALLA
 ---------------------------------------------------------------------------------
 function scancellaTutto()
+partitaS:stats().danno = danno
 gruppoLivello:removeSelf( )
 if not (gruppoVittoria == nil) then
 gruppoVittoria:removeSelf()
