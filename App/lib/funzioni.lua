@@ -404,10 +404,11 @@ end
     print("listener attivato")
     caricaPalla()
 
+
   timer.performWithDelay( 1000, function() 
     circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
-    canShoot=true caricare=true 
-     timer.performWithDelay( 500, function() 
+    canShoot=true
+     timer.performWithDelay( 500, function()
       circle:setFillColor(0,0,0)
     end
       )
@@ -455,6 +456,7 @@ end end
         if numBallMax == 0 then
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    else Runtime:addEventListener("enterFrame",listenerPallaLanciata)
+     caricare=true
    end
 
         if potereAttivato then
@@ -960,12 +962,12 @@ end end
     rectBalls.alpha= 0;
     led_acceso.x = myUI:getLayerObject("ui_layer" ,"led spento_0").view.x led_acceso.y = myUI:getLayerObject("ui_layer" ,"led spento_0").view.y
     led_acceso.alpha = 0
-    buttonPausa:addEventListener('tap',function(event) 
+    buttonPausa:addEventListener('tap',function(event)
         local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
       if isPaused == false then physics.pause() isPaused=true creaPausa() end end)
-    buttonStats:addEventListener('tap',function(event) 
+    buttonStats:addEventListener('tap',function(event)
         local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
