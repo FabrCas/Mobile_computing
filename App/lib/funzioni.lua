@@ -52,6 +52,7 @@ local crimson
 local fire
 local livelloPG
 local ball
+local sfondo
 
 local danno
 local lx
@@ -168,13 +169,16 @@ local function dannoXY(event, mod)
   asseHityDown:setFillColor(c4[1], c4[2], c4[3])
 
   gruppoScena:insert(asseHitxUp)
-  asseHitxUp:toBack()
+ asseHitxUp:toBack()
   gruppoScena:insert(asseHitxDown)
-  asseHitxDown:toBack()
+ asseHitxDown:toBack()
   gruppoScena:insert(asseHityUp)
-  asseHityUp:toBack()
+ asseHityUp:toBack()
   gruppoScena:insert(asseHityDown)
   asseHityDown:toBack()
+  gruppoScena:insert(sfondo)
+sfondo:toBack()
+
 
   --print ("x ".. xHit)
   --print ("y ".. yHit)
@@ -182,6 +186,7 @@ local function dannoXY(event, mod)
   --print ("w ".. wHit)
   --print ("*****************************************°°°******")
   for i=1, #mattoni do  --ancoraggio mattoni x e y su 0.5
+    if not (mattoni[i].name == "unbreak") then 
     if (mattoni[i].x ~= nil)  then
   --print ("x ".. mattoni[i].x)
   --print ("y ".. mattoni[i].y)
@@ -225,6 +230,7 @@ local function dannoXY(event, mod)
 --else
 --audio.play(suonoMattone,{channel= channel2})
 --end
+end 
 end
 
          timer.performWithDelay( 100, function()
@@ -380,7 +386,12 @@ function listenerUltimaPalla(event)
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
   end end
 end end
+
 function listenerPallaLanciata(event)
+ 
+  if caricare==false then 
+     print( "caricare false ")
+end 
   if not isPaused then
   if not(pall_lanciata==nil) then
    if pall_lanciata:getLinearVelocity()~=nil
@@ -388,10 +399,11 @@ function listenerPallaLanciata(event)
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
   if (pall_lanciata.y > py and vy <vely and vx < velx and caricare) then --qui
-    Runtime:removeEventListener("enterFrame", listenerPallaLanciata)
     caricare=false
+    Runtime:removeEventListener("enterFrame", listenerPallaLanciata)
     print("listener attivato")
     caricaPalla()
+
   timer.performWithDelay( 1000, function() 
     circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
     canShoot=true caricare=true 
@@ -577,7 +589,8 @@ end
 ---------------------------------------------------------------------------------
 -- FUNZIONI LIVELLO
 ---------------------------------------------------------------------------------
-function creaLivello(cannon, objMattoni)
+function creaLivello(cannon, objMattoni, sfondoo)
+  sfondo=sfondoo
   caricare=true
   physics.setGravity(0, 46)
 mattoni = objMattoni
@@ -615,13 +628,15 @@ end
 function removeBrick(brick, mod)
   print(brick)
  -- mattoni:remove(brick)
+ if not (brick.scritta==nil) then
   brick.scritta:removeSelf()
+end 
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
 
   print(nMattoni)
-  if nMattoni == 25 then
+  if nMattoni == 0 then
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
@@ -638,6 +653,7 @@ end end
 
 
 local function onButtonClick(event)
+  audio.stop(1)
   print("bottone vinto tappato")
   local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
@@ -689,8 +705,10 @@ function schermataVittoria()
    gruppoVittoria= display.newGroup()
    win= true
    if isDefeatedWon == false then
+    if not (bg==nil) then 
    bg:removeSelf()
    bg= nil
+ end 
   myLevel= LD_Loader:new(gruppoVittoria)
   myLevel:loadLevel("finestra")
   local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
@@ -733,8 +751,10 @@ function schermataSconfitta()
   gruppoLivello:insert(blackBg)
 
 	--print("stampa schermata")
-  bg:removeSelf()
-  bg= nil
+     if not (bg==nil) then 
+   bg:removeSelf()
+   bg= nil
+ end 
   myLevel= LD_Loader:new(gruppoLivello)
   myLevel:loadLevel("finestra")
   local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
@@ -893,6 +913,7 @@ end -- if nTiri
 --FUNZIONE FINE PARTITA
 ---------------------------------------------------------------------------------
  function finePartita()
+  audio.stop(1)
   crimson= nil
   livelloPg= nil
     if mod_par=="tower" then
@@ -1157,6 +1178,7 @@ musicap:addEventListener("tap", onButtonClickDownMusica)
 fxp:addEventListener("tap", onButtonClickUpEffettoSonoro)
 fxm:addEventListener("tap", onButtonClickDownEffettoSonoro)
 backtomenu:addEventListener("tap", function()
+  audio.stop(1)
   local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})

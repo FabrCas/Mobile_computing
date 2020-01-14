@@ -20,3 +20,23 @@ main->toMenu->menu->
 ->selectPG->toPlay->levels.mappa->sceneN->funzioniTower/Arcade
 ->arcade->selectPGArcade->sceneN->funzioniTower/Arcade
 ->toOptions->toCredits
+
+
+livelli:
+- cartoon
+- torre che crea illusioni
+- 3 gruppi: natura, epoche (Egitto, preistoria, romani, aztechi, medioevo),spazio,
+- dimensioni blocchi
+- la vita media livelli,
+- blocco potere
+
+creazione livello:
+320*480 director X
+speciali B11
+Asset mattone 64*32
+grandezza mattone 32*16
+mattoni angolati, posizionare correttamente senza mettere angolo e poi impostare
+mettere stella nell'immagine con potere speciale
+
+copyright:
+-Tim Kaminski,katiewhiteart, viktoria Likhodeeva

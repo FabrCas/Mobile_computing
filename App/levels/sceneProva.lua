@@ -1,4 +1,5 @@
-
+---------------------------------------------------------------------------------
+--
 -- scene1.lua
 --
 ---------------------------------------------------------------------------------
@@ -6,7 +7,6 @@ local composer = require( "composer" )
 --sceglieri qui partita storia o no
 
 local scene = composer.newScene()
-levelSound= audio.loadSound("sounds/l1s.mp3")
 require("lib.LD_LoaderX")
 require("lib.LD_HelperX")
 
@@ -38,7 +38,7 @@ elseif mod_par == "arcade" then
 	f =  require("lib.funzioni")
 	--f = require("lib.funzioniArcade")
 end
-
+audio.stop(1)
 
 local evento
 	--[[ Touch event listener for button
@@ -64,10 +64,6 @@ local isChannel1Active = audio.isChannelActive( 1 )
 if isChannel1Active then
     audio.stop( 1 )
 end
-local channel1= audio.findFreeChannel(1)
-  audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
-  audio.play(levelSound,{channel= channel1, loops = -1})
-
     if ( phase == "will" ) then
     	print("scene1 show - " .. mod_par)
 	local screenGroup = self.view
@@ -81,45 +77,24 @@ local channel1= audio.findFreeChannel(1)
 
 	    -- aggiunta listener ai mattoni
 	local obj = {}
-	for i=1,30 do
+	for i=1,29 do
 	obj[i] = {}
-	obj[i] = myLevel:getLayerObject("Layer 1","B07_"..string.format(i))
+	obj[i] = myLevel:getLayerObject("Layer 1","Brick_"..string.format(i))
 	screenGroup:insert(obj[i].view)
 	obj[i].view.name = obj[i].property['tipo']
-	if not (obj[i].view.name=="unbreak") then 
-
-	if (obj[i].view.name=="speciale") then
-	obj[i].view.life = 1
-	else 
-    obj[i].view.life = obj[i].view.rotation -- 2
-    obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
+    obj[i].view.life = 5
+  obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
   screenGroup:insert(obj[i].view.scritta)
-
-  angolo= obj[i].view.rotation
-  if angolo > 315 and angolo <45 then
-  	obj[i].view.scritta.rotation= obj[i].view.rotation
-  elseif angolo > 45 and angolo < 135 then
-  	obj[i].view.scritta.rotation= obj[i].view.rotation -90
-  elseif angolo > 135 and angolo <225 then
-  	obj[i].view.scritta.rotation= obj[i].view.rotation +90
-   elseif angolo > 225 and angolo < 0 then
-  	obj[i].view.scritta.rotation= obj[i].view.rotation +90
-  else 
   obj[i].view.scritta.rotation = obj[i].view.rotation
-end 
-    end 
-
 	obj[i].view:addEventListener( "preCollision", function (event) f.hit(event, modalita) end)
 	obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
-	nMattoni = nMattoni + 1
-end
 	obj[i] = obj[i].view
+	nMattoni = nMattoni + 1
 	end
 
-	sfondo= myLevel:getLayerObject("Layer 1","bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s_0").view
     f.creaCannone(cannone,cerchio)
 	f.creaUI(self.view)
-    f.creaLivello(cannone,obj, sfondo)
+    f.creaLivello(cannone,obj)
 
 
         -- Called when the scene is still off screen (but is about to come on screen).
