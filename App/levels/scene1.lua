@@ -96,16 +96,24 @@ local channel1= audio.findFreeChannel(1)
   screenGroup:insert(obj[i].view.scritta)
 
   angolo= obj[i].view.rotation
-  if angolo > 315 and angolo <45 then
+  if angolo > 315 and angolo <45 then  --<
   	obj[i].view.scritta.rotation= obj[i].view.rotation
-  elseif angolo > 45 and angolo < 135 then
+  elseif angolo > 45 and angolo < 135 then  --^
   	obj[i].view.scritta.rotation= obj[i].view.rotation -90
-  elseif angolo > 135 and angolo <225 then
+  elseif angolo > 135 and angolo <225 then  -->
   	obj[i].view.scritta.rotation= obj[i].view.rotation +90
-   elseif angolo > 225 and angolo < 0 then
+   elseif angolo > 225 and angolo < 315 then --u
   	obj[i].view.scritta.rotation= obj[i].view.rotation +90
-  else 
-  obj[i].view.scritta.rotation = obj[i].view.rotation
+
+  elseif angolo <-315 and angolo >-45 then --<
+  obj[i].view.scritta.rotation = obj[i].view.rotation 
+elseif angolo <-225 and angolo >-315 then --^
+  obj[i].view.scritta.rotation = obj[i].view.rotation -90
+elseif angolo <-135 and angolo >-225 then -->
+  obj[i].view.scritta.rotation = obj[i].view.rotation +90
+elseif angolo <-45 and angolo >-135 then --u
+  obj[i].view.scritta.rotation = obj[i].view.rotation +90
+else  obj[i].view.scritta.rotation = obj[i].view.rotation
 end 
     end 
 
