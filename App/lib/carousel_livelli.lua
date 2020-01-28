@@ -13,12 +13,12 @@ local w = 960
 local h = 444
 local halfW = display.contentWidth * 0.5
 local halfH = display.contentHeight * 0.5
-
+local livello
 
 function new( imageSet, slideBackground, top )
 	local pad = 200
 	local top = top or 0
-
+	livello = 1
 	local g = display.newGroup()
 	local myImages = imageSet
 
@@ -162,7 +162,10 @@ function new( imageSet, slideBackground, top )
 					if (dragDistance == 0) then
 							--print ("clicked item ", imgNum)
 							-- Sometime later, create an event and dispatch it
-							local event = { name="levelClicked", level=imgNum }
+							print("livello libreria" )
+							print( livello )
+							_G.livelloA= livello
+							local event = { name="levelClicked"} --level=livello}
 							Runtime:dispatchEvent( event )
 					end
 				end
@@ -191,7 +194,8 @@ function new( imageSet, slideBackground, top )
 	end
 
 	function nextImage()
-
+		print("giro+")
+		livello= livello +1
 		tween = transition.to( images[imgNum], {time=400, alpha=0, transition=easing.outExpo } )
 
 		if images[imgNum-1] ~= nil then
@@ -222,6 +226,8 @@ function new( imageSet, slideBackground, top )
 	end
 
 	function prevImage()
+		print("giro-")
+		livello= livello - 1
 		tween = transition.to( images[imgNum], {time=400, alpha=0, transition=easing.outExpo } )
 
 		if images[imgNum-1] ~= nil then

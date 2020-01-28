@@ -95,7 +95,6 @@ function scene:show( event )
         -- Code here runs when the scene is still off screen (but is about to come on screen)
 
     elseif ( phase == "did" ) then
-
 local isChannel1Active = audio.isChannelActive( 1 )
 if not (isChannel1Active) then
       local channel1 = audio.findFreeChannel(1)
@@ -111,16 +110,16 @@ end
             composer.removeScene( prevScene )
         end
 
-local function runLevel(livello)
+local function runLevel(liv)
     local options =  { effect = "crossFade",
      time = 200,
-     params = { nomeLivello = 1}
+     params = { nomeLivello = liv}
  }
   local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
   print("Run level (Arcade) eseguita")
-
+  print(livello)
     if livello == 1 then
         options.params.nomeLivello= 1
     elseif livello == 2 then
@@ -182,6 +181,7 @@ local function runLevel(livello)
      elseif livello == 30 then
         options.params.nomeLivello= 30
     end
+    _G.livelloA=0
     composer.gotoScene( "selectPG", options)
     return true
 end
@@ -197,8 +197,8 @@ if ( (x<300) and  (y<460)) then
     if (clicked ==1) then
         Runtime:removeEventListener("levelClicked")
         --levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
-        print (clicked, "clicked level", event.level)
-        timer.performWithDelay(0,  runLevel(event.level) ,1)
+        print (clicked, "clicked level", livelloA)
+        timer.performWithDelay(0,  runLevel(livelloA) ,1)
     end
 end end --nuovo end messo qui
 end

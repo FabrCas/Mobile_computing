@@ -26,6 +26,7 @@ preference.save{tower=123} --mettere a commento se si vuole salvare la torre x s
 --physics.start()
 _G.mod_par = nil
 _G.f= nil
+_G.livelloA=0
 local composer = require( "composer" )
 composer.imgDir = "images/"
 composer.musicDir = "sounds/"

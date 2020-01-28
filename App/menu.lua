@@ -72,7 +72,38 @@ local arcade = composer.loadScene( "arcade", false)
       if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
       if nil~= composer.getScene("toOptions") then composer.removeScene("toOptions", false) end
       if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
-      if nil~= composer.getScene("scene1") then composer.removeScene("scene1", false) end
+      if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
+      if nil~= composer.getScene("levels.scene2") then composer.removeScene("levels.scene2", false) end
+      if nil~= composer.getScene("levels.scene3") then composer.removeScene("levels.scene3", false) end
+      if nil~= composer.getScene("levels.scene4") then composer.removeScene("levels.scene4", false) end
+      if nil~= composer.getScene("levels.scene5") then composer.removeScene("levels.scene5", false) end
+      if nil~= composer.getScene("levels.scene6") then composer.removeScene("levels.scene6", false) end
+      if nil~= composer.getScene("levels.scene7") then composer.removeScene("levels.scene7", false) end
+      if nil~= composer.getScene("levels.scene8") then composer.removeScene("levels.scene8", false) end
+      if nil~= composer.getScene("levels.scene9") then composer.removeScene("levels.scene9", false) end
+      if nil~= composer.getScene("levels.scene10") then composer.removeScene("levels.scene10", false) end
+      if nil~= composer.getScene("levels.scene11") then composer.removeScene("levels.scene11", false) end
+      if nil~= composer.getScene("levels.scene12") then composer.removeScene("levels.scene12", false) end
+      if nil~= composer.getScene("levels.scene13") then composer.removeScene("levels.scene13", false) end
+      if nil~= composer.getScene("levels.scene14") then composer.removeScene("levels.scene14", false) end
+      if nil~= composer.getScene("levels.scene15") then composer.removeScene("levels.scene15", false) end
+      if nil~= composer.getScene("levels.scene16") then composer.removeScene("levels.scene16", false) end
+      if nil~= composer.getScene("levels.scene17") then composer.removeScene("levels.scene17", false) end
+      if nil~= composer.getScene("levels.scene18") then composer.removeScene("levels.scene18", false) end
+      if nil~= composer.getScene("levels.scene19") then composer.removeScene("levels.scene19", false) end
+      if nil~= composer.getScene("levels.scene20") then composer.removeScene("levels.scene20", false) end
+      if nil~= composer.getScene("levels.scene21") then composer.removeScene("levels.scene21", false) end
+      if nil~= composer.getScene("levels.scene22") then composer.removeScene("levels.scene22", false) end
+      if nil~= composer.getScene("levels.scene23") then composer.removeScene("levels.scene23", false) end
+      if nil~= composer.getScene("levels.scene24") then composer.removeScene("levels.scene24", false) end
+      if nil~= composer.getScene("levels.scene25") then composer.removeScene("levels.scene25", false) end
+      if nil~= composer.getScene("levels.scene26") then composer.removeScene("levels.scene26", false) end
+      if nil~= composer.getScene("levels.scene27") then composer.removeScene("levels.scene27", false) end
+      if nil~= composer.getScene("levels.scene28") then composer.removeScene("levels.scene28", false) end
+      if nil~= composer.getScene("levels.scene29") then composer.removeScene("levels.scene29", false) end
+      if nil~= composer.getScene("levels.scene30") then composer.removeScene("levels.scene30", false) end
+
+      
       if f ~= nil then f = require("lib.funzioni") end 
 
 

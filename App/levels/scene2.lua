@@ -62,19 +62,19 @@ function scene:show( event )
 	local phase = event.phase
 
     if ( phase == "will" ) then
-    local isChannel1Active = audio.isChannelActive( 1 )
-    if isChannel1Active then
-    	audio.stop( 1 )
-    	end
-    	local channel1= audio.findFreeChannel(1)
-    	audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
-    	audio.play(levelSound,{channel= channel1, loops = -1})
-    	
+    	local isChannel1Active = audio.isChannelActive( 1 )
+if isChannel1Active then
+    audio.stop( 1 )
+end
+local channel1= audio.findFreeChannel(1)
+  audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
+  audio.play(levelSound,{channel= channel1, loops = -1})
+
     	print("scene1 show - " .. mod_par)
 	local screenGroup = self.view
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)
-	myLevel:loadLevel("Level01") -- set your scene/level name here
+	myLevel:loadLevel("Level02") -- set your scene/level name here
 	myCannon = LD_Loader:new(self.view)
 	myCannon:loadLevel("cannon.shoot")
 	cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
@@ -84,7 +84,7 @@ function scene:show( event )
 	local obj = {}
 	for i=1,30 do
 	obj[i] = {}
-	obj[i] = myLevel:getLayerObject("Layer 1","B07_"..string.format(i))
+	obj[i] = myLevel:getLayerObject("Layer 1",string.format(i))
 	screenGroup:insert(obj[i].view)
 	obj[i].view.name = obj[i].property['tipo']
 	if not (obj[i].view.name=="unbreak") then 
@@ -125,7 +125,7 @@ end
 	obj[i] = obj[i].view
 	end
 
-	sfondo= myLevel:getLayerObject("Layer 1","bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s_0").view
+	sfondo= myLevel:getLayerObject("Layer 1","sfondo").view
     f.creaCannone(cannone,cerchio)
 	f.creaUI(self.view)
     f.creaLivello(cannone,obj, sfondo)

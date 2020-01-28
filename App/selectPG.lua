@@ -10,6 +10,10 @@ tapSound= audio.loadSound("sounds/mb1.mp3")
 
 local scene = composer.newScene()
 local arcade
+local livello
+local rectButton
+local rectButton2
+local backButton
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -24,11 +28,12 @@ local arcade
 local function chiamaProssimaScena()
     local options = { effect = "crossFade", time = 200}
     if mod_par == "tower" then composer.gotoScene( "toPlay", options ) else
-      composer.gotoScene("levels.scene1",options) end
+      composer.gotoScene("levels.scene"..tostring(livello),options) end
 end
 
 
 local function onButtonClick(event)
+  rimuoviListener()
   nomePersonaggio= event.target.pg
   print ("Select PG = " .. nomePersonaggio .. " " .. mod_par)
   --print("tap esiste?")
@@ -53,6 +58,7 @@ end
 end
 
 local function backClicked(event)
+  rimuoviListener()
   local options = { effect = "crossFade", time = 200}
    local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
@@ -61,11 +67,18 @@ local function backClicked(event)
       composer.gotoScene("arcade",options) end
   end
 
+function rimuoviListener()
+  rectButton.view:removeEventListener("tap", onButtonClick)
+  rectButton2.view:removeEventListener("tap", onButtonClick)
+  backButton:removeEventListener("tap", backClicked)
+end
 -- create()
 function scene:create( event )
 
     local sceneGroup = self.view
-    
+    if (mod_par=="arcade") then 
+    livello= event.params.nomeLivello
+  end 
     display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
     -- Code here runs when the scene is first created but has not yet appeared on screen
     myLevel= LD_Loader:new(sceneGroup)

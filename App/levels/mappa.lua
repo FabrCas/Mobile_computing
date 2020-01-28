@@ -34,8 +34,9 @@ local function onButtonClickStanzaSelezionata(event)
      time = 200,
      params = {modalita= "tower"}
  }
-    composer.gotoScene("levels.scene1", options)
+    composer.gotoScene("levels.scene2", options)
   stanza= event.target.stanza
+  print( stanza.nome )
   stanzaSelezionata= stanza
 end
 
