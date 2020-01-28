@@ -101,6 +101,7 @@ local function onButtonEsci(event)
   audio.play(tapSound1,{channel= channel2})
     composer.gotoScene( "menu" , { effect = "crossFade", time = 200})
     audio.play(tapSound,{channel= 2})
+   -- sceneGroup:removeSelf()
 end
 
 local function onButtonCrediti(event)
@@ -212,7 +213,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
         --if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
-if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
+        if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
     end
 end
 

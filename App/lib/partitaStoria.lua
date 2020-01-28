@@ -585,7 +585,7 @@ end
 end
 
 function partitaS:diminuisciVolumeMusica()
-  if(volumeMusica>=0.1) then
+  if(volumeMusica>0.1) then
   volumeMusica= volumeMusica - 0.1
   else
   volumeMusica=0
@@ -599,7 +599,7 @@ end
 end
 
 function partitaS:diminuisciVolumeEffettoSonoro()
-  if(volumeEffettoSonoro>=0.1) then
+  if(volumeEffettoSonoro>0.1) then
   volumeEffettoSonoro= volumeEffettoSonoro - 0.1
 else
   volumeEffettoSonoro=0

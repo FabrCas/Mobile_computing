@@ -91,7 +91,7 @@ local channel1= audio.findFreeChannel(1)
 	if (obj[i].view.name=="speciale") then
 	obj[i].view.life = 1
 	else 
-    obj[i].view.life = obj[i].view.rotation -- 2
+    obj[i].view.life = 2
     obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
   screenGroup:insert(obj[i].view.scritta)
 

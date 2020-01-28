@@ -3,13 +3,12 @@ To do list:
 
 
 - aggiungere altro personaggio
-- aggiungere effetti sonori
 
 - poteri personaggi
 - livelli * 29
 - salvataggio dati tower
 - score online con dbr
-- schermate inzio
+- schermata inzio
 - crediti
 
 
