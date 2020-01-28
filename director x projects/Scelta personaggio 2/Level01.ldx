@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="B07" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="Level01">
- <assets firstgid="1" name="bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s" width="640" height="828">
-  <image source="../../App/images/bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg" width="640" height="828"/>
-  <asset frame="0" name="bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s_0" spritename="" class="" export="1" x="0" y="0" w="640" h="828">
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="1" gridheight="1" lastasset="B11Speciale" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="Level02">
+ <assets firstgid="1" name="d8217a986905510ca9760b4230cf7f07" width="564" height="1002">
+  <image source="../../App/images/d8217a986905510ca9760b4230cf7f07.jpg" width="564" height="1002"/>
+  <asset frame="0" name="d8217a986905510ca9760b4230cf7f07_0" spritename="" class="" export="1" x="0" y="0" w="564" h="1002">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
  </assets>
- <assets firstgid="2" name="static part ui" width="640" height="960">
-  <image source="../../App/images/static part ui.png" width="640" height="960"/>
-  <asset frame="0" name="static part ui_0" spritename="" class="" export="1" x="0" y="0" w="640" h="960">
+ <assets firstgid="2" name="B04" width="64" height="32">
+  <image source="../../App/images/B04.png" width="320" height="160"/>
+  <asset frame="0" name="B04_0" spritename="" class="" export="0" x="0" y="0" w="64" h="32">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="B04_1" spritename="" class="" export="0" x="64" y="0" w="64" h="32">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
- </assets>
- <assets firstgid="3" name="B11Speciale" width="64" height="32">
-  <image source="../../App/images/B11Speciale.png" width="320" height="160"/>
-  <asset frame="0" name="B11Speciale_0" spritename="" class="" export="1" x="0" y="0" w="64" h="32">
+  <asset frame="2" name="B04_2" spritename="" class="" export="1" x="128" y="0" w="64" h="32">
    <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{d588dc1f-7343-4fc0-8176-95891fcb437c}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
+    <object uid="{d0c6806c-78a8-4ff9-8fc7-41072b4eca6f}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
      <polygon points="0,0 0,32 64,32 64,0"/>
      <physics enabled="1" bodytype="0" convex="0" linked="1">
       <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
@@ -29,6 +31,148 @@
    </layer>
    <physics enabled="1" bodytype="0" convex="0" linked="1">
     <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="3" name="B04_3" spritename="" class="" export="0" x="192" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="4" name="B04_4" spritename="" class="" export="0" x="256" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="5" name="B04_5" spritename="" class="" export="1" x="0" y="32" w="64" h="32">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
+    <object uid="{c647b7ab-a200-4bff-bb11-349611e89a3b}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
+     <polygon points="0,0 0,32 64,32 64,0"/>
+     <physics enabled="1" bodytype="0" convex="0" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="6" name="B04_6" spritename="" class="" export="1" x="64" y="32" w="64" h="32">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
+    <object uid="{0f048ba4-6259-44b1-b42c-d5e9599f49f1}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
+     <polygon points="0,0 0,32 64,32 64,0"/>
+     <physics enabled="1" bodytype="0" convex="0" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="7" name="B04_7" spritename="" class="" export="0" x="128" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="8" name="B04_8" spritename="" class="" export="0" x="192" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="9" name="B04_9" spritename="" class="" export="0" x="256" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="10" name="B04_10" spritename="" class="" export="0" x="0" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="11" name="B04_11" spritename="" class="" export="0" x="64" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="12" name="B04_12" spritename="" class="" export="0" x="128" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="13" name="B04_13" spritename="" class="" export="0" x="192" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="14" name="B04_14" spritename="" class="" export="0" x="256" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="15" name="B04_15" spritename="" class="" export="0" x="0" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="16" name="B04_16" spritename="" class="" export="0" x="64" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="17" name="B04_17" spritename="" class="" export="0" x="128" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="18" name="B04_18" spritename="" class="" export="0" x="192" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="19" name="B04_19" spritename="" class="" export="0" x="256" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="20" name="B04_20" spritename="" class="" export="0" x="0" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="21" name="B04_21" spritename="" class="" export="1" x="64" y="128" w="64" h="32">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
+    <object uid="{490a91a9-d256-4786-b741-3b9472a95698}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
+     <polygon points="0,0 0,32 64,32 64,0"/>
+     <physics enabled="1" bodytype="0" convex="0" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="22" name="B04_22" spritename="" class="" export="0" x="128" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="23" name="B04_23" spritename="" class="" export="0" x="192" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="24" name="B04_24" spritename="" class="" export="0" x="256" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="27" name="B11Speciale" width="64" height="32">
+  <image source="../../App/images/B11Speciale.png" width="320" height="160"/>
+  <asset frame="0" name="B11Speciale_0" spritename="" class="" export="0" x="0" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
   <asset frame="1" name="B11Speciale_1" spritename="" class="" export="0" x="64" y="0" w="64" h="32">
@@ -131,9 +275,9 @@
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
-  <asset frame="21" name="B11Speciale_21" spritename="" class="" export="0" x="64" y="128" w="64" h="32">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+  <asset frame="21" name="B11Speciale_21" spritename="" class="" export="1" x="64" y="128" w="64" h="32">
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
   <asset frame="22" name="B11Speciale_22" spritename="" class="" export="0" x="128" y="128" w="64" h="32">
@@ -152,287 +296,16 @@
    </physics>
   </asset>
  </assets>
- <assets firstgid="28" name="B07" width="64" height="32">
-  <image source="../../App/images/B07.png" width="320" height="160"/>
-  <asset frame="0" name="B07_0" spritename="" class="" export="1" x="0" y="0" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{329608e5-0da8-4119-83f9-af0deea12b84}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="-1" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="1" name="B07_1" spritename="" class="" export="1" x="64" y="0" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="2" name="B07_2" spritename="" class="" export="1" x="128" y="0" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{ae703f09-63f4-4135-a0f0-2ead6aed7393}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="3" name="B07_3" spritename="" class="" export="1" x="192" y="0" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{f2437db2-bb0c-4ad0-b247-59a3fb54e5b0}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="4" name="B07_4" spritename="" class="" export="1" x="256" y="0" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{bbdd6655-0e70-4950-b82d-34d106e7c33a}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="5" name="B07_5" spritename="" class="" export="1" x="0" y="32" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{99644edd-6005-492c-aa07-8353951fc860}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="6" name="B07_6" spritename="" class="" export="0" x="64" y="32" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{74a8cfe5-2314-444e-a21a-284915f689de}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="7" name="B07_7" spritename="" class="" export="0" x="128" y="32" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="8" name="B07_8" spritename="" class="" export="0" x="192" y="32" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{4f8aa56c-8dc1-45ac-8ba9-74753a2a10a4}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="9" name="B07_9" spritename="" class="" export="0" x="256" y="32" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="10" name="B07_10" spritename="" class="" export="1" x="0" y="64" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{857a1ccd-0f5f-44b9-a6ce-217b03acbaa5}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="11" name="B07_11" spritename="" class="" export="1" x="64" y="64" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{fd94105f-c9ed-4f41-bcc0-26b799509858}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="12" name="B07_12" spritename="" class="" export="1" x="128" y="64" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="13" name="B07_13" spritename="" class="" export="0" x="192" y="64" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="14" name="B07_14" spritename="" class="" export="1" x="256" y="64" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="15" name="B07_15" spritename="" class="" export="1" x="0" y="96" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{4b738cdb-9175-4344-8ec5-f100ab5b1648}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="16" name="B07_16" spritename="" class="" export="1" x="64" y="96" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="17" name="B07_17" spritename="" class="" export="0" x="128" y="96" w="64" h="32">
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="18" name="B07_18" spritename="" class="" export="1" x="192" y="96" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{5b035f2f-c271-48a2-8d7f-2e61e7273037}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="19" name="B07_19" spritename="" class="" export="0" x="256" y="96" w="64" h="32">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="20" name="B07_20" spritename="" class="" export="1" x="0" y="128" w="64" h="32">
-   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
-    <object uid="{b3e8379c-7e79-4e10-a18f-e265e7377427}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="0" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
-     <polygon points="0,0 0,32 64,32 64,0"/>
-     <physics enabled="1" bodytype="0" convex="0" linked="1">
-      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-     </physics>
-    </object>
-   </layer>
-   <physics enabled="1" bodytype="0" convex="0" linked="1">
-    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="21" name="B07_21" spritename="" class="" export="0" x="64" y="128" w="64" h="32">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="22" name="B07_22" spritename="" class="" export="0" x="128" y="128" w="64" h="32">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="23" name="B07_23" spritename="" class="" export="0" x="192" y="128" w="64" h="32">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </asset>
-  <asset frame="24" name="B07_24" spritename="" class="" export="0" x="256" y="128" w="64" h="32">
+ <assets firstgid="52" name="fucsiaLivello" width="543" height="172">
+  <image source="../../App/images/fucsiaLivello.jpg" width="543" height="172"/>
+  <asset frame="0" name="fucsiaLivello_0" spritename="" class="" export="1" x="0" y="0" w="543" h="172">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </asset>
  </assets>
  <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="1" gridY="1">
-  <object uid="{f5c656ee-f43d-4dfc-a65c-e108a3176eef}" shape="6" name="bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s_0" alpha="1" blendMode="0" idx="1" spriteName="" x="0" y="0" width="320" height="480" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{8028b6cc-db9a-40cd-baad-79db689d56d4}" shape="6" name="B07_1" alpha="1" blendMode="0" idx="30" spriteName="" x="144" y="381.5" width="32" height="16" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{8dcd38d2-4a9a-49a3-9c7b-b4ae32602e0f}" shape="6" name="B07_2" alpha="1" blendMode="0" idx="28" spriteName="" x="93.0294" y="409.657" width="32" height="16" rotation="315" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{b8ea5e3f-a4e3-4519-8a91-af9633f7067f}" shape="6" name="B07_3" alpha="1" blendMode="0" idx="43" spriteName="" x="6.30581" y="288.998" width="91.5" height="16" rotation="-10" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{8f82fdfe-ba5c-4dbe-a49f-adb4fcd6d0fc}" shape="6" name="B07_4" alpha="1" blendMode="0" idx="38" spriteName="" x="56" y="408" width="32" height="16" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{1dd61a69-ed14-495e-af2c-e6a8ed21ed2f}" shape="6" name="B07_5" alpha="1" blendMode="0" idx="33" spriteName="" x="30.3431" y="386.029" width="32" height="16" rotation="-315" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{f76b70c9-7f12-4073-b9da-7eb74e56a095}" shape="6" name="B07_6" alpha="1" blendMode="0" idx="3221225504" spriteName="" x="29" y="351" width="32" height="16" rotation="90" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{e327070b-61c4-4036-bdb2-a7c24698354c}" shape="6" name="B07_13" alpha="1" blendMode="0" idx="2147483681" spriteName="" x="267.029" y="408.657" width="32" height="16" rotation="315" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{b952301f-e755-4cb3-a360-e3492f2708d1}" shape="6" name="B07_16" alpha="1" blendMode="0" idx="3221225504" spriteName="" x="307" y="351" width="32" height="16" rotation="90" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{fd8f7534-e92a-466e-8b6c-d0a7398e89da}" shape="6" name="B07_17" alpha="1" blendMode="0" idx="38" spriteName="" x="232" y="408" width="32" height="16" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{135350c1-dae3-4919-b1da-c5945b04adad}" shape="6" name="B07_18" alpha="1" blendMode="0" idx="28" spriteName="" x="204.343" y="387.029" width="32" height="16" rotation="45" anchorX="0.5" anchorY="0.5">
-   <physics enabled="0" bodytype="0" convex="0" linked="1">
-    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
-   </physics>
-  </object>
-  <object uid="{61324237-d841-43f6-9d9b-99c57fc0efa0}" shape="6" name="B07_26" alpha="1" blendMode="0" idx="3" spriteName="" x="56" y="368.5" width="32" height="16" anchorX="0.5" anchorY="0.5">
+  <object uid="{312dbff5-5166-4fac-9fbd-299e018ae7ae}" shape="6" name="sfondo" alpha="1" blendMode="0" idx="1" spriteName="" x="0" y="31" width="320" height="480" anchorX="0.5" anchorY="0.5">
    <properties>
     <property name="tipo" value="speciale"/>
    </properties>
@@ -440,95 +313,142 @@
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{3abb7f48-b3ee-4cd5-bb5c-90a1fe09fc29}" shape="6" name="B07_29" alpha="1" blendMode="0" idx="3" spriteName="" x="232" y="369" width="32" height="16" anchorX="0.5" anchorY="0.5">
-   <properties>
-    <property name="tipo" value="speciale"/>
-   </properties>
+  <object uid="{d97d8645-103b-4a2f-adf0-c7dfaa3c175a}" shape="6" name="2" alpha="1" blendMode="0" idx="4" spriteName="" x="49.2958" y="261.126" width="32" height="16" rotation="29" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{1372ba87-3d65-4e05-9224-287fb48d1682}" shape="6" name="B07_20" alpha="1" blendMode="0" idx="46" spriteName="" x="37.5" y="245" width="32" height="16" rotation="-270" anchorX="0.5" anchorY="0.5">
+  <object uid="{09829125-ba4d-4b3d-b60f-c2735fdd5d26}" shape="6" name="3" alpha="1" blendMode="0" idx="4" spriteName="" x="72.3744" y="232.335" width="32" height="16" rotation="-315" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{9fd831f1-af98-4b60-a11d-48704d93e4cd}" shape="6" name="B07_25" alpha="1" blendMode="0" idx="43" spriteName="" x="13.2609" y="88.191" width="32" height="16" rotation="354" anchorX="0.5" anchorY="0.5">
+  <object uid="{f7860ef9-e57c-49dd-89a6-851d5f352651}" shape="6" name="4" alpha="1" blendMode="0" idx="4" spriteName="" x="225.187" y="256.422" width="32" height="16" rotation="314" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{73bc5f15-8bd7-4f13-ba20-8672671ef322}" shape="6" name="B07_27" alpha="1" blendMode="0" idx="46" spriteName="" x="38.5" y="173" width="32" height="16" rotation="-270" anchorX="0.5" anchorY="0.5">
+  <object uid="{3dd42670-02e3-4e37-a708-153868b42fcf}" shape="6" name="5" alpha="1" blendMode="0" idx="4" spriteName="" x="106.311" y="212.427" width="32" height="16" rotation="63" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{b9153398-b91d-4b00-951a-afa369f10026}" shape="6" name="B07_28" alpha="1" blendMode="0" idx="46" spriteName="" x="39" y="309" width="32" height="16" rotation="-270" anchorX="0.5" anchorY="0.5">
+  <object uid="{e54264b2-14b2-4f0a-ae44-b9104341b863}" shape="6" name="6" alpha="1" blendMode="0" idx="4" spriteName="" x="197.731" y="239.333" width="32" height="16" rotation="298" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{3cbfe0e5-26c2-41f4-9d24-d08a37c97728}" shape="6" name="B07_30" alpha="1" blendMode="0" idx="46" spriteName="" x="291.316" y="257.395" width="58" height="16" rotation="-267" anchorX="0.5" anchorY="0.5">
+  <object uid="{3cdc3a92-c6b6-4e71-a1c5-4358cd9295ac}" shape="6" name="7" alpha="1" blendMode="0" idx="4" spriteName="" x="144.512" y="201.113" width="32" height="16" rotation="79" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{6d22d865-5d2f-42a1-9d3a-afc122689b02}" shape="6" name="B07_24" alpha="1" blendMode="0" idx="46" spriteName="" x="294.047" y="191.285" width="32" height="16" rotation="-268" anchorX="0.5" anchorY="0.5">
+  <object uid="{3fc8ed86-4eba-43a6-8a3f-6eac21347d95}" shape="6" name="8" alpha="1" blendMode="0" idx="4" spriteName="" x="186.739" y="203.449" width="32" height="16" rotation="99" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{afa13afc-0f4f-4150-8474-59be34071ced}" shape="6" name="B07_7" alpha="1" blendMode="0" idx="46" spriteName="" x="296.5" y="124.5" width="32" height="16" rotation="-268" anchorX="0.5" anchorY="0.5">
+  <object uid="{9e616953-9719-4951-ab73-ffcb80ed41f2}" shape="6" name="9" alpha="1" blendMode="0" idx="4" spriteName="" x="243.452" y="277.583" width="32" height="16" rotation="-29" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{b28d3800-a9ed-49fe-af45-c3eaed9b59d0}" shape="6" name="B07_8" alpha="1" blendMode="0" idx="46" spriteName="" x="299.5" y="57" width="32" height="16" rotation="-268" anchorX="0.5" anchorY="0.5">
+  <object uid="{1ab4d4c3-5767-4c78-9f32-dc144280ff1b}" shape="6" name="10" alpha="1" blendMode="0" idx="8" spriteName="" x="27.3536" y="256.012" width="32" height="16" rotation="-53" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{76516a10-0ca9-4ed9-b2cf-3f48edfa8da5}" shape="6" name="B07_9" alpha="1" blendMode="0" idx="46" spriteName="" x="37.9345" y="108.965" width="32" height="16" rotation="-272" anchorX="0.5" anchorY="0.5">
+  <object uid="{2effb34a-1b22-421f-a05d-da8b4d0b96a3}" shape="6" name="11" alpha="1" blendMode="0" idx="8" spriteName="" x="57.2634" y="221.217" width="32" height="16" rotation="-37" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{d1e77604-f9cf-475e-a460-d6f9cb2da3c9}" shape="6" name="B07_10" alpha="1" blendMode="0" idx="46" spriteName="" x="29.044" y="48.4512" width="32" height="16" rotation="-282" anchorX="0.5" anchorY="0.5">
+  <object uid="{56a19709-6d5f-46c9-929e-ab517d4fad69}" shape="6" name="12" alpha="1" blendMode="0" idx="8" spriteName="" x="95.5984" y="193.901" width="32" height="16" rotation="-20" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{63dbbd8f-cee4-4cf6-9276-57357d3d7610}" shape="6" name="B07_11" alpha="1" blendMode="0" idx="43" spriteName="" x="6" y="215" width="81" height="16" anchorX="0.5" anchorY="0.5">
+  <object uid="{c26a04b9-881e-48a3-8b24-864c150dbdb6}" shape="6" name="13" alpha="1" blendMode="0" idx="8" spriteName="" x="142.656" y="179.345" width="32" height="16" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{1c343457-352d-4f5b-bac7-b6eb884b4479}" shape="6" name="B07_12" alpha="1" blendMode="0" idx="43" spriteName="" x="3.5" y="149" width="81" height="16" anchorX="0.5" anchorY="0.5">
+  <object uid="{0eeea369-8dae-41d0-b7a4-8c944f01b2a4}" shape="6" name="14" alpha="1" blendMode="0" idx="8" spriteName="" x="194.196" y="182.912" width="32" height="16" rotation="-340" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{f550d7e1-1876-42e8-9705-cda7c456bcd2}" shape="6" name="B07_14" alpha="1" blendMode="0" idx="43" spriteName="" x="216.548" y="336.43" width="98.3816" height="16" rotation="-10" anchorX="0.5" anchorY="0.5">
+  <object uid="{5c86051d-46b8-4a52-bccd-63bb92b4beb9}" shape="6" name="15" alpha="1" blendMode="0" idx="8" spriteName="" x="237.841" y="202.324" width="32" height="16" rotation="-323" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{7130ad71-5d79-42db-8b34-955371142b19}" shape="6" name="B07_15" alpha="1" blendMode="0" idx="43" spriteName="" x="231.928" y="230.374" width="81" height="16" rotation="-1" anchorX="0.5" anchorY="0.5">
+  <object uid="{30a7651e-d0df-4af4-9fba-00d28d2f921e}" shape="6" name="16" alpha="1" blendMode="0" idx="8" spriteName="" x="275.332" y="234.047" width="32" height="16" rotation="-306" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{5a853fc4-3502-484b-b233-86157d03c810}" shape="6" name="B07_19" alpha="1" blendMode="0" idx="43" spriteName="" x="239.608" y="165.076" width="74" height="16" rotation="4" anchorX="0.5" anchorY="0.5">
+  <object uid="{1414c118-d8b5-4bbf-bae9-7ea73a7e487a}" shape="6" name="17" alpha="1" blendMode="0" idx="8" spriteName="" x="193.853" y="165.9" width="32" height="16" rotation="-349" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{271b6bf3-00b5-413e-903c-43ff1ebe7366}" shape="6" name="B07_21" alpha="1" blendMode="0" idx="43" spriteName="" x="262.589" y="98.5796" width="51.356" height="16" rotation="4" anchorX="0.5" anchorY="0.5">
+  <object uid="{6bad67ec-4875-454f-8e02-25bf314423c2}" shape="6" name="18" alpha="1" blendMode="0" idx="8" spriteName="" x="95.8048" y="172.097" width="32" height="16" rotation="-11" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{7b5eeb36-741d-487b-b56b-0cdf4f6faf20}" shape="6" name="B07_22" alpha="1" blendMode="0" idx="48" spriteName="" x="116.343" y="298.529" width="32" height="16" rotation="45" anchorX="0.5" anchorY="0.5">
+  <object uid="{4268c638-3c2e-4712-b0d3-84d7abfd6044}" shape="6" name="19" alpha="1" blendMode="0" idx="8" spriteName="" x="13.4519" y="218.36" width="32" height="16" rotation="-37" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{416e793d-d367-4839-b7d6-b53c3bc7452d}" shape="6" name="20" alpha="1" blendMode="0" idx="8" spriteName="" x="142.313" y="162.333" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{2d0820b0-0fbc-4fed-bea3-20620e0f6334}" shape="6" name="21" alpha="1" blendMode="0" idx="8" spriteName="" x="284.989" y="197.035" width="32" height="16" rotation="-323" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{70fae712-882c-4a1d-97f0-33e88a6fda61}" shape="6" name="22" alpha="1" blendMode="0" idx="8" spriteName="" x="53.7194" y="189.127" width="32" height="16" rotation="-21" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{08af3a10-b108-421d-b53e-ac81069b20ad}" shape="6" name="23" alpha="1" blendMode="0" idx="8" spriteName="" x="240.498" y="177.312" width="32" height="16" rotation="-339" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{6f114453-3560-4621-9526-3ba96d1b041d}" shape="6" name="24" alpha="1" blendMode="0" idx="7" spriteName="" x="205.935" y="409.488" width="32" height="16" rotation="23" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{caef1b44-decb-4b03-93ac-dc48d034a512}" shape="6" name="25" alpha="1" blendMode="0" idx="7" spriteName="" x="167.982" y="393.778" width="32" height="16" rotation="21" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{a2bdff53-8119-4b3f-850f-0a2c9d275210}" shape="6" name="26" alpha="1" blendMode="0" idx="7" spriteName="" x="123.814" y="381.159" width="32" height="16" rotation="15" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{4b58c459-e65f-4319-9987-c7616d12d481}" shape="6" name="27" alpha="1" blendMode="0" idx="7" spriteName="" x="80.0378" y="373.423" width="32" height="16" rotation="9" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{ce2700f5-ab9a-4cad-9509-b3e97e2eafbd}" shape="6" name="28" alpha="1" blendMode="0" idx="7" spriteName="" x="33.681" y="370.032" width="32" height="16" rotation="4" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{be133065-ee6d-4c9e-9ec8-14f8eabedc4a}" shape="6" name="29" alpha="1" blendMode="0" idx="23" spriteName="" x="98.4769" y="262.738" width="32" height="16" rotation="30" anchorX="0.5" anchorY="0.5">
    <properties>
     <property name="tipo" value="unbreak"/>
    </properties>
@@ -536,10 +456,20 @@
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
-  <object uid="{6a70eb78-bba6-4340-b92c-ec01fcdcabc0}" shape="6" name="B07_23" alpha="1" blendMode="0" idx="48" spriteName="" x="181.029" y="321.657" width="32" height="16" rotation="-45" anchorX="0.5" anchorY="0.5">
+  <object uid="{3a7b2532-b3d6-4932-9a7a-30c3ccdadcdb}" shape="6" name="30" alpha="1" blendMode="0" idx="23" spriteName="" x="194.81" y="279.072" width="32" height="16" rotation="-30" anchorX="0.5" anchorY="0.5">
    <properties>
     <property name="tipo" value="unbreak"/>
    </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{cc95aa96-4bd4-4d62-beb7-d04bafd77b91}" shape="6" name="fucsiaLivello_0" alpha="1" blendMode="0" idx="52" spriteName="" x="0" y="-62.6667" width="320" height="96.6667" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{9309e861-9dac-43da-aa14-eddf6d0024a9}" shape="6" name="1" alpha="1" blendMode="0" idx="48" spriteName="" x="143" y="260" width="32" height="16" anchorX="0.5" anchorY="0.5">
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
