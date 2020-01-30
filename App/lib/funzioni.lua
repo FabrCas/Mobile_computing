@@ -195,8 +195,8 @@ sfondo:toBack()
       local larghezza= mattoni[i].width * (mattoni[i].xScale)
       local altezza= mattoni[i].height * (mattoni[i].yScale)
      if --(((yHit - (hHit/2)) <= (mattoni[i].y + (mattoni[i].height/2))) or ((yHit + (hHit/2)) >= (mattoni[i].y - (mattoni[i].height/2))) )
-     ((xHit >= (mattoni[i].x - (larghezza/2))) and (xHit <= (mattoni[i].x + (larghezza/2))))  --controllo sulla y
-       or ((yHit >= (mattoni[i].y - (altezza/2))) and (yHit <= (mattoni[i].y + (altezza/2))))
+     ((xHit-1 >= (mattoni[i].x - (larghezza/2))) and (xHit+1 <= (mattoni[i].x + (larghezza/2))))  --controllo sulla y
+       or ((yHit-1 >= (mattoni[i].y - (altezza/2))) and (yHit+1 <= (mattoni[i].y + (altezza/2))))
      then
       local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
       brick_colpito.x = mattoni[i].x
