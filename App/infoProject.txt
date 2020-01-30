@@ -37,7 +37,9 @@ grandezza mattone 32*16
 mattoni angolati, posizionare correttamente senza mettere angolo e poi impostare
 
 
-livello 1: 28 mattoni + 2 indistruttibili
-livello 2: 28 mattoni + 2 indistruttibili
+livello 1: 26 mattoni + 2 indistruttibili + 2 speciali
+livello 2: 28 mattoni + 2 indistruttibili + 1 speciale
+livello 6: 37 + 1 speciale
+
 copyright:
 -Tim Kaminski,katiewhiteart, viktoria Likhodeeva

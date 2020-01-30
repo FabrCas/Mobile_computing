@@ -318,13 +318,13 @@ cannon.preCollision = nebulaCollide
 cannon:addEventListener( "preCollision", cannon )
 
       --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
-      local rect = display.newRect( 0, _H/2,50,50 )
-      rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true potereAttivato=true end)
-      local rect1 = display.newRect( _W, _H/2 +50,50,50 )
-      rect1:addEventListener( "tap", function() physics.setDrawMode( "debug" ) fisicaCannone=false value = preference.getValue("b")
-      print("Retrieving string b from rect1 : ",value)  end)
-      gruppoLivello:insert(rect)
-      gruppoLivello:insert(rect1)
+    --  local rect = display.newRect( 0, _H/2,50,50 )
+    -- rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true potereAttivato=true end)
+    --  local rect1 = display.newRect( _W, _H/2 +50,50,50 )
+    --  rect1:addEventListener( "tap", function() physics.setDrawMode( "debug" ) fisicaCannone=false value = preference.getValue("b")
+    --  print("Retrieving string b from rect1 : ",value)  end)
+    --  gruppoLivello:insert(rect)
+    --  gruppoLivello:insert(rect1)
 end
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
