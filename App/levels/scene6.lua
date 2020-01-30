@@ -102,7 +102,7 @@ local channel1= audio.findFreeChannel(1)
   elseif angolo > 45 and angolo < 135 then  --^
   	obj[i].view.scritta.rotation= obj[i].view.rotation -90
   elseif angolo > 135 and angolo <225 then  -->
-  	obj[i].view.scritta.rotation= obj[i].view.rotation +90
+  	obj[i].view.scritta.rotation= obj[i].view.rotation +180
    elseif angolo > 225 and angolo < 315 then --u
   	obj[i].view.scritta.rotation= obj[i].view.rotation +90
 

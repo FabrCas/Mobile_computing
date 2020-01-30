@@ -4,12 +4,12 @@ To do list:
 
 - aggiungere altro personaggio
 
-- poteri personaggi
 - livelli * 29
 - salvataggio dati tower
 - score online con dbr
 - schermata inzio
 - crediti
+- valori ancoraggio per settare giusta la pallina (per ora, valori da 2 a 25)
 
 
 
@@ -25,9 +25,6 @@ livelli:
 - cartoon
 - torre che crea illusioni
 - 3 gruppi: natura, epoche (Egitto, preistoria, romani, aztechi, medioevo),spazio,
-- dimensioni blocchi
-- la vita media livelli,
-- blocco potere
 
 creazione livello:
 320*480 director X
@@ -40,6 +37,9 @@ mattoni angolati, posizionare correttamente senza mettere angolo e poi impostare
 livello 1: 26 mattoni + 2 indistruttibili + 2 speciali
 livello 2: 28 mattoni + 2 indistruttibili + 1 speciale
 livello 6: 37 + 1 speciale
+livello 9: 45 + 1 speciale (un po' di blocchi messi a vita= 1, difficilotto)
+livello 5:
+
 
 copyright:
--Tim Kaminski,katiewhiteart, viktoria Likhodeeva
+-Tim Kaminski,katiewhiteart,Bensound

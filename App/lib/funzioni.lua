@@ -388,7 +388,6 @@ function listenerUltimaPalla(event)
 end end
 
 function listenerPallaLanciata(event)
- print(numeroPalle)
   if caricare==false then 
      print( "caricare false ")
 end 
