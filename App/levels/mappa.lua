@@ -35,11 +35,11 @@ local function onButtonClickStanzaSelezionata(event)
      params = {modalita= "tower"}
  }
  stanza= event.target.stanza
- if (stanza.nome=="scene1" or stanza.nome=="scene2" or stanza.nome=="scene5" or stanza.nome=="scene6" or stanza.nome=="scene9" ) then 
-  composer.gotoScene("levels."..stanza.nome, options)
-else
-    composer.gotoScene("levels.scene1", options)
-  end
+-- if (stanza.nome=="scene1" or stanza.nome=="scene2" or stanza.nome=="scene5" or stanza.nome=="scene6" or stanza.nome=="scene9" ) then 
+--  composer.gotoScene("levels."..stanza.nome, options)
+--else
+    composer.gotoScene("levels.scene11", options)
+ -- end
   print( stanza.nome )
   stanzaSelezionata= stanza
 end

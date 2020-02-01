@@ -381,9 +381,10 @@ function listenerUltimaPalla(event)
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
   if (pall_lanciata.y > py and vy <vely and vx < velx) then --qui
-    if (numeroPalle-1==0) then finePartita() end
+    
     if turnoPotere then timer.performWithDelay( 5000, function(event) Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end )
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
+    if (numeroPalle-1==0) then finePartita() end
   end end
 end end
 
@@ -791,7 +792,6 @@ transition.fadeIn( gruppoLivello, {time= 1500} )
 function hit(event, mod)
   --print ("is turno potere")
   --print (turnoPotere)
-
   if turnoPotere == true and partitaS:personaggio() == "cottonBall" then
    -- print ("hgghghg"..event.target.x)
     dannoXY(event, mod)
@@ -811,9 +811,10 @@ function hit(event, mod)
   -- if event.target.name == "static part ui_0" then print('funziona') end
 --  physics.setGravity( 0, 46 )
           brick = event.target
+         
           local vx, vy = event.other:getLinearVelocity()
       brick.life = brick.life - (partitaS:stats().danno)
-
+ print(brick.life)
       if brick.life <= 0 then
         if not (turnoPotere and partitaS:personaggio()=="cottonBall") then
                removeBrick(brick, mod) end
