@@ -70,6 +70,7 @@ local arcade = composer.loadScene( "arcade", false)
  print("menu - show")
       -- purges previous and next scenes
       if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
+      if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
       if nil~= composer.getScene("toOptions") then composer.removeScene("toOptions", false) end
       if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
       if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
