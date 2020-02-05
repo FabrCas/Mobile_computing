@@ -66,7 +66,7 @@ function M:loadAssets()
 		sheetContentWidth=320,
 		sheetContentHeight=160
 	}
-	assets['dino_0']={file ='dino.png',name='dino_0',class='',aX=0.5,aY=0.5,width=1110,height=785,frame=0,spriteSheetName='dino',frameCount=1,
+	assets['dino_0']={file ='dino.jpg',name='dino_0',class='',aX=0.5,aY=0.5,width=1110,height=785,frame=0,spriteSheetName='dino',frameCount=1,
 		 }
 	assets['B11Speciale_11']={file ='B11Speciale.png',name='B11Speciale_11',class='',aX=0.5,aY=0.5,width=64,height=32,frame=12,spriteSheetName='B11Speciale',frameCount=25,
 		physics={isEnabled=true,source='Asset',bodyType='static',isFixedRotation=false,isSleepingAllowed=false,isSensor=false,linearDamping=0,angularDamping=0,gravityScale=1,isBullet=false,shapes={{bodyShape='Polygon',shape={-32,-16,-32,16,32,16,32,-16},bounce=0.2,friction=0.3,density=1,radius=0,categoryBits=0,maskBits=0,groupIndex=0},}	}  }

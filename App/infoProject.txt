@@ -24,7 +24,7 @@ main->toMenu->menu->
 livelli:
 - cartoon
 - torre che crea illusioni
-- 3 gruppi: natura, epoche (Egitto, preistoria, romani, aztechi, medioevo),spazio (un livello per pianeta(7) + sole + povero plutone + via lattea ??),
+- 3 gruppi: natura, epoche (Egitto, preistoria, (romani/sparta/grecia), aztechi, medioevo),spazio (un livello per pianeta(7) + sole + povero plutone + via lattea ??),
 
 creazione livello:
 320*480 director X
@@ -42,4 +42,4 @@ livello 5:
 
 
 copyright:
--Tim Kaminski,katiewhiteart,Bensound
+-Tim Kaminski,katiewhiteart,Bensound, Azed art
