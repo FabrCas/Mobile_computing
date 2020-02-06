@@ -41,6 +41,7 @@ function partitaS:new()
     if preference.getValue("tower")==123 then
       print("tower si crea")
   torre= {}
+  preference.save{score="gianna"}
   torre.pianoAttuale= 0
   piano={}
   piano.altezza=0
@@ -514,6 +515,8 @@ function partitaS:prova()
 end
 
 function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
+  print("prova salvataggiooooooooo aggiungiscore()" )
+  print(preference.getValue("score"))
   --lo scorelivello è un valore che verrà inviato sia se si ha finito il livello con il gameOver,in quel caso
   --poi verrà chiesto lo score definitivo e stampato a schermo
   --aggiungere un bonus prima di inviare lo score del livello se il giocatore lo ha portato a termine
@@ -521,15 +524,26 @@ function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
   scoreParziale = scoreParziale + (palleRimaste*500)
   if(scoreParziale > 0) then
-    score = score + scoreParziale
+     if preference.getValue("score")=="gianna" then
+  score = score + scoreParziale
+else
+    score = preference.getValue("score") + scoreParziale
   end
+  end
+  preference.save{score=score}
 end
 
 function partitaS:getScore(scoreLivello, tempo, palleRimaste, isGameOver)
+  print("prova salvataggiooooooooo getScore()" )
+  print(preference.getValue("score"))
  local scoreParziale= 0
   scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
   scoreParziale = scoreParziale + (palleRimaste*500)
+  if preference.getValue("score")=="gianna" then
   return scoreParziale
+else
+  return scoreParziale + preference.getValue("score")
+end
 end
 
 function cancellaDatiParitita()

@@ -1,5 +1,6 @@
 local composer = require( "composer" )
 require ("lib.partitaStoria")
+local preference = require "lib.preference"
 local scene = composer.newScene()
 local _w = display.contentWidth/2
 local _h = display.contentHeight/2
@@ -38,7 +39,7 @@ local function onButtonClickStanzaSelezionata(event)
 -- if (stanza.nome=="scene1" or stanza.nome=="scene2" or stanza.nome=="scene5" or stanza.nome=="scene6" or stanza.nome=="scene9" ) then 
 --  composer.gotoScene("levels."..stanza.nome, options)
 --else
-    composer.gotoScene("levels.scene17", options)
+    composer.gotoScene("levels.scene1", options)
  -- end
   print( stanza.nome )
   stanzaSelezionata= stanza
@@ -232,6 +233,7 @@ end
 
 
 local function creaMappa(stanza, iter)
+  preference.save{tower=torre}
     --margine -> per distaccare le stanza
     --larghezza stanza == altezza stanza
 local margine= 2
