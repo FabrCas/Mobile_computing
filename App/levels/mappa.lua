@@ -122,11 +122,11 @@ end
 
 local function onButtonClickStanzaSelezionataUscita(event)
   print("bottone finestra fine piano tappato")
-  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel= 2}  )
-audio.play(ladderSound, {loops= 1, channel=2})
 
+torre.pianoAttuale= torre.pianoAttuale+1
       if (torre.pianoAttuale<=2) then 
-    torre.pianoAttuale= torre.pianoAttuale+1
+        audio.setVolume( partitaS:volumeEffettoSonoro(), {channel= 2}  )
+audio.play(ladderSound, {loops= 1, channel=2})
     if (torre.pianoAttuale==1) then
         testoPiano = display.newImage(composer.imgDir .. "secondoPiano.png", 0, 38, true)
         testoPiano.anchorX = 0
@@ -141,11 +141,17 @@ audio.play(ladderSound, {loops= 1, channel=2})
         testoPiano.width= 320
         testoPiano.height= 25
     sceneGroup:insert(testoPiano)
-end
+  end
 gruppo_schermata:removeSelf()
 gruppo_schermata= display.newGroup()
 creazione()
 else
+ -- preference.save{tower=123}
+  gruppo_schermata:removeSelf()
+  gruppo_schermata= display.newGroup()
+  preference.save{pg="gianna"}
+  composer.gotoScene("menu", { effect = "crossFade", time = 200})
+
     return true  --aggiungere schermata di vittoria o boss fight finale 
 end
 end
@@ -213,9 +219,17 @@ else
 end 
   creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
   partitaS:stats().danno= partitaS:stats().danno + 1
+  preference.save{statsT= partitaS:stats()}
   print("danno aumentato dopo aver completato il livello")
   --creaDanno
+  print( "piano attuale ".. string.format(torre.pianoAttuale) )
+  if(torre.pianoAttuale<2) then
+  print("aiaaaiaiaiiiaaiaia") 
   creaScrittaDannoUp()
+else 
+  preference.save{tower=123}
+  partitaS:new()
+end
 
   
 
@@ -371,7 +385,14 @@ testoSchermata.anchorX = 0
     testoSchermata.height= 480
     sceneGroup:insert(testoSchermata)
 
+if (preference.getValue("tower").pianoAttuale==0) then 
 testoPiano = display.newImage(composer.imgDir .. "primoPiano.png", 0, 38, true)
+elseif  (preference.getValue("tower").pianoAttuale==1) then
+testoPiano = display.newImage(composer.imgDir .. "secondoPiano.png", 0, 38, true)
+else
+testoPiano = display.newImage(composer.imgDir .. "terzoPiano.png", 0, 38, true)
+end
+
 testoPiano.anchorX = 0
     testoPiano.anchorY = 0
     testoPiano.width= 320

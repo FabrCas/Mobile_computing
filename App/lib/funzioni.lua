@@ -14,7 +14,7 @@ tapSound= audio.loadSound("sounds/mb1.mp3")
 local preference = require "lib.preference"
 local velx = 200
 local vely = 200
-local py = 360 --(y effettivo - 50)
+local py = 320 --(y effettivo - 50)
 local isDefeatedWon
 local win
 local caricare
@@ -32,7 +32,11 @@ local gruppoVittoria
 local gruppoScena
 local pg
 _G.fisicaCannone=true
-local statistiche                              --=partitaS:stats()
+preference.save{statsT= partitaS:stats()}
+
+local statistiche
+
+                         --=partitaS:stats()
 local numeroPalle                              --= statistiche.numeroPalle
 print("creazione partita - " .. mod_par)
 local led_acceso
@@ -207,8 +211,8 @@ sfondo:toBack()
   end
   --if event.target.name == "static part ui_0" then print('funziona') end
   --physics.setGravity( 0, 46 )
-  if partitaS:stats().danno > 1 then
-      mattoni[i].life = mattoni[i].life - (math.floor(partitaS:stats().danno/2))
+  if statistiche.danno > 1 then
+      mattoni[i].life = mattoni[i].life - (math.floor(statistiche.danno/2))
     else
       mattoni[i].life = mattoni[i].life - 1
     end
@@ -256,9 +260,16 @@ function creaPartita()
 if mod_par=="arcade" then
 partitaS:new()
 end
-danno = partitaS:stats().danno
- statistiche=partitaS:stats()
- numeroPalle = statistiche.numeroPalle
+if mod_par== "tower" then 
+statistiche =  preference.getValue("statsT")
+else 
+statistiche =  preference.getValue("statsA") 
+end
+danno = statistiche.danno
+numeroPalle = statistiche.numeroPalle
+if preference.getValue("pg") ~= "gianna" and mod_par=="tower" then 
+partitaS:setPG(preference.getValue("pg"))
+end
 --print("creazione partita - creaPartita " .. mod_par)
  pall_lanciata = nil
 isPaused = false
@@ -307,7 +318,7 @@ local vecchiaPalla
   -- print("il frame e " , pg.frame)
     _G.canShoot = true
     _G.potereAttivato = false
-    _G.numBallMax = partitaS:stats().numeroPalle
+    _G.numBallMax = statistiche.numeroPalle
   display.setDefault( "isAnchorClamped", false )
   cannon.x = _W/2
     cannon.y = 60  --50
@@ -404,7 +415,7 @@ end
     print("listener attivato")
     caricaPalla()
 
-
+if (circle ~= nil) then
   timer.performWithDelay( 1000, function() 
     circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
     canShoot=true
@@ -413,13 +424,13 @@ end
     end
       )
      end )
-
+end
   end end --palla nil
 end --ispaused
 end
 
 function listenerPallaSpeciale(event)
-  if not (fire==nil or ball==nil) then
+  if not (fire==nil or ball==nil or fire.x==nil or fire.y==nil) then
 
   fire.x, fire.y= ball:localToContent(0,0)
   fire.x= fire.x + 1
@@ -449,11 +460,14 @@ end end
         --turnoPotere= false da rimettere
       --  fire= nil
 
-        partitaS:stats().danno = danno
+        statistiche.danno = danno
 
         turnoPotere = false
         local sy= sy - 60
+         print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numeroPalle)
+         print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numBallMax)
         if numBallMax == 0 then
+
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    else Runtime:addEventListener("enterFrame",listenerPallaLanciata)
      caricare=true
@@ -463,7 +477,7 @@ end end
            if partitaS:personaggio()=="crimson" then
 
             crimson:setFillColor(1,0,0)
-             partitaS:stats().danno = 10
+             statistiche.danno = 10
              crimson:play()
 
        local options= {
@@ -486,14 +500,14 @@ end end
        fire:toFront()
        fire:play()
 
-       ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+       ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", statistiche.grandezza, statistiche.grandezza)
        gruppoLivello:insert(fire)
 
 print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
          else crimson = nil
         	pg:play() --pg.width = a pg.height = a
-   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", partitaS:stats().grandezza, partitaS:stats().grandezza)
+   ball = display.newImageRect("images/PallaSpeciale"..partitaS:personaggio()..".png", statistiche.grandezza, statistiche.grandezza)
    end
    if partitaS:personaggio() == "crimson" and potereAttivato then
    Runtime:addEventListener("enterFrame", listenerPallaSpeciale)
@@ -509,14 +523,14 @@ if partitaS:personaggio()=="crimson" then
     crimson.x = _W/2 + 3
     crimson.y= 45
     end
-    ball = display.newImageRect("images/default ball.png", partitaS:stats().grandezza,partitaS:stats().grandezza)
+    ball = display.newImageRect("images/default ball.png", statistiche.grandezza,statistiche.grandezza)
 
 
         end
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-    ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83
+    ball.anchorY= -(4.83 + 0.30* (15 - statistiche.grandezza)) --4,83
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
 
@@ -525,8 +539,8 @@ if partitaS:personaggio()=="crimson" then
 
 
     if potereAttivato then
-    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
-else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0,density=(partitaS:stats().densita)/10}) end
+    physics.addBody(ball, 'static' , {radius=(statistiche.grandezza)/2,bounce=(statistiche.rimbalzo)/100,friction=0.3,density=(statistiche.densita)/10})
+else physics.addBody(ball, 'static' , {radius=(statistiche.grandezza)/2,bounce=(statistiche.rimbalzo)/100,friction=0,density=(statistiche.densita)/10}) end
    -- ball.density= 0.73
       --grandezza arcade raggio 15 tower 10
 
@@ -541,7 +555,7 @@ else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounc
        deltaY = sy
        normDeltaX = deltaX / math.sqrt(deltaX^2 + deltaY^2)
        normDeltaY = deltaY / math.sqrt(deltaX^2 + deltaY^2)
-       speed = (partitaS:stats().velocita*100)
+       speed = (statistiche.velocita*100)
        --physics.setGravity(0, 46) --modificare
        ball:setLinearVelocity( normDeltaX*speed,normDeltaY*speed )
        pall_lanciata = ball
@@ -638,7 +652,7 @@ end
   nMattoni = nMattoni - 1
 
   print(nMattoni)
-  if nMattoni == 0 then
+  if nMattoni ==0  then --25
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
@@ -724,6 +738,7 @@ function schermataVittoria()
   if mod_par=="tower" then
   scorep=partitaS:score()
 else
+  -- preference.save{pg="gianna"}
   scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
 end
   creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
@@ -744,6 +759,9 @@ function schermataSconfitta()
  isPaused=true
   if isDefeatedWon == false then
 
+if mod_par=="tower" then
+preference.save{pg="gianna"}
+end 
 
   local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
@@ -813,7 +831,7 @@ function hit(event, mod)
           brick = event.target
          
           local vx, vy = event.other:getLinearVelocity()
-      brick.life = brick.life - (partitaS:stats().danno)
+      brick.life = brick.life - (statistiche.danno)
  print(brick.life)
       if brick.life <= 0 then
         if not (turnoPotere and partitaS:personaggio()=="cottonBall") then
@@ -848,7 +866,7 @@ end
   -- print ("time began" .. timeBegan)
 end
 
- physics.start( )
+ --physics.start( )
  if nTiri==0 then canShoot = true else
  if event.phase == 'began' then
  if pall_lanciata~=nil  then
@@ -923,8 +941,10 @@ end -- if nTiri
 end
 if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
 --partitaS:new()
+if mod_par=="tower" then 
 preference.save{tower=123}
 partitaS:cancellaPersonaggio()
+end 
 schermataSconfitta()
 end
 
@@ -932,7 +952,7 @@ end
 --FUNZIONI PALLA
 ---------------------------------------------------------------------------------
 function scancellaTutto()
-partitaS:stats().danno = danno
+statistiche.danno = danno
 gruppoLivello:removeSelf( )
 if not (gruppoVittoria == nil) then
 gruppoVittoria:removeSelf()
@@ -1188,7 +1208,7 @@ backtomenu:addEventListener("tap", function()
 		partitaS:cancellaPersonaggio()
 	end
   numeroPalle = statistiche.numeroPalle
-  partitaS:stats().danno=danno
+  statistiche.danno=danno
   testoVolumeMusica.fn:removeSelf()
     testoVolumeMusica.fn= nil
     if ( testoVolumeMusica.sn ~= nil) then
@@ -1236,7 +1256,7 @@ local schermataStatistiche = display.newImageRect("images/stat window.png" ,320,
       local chiudi = display.newRect( 238,420, 75,75 )
       chiudi.alpha = 0.01
       print("messe statistiche " ..  mod_par)
-      local stats = partitaS:stats()
+      local stats = statistiche
       print(stats.danno)
        print(stats.numeroPalle)
         print(stats.velocita*100)

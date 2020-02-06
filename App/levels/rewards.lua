@@ -8,7 +8,7 @@ local terzaEstrazione
 suonoSlot= audio.loadSound("sounds/slot.mp3")
 posSlot= audio.loadSound("sounds/posSlot.mp3")
 negSlot= audio.loadSound("sounds/negSlot.mp3")
-
+local preference = require "lib.preference"
 math.randomseed(os.time())
 math.random(); math.random(); math.random()
 
@@ -22,7 +22,7 @@ local slot
 local up
 local down
 local statistiche= {"danno","numeroPalle", "velocita", "rimbalzo", "grandezza", "densita", "fortuna"}
-local fortuna = partitaS:stats().fortuna
+local fortuna = preference.getValue("stats") .fortuna
 
 
 -- -----------------------------------------------------------------------------------
@@ -233,7 +233,6 @@ elseif statistiche[primaEstrazione]== "fortuna" then
         partitaS:stats()[statistiche[primaEstrazione]] = 0
     end
 end
-
 end
 
 
@@ -295,6 +294,7 @@ function scene:create( event )
 
     modificaStatistiche()
     correggiStat()
+    preference.save{statsT= partitaS:stats()}
 
     print ("luck attiva per il roll: " .. fortuna)
 

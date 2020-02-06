@@ -2,11 +2,12 @@
 local composer = require( "composer" )
 require ("lib.partitaStoria")
 require("lib.LD_LoaderX")
-local physics = require ("physics")
+--local physics = require ("physics")
 local _W = display.contentWidth
 local _H = display.contentHeight
-physics.start()
+--physics.start()
 tapSound= audio.loadSound("sounds/mb1.mp3")
+local preference = require "lib.preference"
 
 local scene = composer.newScene()
 local arcade
@@ -42,6 +43,9 @@ local function onButtonClick(event)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
   partitaS:setPG(nomePersonaggio)
+  if mod_par=="tower" then 
+  preference.save{pg=nomePersonaggio}
+end 
   if nomePersonaggio== "cottonBall" then
   pg= myLevel:getLayerObject("PGs", "cottonBall").view --sostituire "cottonBall" con nomePersonaggio
   pg:play()
