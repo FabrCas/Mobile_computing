@@ -33,8 +33,34 @@ local rectValoreEffettoSonoro
 
 -- create()
 function scene:create( event )
-local sceneGroup= self.view
+local function textListener( event )
+ 
+    if ( event.phase == "began" ) then
+        -- User begins editing "defaultField"
+ 
+    elseif ( event.phase == "ended" or event.phase == "submitted" ) then
+        -- Output resulting text from "defaultField"
+        print( event.target.text )
+ 
+    elseif ( event.phase == "editing" ) then
+        print( event.newCharacters )
+        print( event.oldText )
+        print( event.startPosition )
+        print( event.text )
+    end
+end
 
+    
+local sceneGroup= self.view
+local nameField = native.newTextField( 100, 150, 220, 36 )
+nameField.inputType = "default"
+--nameField.text = "Hello World!"
+nameField.placeholder = "(Insert you nickname)"
+nameField.align = "center"
+nameField.spellCheckingType = "UITextSpellCheckingTypeNo"
+nameField.autocorrectionType = "UITextAutocorrectionTypeNo"
+nameField:addEventListener( "userInput", textListener )
+sceneGroup:insert(nameField)
 
     --listener
 

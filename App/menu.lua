@@ -1,4 +1,5 @@
 local composer = require( "composer" )
+local physics = require ("physics")
 local scene = composer.newScene()
 local slideView = require("lib.carousel_menu")
 tapSound= audio.loadSound("sounds/mb1.mp3")
@@ -11,12 +12,14 @@ local touch = {}
 local levelGroup=nil
 local clicked = 0
 local numeroPagineMenu= 3
-
+local preference = require "lib.preference"
 -- Called when the scene's view does not exist:
 function scene:create( event )
   print("menu - create")
+  physics.start()
     -- view is not yet visible
     local sceneGroup = self.view
+
 
 --	menuSound= audio.loadStream("sounds/montage.mp3")
 
@@ -73,6 +76,7 @@ local arcade = composer.loadScene( "arcade", false)
       if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
       if nil~= composer.getScene("toOptions") then composer.removeScene("toOptions", false) end
       if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
+      if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
       if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
       if nil~= composer.getScene("levels.scene2") then composer.removeScene("levels.scene2", false) end
       if nil~= composer.getScene("levels.scene3") then composer.removeScene("levels.scene3", false) end
@@ -117,11 +121,13 @@ local arcade = composer.loadScene( "arcade", false)
   if livello == 1 then
     mod_par="tower"
     print("modalita dal menu scelta tower = " .. mod_par)
-    if partitaS:personaggio()==nil then 
+    print("weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+    print(preference.getValue("pg"))
+   if (preference.getValue("pg")=="gianna" or preference.getValue("pg")==nil )then 
     composer.gotoScene("selectPG", { effect = "crossFade", time = 200})
-  else 
+ else 
     composer.gotoScene("toPlay", { effect = "crossFade", time = 200})
-  end
+ end
     return true
   elseif livello == 2 then
     mod_par="arcade"

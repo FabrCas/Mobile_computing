@@ -5,7 +5,6 @@ To do list:
 - aggiungere altro personaggio
 
 - livelli * 29
-- salvataggio dati tower
 - score online con dbr
 - schermata inzio
 - crediti

@@ -6,7 +6,7 @@ local composer = require( "composer" )
 --sceglieri qui partita storia o no
 
 local scene = composer.newScene()
-levelSound= audio.loadSound("sounds/oldWarrior.mp3")
+levelSound= audio.loadSound("sounds/medieval.mp3")
 require("lib.LD_LoaderX")
 require("lib.LD_HelperX")
 
@@ -74,7 +74,7 @@ function scene:show( event )
 	local screenGroup = self.view
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)
-	myLevel:loadLevel("Level17") -- set your scene/level name here
+	myLevel:loadLevel("Level19") -- set your scene/level name here
 	myCannon = LD_Loader:new(self.view)
 	myCannon:loadLevel("cannon.shoot")
 	cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
@@ -82,7 +82,7 @@ function scene:show( event )
 
 	    -- aggiunta listener ai mattoni
 	local obj = {}
-	for i=1,69 do
+	for i=1,50 do
 	obj[i] = {}
 	obj[i] = myLevel:getLayerObject("Layer 1",string.format(i))
 	screenGroup:insert(obj[i].view)
@@ -94,25 +94,28 @@ function scene:show( event )
 	else 
     obj[i].view.life = 4
     obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
-  screenGroup:insert(obj[i].view.scritta)
-
+  
+    if (obj[i].view.name=="g") then 
+    	obj[i].view.scritta:setFillColor(0,0,0)
+    end 
+   screenGroup:insert(obj[i].view.scritta)
   angolo= obj[i].view.rotation
   if angolo > 315 and angolo <45 then  --<
   	obj[i].view.scritta.rotation= obj[i].view.rotation
-  elseif angolo > 45 and angolo <= 135 then  --^
+  elseif angolo > 45 and angolo < 135 then  --^
   	obj[i].view.scritta.rotation= obj[i].view.rotation -90
-  elseif angolo > 135 and angolo <=225 then  -->
-  	obj[i].view.scritta.rotation= obj[i].view.rotation +180
-   elseif angolo > 225 and angolo <= 315 then --u
+  elseif angolo > 135 and angolo <225 then  -->
+  	obj[i].view.scritta.rotation= obj[i].view.rotation +90
+   elseif angolo > 225 and angolo < 315 then --u
   	obj[i].view.scritta.rotation= obj[i].view.rotation +90
 
-  elseif angolo <-315 and angolo >=-45 then --<
+  elseif angolo <-315 and angolo >-45 then --<
   obj[i].view.scritta.rotation = obj[i].view.rotation 
-elseif angolo <-225 and angolo >=-315 then --^
+elseif angolo <-225 and angolo >-315 then --^
   obj[i].view.scritta.rotation = obj[i].view.rotation -90
-elseif angolo <-135 and angolo >=-225 then -->
-  obj[i].view.scritta.rotation = obj[i].view.rotation +180
-elseif angolo <-45 and angolo >=-135 then --u
+elseif angolo <-135 and angolo >-225 then -->
+  obj[i].view.scritta.rotation = obj[i].view.rotation +90
+elseif angolo <-45 and angolo >-135 then --u
   obj[i].view.scritta.rotation = obj[i].view.rotation +90
 else  obj[i].view.scritta.rotation = obj[i].view.rotation
 end 
@@ -125,7 +128,7 @@ end
 	obj[i] = obj[i].view
 	end
 
-	sfondo= myLevel:getLayerObject("Layer 1","sfondo").view
+	sfondo= myLevel:getLayerObject("Layer 1","82c2318fd8ea49472c2e58147374e9bc_0").view
     f.creaCannone(cannone,cerchio)
 	f.creaUI(self.view)
     f.creaLivello(cannone,obj, sfondo)

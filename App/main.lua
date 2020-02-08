@@ -15,7 +15,7 @@ preference.save{grandezza=10} --diametro
 preference.save{densita=5} --/10
 preference.save{fortuna=0}
 preference.save{velocita=5} --*100
-preference.save{tower=123} --mettere a commento se si vuole salvare la torre x successive partite
+--preference.save{tower=123} --mettere a commento se si vuole salvare la torre x successive partite
     print("valore tower", preference.getValue("tower"))
 --Store Tables
 --preference.save{d = {1,"2",true}}
