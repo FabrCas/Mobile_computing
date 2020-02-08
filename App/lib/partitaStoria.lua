@@ -58,7 +58,7 @@ else
     numeroPalle= 12,
     velocita= 5, --fare * 100 
     rimbalzo= 80,   --fare fratto 100 poi (valori da 0 a 1 )
-    grandezza= 15, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
+    grandezza= 13, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= 5, --fratto 10 
     fortuna= 0  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
   }

@@ -516,7 +516,23 @@ if partitaS:personaggio()=="crimson" then
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-    ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83
+    if (partitaS:stats().grandezza>= 15 and partitaS:stats().grandezza< 17) then
+      ball.anchorY= -4.83 
+      elseif (partitaS:stats().grandezza>= 17 and partitaS:stats().grandezza< 20) then
+      ball.anchorY= -4.23 
+    elseif (partitaS:stats().grandezza>=20 and partitaS:stats().grandezza< 25) then
+    ball.anchorY= -2.83 
+  elseif (partitaS:stats().grandezza>= 25) then
+    ball.anchorY= -1.83 
+     elseif (partitaS:stats().grandezza>=10 and partitaS:stats().grandezza< 13) then
+      ball.anchorY= -6.83 
+     elseif (partitaS:stats().grandezza>=13 and partitaS:stats().grandezza< 15) then
+      ball.anchorY= -5.83 
+    elseif (partitaS:stats().grandezza< 15) then
+      ball.anchorY= -6.83 
+     else
+    ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83 
+  end
     ball.anchorX= 0.5--72.5/ball.contentWidth
     ball.rotation=  angolo
 
@@ -525,8 +541,8 @@ if partitaS:personaggio()=="crimson" then
 
 
     if potereAttivato then
-    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=(partitaS:stats().densita)/10})
-else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0,density=(partitaS:stats().densita)/10}) end
+    physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0.3,density=partitaS:stats().densita/10})
+else physics.addBody(ball, 'static' , {radius=partitaS:stats().grandezza/2,bounce=((partitaS:stats().rimbalzo)/100),friction=0,density=partitaS:stats().densita/10}) end
    -- ball.density= 0.73
       --grandezza arcade raggio 15 tower 10
 
