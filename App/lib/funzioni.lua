@@ -190,6 +190,7 @@ sfondo:toBack()
   --print ("w ".. wHit)
   --print ("*****************************************°°°******")
   for i=1, #mattoni do  --ancoraggio mattoni x e y su 0.5
+    if (mattoni[i]~= nil)  then
     if not (mattoni[i].name == "unbreak") then 
     if (mattoni[i].x ~= nil)  then
   --print ("x ".. mattoni[i].x)
@@ -236,7 +237,7 @@ sfondo:toBack()
 --end
 end 
 end
-
+end
          timer.performWithDelay( 100, function()
           gruppoScena:remove(asseHitxUp)
           asseHitxUp:removeSelf()
@@ -530,7 +531,7 @@ if partitaS:personaggio()=="crimson" then
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-<<<<<<< HEAD
+
     if (partitaS:stats().grandezza>= 15 and partitaS:stats().grandezza< 17) then
       ball.anchorY= -4.83 
       elseif (partitaS:stats().grandezza>= 17 and partitaS:stats().grandezza< 20) then
