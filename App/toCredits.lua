@@ -1,5 +1,5 @@
 local composer = require( "composer" )
- 
+local json = require ("json")
 local scene = composer.newScene()
  
 -- -----------------------------------------------------------------------------------
@@ -15,50 +15,53 @@ local scene = composer.newScene()
 
  local sqlite3 = require ("sqlite3")
    local myNewData 
-   local json = require ("json")
    local decodedData 
 
    local SaveData = function ()
 --save new data to a sqlite file
 -- open SQLite database, if it doesn't exist, create database
-   local path = system.pathForFile("movies.sqlite", system.DocumentsDirectory)
+   local path = system.pathForFile("scores.sqlite", system.DocumentsDirectory)
    db = sqlite3.open( path ) 
    print(path)
             
 -- setup the table if it doesn't exist
-    local tablesetup = "CREATE TABLE IF NOT EXISTS mymovies (id INTEGER PRIMARY KEY, movie, year);"
+    local tablesetup = "CREATE TABLE Scores (User_id INTEGER PRIMARY KEY, Nick_user, Score);"
     db:exec( tablesetup )
     print(tablesetup)
         
 -- save  data to database
    local counter = 1
-   local index = "movie"..counter
-   local movie = decodedData[index]
-   print(movie)
+   local index = "score"..counter
+   local score = decodedData[counter]
+   print(score)
 
-   while (movie ~=nil) do
-    local tablefill ="INSERT INTO mymovies VALUES (NULL,'" .. movie[2] .. "','" .. movie[3] .."');"
+   while (score ~=nil) do
+    local tablefill ="INSERT INTO Scores VALUES ('" .. score[1] .. "','" .. score[2] .. "','" .. score[3] .."');"
     print(tablefill)
     db:exec( tablefill )
     counter=counter+1
-        index = "movie"..counter
-        movie = decodedData[index]
+        index = "score"..counter
+        score = decodedData[counter]
    end          
 -- Everything is saved to SQLite database; close database
    db:close()
             
 --Load database contents to screen
 -- open database    
-   local path = system.pathForFile("movies.sqlite", system.DocumentsDirectory)
+   local path = system.pathForFile("scores.sqlite", system.DocumentsDirectory)
    db = sqlite3.open( path ) 
    print(path)
         
 --print all the table contents
-   local sql = "SELECT * FROM mymovies"
+
+   local sql = "SELECT * FROM Scores ORDER BY Score DESC"
+   local c= 1
    for row in db:nrows(sql) do
-    local text = row.movie.." "..row.year
-    local t = display.newText(text, display.contentWidth/2, 30 * row.id, native.systemFont, 24)
+
+    local text = row.User_id.." "..row.Nick_user.." "..row.Score
+    local t = display.newText(text, display.contentWidth/2, 30 * c, native.systemFont, 24)
     t:setFillColor(1,1,1)
+    c= c+1
    end  
     
    db:close()
@@ -67,18 +70,35 @@ end
 local function networkListener( event )
         if ( event.isError ) then
                 print( "Network error!")
+                network.request( "http://192.168.1.6/scores.php", "GET", networkListener )
         else
                 myNewData = event.response
                print ("From server: "..myNewData)
-                decodedData = (json.decode( myNewData))
+                decodedData = json.decode(myNewData)
+-- From server: Total results: 2[["450546","Gianna","66666666"],["45678433","Philips","456"]]
+--  From server: [["450546","Gianna","66666666"],["45678433","Philips","456"]]
+--[[
+20:34:58.042  1 table: 17AB8288
+20:34:58.042  1 450546
+20:34:58.042  2 Gianna
+20:34:58.042  3 66666666
+20:34:58.042  2 table: 17AB80D0
+20:34:58.042  1 45678433
+20:34:58.042  2 Philips
+20:34:58.042  3 456 ]]-- 
+--print (decodedData)
+--for i,v in ipairs( decodedData ) do print( i,v )
+ --for m,n in ipairs( v ) do print( m,n )
+ --end
+ --end 
 
---local myText= display.newText(decodedData.movie1[2], 50,50, nil,24)
---myText:setTextColor(1,1,1)
-      --  SaveData()
+       SaveData()
+
+       --id dispositivo system.getInfo("deviceID")
         end
 end
 
-network.request( "https://www.db4free.net/phpMyAdmin/sql.php?server=1&db=giannadb&table=Scores&pos=0/scores.php", "GET", networkListener )
+network.request( "http://192.168.1.6/scores.php", "GET", networkListener )
 
 
 
@@ -130,7 +150,7 @@ function scene:create( event )
  
     sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
- local nameField = native.newTextField( 150, 150, 220, 36 )
+ local nameField = native.newTextField( 150, 300, 220, 36 )
 nameField.inputType = "default"
 --nameField.text = "Hello World!"
 nameField.font = native.newFont( native.systemFontBold, 18 )

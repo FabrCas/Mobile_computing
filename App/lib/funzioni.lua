@@ -26,7 +26,7 @@ local _H = display.contentHeight
 math.randomseed(os.time())
 math.random(); math.random(); math.random()
 local palleUsate
-local a = 225
+local a = 240
 local gruppoLivello
 local gruppoVittoria
 local gruppoScena
@@ -266,7 +266,6 @@ else
 statistiche =  preference.getValue("statsA") 
 end
 danno = statistiche.danno
-numeroPalle = statistiche.numeroPalle
 if preference.getValue("pg") ~= "gianna" and mod_par=="tower" then 
 partitaS:setPG(preference.getValue("pg"))
 end
@@ -291,7 +290,6 @@ local vecchiaPalla
  function creaCannone(cannon,cerchio)
   creaPartita()
   nTiri=0
-  --print("numero palle = " .. statistiche.numeroPalle .. mod_par)
   numeroPalle = statistiche.numeroPalle
 
    gruppoLivello = display.newGroup( )
@@ -341,12 +339,9 @@ end
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 function caricaPalla()
- -- print("numeroPalle = ", numeroPalle)
   if vecchiaPalla ~= nil then
     vecchiaPalla= nil
   end
-  --print("numeroPalle = " .. numeroPalle)
-  numeroPalle= numeroPalle -1
     if numeroPalle>0 then
   obj = myUI:getLayerObject("ui_layer", "ball_"..string.format(numeroPalle-1)).view
   obj:setLinearVelocity(150,0)
@@ -385,6 +380,7 @@ function caricaPalla()
 -- FUNZIONE PER CREAZIONE PALLA
 ---------------------------------------------------------------------------------
 function listenerUltimaPalla(event)
+  print( "listener ultima Pallaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" )
 	if not isPaused then
 	if not(pall_lanciata==nil) then
    if pall_lanciata:getLinearVelocity()~=nil
@@ -395,7 +391,7 @@ function listenerUltimaPalla(event)
     
     if turnoPotere then timer.performWithDelay( 5000, function(event) Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end )
     Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
-    if (numeroPalle-1==0) then finePartita() end
+    if (numeroPalle==0) then finePartita() end
   end end
 end end
 
@@ -466,7 +462,7 @@ end end
         local sy= sy - 60
          print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numeroPalle)
          print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numBallMax)
-        if numBallMax == 0 then
+        if (numeroPalle) == 0 then
 
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
    else Runtime:addEventListener("enterFrame",listenerPallaLanciata)
@@ -530,7 +526,7 @@ if partitaS:personaggio()=="crimson" then
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-<<<<<<< HEAD
+    
     if (partitaS:stats().grandezza>= 15 and partitaS:stats().grandezza< 17) then
       ball.anchorY= -4.83 
       elseif (partitaS:stats().grandezza>= 17 and partitaS:stats().grandezza< 20) then
@@ -598,6 +594,7 @@ end
   --   finePartita()
   -- else
   if canShoot then
+    numeroPalle= numeroPalle -1
     numBallMax = numBallMax - 1
     --caricaPalla()
     daColpire=true
@@ -678,7 +675,7 @@ end
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
        if mod_par=="tower" then
-  partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+  partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, (numeroPalle),true)
 end
      if(mod_par=="arcade") then
 		partitaS:cancellaPersonaggio()
@@ -761,7 +758,7 @@ function schermataVittoria()
   scorep=partitaS:score()
 else
   -- preference.save{pg="gianna"}
-  scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+  scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, (numeroPalle),true)
 end
   creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
 
@@ -959,7 +956,7 @@ end -- if nTiri
   crimson= nil
   livelloPg= nil
     if mod_par=="tower" then
-  partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, numBallMax,true)
+  partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, (numeroPalle),true)
 end
 if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
 --partitaS:new()
@@ -1229,7 +1226,7 @@ backtomenu:addEventListener("tap", function()
 	if(mod_par=="arcade") then
 		partitaS:cancellaPersonaggio()
 	end
-  numeroPalle = statistiche.numeroPalle
+  local numeroPalle = statistiche.numeroPalle
   statistiche.danno=danno
   testoVolumeMusica.fn:removeSelf()
     testoVolumeMusica.fn= nil

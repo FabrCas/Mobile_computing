@@ -9,7 +9,7 @@ To do list:
 - schermata inzio
 - crediti
 - valori ancoraggio per settare giusta la pallina (per ora, valori da 2 a 25)
-
+- aggiustare valori score
 
 
 
