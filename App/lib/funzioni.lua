@@ -527,11 +527,7 @@ if partitaS:personaggio()=="crimson" then
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 4c953285316af62b07682a1971679117f22b31d2
     if (partitaS:stats().grandezza>= 15 and partitaS:stats().grandezza< 17) then
       ball.anchorY= -4.83 
       elseif (partitaS:stats().grandezza>= 17 and partitaS:stats().grandezza< 20) then
@@ -717,7 +713,7 @@ local function onButtonClickLose(event)
   local options = { effect = "crossFade", time = 200}
   scancellaTutto()
   print("bottone vinto tappato")
-  composer.gotoScene("menu",options )
+  composer.gotoScene("toMenu",options )
 end
 
 
