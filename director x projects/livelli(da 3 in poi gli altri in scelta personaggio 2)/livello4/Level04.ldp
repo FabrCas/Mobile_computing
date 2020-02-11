@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project lastOpen="Level04.ldx" exportTemplate="Corona_templateX.lua" exportFolder="">
+ <level name="Level04" fileName="Level04.ldx" open="1" scale="3" scrollX="0" scrollY="-48" layer="0"/>
+</project>
