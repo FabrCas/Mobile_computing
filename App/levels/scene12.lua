@@ -91,7 +91,7 @@ local channel1= audio.findFreeChannel(1)
 	local screenGroup = self.view
 	--local myLevel = {}
 	myLevel = LD_Loader:new(self.view)
-	myLevel:loadLevel("Level04") -- set your scene/level name here
+	myLevel:loadLevel("Level12") -- set your scene/level name here
 	myCannon = LD_Loader:new(self.view)
 	myCannon:loadLevel("cannon.shoot")
 	cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
@@ -112,7 +112,7 @@ local channel1= audio.findFreeChannel(1)
   	if (i==1 or i==2) then
       	obj[i].view.life = 5
       	else
-      obj[i].view.life = 2 end 
+      obj[i].view.life = 4 end 
       
       obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
     screenGroup:insert(obj[i].view.scritta)
