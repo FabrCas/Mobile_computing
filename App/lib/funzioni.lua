@@ -391,7 +391,8 @@ function listenerUltimaPalla(event)
   if (pall_lanciata.y > py and vy <vely and vx < velx) then --qui
     
     if turnoPotere then timer.performWithDelay( 5000, function(event) Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end )
-    Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
+   -- Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
+ end
     if (numeroPalle==0) then finePartita() end
   end end
 end end
@@ -954,6 +955,7 @@ end -- if nTiri
 ---------------------------------------------------------------------------------
  function finePartita()
   audio.stop(1)
+  Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
   crimson= nil
   livelloPg= nil
     if mod_par=="tower" then

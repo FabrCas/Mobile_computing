@@ -96,8 +96,8 @@ function M:loadAssets()
 		sheetContentWidth=320,
 		sheetContentHeight=160
 	}
-	assets.spriteSheetData['B11Speciale (2)']={}
-	assets.spriteSheetData['B11Speciale (2)'].frames ={
+	assets.spriteSheetData['B11Speciale']={}
+	assets.spriteSheetData['B11Speciale'].frames ={
 		{x=0,y=0,width=64,height=32},
 		{x=64,y=0,width=64,height=32},
 		{x=128,y=0,width=64,height=32},
@@ -162,9 +162,9 @@ function M:loadAssets()
 		 }
 	assets['B08_24']={file ='B08.png',name='B08_24',class='',aX=0.5,aY=0.5,width=64,height=32,frame=25,spriteSheetName='B08',frameCount=25,
 		physics={isEnabled=true,source='Asset',bodyType='kinematic',isFixedRotation=false,isSleepingAllowed=false,isSensor=false,linearDamping=0,angularDamping=0,gravityScale=1,isBullet=false,shapes={{bodyShape='Polygon',shape={-32,-16,32,-16,32,16,-32,16},bounce=0.2,friction=0.3,density=1,radius=0,categoryBits=0,maskBits=0,groupIndex=0},}	}  }
-	assets['B11Speciale (2)_1']={file ='B11Speciale (2).png',name='B11Speciale (2)_1',class='',aX=0.5,aY=0.5,width=64,height=32,frame=2,spriteSheetName='B11Speciale (2)',frameCount=25,
+	assets['B11Speciale_1']={file ='B11Speciale.png',name='B11Speciale_1',class='',aX=0.5,aY=0.5,width=64,height=32,frame=2,spriteSheetName='B11Speciale',frameCount=25,
 		 }
-	assets['B11Speciale (2)_21']={file ='B11Speciale (2).png',name='B11Speciale (2)_21',class='',aX=0.5,aY=0.5,width=64,height=32,frame=22,spriteSheetName='B11Speciale (2)',frameCount=25,
+	assets['B11Speciale_21']={file ='B11Speciale.png',name='B11Speciale_21',class='',aX=0.5,aY=0.5,width=64,height=32,frame=22,spriteSheetName='B11Speciale',frameCount=25,
 		physics={isEnabled=true,source='Asset',bodyType='static',isFixedRotation=false,isSleepingAllowed=false,isSensor=false,linearDamping=0,angularDamping=0,gravityScale=1,isBullet=false,shapes={{bodyShape='Polygon',shape={-32,-16,32,-16,32,16,-32,16},bounce=0.2,friction=0.3,density=1,radius=0,categoryBits=0,maskBits=0,groupIndex=0},}	}  }
 	return assets
 end -- loadAssets 
@@ -291,7 +291,7 @@ function M:createLevel(LD_Helper_Instance)
 	{name='a21',objType='LDImage',class='',width=69.6667,height=14,x=153,y=382,xScale=1.08854*1,yScale=0.4375*1,assetName='B08_18',
 		userProps = {},
 		},
-	{name='a22',objType='LDImage',class='',width=36,height=16,x=155,y=304,xScale=0.5625*1,yScale=0.5*1,assetName='B11Speciale (2)_21',
+	{name='a22',objType='LDImage',class='',width=36,height=16,x=155,y=304,xScale=0.5625*1,yScale=0.5*1,assetName='B11Speciale_21',
 		userProps = {{name= 'tipo', value='speciale' },},
 		},
 	{name='a23',objType='LDImage',class='',width=25.1923,height=11.9809,x=31,y=148,xScale=0.39363*1,yScale=0.374403*1,assetName='B08_17',
