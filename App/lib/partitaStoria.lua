@@ -542,7 +542,7 @@ function partitaS:getScore(scoreLivello, tempo, palleRimaste, isGameOver)
  local scoreParziale= 0
   scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
   scoreParziale = scoreParziale + (palleRimaste*500)
-  if preference.getValue("score")=="gianna" then
+  if preference.getValue("score")=="gianna" or nil then
   return scoreParziale
 else
   return scoreParziale + preference.getValue("score")
