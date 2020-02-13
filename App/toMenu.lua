@@ -37,6 +37,7 @@ end
 
 -- Called when the scene's view does not exist:
 function scene:create( event )
+  partitaS:soundSave()
   exit= false
     -- view is not yet visible
     local sceneGroup = self.view

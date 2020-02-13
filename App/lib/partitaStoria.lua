@@ -10,8 +10,8 @@ local prova="gianna"
 local torre
 local piano -- var di appoggio per la creazione della torre
 local preference = require "lib.preference"
-local volumeMusica = 0.5
-local volumeEffettoSonoro = 0.5
+local volumeMusica
+local volumeEffettoSonoro
 --local tipiStanza= {"normale", "tesoro", "uscita"}
 
 math.randomseed(os.time())
@@ -20,6 +20,22 @@ math.random(); math.random(); math.random() -- per stabilizzare i primi valori d
 
 partitaS = {}
 partitaS_mt =  {__index = partitaS}
+
+function partitaS:soundSave()
+if ((preference.getValue("vm")==nil) or (preference.getValue("ve")==nil) 
+or (preference.getValue("vm")=="gianna") or (preference.getValue("ve")=="gianna")) then 
+volumeMusica = 0.5
+volumeEffettoSonoro = 0.5
+preference.save{vm=volumeMusica}
+preference.save{ve=volumeEffettoSonoro}
+else
+ volumeMusica= preference.getValue("vm")
+ volumeEffettoSonoro=preference.getValue("ve")
+end 
+end
+
+
+
 
 function partitaS:new()
 
@@ -600,6 +616,7 @@ end
 function partitaS:aumentaVolumeMusica()
   if(volumeMusica<=0.9) then
   volumeMusica= volumeMusica + 0.1
+  preference.save{vm=volumeMusica}
 end
 end
 
@@ -609,11 +626,13 @@ function partitaS:diminuisciVolumeMusica()
   else
   volumeMusica=0
 end
+ preference.save{vm=volumeMusica}
 end
 
 function partitaS:aumentaVolumeEffettoSonoro()
   if(volumeEffettoSonoro<=0.9) then
   volumeEffettoSonoro= volumeEffettoSonoro + 0.1
+  preference.save{ve=volumeEffettoSonoro}
 end
 end
 
@@ -623,6 +642,7 @@ function partitaS:diminuisciVolumeEffettoSonoro()
 else
   volumeEffettoSonoro=0
 end
+  preference.save{ve=volumeEffettoSonoro}
 end
 
 function partitaS:cancellaPersonaggio()
