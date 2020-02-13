@@ -22,7 +22,7 @@ local slot
 local up
 local down
 local statistiche= {"danno","numeroPalle", "velocita", "rimbalzo", "grandezza", "densita", "fortuna"}
-local fortuna = preference.getValue("stats") .fortuna
+local fortuna = preference.getValue("statsT") .fortuna
 
 
 -- -----------------------------------------------------------------------------------

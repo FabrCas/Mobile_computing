@@ -36,14 +36,14 @@ local function onButtonClickStanzaSelezionata(event)
      params = {modalita= "tower"}
  }
  stanza= event.target.stanza
--- if (stanza.nome=="scene1" or stanza.nome=="scene2" or stanza.nome=="scene5" or stanza.nome=="scene6" or stanza.nome=="scene9" or
---  stanza.nome=="scene3" or stanza.nome=="scene4" or stanza.nome=="scene11" or stanza.nome=="scene12" or stanza.nome=="scene13" or
---  stanza.nome=="scene15" or stanza.nome=="scene17" or stanza.nome=="scene19" or stanza.nome=="scene22" or stanza.nome=="scene23" or
---   stanza.nome=="scene25" or stanza.nome=="scene27") then 
---  composer.gotoScene("levels."..stanza.nome, options)
---else
-    composer.gotoScene("levels.scene30", options)
-  --end
+ if (stanza.nome=="scene1" or stanza.nome=="scene2" or stanza.nome=="scene5" or stanza.nome=="scene6" or stanza.nome=="scene9" or
+  stanza.nome=="scene3" or stanza.nome=="scene4" or stanza.nome=="scene11" or stanza.nome=="scene12" or stanza.nome=="scene13" or
+  stanza.nome=="scene15" or stanza.nome=="scene17" or stanza.nome=="scene19" or stanza.nome=="scene22" or stanza.nome=="scene23" or
+   stanza.nome=="scene25" or stanza.nome=="scene27") then 
+  composer.gotoScene("levels."..stanza.nome, options)
+else
+    composer.gotoScene("levels.scene1", options)
+  end
   print( stanza.nome )
   stanzaSelezionata= stanza
 end
@@ -149,7 +149,6 @@ gruppo_schermata:removeSelf()
 gruppo_schermata= display.newGroup()
 creazione()
 else
- -- preference.save{tower=123}
   gruppo_schermata:removeSelf()
   gruppo_schermata= display.newGroup()
   preference.save{pg="gianna"}
@@ -250,7 +249,7 @@ end
 
 
 local function creaMappa(stanza, iter)
-  preference.save{tower=torre}
+  preference.save{tower=torre} --per aggiornare le stanze già fatte 
     --margine -> per distaccare le stanza
     --larghezza stanza == altezza stanza
 local margine= 2

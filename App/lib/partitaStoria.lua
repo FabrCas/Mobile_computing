@@ -38,17 +38,19 @@ function partitaS:new()
   }
     print("torre - tower")
     print("valore tower", preference.getValue("tower"))
-    if preference.getValue("tower")==123 then
+    if preference.getValue("tower")==123 or preference.getValue("tower")==nil then
       print("tower si crea")
   torre= {}
-  preference.save{score="gianna"}
-  preference.save{statsT= stats}
+  
   torre.pianoAttuale= 0
   piano={}
   piano.altezza=0
   creazioneTorre()
   torre.stanzaAttuale= torre.primoPiano.start
-  preference.save{tower=torre} else
+  preference.save{tower=torre}
+  preference.save{score="gianna"}
+  preference.save{statsT= stats}
+   else
     print("esiste tower quindi non viene creata")
     torre=preference.getValue("tower")end
 else
@@ -542,11 +544,11 @@ function partitaS:getScore(scoreLivello, tempo, palleRimaste, isGameOver)
  local scoreParziale= 0
   scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
   scoreParziale = scoreParziale + (palleRimaste*500)
-  if preference.getValue("score")=="gianna" or nil then
+  --if preference.getValue("score")=="gianna" or nil then
   return scoreParziale
-else
-  return scoreParziale + preference.getValue("score")
-end
+--else
+--  return scoreParziale + preference.getValue("score")
+--end
 end
 
 function partitaS:creaNuovaPartita()

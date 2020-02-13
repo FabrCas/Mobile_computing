@@ -32,7 +32,7 @@ local gruppoVittoria
 local gruppoScena
 local pg
 _G.fisicaCannone=true
-preference.save{statsT= partitaS:stats()}
+--preference.save{statsT= partitaS:stats()}
 
 local statistiche
 
@@ -267,7 +267,7 @@ else
 statistiche =  preference.getValue("statsA") 
 end
 danno = statistiche.danno
-if preference.getValue("pg") ~= "gianna" and mod_par=="tower" then 
+if (preference.getValue("pg") ~= "gianna" or preference.getValue("pg") ~= nil)and mod_par=="tower" then 
 partitaS:setPG(preference.getValue("pg"))
 end
 --print("creazione partita - creaPartita " .. mod_par)
@@ -759,7 +759,6 @@ function schermataVittoria()
   if mod_par=="tower" then
   scorep=partitaS:score()
 else
-  -- preference.save{pg="gianna"}
   scorep=partitaS:getScore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, (numeroPalle),true)
 end
   creaScore(tostring(scorep), (rectScore.x -30), rectScore.y)
@@ -956,6 +955,7 @@ end -- if nTiri
  function finePartita()
   audio.stop(1)
   Runtime:removeEventListener("enterFrame", listenerUltimaPalla)
+  Runtime:removeEventListener("enterFrame", listenerPallaLanciata)
   crimson= nil
   livelloPg= nil
     if mod_par=="tower" then
