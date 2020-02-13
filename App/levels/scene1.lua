@@ -84,12 +84,12 @@ function scene:show( event )
 	local obj = {}
 	for i=1,30 do
 	obj[i] = {}
-	obj[i] = myLevel:getLayerObject("Layer 1","B07_"..string.format(i))
+	obj[i] = myLevel:getLayerObject("Layer 1",string.format(i))
 	screenGroup:insert(obj[i].view)
 	obj[i].view.name = obj[i].property['tipo']
 	if not (obj[i].view.name=="unbreak") then 
 
-	if (obj[i].view.name=="speciale") then
+	if (obj[i].view.name=="speciale" or mod_par=="arcade") then
 	obj[i].view.life = 1
 	else 
     obj[i].view.life = 2
