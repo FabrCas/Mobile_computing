@@ -193,7 +193,7 @@ print(x)
 print(y)
 if (x~=nil and y~=nil) then
 if ( (x<300) and  (y<460)) then
-    clicked = clicked + 1
+    clicked = 1--clicked + 1
     if (clicked ==1) then
         Runtime:removeEventListener("levelClicked")
         --levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
