@@ -89,7 +89,7 @@ function scene:show( event )
 	obj[i].view.name = obj[i].property['tipo']
 	if not (obj[i].view.name=="unbreak") then 
 
-	if (obj[i].view.name=="speciale") then
+	if (obj[i].view.name=="speciale" or mod_par=="arcade") then
 	obj[i].view.life = 1
 	else 
     obj[i].view.life = 4
@@ -136,7 +136,7 @@ end
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
     if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
     if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
-    if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
+    --if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
     if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
