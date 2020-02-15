@@ -191,7 +191,7 @@ sfondo:toBack()
   --print ("*****************************************°°°******")
   for i=1, #mattoni do  --ancoraggio mattoni x e y su 0.5
     if (mattoni[i]~= nil)  then
-    if not (mattoni[i].name == "unbreak") then 
+    if not (mattoni[i].name == "unbreak") then
     if (mattoni[i].x ~= nil)  then
   --print ("x ".. mattoni[i].x)
   --print ("y ".. mattoni[i].y)
@@ -235,7 +235,7 @@ sfondo:toBack()
 --else
 --audio.play(suonoMattone,{channel= channel2})
 --end
-end 
+end
 end
 end
          timer.performWithDelay( 100, function()
@@ -261,13 +261,13 @@ function creaPartita()
 if mod_par=="arcade" then
 partitaS:new()
 end
-if mod_par== "tower" then 
+if mod_par== "tower" then
 statistiche =  preference.getValue("statsT")
-else 
-statistiche =  preference.getValue("statsA") 
+else
+statistiche =  preference.getValue("statsA")
 end
 danno = statistiche.danno
-if (preference.getValue("pg") ~= "gianna" or preference.getValue("pg") ~= nil)and mod_par=="tower" then 
+if (preference.getValue("pg") ~= "gianna" or preference.getValue("pg") ~= nil)and mod_par=="tower" then
 partitaS:setPG(preference.getValue("pg"))
 end
 --print("creazione partita - creaPartita " .. mod_par)
@@ -380,6 +380,11 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER CREAZIONE PALLA
 ---------------------------------------------------------------------------------
+function attesa(num)
+  if num == 1 then
+timer.performWithDelay( 5000, function(event) finePartita() end )
+elseif num==2 then timer.performWithDelay( 2500, function(event) finePartita() end ) end
+end
 function listenerUltimaPalla(event)
   print( "listener ultima Pallaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" )
 	if not isPaused then
@@ -389,18 +394,17 @@ function listenerUltimaPalla(event)
   if vy<0 then vy=-vy end
   if vx<0 then vx=-vx end
   if (pall_lanciata.y > py and vy <vely and vx < velx) then --qui
-    
-    if turnoPotere then timer.performWithDelay( 12000, function(event) Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end )
+
+    if turnoPotere and nomePersonaggio=="crimson" then Runtime:removeEventListener("enterFrame", listenerUltimaPalla)  attesa(1)
    -- Runtime:removeEventListener("enterFrame", listenerUltimaPalla) end
- end
-    if (numeroPalle==0) then finePartita() end
+ elseif (numeroPalle==0) then Runtime:removeEventListener("enterFrame", listenerUltimaPalla)  attesa(2) end
   end end
 end end
 
 function listenerPallaLanciata(event)
-  if caricare==false then 
+  if caricare==false then
      print( "caricare false ")
-end 
+end
   if not isPaused then
   if not(pall_lanciata==nil) then
    if pall_lanciata:getLinearVelocity()~=nil
@@ -414,7 +418,7 @@ end
     caricaPalla()
 
 if (circle ~= nil) then
-  timer.performWithDelay( 1000, function() 
+  timer.performWithDelay( 1000, function()
     circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
     canShoot=true
      timer.performWithDelay( 500, function()
@@ -530,21 +534,21 @@ if partitaS:personaggio()=="crimson" then
     --print("stampe") print(angolo) print(72.5/ball.contentHeight)
 
     if (partitaS:stats().grandezza>= 15 and partitaS:stats().grandezza< 17) then
-      ball.anchorY= -4.83 
+      ball.anchorY= -4.83
       elseif (partitaS:stats().grandezza>= 17 and partitaS:stats().grandezza< 20) then
-      ball.anchorY= -4.23 
+      ball.anchorY= -4.23
     elseif (partitaS:stats().grandezza>=20 and partitaS:stats().grandezza< 25) then
-    ball.anchorY= -2.83 
+    ball.anchorY= -2.83
   elseif (partitaS:stats().grandezza>= 25) then
-    ball.anchorY= -1.83 
+    ball.anchorY= -1.83
      elseif (partitaS:stats().grandezza>=10 and partitaS:stats().grandezza< 13) then
-      ball.anchorY= -6.83 
+      ball.anchorY= -6.83
      elseif (partitaS:stats().grandezza>=13 and partitaS:stats().grandezza< 15) then
-      ball.anchorY= -5.83 
+      ball.anchorY= -5.83
     elseif (partitaS:stats().grandezza< 15) then
-      ball.anchorY= -6.83 
+      ball.anchorY= -6.83
      else
-    ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83 
+    ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83
   end
 
     ball.anchorX= 0.5--72.5/ball.contentWidth
@@ -667,7 +671,7 @@ function removeBrick(brick, mod)
  -- mattoni:remove(brick)
  if not (brick.scritta==nil) then
   brick.scritta:removeSelf()
-end 
+end
   brick:removeSelf()
   brick = nil
   nMattoni = nMattoni - 1
@@ -714,7 +718,7 @@ local function onButtonClickLose(event)
   local options = { effect = "crossFade", time = 200}
   scancellaTutto()
   print("bottone vinto tappato")
-  composer.gotoScene("toMenu",options )
+  composer.gotoScene("arcade",options ) --qui
 end
 
 
@@ -742,10 +746,10 @@ function schermataVittoria()
    gruppoVittoria= display.newGroup()
    win= true
    if isDefeatedWon == false then
-    if not (bg==nil) then 
+    if not (bg==nil) then
    bg:removeSelf()
    bg= nil
- end 
+ end
   myLevel= LD_Loader:new(gruppoVittoria)
   myLevel:loadLevel("finestra")
   local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
@@ -781,7 +785,7 @@ function schermataSconfitta()
 
 if mod_par=="tower" then
 preference.save{pg="gianna"}
-end 
+end
 
   local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
@@ -791,10 +795,10 @@ end
   gruppoLivello:insert(blackBg)
 
 	--print("stampa schermata")
-     if not (bg==nil) then 
+     if not (bg==nil) then
    bg:removeSelf()
    bg= nil
- end 
+ end
   myLevel= LD_Loader:new(gruppoLivello)
   myLevel:loadLevel("finestra")
   local rectButton= myLevel:getLayerObject("Rects", "rect_1").view
@@ -849,7 +853,7 @@ function hit(event, mod)
   -- if event.target.name == "static part ui_0" then print('funziona') end
 --  physics.setGravity( 0, 46 )
           brick = event.target
-         
+
           local vx, vy = event.other:getLinearVelocity()
       brick.life = brick.life - (statistiche.danno)
  print(brick.life)
@@ -962,11 +966,12 @@ end -- if nTiri
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, (numeroPalle),true)
 end
 if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
+ if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
 --partitaS:new()
-if mod_par=="tower" then 
+if mod_par=="tower" then
 preference.save{tower=123}
 partitaS:cancellaPersonaggio()
-end 
+end
 schermataSconfitta()
 end
 

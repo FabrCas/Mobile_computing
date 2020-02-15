@@ -15,6 +15,7 @@ local livello
 local rectButton
 local rectButton2
 local backButton
+_G.nomePersonaggio = nil
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
@@ -43,21 +44,21 @@ local function onButtonClick(event)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
   partitaS:setPG(nomePersonaggio)
-  if mod_par=="tower" then 
+  if mod_par=="tower" then
   preference.save{pg=nomePersonaggio}
-end 
+end
   if nomePersonaggio== "cottonBall" then
   pg= myLevel:getLayerObject("PGs", "cottonBall").view --sostituire "cottonBall" con nomePersonaggio
   pg:play()
   timer.performWithDelay( 1000 , function() chiamaProssimaScena() end)
 elseif nomePersonaggio=="crimson" then
-  pg= myLevel:getLayerObject("PGs", "crimson").view 
+  pg= myLevel:getLayerObject("PGs", "crimson").view
   pg:play()
-  timer.performWithDelay( 70  , function() 
+  timer.performWithDelay( 70  , function()
   transition.to( pg, { time=3500, x=(pg.x+ 140), onComplete=chiamaProssimaScena} )
   end)
-end 
-  -- chiamaProssimaScena()  -- DA TOGLIERE POI E RIMETTERE PARTI COMMENTANTE SOPRA 
+end
+  -- chiamaProssimaScena()  -- DA TOGLIERE POI E RIMETTERE PARTI COMMENTANTE SOPRA
   return true
 end
 
@@ -80,9 +81,9 @@ end
 function scene:create( event )
 
     local sceneGroup = self.view
-    if (mod_par=="arcade") then 
+    if (mod_par=="arcade") then
     livello= event.params.nomeLivello
-  end 
+  end
     display.setDefault( 'background',  0 / 255, 0 / 255, 0 / 255, 255 / 255)
     -- Code here runs when the scene is first created but has not yet appeared on screen
     myLevel= LD_Loader:new(sceneGroup)
@@ -93,7 +94,7 @@ function scene:create( event )
       rectButton= myLevel:getLayerObject("backgrounds", "rect_pg1")
       rectButton2= myLevel:getLayerObject("backgrounds", "rect_pg2")
 
-      crimson= myLevel:getLayerObject("PGs", "crimson").view 
+      crimson= myLevel:getLayerObject("PGs", "crimson").view
       crimsonScroll= myLevel:getLayerObject("PGs", "scroll-crimson_0").view
       cb= myLevel:getLayerObject("PGs", "cottonBall").view
       cbScroll= myLevel:getLayerObject("PGs", "scroll-b_0").view
@@ -112,7 +113,7 @@ function scene:create( event )
 
 
       --crimson:toBack()
-      
+
       backButton= myLevel:getLayerObject("ui", "back_0").view
       --.view lo fa diventare un display object, per le proprietà io deve accedere alla table
       -- quindi non la devo mettere
@@ -127,7 +128,7 @@ function scene:create( event )
       rectButton2.view:addEventListener("tap", onButtonClick)
       backButton:addEventListener("tap", backClicked)
 
-      
+
          if mod_par == "arcade" then
       arcade = composer.loadScene( "arcade", false)
     end
