@@ -22,8 +22,8 @@ partitaS = {}
 partitaS_mt =  {__index = partitaS}
 
 function partitaS:soundSave()
-if ((preference.getValue("vm")==nil) or (preference.getValue("ve")==nil) 
-or (preference.getValue("vm")=="gianna") or (preference.getValue("ve")=="gianna")) then 
+if ((preference.getValue("vm")==nil) or (preference.getValue("ve")==nil)
+or (preference.getValue("vm")=="gianna") or (preference.getValue("ve")=="gianna")) then
 volumeMusica = 0.5
 volumeEffettoSonoro = 0.5
 preference.save{vm=volumeMusica}
@@ -31,7 +31,7 @@ preference.save{ve=volumeEffettoSonoro}
 else
  volumeMusica= preference.getValue("vm")
  volumeEffettoSonoro=preference.getValue("ve")
-end 
+end
 end
 
 
@@ -49,14 +49,14 @@ function partitaS:new()
     rimbalzo= preference.getValue("rimbalzo"),--0.8
     grandezza= preference.getValue("grandezza"), --diametro 10  --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
     densita= preference.getValue("densita"), --1
-    fortuna= preference.getValue("fortuna")  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5] 
+    fortuna= preference.getValue("fortuna")  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
   }
     print("torre - tower")
     print("valore tower", preference.getValue("tower"))
     if preference.getValue("tower")==123 or preference.getValue("tower")==nil then
       print("tower si crea")
   torre= {}
-  
+
   torre.pianoAttuale= 0
   piano={}
   piano.altezza=0
@@ -74,15 +74,15 @@ else
   score=0
   stats = {
     danno= 5,
-    numeroPalle= 12,
-    velocita= 5, --fare * 100 
+    numeroPalle= 8,
+    velocita= 5, --fare * 100
     rimbalzo= 80,   --fare fratto 100 poi (valori da 0 a 1 )
     grandezza= 15,--15, --diametro   --la massa è data dalla grandezza dell'oggetto e dalla sua densità (object.mass per vederla)
-    densita= 5, --fratto 10 
+    densita= 5, --fratto 10
     fortuna= 0  --statistica da sommare a favore o no (se negativa) ai calcoli randomici [minimo: -5, massimo: +5]
   }
   preference.save{statsA= stats}
-end 
+end
 end
 
 
@@ -371,7 +371,7 @@ if stanzeRimanenti > 0  then --and valori_buffer>0 then
       stanzaTemp.nome= "scene"..string.format(stanzaSorteggiata)
       stanzaTemp.isLocked = true
       stanzaTemp.isCompleted = false
-      sorteggioStanzaTesoro =  math.random(1,4) 
+      sorteggioStanzaTesoro =  math.random(1,4)
       if (sorteggioStanzaTesoro==2) then
         stanzaTemp.tipo= "tesoro"
       else
@@ -568,7 +568,7 @@ end
 
 function partitaS:creaNuovaPartita()
 
-end 
+end
 
 
 
@@ -650,7 +650,7 @@ end
 
 function partitaS:cancellaPersonaggio()
 personaggio= nil
-end 
+end
 
 
 
