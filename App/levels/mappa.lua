@@ -152,7 +152,8 @@ else
   gruppo_schermata:removeSelf()
   gruppo_schermata= display.newGroup()
   preference.save{pg="gianna"}
-  composer.gotoScene("menu", { effect = "crossFade", time = 200})
+
+  composer.gotoScene("levels.insertNick", { effect = "crossFade", time = 200})
 
     return true  --aggiungere schermata di vittoria o boss fight finale 
 end
