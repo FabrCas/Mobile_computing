@@ -718,8 +718,11 @@ local function onButtonClickLose(event)
   local options = { effect = "crossFade", time = 200}
   scancellaTutto()
   print("bottone vinto tappato")
+  if mod_par=="tower" then
+  composer.gotoScene("menu")
+else
   composer.gotoScene("arcade",options ) --qui
-end
+end end
 
 
 
