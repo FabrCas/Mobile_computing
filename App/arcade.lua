@@ -87,20 +87,22 @@ end
 
 -- show()
 function scene:show( event )
-
     local sceneGroup = self.view
     local phase = event.phase
 
+
+
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
-
-    elseif ( phase == "did" ) then
-local isChannel1Active = audio.isChannelActive( 1 )
-if not (isChannel1Active) then
-      local channel1 = audio.findFreeChannel(1)
+if ((audio.isChannelActive( 1 ))==false )then 
+    print( "***********aioooooooo******************" )
+    audio.stop(1)
+   local channel1 = audio.findFreeChannel(1)
     audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
     audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
-end
+end 
+    elseif ( phase == "did" ) then
+
         print("menuArcade-> show (did)")
         -- Code here runs when the scene is entirely on screen
         if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end

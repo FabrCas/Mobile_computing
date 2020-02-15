@@ -6,10 +6,10 @@
 system.activate("multitouch")
 display.setStatusBar( display.HiddenStatusBar )
 local preference = require "lib.preference"
-
+require ("lib.partitaStoria")
 --Store numbers
-preference.save{danno=1}
-preference.save{numeroPalle=8} --8
+preference.save{danno=10}
+preference.save{numeroPalle=12} --8
 preference.save{rimbalzo=80} --/100
 preference.save{grandezza=10} --diametro
 preference.save{densita=5} --/10
@@ -17,16 +17,17 @@ preference.save{fortuna=0}
 preference.save{velocita=5} --*100
 --preference.save{tower=123} --mettere a commento se si vuole salvare la torre x successive partite
     print("valore tower", preference.getValue("tower"))
---Store Tables
---preference.save{d = {1,"2",true}}
---value = preference.getValue("d")
---print("Retrieving table d: ",value[3])
 
---physics = require ("physics")
---physics.start()
 _G.mod_par = nil
 _G.f= nil
 _G.livelloA=0
+
+if preference.getValue("score") ~= nil then
+	partitaS:setScore(preference.getValue("score"))
+else 
+	partitaS:setScore(0)
+end
+
 local composer = require( "composer" )
 composer.imgDir = "images/"
 composer.musicDir = "sounds/"

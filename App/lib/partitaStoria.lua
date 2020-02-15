@@ -42,7 +42,6 @@ function partitaS:new()
   print("creata partitaS - " .. mod_par .. "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
    if mod_par=='tower' then
   livelloAttuale= "/scene01"
-  score=0
   stats = {
     danno= preference.getValue("danno"), --1
     numeroPalle= preference.getValue("numeroPalle"), --8
@@ -611,6 +610,10 @@ end
 
 function partitaS:setPG(pg)
 personaggio=pg
+end
+
+function partitaS:setScore(sc)
+score=sc
 end
 
 function partitaS:aumentaVolumeMusica()

@@ -21,7 +21,7 @@ function scene:create( event )
     local sceneGroup = self.view
 
 
---	menuSound= audio.loadStream("sounds/montage.mp3")
+	menuSound= audio.loadStream("sounds/montage.mp3")
 
 --print("menu-> create")
 
@@ -63,11 +63,11 @@ local arcade = composer.loadScene( "arcade", false)
 
    local sceneGroup = self.view
    --if event.phase == "will" then
-
-  -- local channel1 = audio.findFreeChannel(1)
-   --	audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
-   -- audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
-
+if ((audio.isChannelActive( 1 ))==false )then 
+   local channel1 = audio.findFreeChannel(1)
+    audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
+    audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
+end 
    if event.phase == "did" then
      --print("menu-> show (did)")
  print("menu - show")
