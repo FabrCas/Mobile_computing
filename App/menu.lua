@@ -107,6 +107,7 @@ end
       if nil~= composer.getScene("levels.scene28") then composer.removeScene("levels.scene28", false) end
       if nil~= composer.getScene("levels.scene29") then composer.removeScene("levels.scene29", false) end
       if nil~= composer.getScene("levels.scene30") then composer.removeScene("levels.scene30", false) end
+      if nil~= composer.getScene("levels.insertNick") then composer.removeScene("levels.insertNick", false) end
 
       
       if f ~= nil then f = require("lib.funzioni") end 

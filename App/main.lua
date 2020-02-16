@@ -8,8 +8,8 @@ display.setStatusBar( display.HiddenStatusBar )
 local preference = require "lib.preference"
 require ("lib.partitaStoria")
 --Store numbers
-preference.save{danno=10}
-preference.save{numeroPalle=12} --8
+preference.save{danno=1}
+preference.save{numeroPalle=8} --8
 preference.save{rimbalzo=80} --/100
 preference.save{grandezza=10} --diametro
 preference.save{densita=5} --/10
