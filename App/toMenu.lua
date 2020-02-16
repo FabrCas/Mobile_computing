@@ -82,14 +82,14 @@ end
 local function ruotaPgSinistra()
   print( "ruota sinistra" )
   if (cottonBall~=nil) then 
-    transition.to( cottonBall, { time=3000, rotation =  180 , onComplete=ruotaPgDestra} )
+    transition.to( cottonBall, { time=3000, rotation =  -360 , onComplete=ruotaPgDestra} )
   end
 end
-
+--Runtime:addEventListener("enterFrame", function() print(cottonBall.rotation) end)
 local function ruotaPgDestra()
   print( "ruota destra" )
   if (cottonBall~=nil) then 
-    transition.to( cottonBall, { time=3000, rotation = 360, onComplete=ruotaPgSinistra} )
+    transition.to( cottonBall, { time=3000, rotation = 999999, onComplete=ruotaPgSinistra} )
   end
 end
 ---**********************************************animazioni cottonBall--

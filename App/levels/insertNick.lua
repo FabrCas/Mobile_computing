@@ -1,6 +1,8 @@
 local composer = require( "composer" )
 local json = require ("json")
 require ("lib.partitaStoria")
+require("lib.LD_LoaderX")
+local preference = require "lib.preference"
 local scene = composer.newScene()
  
 -- -----------------------------------------------------------------------------------
@@ -10,13 +12,16 @@ local scene = composer.newScene()
  local _W= display.actualContentWidth/2
  local _H= display.actualContentHeight/2
  local nome
+ local sfondo
  local text
+ local crimson
+ local cottonBall
  local cornice
  local sceneGroup
  local nameField
  local id= system.getInfo("deviceID")
  local score= partitaS:score()
- if score=="gianna" then 
+ if ( score=="gianna" or score==nil )then 
   score=0 
 end 
  local ipV4= "http://192.168.1.3"
@@ -110,6 +115,20 @@ end
 
 
 
+function versoDestra()
+  if (cottonball~=nil) then 
+  transition.to( cottonball, { time=3000, x= 280, onComplete=versoSinistra} )
+end
+end 
+
+
+
+function versoSinistra()
+  if (cottonball~=nil) then 
+  transition.to( cottonball, { time=3000, x=40, onComplete=versoDestra} )
+end
+end 
+
 
 
 
@@ -147,8 +166,48 @@ end
 function scene:create( event )
  
     sceneGroup = self.view
+sfondo= display.newImage(composer.imgDir.."sfondoSenzaTorre.png",_W, _H)
+sfondo.xScale= 0.6
+sfondo.height= 480
+
+if preference.getValue("pg")=="crimson" then 
+  print( "crimson" )
+    local options= {
+      width= 702,
+      height= 502,
+      numFrames= 12,
+      sheetContenteWidth= 2808,
+      sheetContenteHeight= 1506
+    }
+
+    local sheetCrimson = graphics.newImageSheet(composer.imgDir.."crimsonBreath.png", options)
+
+    local sequenceData = {
+      name = "crimson", start= 1, count= 12, time = 1000, loopCount= 0
+    }
+    crimson = display.newSprite (sheetCrimson, sequenceData)
+    crimson.x= _W
+    crimson.y= 286
+    crimson.alpha=1
+    crimson.xScale = 0.22
+    crimson.yScale = 0.22
+    crimson:play()
+    sceneGroup:insert(crimson)
+else
+print( "cottonBall" )
+  myLevel= LD_Loader:new(sceneGroup)
+  myLevel:loadLevel("personaggi.cottonBall")
+
+  cottonball= myLevel:getLayerObject("Layer 1", "cottonBall" ).view
+  cottonball:play()
+  cottonball.x= 40
+  cottonball.y= 306
+  sceneGroup:insert(cottonball)
+  versoDestra()
+end 
+
     -- Code here runs when the scene is first created but has not yet appeared on screen
-nameField = native.newTextField( 160, 315, 250, 36 )
+nameField = native.newTextField( 160, 350, 250, 36 )
 nameField.inputType = "default"
 --nameField.text = "Hello World!"
 nameField.font = native.newFont( native.systemFontBold, 18 )
@@ -186,16 +245,19 @@ nameField:addEventListener( "userInput", textListener )
    -- explosion:addEventListener( "sprite", function(event) print(event.phase) if (event.phase == "ended") then print("lalalla") explosion:removeSelf() explosion=nil end end )
     
 
-cornice=  display.newImage(composer.imgDir.."corniceScore.png",160, 315)
+cornice=  display.newImage(composer.imgDir.."corniceScore.png",160, 350)
 cornice.height= 30
 cornice.width= 258
 text= display.newImage(composer.imgDir.."schermataFinale.png",_W, _H)
 text.height= text.height/2
 text.width= text.width/2
+sceneGroup:insert(sfondo)
 sceneGroup:insert(cornice)
 sceneGroup:insert(loading)
 sceneGroup:insert(nameField)
 sceneGroup:insert(text)
+cornice:toBack()
+sfondo:toBack()
 end
  
  
