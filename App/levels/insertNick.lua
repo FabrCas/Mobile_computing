@@ -1,25 +1,37 @@
 local composer = require( "composer" )
 local json = require ("json")
 require ("lib.partitaStoria")
+require("lib.LD_LoaderX")
+local preference = require "lib.preference"
 local scene = composer.newScene()
  
 -- -----------------------------------------------------------------------------------
 -- Code outside of the scene event functions below will only be executed ONCE unless
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
- 
+ local _W= display.actualContentWidth/2
+ local _H= display.actualContentHeight/2
  local nome
- local testo
+ local sfondo
+ local text
+ local crimson
+ local cottonBall
+ local cornice
  local sceneGroup
  local nameField
  local id= system.getInfo("deviceID")
  local score= partitaS:score()
+ if ( score=="gianna" or score==nil )then 
+  score=0 
+end 
+ local ipV4= "http://192.168.1.3"
+ local loading 
 
 
 local function  cancellazioneEnnupla(event)
   if ( event.isError ) then
                 print( "Network error!")
-                  network.request( "http://192.168.1.2/cancellaEnnupla.php?id="..string.format(id), "GET", cancellazioneEnnupla )
+                  network.request( ipV4.."/cancellaEnnupla.php?id="..string.format(id), "GET", cancellazioneEnnupla )
         else
           myNewData = event.response
           print( myNewData )
@@ -31,7 +43,7 @@ end
 local function networkListener( event )
         if ( event.isError ) then
                 print( "Network error!")
-                network.request( "http://192.168.1.2/getValoremax.php?id="..string.format(id), "GET", networkListener )
+                network.request( ipV4.."/getValoremax.php?id="..string.format(id), "GET", networkListener )
         else
                 myNewData = event.response
                 if myNewData == "" then 
@@ -64,7 +76,13 @@ print("scoreeee" )
 print( score )
  if tonumber(decodedData[3]) < score then 
   print( "cancellazione" )
-  network.request( "http://192.168.1.2/cancellaEnnupla.php?id="..string.format(id), "GET", cancellazioneEnnupla )
+  network.request( ipV4.."/cancellaEnnupla.php?id="..string.format(id), "GET", cancellazioneEnnupla )
+ else
+  print( "valore minore uguale allo score massimo che hai raggiunto" )
+  if (nameField ~= nil) then 
+  nameField:removeSelf()
+end
+  composer.gotoScene("menu", { effect = "crossFade", time = 200})
  end
 
  end
@@ -72,7 +90,7 @@ print( score )
 end
 
 function getValoreMAX()
-network.request( "http://192.168.1.2/getValoremax.php?id="..string.format(id), "GET", networkListener )
+network.request( ipV4.."/getValoremax.php?id="..string.format(id), "GET", networkListener )
 end
 
 function ciccio(event)
@@ -85,7 +103,7 @@ function inserisciValori()
 print( id )
 print( nome )
 print( score )
-network.request( "http://192.168.1.2/save.php?id="..string.format(id).."&nick="..string.format(nome).."&score="..string.format(score), "GET", ciccio )
+network.request( ipV4.."/save.php?id="..string.format(id).."&nick="..string.format(nome).."&score="..string.format(score), "GET", ciccio )
 end
 
 
@@ -96,6 +114,20 @@ end
 
 
 
+
+function versoDestra()
+  if (cottonball~=nil) then 
+  transition.to( cottonball, { time=3000, x= 280, onComplete=versoSinistra} )
+end
+end 
+
+
+
+function versoSinistra()
+  if (cottonball~=nil) then 
+  transition.to( cottonball, { time=3000, x=40, onComplete=versoDestra} )
+end
+end 
 
 
 
@@ -124,30 +156,64 @@ local function textListener( event )
     elseif ( event.phase == "ended" or event.phase == "submitted" ) then
         -- Output resulting text from "defaultField"
         print( event.target.text )
-        if testo ~= nil then 
-            sceneGroup:remove(testo)
-            testo:removeSelf()
-            testo= nil 
-        end
         nome= string.sub(event.target.text,0,20)
         getValoreMAX()
-        --inserisciValori(nome)
-        testo=display.newText(nome, display.actualContentWidth/2, display.actualContentHeight/2,native.systemFontBold, 10)
-        sceneGroup:insert(testo)
+        loading.alpha=1
+        loading:play()
     end
 end
 -- create()
 function scene:create( event )
  
     sceneGroup = self.view
+sfondo= display.newImage(composer.imgDir.."sfondoSenzaTorre.png",_W, _H)
+sfondo.xScale= 0.6
+sfondo.height= 480
+
+if preference.getValue("pg")=="crimson" then 
+  print( "crimson" )
+    local options= {
+      width= 702,
+      height= 502,
+      numFrames= 12,
+      sheetContenteWidth= 2808,
+      sheetContenteHeight= 1506
+    }
+
+    local sheetCrimson = graphics.newImageSheet(composer.imgDir.."crimsonBreath.png", options)
+
+    local sequenceData = {
+      name = "crimson", start= 1, count= 12, time = 1000, loopCount= 0
+    }
+    crimson = display.newSprite (sheetCrimson, sequenceData)
+    crimson.x= _W
+    crimson.y= 286
+    crimson.alpha=1
+    crimson.xScale = 0.22
+    crimson.yScale = 0.22
+    crimson:play()
+    sceneGroup:insert(crimson)
+else
+print( "cottonBall" )
+  myLevel= LD_Loader:new(sceneGroup)
+  myLevel:loadLevel("personaggi.cottonBall")
+
+  cottonball= myLevel:getLayerObject("Layer 1", "cottonBall" ).view
+  cottonball:play()
+  cottonball.x= 40
+  cottonball.y= 306
+  sceneGroup:insert(cottonball)
+  versoDestra()
+end 
+
     -- Code here runs when the scene is first created but has not yet appeared on screen
-nameField = native.newTextField( 150, 300, 220, 36 )
+nameField = native.newTextField( 160, 350, 250, 36 )
 nameField.inputType = "default"
 --nameField.text = "Hello World!"
 nameField.font = native.newFont( native.systemFontBold, 18 )
 nameField.size = 18
 nameField:resizeHeightToFitFont()
-nameField.placeholder = "(Insert you nickname)"
+nameField.placeholder = "(Tap to insert)"
 nameField.align = "center"
 nameField.hasBackground = false
 nameField.spellCheckingType = "UITextSpellCheckingTypeNo"
@@ -155,7 +221,43 @@ nameField.autocorrectionType = "UITextAutocorrectionTypeNo"
 nameField:resizeHeightToFitFont()
 nameField:setTextColor(1,0.2,0.1,1)
 nameField:addEventListener( "userInput", textListener )
+
+    local options= {
+      width= 256,
+      height= 256,
+      numFrames= 25,
+      sheetContenteWidth= 1024,
+      sheetContenteHeight= 2048
+    }
+
+    local sheetExplosion = graphics.newImageSheet(composer.imgDir.."loading.png", options)
+
+    local sequenceData = {
+      name = "loading", start= 1, count= 25, time = 1000, loopCount= 1000
+    }
+    loading = display.newSprite (sheetExplosion, sequenceData)
+    loading.x= 295
+    loading.y= 455
+    loading.xScale = 0.2
+    loading.yScale = 0.2
+    loading.alpha= 0
+
+   -- explosion:addEventListener( "sprite", function(event) print(event.phase) if (event.phase == "ended") then print("lalalla") explosion:removeSelf() explosion=nil end end )
+    
+
+cornice=  display.newImage(composer.imgDir.."corniceScore.png",160, 350)
+cornice.height= 30
+cornice.width= 258
+text= display.newImage(composer.imgDir.."schermataFinale.png",_W, _H)
+text.height= text.height/2
+text.width= text.width/2
+sceneGroup:insert(sfondo)
+sceneGroup:insert(cornice)
+sceneGroup:insert(loading)
 sceneGroup:insert(nameField)
+sceneGroup:insert(text)
+cornice:toBack()
+sfondo:toBack()
 end
  
  
@@ -164,10 +266,6 @@ function scene:show( event )
  
     sceneGroup = self.view
     local phase = event.phase
-
-       -- testo = display.newText("crediti", display.actualContentWidth/2, display.actualContentHeight/2,native.systemFontBold, 30)
-    
-
     
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)

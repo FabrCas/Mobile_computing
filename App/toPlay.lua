@@ -23,10 +23,10 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
     sceneGroup = self.view
-
-   local testoSchermo = display.newText("Tap to play\n [test level]", _W/2, _H/2-30,native.systemFontBold, 20)
-   testoSchermo:setFillColor(0.9, 0.1, 0)
-   sceneGroup:insert(testoSchermo)
+composer.gotoScene( "levels.mappa" )
+ --  local testoSchermo = display.newText("Tap to play\n [test level]", _W/2, _H/2-30,native.systemFontBold, 20)
+  -- testoSchermo:setFillColor(0.9, 0.1, 0)
+  -- sceneGroup:insert(testoSchermo)
 
 
  local function onClick(event)
@@ -37,7 +37,7 @@ function scene:create( event )
  return true
 end
 
-   testoSchermo:addEventListener("tap", onClick )
+  -- testoSchermo:addEventListener("tap", onClick )
 end
 
 
