@@ -13,23 +13,46 @@ local levelGroup=nil
 local clicked = 0
 local numeroPagineMenu= 3
 local preference = require "lib.preference"
+local x
+local y
+
+local function tapHighscores(event)
+    print("tap highscores")
+    local channel2= audio.findFreeChannel(2)
+  audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
+  audio.play(tapSound,{channel= channel2})
+  local options = { effect = "crossFade", time = 200}
+      composer.gotoScene("score",options)
+  end
+
+  local function salvaxy(event)
+      print ("background clicked")
+      x= event.x
+      y= event.y
+  end
+
+
 -- Called when the scene's view does not exist:
 function scene:create( event )
   print("menu - create")
   physics.start()
     -- view is not yet visible
     local sceneGroup = self.view
-
-
 	menuSound= audio.loadStream("sounds/montage.mp3")
-
 --print("menu-> create")
-
 	-- Insert your own background
 	 local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
 	background.anchorX = 0
   background.anchorY = 0
+  background:addEventListener("tap", salvaxy)
 	sceneGroup:insert(background)
+
+  local highscores = display.newImage(composer.imgDir .. "scoreSymbol.png",296-4, 461-6)
+  a=1.3
+  highscores.width = 41*a
+  highscores.height = 31.5*a
+  sceneGroup:insert(highscores)
+  highscores:addEventListener("tap", tapHighscores)
 
 	--set images for carousel
 	-- table item is { unlocked image, locked image, locked}
@@ -63,11 +86,11 @@ local arcade = composer.loadScene( "arcade", false)
 
    local sceneGroup = self.view
    --if event.phase == "will" then
-if ((audio.isChannelActive( 1 ))==false )then 
+if ((audio.isChannelActive( 1 ))==false )then
    local channel1 = audio.findFreeChannel(1)
     audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
     audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
-end 
+end
    if event.phase == "did" then
      --print("menu-> show (did)")
  print("menu - show")
@@ -76,6 +99,7 @@ end
       if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
       if nil~= composer.getScene("toOptions") then composer.removeScene("toOptions", false) end
       if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
+      if nil~= composer.getScene("score") then composer.removeScene("score", false) end
       if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
       if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
       if nil~= composer.getScene("levels.scene2") then composer.removeScene("levels.scene2", false) end
@@ -108,8 +132,8 @@ end
       if nil~= composer.getScene("levels.scene29") then composer.removeScene("levels.scene29", false) end
       if nil~= composer.getScene("levels.scene30") then composer.removeScene("levels.scene30", false) end
 
-      
-      if f ~= nil then f = require("lib.funzioni") end 
+
+      if f ~= nil then f = require("lib.funzioni") end
 
 
 	local function runLevel(livello)
@@ -123,9 +147,9 @@ end
     print("modalita dal menu scelta tower = " .. mod_par)
     print("weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
     print(preference.getValue("pg"))
-   if (preference.getValue("pg")=="gianna" or preference.getValue("pg")==nil )then 
+   if (preference.getValue("pg")=="gianna" or preference.getValue("pg")==nil )then
     composer.gotoScene("selectPG", { effect = "crossFade", time = 200})
- else 
+ else
     composer.gotoScene("toPlay", { effect = "crossFade", time = 200})
  end
     return true
@@ -139,18 +163,21 @@ end
     return true
 	end
 end
-
+_G.evento = nil
 	local function onLevelSelected(event)
-		clicked = clicked + 1
-		if (clicked ==1) then
+    print("y="..y) print("x="..x)
+		if (y<420) then
+      y=440
 			Runtime:removeEventListener("levelClicked")
 			--levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
 			--print (clicked, "clicked level", event.level)
-			timer.performWithDelay(0,  runLevel(event.level) ,1)
+		--	timer.performWithDelay(0,  runLevel(event.level) ,1)
+    timer.performWithDelay(0,  runLevel(evento) ,1)
 		end
 	end
 
-	Runtime:addEventListener("levelClicked", onLevelSelected)
+--	Runtime:addEventListener("levelClicked", onLevelSelected)
+  Runtime:addEventListener("levelClicked", function(event) evento=event.level timer.performWithDelay(100,onLevelSelected) end)
 
    end --ends phase did
 
