@@ -79,23 +79,64 @@ end
 ---**********************************************animazioni crimson--
 
 ---**********************************************animazioni cottonBall--
+-- inizio rotazione
 local function ruotaPgSinistra()
   print( "ruota sinistra" )
   if (cottonBall~=nil) then 
-    transition.to( cottonBall, { time=3000, rotation =  -360 , onComplete=ruotaPgDestra} )
+    transition.to( cottonBall, { time=100000, rotation =  -36000 , onComplete=ruotaPgDestra} )
   end
 end
 --Runtime:addEventListener("enterFrame", function() print(cottonBall.rotation) end)
 local function ruotaPgDestra()
   print( "ruota destra" )
   if (cottonBall~=nil) then 
-    transition.to( cottonBall, { time=3000, rotation = 999999, onComplete=ruotaPgSinistra} )
+    transition.to( cottonBall, { time=100000, rotation = 36000, onComplete=ruotaPgSinistra} )
   end
 end
+--fine rotazione
+
+--inizio movimento
+
+
+function versoMetaYDestra()
+  if (cottonBall~=nil and esci) then 
+  transition.to( cottonBall, { time=1200, x=275, y= 240, onComplete=versoMetaXGiu} )
+end
+end 
+
+function versoMetaXGiu()
+  if (cottonBall~=nil and esci) then 
+  transition.to( cottonBall, { time=1000, x= 160, y= 435, onComplete=versoMetaYSinistra} )
+end
+end 
+
+function versoMetaYSinistra()
+  if (cottonBall~=nil and esci) then 
+  transition.to( cottonBall, { time=1000, x= 45,y= 240 , onComplete=versodueterziYDestra} )
+end
+end 
+
+function versodueterziYDestra()
+  if (cottonBall~=nil and esci) then 
+  transition.to( cottonBall, { time=1000, x=275 ,y= 160, onComplete=versoPosizioneIniziale} )
+end
+
+end function versoPosizioneIniziale()
+  if (cottonBall~=nil and esci) then 
+  transition.to( cottonBall, { time=1000, x= 45, y= 45, onComplete=versoMetaYDestra} )
+end
+end 
+
+
+
+
+
+--fine movimento
 ---**********************************************animazioni cottonBall--
 
 function animazioniPersonaggio() 
   ruotaPgDestra()
+  versoMetaYDestra()
   versoDestra()
 end 
 
@@ -120,6 +161,8 @@ function scene:create( event )
   cottonBall= myLevel:getLayerObject("Layer 1", "batuffolo_1").view
   crimson= myLevel:getLayerObject("Layer 1", "crimsonWalk_5").view
 
+  cottonBall.x= 45
+  cottonBall.y= 45
   title= display.newImage(composer.imgDir.."towerOfBricks.png", _W/2, _H/2 - 150)
   title.width= 200
   title.height= 200
@@ -132,8 +175,8 @@ function scene:create( event )
 
 
 	sceneGroup:insert(background)
-  sceneGroup:insert(cottonBall)
   sceneGroup:insert(crimson)
+  sceneGroup:insert(cottonBall)
   sceneGroup:insert(title)
   sceneGroup:insert(continue)
 

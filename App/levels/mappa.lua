@@ -366,12 +366,25 @@ end
 -- create()
 function scene:create( event )
    print ("createeeee mappaaaaaaaaaaaaaaaaa stronzoooooooooooooooooooooooooooo")
-  partitaS:new()
+ partitaS:new()
   torre = partitaS:torre()
    p1 = partitaS:torre().primoPiano
    p2 = partitaS:torre().secondoPiano
    p3 = partitaS:torre().terzoPiano
+local stats = partitaS:stats()
 
+  if (preference.getValue("pg")=="cottonBall") then
+    stats.numeroPalle = stats.numeroPalle + 1
+    stats.rimbalzo= stats.rimbalzo + 2
+    stats.fortuna= stats.fortuna + 1
+    preference.save{statsT= stats}
+  end
+
+  if (preference.getValue("pg")=="crimson") then
+    stats.grandezza= stats.grandezza + 2
+    stats.velocita= stats.velocita + 1
+    preference.save{statsT= stats}
+  end
     sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 background = display.newImage(composer.imgDir .. "scrollBg.jpg", 0, 0, true)

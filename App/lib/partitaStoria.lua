@@ -545,7 +545,7 @@ function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   scoreParziale = scoreParziale + (palleRimaste*500)
   if(scoreParziale > 0) then
      if preference.getValue("score")=="gianna" then
-  score = score + scoreParziale
+  score = scoreParziale
 else
     score = preference.getValue("score") + scoreParziale
   end
