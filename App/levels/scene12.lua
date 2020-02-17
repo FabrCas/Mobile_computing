@@ -6,7 +6,7 @@ local composer = require( "composer" )
 --sceglieri qui partita storia o no
 
 local scene = composer.newScene()
-levelSound= audio.loadSound("sounds/l2s.mp3")
+levelSound= audio.loadSound("sounds/egypt.mp3")
 require("lib.LD_LoaderX")
 require("lib.LD_HelperX")
 

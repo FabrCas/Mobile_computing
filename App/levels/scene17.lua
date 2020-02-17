@@ -94,6 +94,9 @@ function scene:show( event )
 	else 
     obj[i].view.life = 4
     obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
+    if (obj[i].view.name=="g") then 
+    	obj[i].view.scritta:setFillColor(0,0,0)
+    end
   screenGroup:insert(obj[i].view.scritta)
 
   angolo= obj[i].view.rotation
