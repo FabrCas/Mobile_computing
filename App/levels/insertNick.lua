@@ -17,6 +17,7 @@ local scene = composer.newScene()
  local crimson
  local cottonBall
  local cornice
+ local tries
  local sceneGroup
  local nameField
  local id= system.getInfo("deviceID")
@@ -31,8 +32,14 @@ end
 local function  cancellazioneEnnupla(event)
   if ( event.isError ) then
                 print( "Network error!")
+                tries = tries + 1
+                if tries <= 10 then
                   network.request( ipV4.."/cancellaEnnupla.php?id="..string.format(id), "GET", cancellazioneEnnupla )
+                else
+                  composer.gotoScene("menu", { effect = "crossFade", time = 200})
+                end
         else
+          tries = 0
           myNewData = event.response
           print( myNewData )
           inserisciValori()
@@ -43,8 +50,14 @@ end
 local function networkListener( event )
         if ( event.isError ) then
                 print( "Network error!")
+                tries = tries + 1
+                if tries <= 10 then 
                 network.request( ipV4.."/getValoremax.php?id="..string.format(id), "GET", networkListener )
+              else
+                composer.gotoScene("menu", { effect = "crossFade", time = 200})
+              end
         else
+          tries= 0
                 myNewData = event.response
                 if myNewData == "" then 
                 print( "nulla" )
@@ -94,9 +107,19 @@ network.request( ipV4.."/getValoremax.php?id="..string.format(id), "GET", networ
 end
 
 function ciccio(event)
+   if ( event.isError ) then
+                print( "Network error!")
+                tries = tries + 1
+                if tries <= 10 then 
+                network.request( ipV4.."/save.php?id="..string.format(id).."&nick="..string.format(nome).."&score="..string.format(score), "GET", ciccio )
+              else
+                composer.gotoScene("menu", { effect = "crossFade", time = 200})
+              end
+        else
     print("fatto insert")
     nameField:removeSelf()
    composer.gotoScene("menu", { effect = "crossFade", time = 200})
+ end
 end
 
 function inserisciValori()
@@ -258,6 +281,8 @@ sceneGroup:insert(nameField)
 sceneGroup:insert(text)
 cornice:toBack()
 sfondo:toBack()
+
+tries= 0
 end
  
  

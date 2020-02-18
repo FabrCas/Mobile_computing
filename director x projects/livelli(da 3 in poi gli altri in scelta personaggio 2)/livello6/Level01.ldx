@@ -414,91 +414,145 @@
    </physics>
   </object>
   <object uid="{7fae41da-4a49-44a5-bc0a-670a75062b8d}" shape="6" name="23" alpha="1" blendMode="0" idx="29" spriteName="" x="191.393" y="172.117" width="32" height="16" rotation="-43" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{8b95f35e-a4ba-45ba-8726-bb39ded6c8d4}" shape="6" name="24" alpha="1" blendMode="0" idx="29" spriteName="" x="220.271" y="145.899" width="32" height="16" rotation="-25" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{53f6925e-bd6c-4d11-882b-c0198da434cc}" shape="6" name="25" alpha="1" blendMode="0" idx="29" spriteName="" x="256.136" y="133.197" width="32" height="16" rotation="-6" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{8c846410-00ae-4aa6-bdef-68519d3ed50b}" shape="6" name="26" alpha="1" blendMode="0" idx="29" spriteName="" x="307.072" y="132.196" width="50.4513" height="16" rotation="89" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{d68e9bdb-f95f-445a-90ec-2ae386e0e6cd}" shape="6" name="27" alpha="1" blendMode="0" idx="29" spriteName="" x="223.795" y="196.205" width="32" height="16" rotation="-27" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{8610abea-f7dd-4f5c-9caf-7302cad679c7}" shape="6" name="28" alpha="1" blendMode="0" idx="29" spriteName="" x="255.763" y="177.912" width="32" height="16" rotation="-17" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{5ef7ec4a-53ac-44fa-bffb-3d2e42ad3f10}" shape="6" name="29" alpha="1" blendMode="0" idx="29" spriteName="" x="36.692" y="312.93" width="32" height="16" rotation="-6" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{43b6037b-dba1-4437-8358-819aa998919b}" shape="6" name="30" alpha="1" blendMode="0" idx="29" spriteName="" x="10.149" y="309.582" width="26.5311" height="16" rotation="-355" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{493ad2f4-76f7-4ddc-bad7-1de96456b72d}" shape="6" name="31" alpha="1" blendMode="0" idx="29" spriteName="" x="21.9684" y="276.841" width="32" height="16" rotation="-265" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{8fc43b82-e4e1-4802-a34e-806c6d96b661}" shape="6" name="32" alpha="1" blendMode="0" idx="29" spriteName="" x="21.3107" y="269.073" width="46.7432" height="16" rotation="-7" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{cfbef957-7595-478c-bf2d-3ca76e6616f4}" shape="6" name="33" alpha="1" blendMode="0" idx="29" spriteName="" x="37.54" y="200.422" width="38.6563" height="16" rotation="-4" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{96e85b50-43b9-4c3e-99fc-141eb8977648}" shape="6" name="34" alpha="1" blendMode="0" idx="29" spriteName="" x="42.4826" y="192.077" width="26.0448" height="16" rotation="-243" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{61712c61-87a8-4d85-81e0-6e05efafe20a}" shape="6" name="35" alpha="1" blendMode="0" idx="29" spriteName="" x="36.6405" y="186.784" width="29.7771" height="16" rotation="-137" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{62ab291d-e671-4d43-a043-87dd6fd6a364}" shape="6" name="36" alpha="1" blendMode="0" idx="29" spriteName="" x="38.6718" y="151.5" width="31.3321" height="16" rotation="-4" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{2228b5ce-2eec-4b18-89d6-9f5795a78675}" shape="6" name="37" alpha="1" blendMode="0" idx="29" spriteName="" x="265.675" y="300.899" width="35.3971" height="16" rotation="-24" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{c4fc1ff9-3bc0-4bee-a6ed-4add7b49787c}" shape="6" name="38" alpha="1" blendMode="0" idx="29" spriteName="" x="257.091" y="253.891" width="23.8504" height="16" rotation="-26" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{05b49136-24e8-48f9-bbd4-4135dc52e187}" shape="6" name="1" alpha="1" blendMode="0" idx="29" spriteName="" x="300.014" y="237.43" width="28.132" height="16" rotation="-275" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
   </object>
   <object uid="{995be912-7061-4cdc-8967-6721a38a4d07}" shape="6" name="2" alpha="1" blendMode="0" idx="29" spriteName="" x="290.908" y="268.107" width="22.7707" height="16" rotation="9" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="g"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>
