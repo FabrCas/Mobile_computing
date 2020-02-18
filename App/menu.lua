@@ -166,6 +166,7 @@ end
 end
 _G.evento = nil
 	local function onLevelSelected(event)
+  if y~=nil and x~=nil then
     print("y="..y) print("x="..x)
 		if (y<420) then
       y=440
@@ -175,6 +176,8 @@ _G.evento = nil
 		--	timer.performWithDelay(0,  runLevel(event.level) ,1)
     timer.performWithDelay(0,  runLevel(evento) ,1)
 		end
+  else Runtime:removeEventListener("levelClicked") timer.performWithDelay(0,  runLevel(evento) ,1) end
+
 	end
 
 --	Runtime:addEventListener("levelClicked", onLevelSelected)
