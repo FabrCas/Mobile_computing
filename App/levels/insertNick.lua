@@ -25,12 +25,12 @@ local scene = composer.newScene()
  if ( score=="gianna" or score==nil )then 
   score=0 
 end 
- local ipV4= "http://192.168.1.3"
+ local ipV4= "http://192.168.1.47:8080"
  local loading 
 
 
 local function  cancellazioneEnnupla(event)
-  if ( event.isError ) then
+  if ( event.isError or tries > 10) then
                 print( "Network error!")
                 tries = tries + 1
                 if tries <= 10 then
@@ -48,8 +48,9 @@ end
 
 
 local function networkListener( event )
-        if ( event.isError ) then
+        if ( event.isError or  tries > 10) then
                 print( "Network error!")
+                print( event.response )
                 tries = tries + 1
                 if tries <= 10 then 
                 network.request( ipV4.."/getValoremax.php?id="..string.format(id), "GET", networkListener )
@@ -107,7 +108,7 @@ network.request( ipV4.."/getValoremax.php?id="..string.format(id), "GET", networ
 end
 
 function ciccio(event)
-   if ( event.isError ) then
+   if ( event.isError or tries > 10) then
                 print( "Network error!")
                 tries = tries + 1
                 if tries <= 10 then 
@@ -128,14 +129,6 @@ print( nome )
 print( score )
 network.request( ipV4.."/save.php?id="..string.format(id).."&nick="..string.format(nome).."&score="..string.format(score), "GET", ciccio )
 end
-
-
-
-
-
-
-
-
 
 
 function versoDestra()
@@ -187,6 +180,7 @@ local function textListener( event )
 end
 -- create()
 function scene:create( event )
+ native.setProperty( "androidSystemUiVisibility", "default" )
  
     sceneGroup = self.view
 sfondo= display.newImage(composer.imgDir.."sfondoSenzaTorre.png",_W, _H)
@@ -224,13 +218,13 @@ print( "cottonBall" )
   cottonball= myLevel:getLayerObject("Layer 1", "cottonBall" ).view
   cottonball:play()
   cottonball.x= 40
-  cottonball.y= 306
+  cottonball.y= 216 -- -90
   sceneGroup:insert(cottonball)
   versoDestra()
 end 
 
     -- Code here runs when the scene is first created but has not yet appeared on screen
-nameField = native.newTextField( 160, 350, 250, 36 )
+nameField = native.newTextField( 160, 260, 250, 36 )
 nameField.inputType = "default"
 --nameField.text = "Hello World!"
 nameField.font = native.newFont( native.systemFontBold, 18 )
@@ -238,7 +232,7 @@ nameField.size = 18
 nameField:resizeHeightToFitFont()
 nameField.placeholder = "(Tap to insert)"
 nameField.align = "center"
-nameField.hasBackground = false
+nameField.hasBackground = true
 nameField.spellCheckingType = "UITextSpellCheckingTypeNo"
 nameField.autocorrectionType = "UITextAutocorrectionTypeNo"
 nameField:resizeHeightToFitFont()
@@ -268,7 +262,7 @@ nameField:addEventListener( "userInput", textListener )
    -- explosion:addEventListener( "sprite", function(event) print(event.phase) if (event.phase == "ended") then print("lalalla") explosion:removeSelf() explosion=nil end end )
     
 
-cornice=  display.newImage(composer.imgDir.."corniceScore.png",160, 350)
+cornice=  display.newImage(composer.imgDir.."corniceScore.png",160, 260)
 cornice.height= 30
 cornice.width= 258
 text= display.newImage(composer.imgDir.."schermataFinale.png",_W, _H)

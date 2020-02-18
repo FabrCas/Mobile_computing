@@ -494,6 +494,9 @@
    </physics>
   </object>
   <object uid="{9309e861-9dac-43da-aa14-eddf6d0024a9}" shape="6" name="1" alpha="1" blendMode="0" idx="48" spriteName="" x="143" y="260" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="speciale"/>
+   </properties>
    <physics enabled="0" bodytype="0" convex="0" linked="1">
     <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
    </physics>

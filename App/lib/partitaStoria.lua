@@ -544,7 +544,7 @@ function partitaS:aggiungiscore(scoreLivello, tempo, palleRimaste, isGameOver)
   scoreParziale = scoreLivello - (tempo) --ogni 5 secondi diminuisce lo score di un valore unitario
   scoreParziale = scoreParziale + (palleRimaste*500)
   if(scoreParziale > 0) then
-     if preference.getValue("score")=="gianna" then
+     if preference.getValue("score")=="gianna" or preference.getValue("score")==nil then
   score = scoreParziale
 else
     score = preference.getValue("score") + scoreParziale

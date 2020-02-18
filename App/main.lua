@@ -5,6 +5,17 @@
 -----------------------------------------------------------------------------------------
 system.activate("multitouch")
 display.setStatusBar( display.HiddenStatusBar )
+
+if ( system.getInfo("platformName") == "Android" ) then
+   local androidVersion = string.sub( system.getInfo( "platformVersion" ), 1, 3)
+   if( androidVersion and tonumber(androidVersion) >= 4.4 ) then
+     native.setProperty( "androidSystemUiVisibility", "immersiveSticky" )
+     --native.setProperty( "androidSystemUiVisibility", "lowProfile" )
+   elseif( androidVersion ) then
+     native.setProperty( "androidSystemUiVisibility", "lowProfile" )
+   end
+end
+local socket = require( "socket" )
 local preference = require "lib.preference"
 require ("lib.partitaStoria")
 --Store numbers
@@ -36,6 +47,23 @@ composer.musicDir = "sounds/"
 composer.level = 1 --sei nel menu
 
 
+function findPublicIPAddress()
+    
+    local getipScriptURL = "http://myip.dnsomatic.com/"
+    local DeviceIP
+    
+    function ipListener(event)
+        if not event.isError and event.response ~= "" then
+            DeviceIP = event.response 
+            print("Public DeviceIP:"..DeviceIP)
+        end
+    end
+    
+    network.request(getipScriptURL,"GET",ipListener) 
+    
+end
+
+findPublicIPAddress()
 
 composer.gotoScene( "toMenu"
 	--, "fade", 500
