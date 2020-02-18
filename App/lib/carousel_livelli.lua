@@ -14,6 +14,7 @@ local h = 444
 local halfW = display.contentWidth * 0.5
 local halfH = display.contentHeight * 0.5
 local livello
+local sfondoLivello
 
 function new( imageSet, slideBackground, top )
 	local pad = 200
@@ -33,23 +34,24 @@ function new( imageSet, slideBackground, top )
 	background.x = display.contentCenterX
 	background.y = display.contentCenterY
 
+
 	g:insert(background)
 
 	images = {}
 
 	local counterDecine= 1
 	for i = 1, 30 do
-		
+
 		local texture = nil
 		local p = display.newSnapshot( w,h )
 		math.randomseed( 0 )
 
 		local valore
-		if counterDecine >= 10 and counterDecine < 20 then 
+		if counterDecine >= 10 and counterDecine < 20 then
 			--print("counterDecine >= 10")
 		    valore= 1
 			valore2= math.fmod (i, 10)
-		elseif counterDecine >= 20 and counterDecine < 30 then 
+		elseif counterDecine >= 20 and counterDecine < 30 then
 			--print("counterDecine >= 20")
 			valore= 2
 			valore2= math.fmod (i, 10)
@@ -57,13 +59,13 @@ function new( imageSet, slideBackground, top )
 			--print("counterDecine >= 30")
 			valore= 3
 			valore2= math.fmod (i, 10)
-		else 
+		else
 			valore= i
 		end
 
 		--print ("Valore "..valore)
 
-		if counterDecine >= 10 then 
+		if counterDecine >= 10 then
 		texture = display.newImage(myImages[valore].image)
 		texture.xScale= 0.7
 		texture.yScale= 0.5
@@ -76,9 +78,13 @@ function new( imageSet, slideBackground, top )
 		texture2.y= 150
 		texture2.x= texture2.x +40
 
+    sfondoLivello = display.newImage( myImages[valore+100].image)
+		sfondoLivello.x = 160 sfondoLivello.y = 240
 
 		p.canvas:insert( texture )
 		p.canvas:insert( texture2 )
+		p.canvas:insert( sfondoLivello )
+
 
 	else
 
@@ -88,8 +94,14 @@ function new( imageSet, slideBackground, top )
 		texture.yScale= 0.5
 		texture.y= 150
 
+print("valore"..valore)
+    sfondoLivello = display.newImage( myImages[valore+100].image)
+		sfondoLivello.x = 160 sfondoLivello.y = 240
+
+	  p.canvas:insert( sfondoLivello )
 		p.canvas:insert( texture )
 	end
+
 		p:invalidate( "canvas" )
 		g:insert(p)
 

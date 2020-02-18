@@ -107,32 +107,6 @@ network.request( "http://192.168.1.2/save.php?id=34&nick=lollo&score=1111111111"
 
 --recupera valori+**+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
@@ -143,15 +117,15 @@ local function textListener( event )
 
     elseif ( event.phase == "ended" or event.phase == "submitted" ) then
         -- Output resulting text from "defaultField"
-        print( event.target.text )
+    --    print( event.target.text )
         if testo ~= nil then
-            sceneGroup:remove(testo)
+            sceneGroup2:remove(testo)
             testo:removeSelf()
             testo= nil
         end
         nome= string.sub(event.target.text,0,20)
         testo=display.newText(nome, display.actualContentWidth/2, display.actualContentHeight/2,native.systemFontBold, 10)
-        sceneGroup:insert(testo)
+        sceneGroup2:insert(testo)
     end
 end
 -- create()
@@ -159,12 +133,12 @@ end
 
   function creaNumeroMusica(valore,gruppo,scorrere)
     ny = 30+(30 * (valore) + (valore*20))
-      print ("valore M:" .. valore )
+      --print ("valore M:" .. valore )
       local num1,num2
       local char1=valore:sub(0,1)
       local char2= valore:sub(2,2)
-      print (char1)
-      print (char2)
+    --  print (char1)
+    --  print (char2)
   if char2 == "" then
       num1=  display.newImage(composer.imgDir .. char1 .. ".png" ,30 ,ny)
       num2=nil
@@ -188,32 +162,41 @@ end
 
 
 function scene:create( event )
-
+  scorrere = display.newGroup()
+  bg = display.newImage( composer.imgDir .. "toplivello9.jpg", 160,240 )
+   bg.width=320
+   bg.height=480
     sceneGroup = self.view
+    sceneGroup:insert(bg)
+    bg:toBack()
 
     local function backClicked(event)
-
+ Runtime:removeEventListener( "touch", startDrag)
+ Runtime:removeEventListener("enterFrame", limit)
         print("back clicked")
         local channel2= audio.findFreeChannel(2)
       audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
       audio.play(tapSound,{channel= channel2})
       local options = { effect = "crossFade", time = 200}
           composer.gotoScene("menu",options)
- name:removeSelf()
- scoreTable:removeSelf()
+scorrere:removeSelf()
  back:removeSelf()
+
 
       end
 
 
-scorrere = display.newGroup()
+
+
+
+
 
     back= display.newImage(composer.imgDir .. "back.png",296, 461)
     back.width = 41
     back.height = 31.5
     --back.xScale=0.205
     -- back.yScale= 0.1575
-    sceneGroup:insert(back)
+
     back:addEventListener("tap", backClicked)
 
     _G.rectNome = {}
@@ -230,7 +213,7 @@ scorrere = display.newGroup()
     for i=1, 99 do
     --rectNumeri[i] = display.newImage("images/"..i..".png", 30, ex20+(30 * (i) + (i*20)) )
      --rectNumeri[i]:scale(xs,xs)
-    creaNumeroMusica(tostring(i),sceneGroup,scorrere)
+    creaNumeroMusica(tostring(i),scorrere,sceneGroup)
     rectNome[i] = display.newImage("images/rect stats.png", nx, ex20+(30 * (i) + (i*20)) )
     testoNome[i]=display.newText("pippo franco", nx, ex20+(30 * (i) + (i*20)),native.systemFontBold, 10)
     rectNome[i].height=220
@@ -241,38 +224,92 @@ scorrere = display.newGroup()
     rectPunti[i].height=220
     rectPunti[i].width=290
 
-    sceneGroup:insert(rectNome[i])
-    sceneGroup:insert(rectPunti[i])
+    scorrere:insert(rectNome[i])
+    scorrere:insert(rectPunti[i])
     --sceneGroup:insert(rectNumeri[i])
+
     scorrere:insert(name)
     scorrere:insert(scoreTable)
-    scorrere:insert(back)
-    sceneGroup:insert(testoNome[i])
-    sceneGroup:insert(testoPunti[i])
 
+
+    scorrere:insert(testoNome[i])
+    scorrere:insert(testoPunti[i])
 
 
     end
-
     local function startDrag( event )
-      gr = sceneGroup
-                     local phase = event.phase
+             gr = scorrere
+             local phase = event.phase
+
+
      if "began" == phase then
      -- Store initial position
     x0 = event.x
     y0 = event.y
     --ballx0 = sceneGroup.x
     bally0 = gr.y
-     print(x0, y0)
+     print("valore x= "..gr.x.."valore y= "..gr.y)
      -- Stop current motion, if any
-          elseif "moved" == phase or "ended" == phase or "cancelled" == phase then
-                      --  sceneGroup.x = ballx0 + event.x - x0
-                        gr.y = bally0 + event.y - y0
-          end                -- Stop further propagation of touch event!
-                   return true
-                 end
-        Runtime:addEventListener( "touch", startDrag)
 
+   elseif ( bally0~=nil ) then
+
+       print("valore x= "..gr.x.."valore y= "..gr.y)
+              gr.y = bally0 + event.y - y0
+          end       -- Stop further propagation of touch event!
+                   return true
+      end
+      local function limit()
+
+        object = scorrere
+           local x = object.x
+           local y = object.y
+  if y~=nil then
+           if(y > 0) then
+                object.y = 0
+           elseif(y < -99999999999999990) then
+                object.y = 0
+           end
+
+end
+      end
+      Runtime:addEventListener("enterFrame", limit)
+
+        local function startDrag3( event )
+            local t = event.target
+
+            local phase = event.phase
+            if "began" == phase then
+                -- Make target the top-most object
+                local parent = t.parent
+                parent:insert( t )
+                display.getCurrentStage():setFocus( t, event.id )
+
+                t.isFocus = true
+
+                -- Store initial touch position on the actual object - prevents jumping when touched
+                t.xStart = event.x - t.x
+                t.yStart = event.y - t.y
+            elseif t.isFocus then
+                if "moved" == phase then
+                    print(t.xStart)
+                        t.x = event.x - t.xStart
+                        if (t.x < xMin) then t.x = xMin end
+                        if (t.x > xMax) then t.x = xMax end
+
+                    --t.y = event.y - t.yStart
+
+                elseif "ended" == phase or "cancelled" == phase then
+                    display.getCurrentStage():setFocus( t, nil )
+                    t.isFocus = false
+
+                end
+            end
+            --This tells the system that the event
+            -- should not be propagated to listeners of any objects underneath.
+            return true
+        end
+
+          scorrere:addEventListener( "touch", startDrag)
 
 
 
@@ -311,6 +348,8 @@ nameField:resizeHeightToFitFont()
 nameField:setTextColor(1,0.2,0.1,1)
 nameField:addEventListener( "userInput", textListener )
 sceneGroup:insert(nameField)]]
+
+
 end
 
 

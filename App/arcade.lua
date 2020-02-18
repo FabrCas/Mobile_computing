@@ -7,6 +7,7 @@ local _W = display.contentWidth; -- full width of the page
 local _H = display.contentHeight; -- full height of the page
 local touch = {}
 local levelGroup=nil
+local levelGroup2=nil
 local clicked = 0
 local numeroPagineMenu= 30
 local x
@@ -64,6 +65,7 @@ function scene:create( event )
     sceneGroup:insert(back)
     back:addEventListener("tap", backClicked)
      local images = {}
+     local images2 = {}
 
   images[0] = {image = composer.imgDir .. "0.png"}
   images[1] = {image = composer.imgDir .. "1.png"}
@@ -76,11 +78,20 @@ function scene:create( event )
   images[8] = {image = composer.imgDir .. "8.png"}
   images[9] = {image = composer.imgDir .. "9.png"}
 
-
-
+  images[100] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
+  images[101] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
+  images[102] = {image = composer.imgDir .. "8.png"}
+  images[103] = {image = composer.imgDir .. "3.png"}
+  images[104] = {image = composer.imgDir .. "4.png"}
+  images[105] = {image = composer.imgDir .. "5.png"}
+  images[106] = {image = composer.imgDir .. "6.png"}
+  images[107] = {image = composer.imgDir .. "7.png"}
+  images[108] = {image = composer.imgDir .. "8.png"}
+  images[109] = {image = composer.imgDir .. "9.png"}
 
   levelGroup = slideView.new( images, nil)
   sceneGroup:insert(levelGroup)
+
 
 end
 
@@ -94,13 +105,13 @@ function scene:show( event )
 
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
-if ((audio.isChannelActive( 1 ))==false )then 
+if ((audio.isChannelActive( 1 ))==false )then
     print( "***********aioooooooo******************" )
     audio.stop(1)
    local channel1 = audio.findFreeChannel(1)
     audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
     audio.play(menuSound, {loops=-1, channel=channel1, fadein= 1000})
-end 
+end
     elseif ( phase == "did" ) then
 
         print("menuArcade-> show (did)")
@@ -219,6 +230,7 @@ function scene:hide( event )
     elseif ( phase == "did" ) then
         -- Code here runs immediately after the scene goes entirely off screen
  levelGroup = nil
+ levelGroup2 = nil
 print (" page_Arcade destroyed")
     end
 

@@ -539,16 +539,42 @@ if partitaS:personaggio()=="crimson" then
       ball.anchorY= -4.83
       elseif (partitaS:stats().grandezza>= 17 and partitaS:stats().grandezza< 20) then
       ball.anchorY= -4.23
-    elseif (partitaS:stats().grandezza>=20 and partitaS:stats().grandezza< 25) then
-    ball.anchorY= -2.83
-  elseif (partitaS:stats().grandezza>= 25) then
-    ball.anchorY= -1.83
-     elseif (partitaS:stats().grandezza>=10 and partitaS:stats().grandezza< 13) then
+    elseif (partitaS:stats().grandezza>=20 and partitaS:stats().grandezza< 22) then
+    ball.anchorY= -3.5
+  elseif (partitaS:stats().grandezza>= 22 and partitaS:stats().grandezza <28) then
+    ball.anchorY= -3
+  elseif (partitaS:stats().grandezza>= 28 and partitaS:stats().grandezza <30) then
+    ball.anchorY= -2.7
+  elseif (partitaS:stats().grandezza>= 30 and partitaS:stats().grandezza <32) then
+    ball.anchorY= -2.5
+  elseif (partitaS:stats().grandezza>= 32 and partitaS:stats().grandezza <34) then
+    ball.anchorY= -2.3
+  elseif (partitaS:stats().grandezza>= 34 and partitaS:stats().grandezza <39) then
+    ball.anchorY= -2.1
+  elseif (partitaS:stats().grandezza>= 39 ) then
+    ball.anchorY= -1.8
+  elseif (partitaS:stats().grandezza>=11 and partitaS:stats().grandezza< 13) then
       ball.anchorY= -6.83
      elseif (partitaS:stats().grandezza>=13 and partitaS:stats().grandezza< 15) then
       ball.anchorY= -5.83
-    elseif (partitaS:stats().grandezza< 15) then
-      ball.anchorY= -6.83
+    elseif (partitaS:stats().grandezza>=9 and partitaS:stats().grandezza< 11) then
+      ball.anchorY= -7.9
+    elseif (partitaS:stats().grandezza==8) then
+      ball.anchorY= -9.5
+    elseif (partitaS:stats().grandezza==7) then
+      ball.anchorY= -11
+    elseif (partitaS:stats().grandezza==6) then
+      ball.anchorY= -13
+    elseif (partitaS:stats().grandezza==5) then
+      ball.anchorY= -16
+    elseif (partitaS:stats().grandezza==4) then
+      ball.anchorY= -20
+    elseif (partitaS:stats().grandezza==3) then
+      ball.anchorY= -27
+    elseif (partitaS:stats().grandezza==2) then
+      ball.anchorY= -35
+    elseif (partitaS:stats().grandezza<=1) then
+      ball.anchorY= -50
      else
     ball.anchorY= -(4.83 + 0.30* (15 - partitaS:stats().grandezza)) --4,83
   end
