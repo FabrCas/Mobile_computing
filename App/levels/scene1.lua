@@ -28,7 +28,7 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
-composer.gotoScene( "levels.scene26")
+--composer.gotoScene( "levels.scene26")
 print("la modalità è: ".. mod_par)
 if mod_par == "tower" then
 	print("richiesta modalita tower = " .. mod_par)
@@ -133,6 +133,7 @@ end
 
         -- Called when the scene is still off screen (but is about to come on screen).
     elseif ( phase == "did" ) then
+
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
     if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
     if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
@@ -143,8 +144,6 @@ end
         -- Example: start timers, begin animation, play audio, etc.
 
     end
-
-
 end
 
 

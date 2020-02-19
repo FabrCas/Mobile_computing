@@ -42,10 +42,12 @@ local scene = composer.newScene()
   end
   num1.width=45
   num1.height= 45
+  if (not (gruppo == nil )) then 
   gruppo:insert(num1)
+end
   num1:removeSelf()
 
-  if num2~=nil then gruppo:insert(num2) num2:removeSelf() end
+  if num2~=nil then  if (not (gruppo == nil )) then gruppo:insert(num2) end num2:removeSelf() end
   end
 
 --recupera valori+**+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
