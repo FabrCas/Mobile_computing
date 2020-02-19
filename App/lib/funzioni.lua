@@ -297,12 +297,18 @@ local vecchiaPalla
    gruppoLivello = display.newGroup( )
 
    circle = display.newCircle( _W/2, 60, 40 ) --cerchio del pg
+   --da cancellare 
+   circle.alpha= 0
+   --da cancellare 
    gruppoLivello:insert(circle)
    circle:toFront( )
    circle:setFillColor(0,0,0)
    livelloPG = LD_Loader:new(gruppoLivello)
    livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
    pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
+   --da cancellare 
+   pg.alpha= 0
+   --da cancellare 
    if partitaS:personaggio() == "cottonBall" then
    pg.x = _W/2
    pg.y= 60
@@ -316,6 +322,9 @@ local vecchiaPalla
     _G.numBallMax = statistiche.numeroPalle
   display.setDefault( "isAnchorClamped", false )
   cannon.x = _W/2
+  --da cancellare 
+   cannon.alpha= 0
+   --da cancellare 
     cannon.y = 60  --50
     cannon.anchorY = 0.33
     cerchio.view.x = cannon.x cerchio.view.y=60
@@ -1017,6 +1026,7 @@ end
 --FUNZIONE CREAZIONE UI
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
+  --[[ 
   gruppoScena= screenGroup
   _G.myUI = LD_Loader:new(screenGroup)
   myUI:loadLevel("ui.ui")
@@ -1054,7 +1064,7 @@ end end
     obj:removeSelf()
     obj=nil
   end
-
+]]
 end
 function creaGruppo()
 gruppo=display.newGroup( )
