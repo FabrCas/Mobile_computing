@@ -51,9 +51,9 @@ function scene:create( event )
     local sceneGroup = self.view
     print("menuArcade-> create")
 
-     local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
-    background.anchorX = 0
-    background.anchorY = 0
+ background = display.newImage(composer.imgDir .. "sfondoConTorre.png.jpg", _W/2 - 40, _H/2, true)
+  background.xScale= 0.7
+background.height= 480
     background:addEventListener("tap", salvaxy)
     sceneGroup:insert(background)
 
@@ -88,6 +88,27 @@ function scene:create( event )
   images[107] = {image = composer.imgDir .. "7.png"}
   images[108] = {image = composer.imgDir .. "8.png"}
   images[109] = {image = composer.imgDir .. "9.png"}
+  images[110] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
+  images[111] = {image = composer.imgDir .. "8.png"}
+  images[112] = {image = composer.imgDir .. "natura3.jpg"}
+  images[113] = {image = composer.imgDir .. "natura4.jpg"}
+  images[114] = {image = composer.imgDir .. "25238fb7c09d88023911b31ed00a83d0.jpg"}
+  images[115] = {image = composer.imgDir .. "6.png"}
+  images[116] = {image = composer.imgDir .. "7.png"}
+  images[117] = {image = composer.imgDir .. "8.png"}
+  images[118] = {image = composer.imgDir .. "9.png"}
+  images[119] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
+  images[120] = {image = composer.imgDir .. "8.png"}
+  images[121] = {image = composer.imgDir .. "natura3.jpg"}
+  images[122] = {image = composer.imgDir .. "natura4.jpg"}
+  images[123] = {image = composer.imgDir .. "25238fb7c09d88023911b31ed00a83d0.jpg"}
+  images[124] = {image = composer.imgDir .. "6.png"}
+  images[125] = {image = composer.imgDir .. "7.png"}
+  images[126] = {image = composer.imgDir .. "screen26.jpg"}
+  images[127] = {image = composer.imgDir .. "9.png"}
+  images[128] = {image = composer.imgDir .. "7.png"}
+  images[129] = {image = composer.imgDir .. "8.png"}
+  images[130] = {image = composer.imgDir .. "9.png"}
 
   levelGroup = slideView.new( images, nil)
   sceneGroup:insert(levelGroup)

@@ -209,7 +209,6 @@ Runtime:addEventListener("enterFrame",spostamento2)
 
     end
 
-
 end
 
 

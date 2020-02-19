@@ -44,15 +44,17 @@ local function tapHighscores(event)
 -- Called when the scene's view does not exist:
 function scene:create( event )
   print("menu - create")
+  if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
   physics.start()
     -- view is not yet visible
     local sceneGroup = self.view
 	menuSound= audio.loadStream("sounds/montage.mp3")
 --print("menu-> create")
 	-- Insert your own background
-	 local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
-	background.anchorX = 0
-  background.anchorY = 0
+	  background = display.newImage(composer.imgDir .. "sfondoConTorre.png.jpg", _W/2 - 40, _H/2, true)
+  background.xScale= 0.7
+background.height= 480
+
   background:addEventListener("tap", salvaxy)
 	sceneGroup:insert(background)
 
@@ -165,6 +167,30 @@ end
  end
     return true
   elseif livello == 2 then
+    -- inizio animazione caricamento
+    local options= {
+      width= 256,
+      height= 256,
+      numFrames= 25,
+      sheetContenteWidth= 1024,
+      sheetContenteHeight= 2048
+    }
+
+    local sheetExplosion = graphics.newImageSheet(composer.imgDir.."loading.png", options)
+
+    local sequenceData = {
+      name = "loading", start= 1, count= 25, time = 1000, loopCount= 1000
+    }
+    loading = display.newSprite (sheetExplosion, sequenceData)
+    loading.x= 25
+    loading.y= 455
+    loading.xScale = 0.2
+    loading.yScale = 0.2
+    loading:play()
+
+sceneGroup:insert(loading)
+
+--fine animazione caricamento
     mod_par="arcade"
     print("modalita dal menu scelta arcade = " .. mod_par)
     composer.gotoScene( "arcade",{ effect = "crossFade", time = 200} )   --in futuro: arcade
