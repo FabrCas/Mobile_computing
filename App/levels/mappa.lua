@@ -441,6 +441,7 @@ end
     elseif ( phase == "did" ) then
         if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
       if nil~= composer.getScene("levels.scene1") then composer.removeScene("levels.scene1", false) end
+      if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
       if nil~= composer.getScene("levels.scene2") then composer.removeScene("levels.scene2", false) end
       if nil~= composer.getScene("levels.scene3") then composer.removeScene("levels.scene3", false) end
       if nil~= composer.getScene("levels.scene4") then composer.removeScene("levels.scene4", false) end
