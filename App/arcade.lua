@@ -81,9 +81,9 @@ function scene:create( event )
   images[100] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
   images[101] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
   images[102] = {image = composer.imgDir .. "8.png"}
-  images[103] = {image = composer.imgDir .. "3.png"}
-  images[104] = {image = composer.imgDir .. "4.png"}
-  images[105] = {image = composer.imgDir .. "5.png"}
+  images[103] = {image = composer.imgDir .. "natura3.jpg"}
+  images[104] = {image = composer.imgDir .. "natura4.jpg"}
+  images[105] = {image = composer.imgDir .. "25238fb7c09d88023911b31ed00a83d0.jpg"}
   images[106] = {image = composer.imgDir .. "6.png"}
   images[107] = {image = composer.imgDir .. "7.png"}
   images[108] = {image = composer.imgDir .. "8.png"}

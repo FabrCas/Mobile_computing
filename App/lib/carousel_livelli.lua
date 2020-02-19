@@ -80,6 +80,7 @@ function new( imageSet, slideBackground, top )
 
     sfondoLivello = display.newImage( myImages[valore+100].image)
 		sfondoLivello.x = 160 sfondoLivello.y = 240
+		sfondoLivello.width = 200 sfondoLivello.height = 150
 
 		p.canvas:insert( texture )
 		p.canvas:insert( texture2 )
@@ -95,8 +96,10 @@ function new( imageSet, slideBackground, top )
 		texture.y= 150
 
 print("valore"..valore)
+a=0.7
     sfondoLivello = display.newImage( myImages[valore+100].image)
-		sfondoLivello.x = 160 sfondoLivello.y = 240
+		sfondoLivello.x = 0 sfondoLivello.y = -50
+		sfondoLivello.width = 320*a sfondoLivello.height = 460*a
 
 	  p.canvas:insert( sfondoLivello )
 		p.canvas:insert( texture )

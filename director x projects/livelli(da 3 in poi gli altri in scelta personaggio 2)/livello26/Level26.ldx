@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level version="2.0" drawmode="0" width="320" height="480" gridwidth="16" gridheight="16" lastasset="B03" target="0" backgroundcolor="4284900966" gravityX="0" gravityY="9.8" parallaxenabled="0" parallaxinfinite="0" parallaxdamping="1" name="Level26">
+ <assets firstgid="1" name="spazio26" width="540" height="960">
+  <image source="../../../App/images/spazio26.jpg" width="540" height="960"/>
+  <asset frame="0" name="spazio26_0" spritename="" class="" export="1" x="0" y="0" w="540" h="960">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="2" name="B03" width="64" height="32">
+  <image source="../../../App/images/B03.png" width="320" height="160"/>
+  <asset frame="0" name="B03_0" spritename="" class="" export="0" x="0" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="B03_1" spritename="" class="" export="0" x="64" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="B03_2" spritename="" class="" export="0" x="128" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="3" name="B03_3" spritename="" class="" export="0" x="192" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="4" name="B03_4" spritename="" class="" export="0" x="256" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="5" name="B03_5" spritename="" class="" export="0" x="0" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="6" name="B03_6" spritename="" class="" export="0" x="64" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="7" name="B03_7" spritename="" class="" export="1" x="128" y="32" w="64" h="32">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
+    <object uid="{d5cc79a2-8621-4c46-bee7-05e851184c03}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="64" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
+     <polygon points="0,0 0,32 -64,32 -64,0"/>
+     <physics enabled="1" bodytype="0" convex="1" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="8" name="B03_8" spritename="" class="" export="0" x="192" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="9" name="B03_9" spritename="" class="" export="0" x="256" y="32" w="64" h="32">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
+    <object uid="{4a28cb6f-331f-4315-b539-4b15bfefbbb1}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="64" y="32" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2867986689" textcolor="4294967295">
+     <polygon points="0,0 0,-32 -64,-32 -64,0"/>
+     <physics enabled="1" bodytype="0" convex="0" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="10" name="B03_10" spritename="" class="" export="0" x="0" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="11" name="B03_11" spritename="" class="" export="0" x="64" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="12" name="B03_12" spritename="" class="" export="0" x="128" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="13" name="B03_13" spritename="" class="" export="0" x="192" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="14" name="B03_14" spritename="" class="" export="0" x="256" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="15" name="B03_15" spritename="" class="" export="0" x="0" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="16" name="B03_16" spritename="" class="" export="0" x="64" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="17" name="B03_17" spritename="" class="" export="1" x="128" y="96" w="64" h="32">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
+    <object uid="{c8b471d4-9df9-4889-b34f-6047f330dd93}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="64" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
+     <polygon points="0,0 0,32 -64,32 -64,0"/>
+     <physics enabled="1" bodytype="0" convex="1" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="18" name="B03_18" spritename="" class="" export="0" x="192" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="19" name="B03_19" spritename="" class="" export="0" x="256" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="20" name="B03_20" spritename="" class="" export="0" x="0" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="21" name="B03_21" spritename="" class="" export="0" x="64" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="22" name="B03_22" spritename="" class="" export="0" x="128" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="23" name="B03_23" spritename="" class="" export="0" x="192" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="24" name="B03_24" spritename="" class="" export="0" x="256" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="27" name="B11Speciale" width="64" height="32">
+  <image source="../../../App/images/B11Speciale.png" width="320" height="160"/>
+  <asset frame="0" name="B11Speciale_0" spritename="" class="" export="1" x="0" y="0" w="64" h="32">
+   <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Fixtures" gridX="64" gridY="32">
+    <object uid="{3fb6482d-9ca3-4e2e-848f-169f2b40d761}" shape="1" name="polygon_1" alpha="1" blendMode="0" spriteName="" x="64" y="0" width="24" height="24" anchorX="0.5" anchorY="0.5" strokecolor="4294967295" fillcolor="2868035455" textcolor="4294967295">
+     <polygon points="0,0 0,32 -64,32 -64,0"/>
+     <physics enabled="1" bodytype="0" convex="1" linked="1">
+      <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+     </physics>
+    </object>
+   </layer>
+   <physics enabled="1" bodytype="0" convex="0" linked="1">
+    <body bodyshape="2" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="B11Speciale_1" spritename="" class="" export="0" x="64" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="B11Speciale_2" spritename="" class="" export="0" x="128" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="3" name="B11Speciale_3" spritename="" class="" export="0" x="192" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="4" name="B11Speciale_4" spritename="" class="" export="0" x="256" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="5" name="B11Speciale_5" spritename="" class="" export="0" x="0" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="6" name="B11Speciale_6" spritename="" class="" export="0" x="64" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="7" name="B11Speciale_7" spritename="" class="" export="0" x="128" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="8" name="B11Speciale_8" spritename="" class="" export="0" x="192" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="9" name="B11Speciale_9" spritename="" class="" export="0" x="256" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="10" name="B11Speciale_10" spritename="" class="" export="0" x="0" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="11" name="B11Speciale_11" spritename="" class="" export="0" x="64" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="12" name="B11Speciale_12" spritename="" class="" export="0" x="128" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="13" name="B11Speciale_13" spritename="" class="" export="0" x="192" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="14" name="B11Speciale_14" spritename="" class="" export="0" x="256" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="15" name="B11Speciale_15" spritename="" class="" export="0" x="0" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="16" name="B11Speciale_16" spritename="" class="" export="0" x="64" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="17" name="B11Speciale_17" spritename="" class="" export="0" x="128" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="18" name="B11Speciale_18" spritename="" class="" export="0" x="192" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="19" name="B11Speciale_19" spritename="" class="" export="0" x="256" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="20" name="B11Speciale_20" spritename="" class="" export="0" x="0" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="21" name="B11Speciale_21" spritename="" class="" export="0" x="64" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="22" name="B11Speciale_22" spritename="" class="" export="0" x="128" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="23" name="B11Speciale_23" spritename="" class="" export="0" x="192" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="24" name="B11Speciale_24" spritename="" class="" export="0" x="256" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <assets firstgid="52" name="B04" width="64" height="32">
+  <image source="../../../App/images/B03.png" width="320" height="160"/>
+  <asset frame="0" name="B03_0" spritename="" class="" export="0" x="0" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="1" name="B03_1" spritename="" class="" export="0" x="64" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="2" name="B03_2" spritename="" class="" export="0" x="128" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="3" name="B03_3" spritename="" class="" export="0" x="192" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="4" name="B03_4" spritename="" class="" export="0" x="256" y="0" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="5" name="B03_5" spritename="" class="" export="0" x="0" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="6" name="B03_6" spritename="" class="" export="0" x="64" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="7" name="B04" spritename="" class="" export="1" x="128" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="8" name="B03_8" spritename="" class="" export="0" x="192" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="9" name="B03_9" spritename="" class="" export="0" x="256" y="32" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="10" name="B03_10" spritename="" class="" export="0" x="0" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="11" name="B03_11" spritename="" class="" export="0" x="64" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="12" name="B03_12" spritename="" class="" export="0" x="128" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="13" name="B03_13" spritename="" class="" export="0" x="192" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="14" name="B03_14" spritename="" class="" export="0" x="256" y="64" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="15" name="B03_15" spritename="" class="" export="0" x="0" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="16" name="B03_16" spritename="" class="" export="0" x="64" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="17" name="B03_17" spritename="" class="" export="0" x="128" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="18" name="B03_18" spritename="" class="" export="0" x="192" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="19" name="B03_19" spritename="" class="" export="0" x="256" y="96" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="20" name="B03_20" spritename="" class="" export="0" x="0" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="21" name="B03_21" spritename="" class="" export="0" x="64" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="22" name="B03_22" spritename="" class="" export="0" x="128" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="23" name="B03_23" spritename="" class="" export="0" x="192" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+  <asset frame="24" name="B03_24" spritename="" class="" export="0" x="256" y="128" w="64" h="32">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </asset>
+ </assets>
+ <layer parallaxX="0" parallaxY="0" parallaxRepeat="0" name="Layer 1" gridX="16" gridY="16">
+  <object uid="{50ec82da-ccd9-4605-be63-bc7524756ddd}" shape="6" name="spazio26_0" alpha="1" blendMode="0" idx="1" spriteName="" x="0" y="0" width="320" height="480" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{e0f21c63-f943-4bc3-b011-d26685204cca}" shape="6" name="B03_17" alpha="1" blendMode="0" idx="19" spriteName="" x="80" y="224" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{ecd91f97-2c69-4d7b-bebd-139f455f7b71}" shape="6" name="B03_4" alpha="1" blendMode="0" idx="9" spriteName="" x="92.1436" y="139.572" width="32" height="16" rotation="-330" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{a04dc5e0-c081-4633-88b3-752d1f88ee38}" shape="6" name="B03_5" alpha="1" blendMode="0" idx="9" spriteName="" x="13.1436" y="157.072" width="32" height="16" rotation="-30" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{4926df20-9537-4f58-8ec4-86657a4a11ad}" shape="6" name="B03_16" alpha="1" blendMode="0" idx="9" spriteName="" x="282.126" y="71.211" width="32" height="16" rotation="86" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{0730e661-4763-472c-b046-6a93f11d51cc}" shape="6" name="B03_18" alpha="1" blendMode="0" idx="9" spriteName="" x="283.128" y="113.142" width="32" height="16" rotation="116" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{a07008c4-a0ac-4112-a6f0-64eac67bceb8}" shape="6" name="B03_19" alpha="1" blendMode="0" idx="9" spriteName="" x="263.666" y="149.992" width="32" height="16" rotation="-214" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{1004f16c-5bda-4de8-b16a-aea0ce84cd03}" shape="6" name="B03_20" alpha="1" blendMode="0" idx="9" spriteName="" x="319.949" y="114.291" width="32" height="16" rotation="100" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{b8e2253d-5637-4e91-80f3-d8b3c6690eeb}" shape="6" name="B03_21" alpha="1" blendMode="0" idx="9" spriteName="" x="312.893" y="152.993" width="32" height="16" rotation="115" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{c068ca2a-5184-479d-8bee-fe3bdcc6962a}" shape="6" name="B03_3" alpha="1" blendMode="0" idx="9" spriteName="" x="290.261" y="188.785" width="32" height="16" rotation="-213" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{ddbba125-7373-4dff-9c4e-b5456797d311}" shape="6" name="B03_23" alpha="1" blendMode="0" idx="19" spriteName="" x="80" y="256" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{f09c5f36-8587-450e-a8b5-13fd9015c009}" shape="6" name="B03_24" alpha="1" blendMode="0" idx="19" spriteName="" x="80" y="288" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{5595765a-7303-411f-980d-9bc233cb2466}" shape="6" name="B03_25" alpha="1" blendMode="0" idx="19" spriteName="" x="16" y="304" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{0e62ddbd-ce90-46e1-9496-e3cb91342cf3}" shape="6" name="B03_26" alpha="1" blendMode="0" idx="19" spriteName="" x="16" y="272" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{5fc09bac-e405-44b2-936d-55612dc166ca}" shape="6" name="B03_27" alpha="1" blendMode="0" idx="19" spriteName="" x="16" y="240" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{0e538173-8959-45c3-9b19-80eb7eb1ab20}" shape="6" name="B03_28" alpha="1" blendMode="0" idx="19" spriteName="" x="208" y="288" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{42456b18-6b61-4d57-b539-dabe6bfb68ab}" shape="6" name="B03_29" alpha="1" blendMode="0" idx="19" spriteName="" x="208" y="256" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{35f4aa5e-17a5-4a8f-9d4c-e79782227b4d}" shape="6" name="B03_30" alpha="1" blendMode="0" idx="19" spriteName="" x="208" y="224" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{ab226a18-c356-4f29-aaf3-10db04a4470e}" shape="6" name="B03_31" alpha="1" blendMode="0" idx="19" spriteName="" x="144" y="304" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{91a57218-5c5d-48c7-b91a-5c9e0ef85f20}" shape="6" name="B03_32" alpha="1" blendMode="0" idx="19" spriteName="" x="144" y="272" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{1e805e92-d2bd-4f66-beb8-9a56525b435d}" shape="6" name="B03_33" alpha="1" blendMode="0" idx="19" spriteName="" x="144" y="240" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{45718654-21f8-41a4-baf6-102f80dc4d8a}" shape="6" name="B03_34" alpha="1" blendMode="0" idx="19" spriteName="" x="272" y="304" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{238e08a5-62a3-4390-a1f7-4ff53a2606ea}" shape="6" name="B03_35" alpha="1" blendMode="0" idx="19" spriteName="" x="272" y="272" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{6c872c2c-fd9d-470b-93f2-f6c00f5fa92c}" shape="6" name="B03_22" alpha="1" blendMode="0" idx="19" spriteName="" x="272" y="240" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere2"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{55866a58-8a23-40c0-9ad6-e5d7599f9ca4}" shape="6" name="B03_1" alpha="1" blendMode="0" idx="27" spriteName="" x="80" y="320" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+    <property name="tipo" value="speciale"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{01b207b0-ec71-4d6c-b7d8-1dc681c1ad2f}" shape="6" name="B03_2" alpha="1" blendMode="0" idx="27" spriteName="" x="208" y="320" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="movimento" value="muovere1"/>
+    <property name="tipo" value="speciale"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{5a6ae426-6ce8-4f8e-83f8-b1e1f00ec8fb}" shape="6" name="B03_11" alpha="0.4" blendMode="0" idx="59" spriteName="" x="211.598" y="44.4471" width="32" height="16" rotation="63" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{5dcc79cd-3fde-4dfe-8023-e04c5f8eef71}" shape="6" name="B03_14" alpha="0.4" blendMode="0" idx="59" spriteName="" x="230.662" y="82.9379" width="32" height="16" rotation="-265" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{b2a5fec3-82d5-4b0d-ad9b-b80507f9c9d4}" shape="6" name="B03_13" alpha="0.4" blendMode="0" idx="59" spriteName="" x="228.202" y="124.714" width="32" height="16" rotation="119" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{e52c875f-2497-4650-89e5-bee3f36d1af9}" shape="6" name="B03_12" alpha="0.4" blendMode="0" idx="59" spriteName="" x="156.824" y="69.8496" width="32" height="16" rotation="67" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{06e4d681-a7d3-456f-b4f4-d76f644a3105}" shape="6" name="B03_10" alpha="0.4" blendMode="0" idx="59" spriteName="" x="174.349" y="107.633" width="32" height="16" rotation="-270" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{62d93812-5aeb-46fc-8551-e8dc8a29bdac}" shape="6" name="B03_6" alpha="0.4" blendMode="0" idx="59" spriteName="" x="121.884" y="44.92" width="32" height="16" rotation="36" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{80ac14e7-10c8-405f-9291-2ee019aac583}" shape="6" name="B03_8" alpha="0.4" blendMode="0" idx="59" spriteName="" x="95.3402" y="94.2905" width="32" height="16" rotation="-324" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{1c412ff3-4abd-42c7-b34c-f3553684a42c}" shape="6" name="B03_9" alpha="0.4" blendMode="0" idx="59" spriteName="" x="52.3967" y="91.2351" width="32" height="16" rotation="-358" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{36499d5b-df53-4efb-a45e-f64ec5b90982}" shape="6" name="B03_15" alpha="0.4" blendMode="0" idx="59" spriteName="" x="130.66" y="116.572" width="32" height="16" rotation="59" anchorX="0.5" anchorY="0.5">
+   <properties>
+    <property name="tipo" value="invisibile"/>
+   </properties>
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+  <object uid="{269daa6f-a85e-4ac4-9f03-111ea04b9cbe}" shape="6" name="B03_7" alpha="1" blendMode="0" idx="9" spriteName="" x="49.6667" y="137.667" width="32" height="16" anchorX="0.5" anchorY="0.5">
+   <physics enabled="0" bodytype="0" convex="0" linked="1">
+    <body bodyshape="0" friction="0.3" bounce="0.2" density="1" radius="0" bullet="0" sensor="0" sleepallowed="0" fixed="0" categorybit="0" maskbit="0" lineardamp="0" angulardamp="0" gravscale="1" groupindex="0"/>
+   </physics>
+  </object>
+ </layer>
+</level>

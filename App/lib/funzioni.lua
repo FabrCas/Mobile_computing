@@ -206,6 +206,7 @@ sfondo:toBack()
       local brick_colpito = display.newImageRect("images/hitten-brick.png",30,50)
       brick_colpito.x = mattoni[i].x
       brick_colpito.y = mattoni[i].y
+      print("lalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..nMattoni)
       if mattoni[i].name == 'speciale' then
         potereAttivato = true
         led_acceso.alpha=1
@@ -303,7 +304,6 @@ local vecchiaPalla
    livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
    pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
    if partitaS:personaggio() == "cottonBall" then
-   -- print("aaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
    pg.x = _W/2
    pg.y= 60
  elseif partitaS:personaggio() == "crimson" then
@@ -311,10 +311,6 @@ local vecchiaPalla
   pg.x = _W/2 + 3
   pg.y= 45
  end
-  -- print("FDHSKJFS pg.w " , pg.width .. " pg.h" , pg.height)
- --  pg.width = a
- --  pg.height = a
-  -- print("il frame e " , pg.frame)
     _G.canShoot = true
     _G.potereAttivato = false
     _G.numBallMax = statistiche.numeroPalle
@@ -327,12 +323,11 @@ local vecchiaPalla
 cannon.preCollision = nebulaCollide
 cannon:addEventListener( "preCollision", cannon )
 
-      --print(  "FDJSPOFKSDPOODFJKSPOKFDSPKTest function called")
     --  local rect = display.newRect( 0, _H/2,50,50 )
     -- rect:addEventListener( "tap", function() physics.setDrawMode( "hybrid" ) fisicaCannone=true potereAttivato=true end)
     --  local rect1 = display.newRect( _W, _H/2 +50,50,50 )
     --  rect1:addEventListener( "tap", function() physics.setDrawMode( "debug" ) fisicaCannone=false value = preference.getValue("b")
-    --  print("Retrieving string b from rect1 : ",value)  end)
+    
     --  gruppoLivello:insert(rect)
     --  gruppoLivello:insert(rect1)
 end
@@ -466,8 +461,8 @@ end end
 
         turnoPotere = false
         local sy= sy - 60
-         print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numeroPalle)
-         print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numBallMax)
+        -- print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numeroPalle)
+        -- print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"..numBallMax)
         if (numeroPalle) == 0 then
 
      Runtime:addEventListener("enterFrame", listenerUltimaPalla)
@@ -531,7 +526,7 @@ if partitaS:personaggio()=="crimson" then
         end
     ball.x  = display.contentWidth/2
     ball.y = 60 -- 130
-    --print("stampe") print(angolo) print(72.5/ball.contentHeight)
+    --printf("stampe") print(angolo) print(72.5/ball.contentHeight)
 
     if (partitaS:stats().grandezza>= 15 and partitaS:stats().grandezza< 17) then
       ball.anchorY= -4.83
@@ -693,7 +688,6 @@ end
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
 function removeBrick(brick, mod)
-  print(brick)
  -- mattoni:remove(brick)
  if not (brick.scritta==nil) then
   brick.scritta:removeSelf()
@@ -702,7 +696,7 @@ end
   brick = nil
   nMattoni = nMattoni - 1
 
-  print(nMattoni)
+  print("nMattoni= "..nMattoni)
   if nMattoni ==0  then --25
    -- local txt = display.newText( "Hai vinto! Campione!", _W/2, _H/2 , native.systemFont,12 )
     --gruppoLivello:insert(txt)
