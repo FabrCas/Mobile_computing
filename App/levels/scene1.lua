@@ -28,7 +28,7 @@ function getLevel()
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
---composer.gotoScene( "levels.scene26")
+
 print("la modalità è: ".. mod_par)
 if mod_par == "tower" then
 	print("richiesta modalita tower = " .. mod_par)
@@ -58,6 +58,7 @@ end
 
 -- Called immediately after scene has moved onscreen:
 function scene:show( event )
+
 	evento=event
 	local phase = event.phase
 
