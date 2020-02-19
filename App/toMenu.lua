@@ -151,9 +151,9 @@ function scene:create( event )
 
 	print ("toMenu - create")
 
-  background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
-  background.anchorX = 0
-  background.anchorY = 0
+  background = display.newImage(composer.imgDir .. "sfondoConTorre.png.jpg", _W/2 - 40, _H/2, true)
+  background.xScale= 0.7
+background.height= 480
 
   myLevel= LD_Loader:new(sceneGroup)
   myLevel:loadLevel("primaPagina")
@@ -163,6 +163,7 @@ function scene:create( event )
 
   cottonBall.x= 45
   cottonBall.y= 45
+  crimson.y= 440
   title= display.newImage(composer.imgDir.."towerOfBricks.png", _W/2, _H/2 - 150)
   title.width= 200
   title.height= 200

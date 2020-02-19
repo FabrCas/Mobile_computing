@@ -208,8 +208,6 @@ Runtime:addEventListener("enterFrame",spostamento2)
         -- Example: start timers, begin animation, play audio, etc.
 
     end
-timer.performWithDelay( 500, function() display.captureScreen( true ) end )
-
 end
 
 

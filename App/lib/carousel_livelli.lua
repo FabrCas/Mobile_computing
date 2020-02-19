@@ -69,20 +69,32 @@ function new( imageSet, slideBackground, top )
 		texture = display.newImage(myImages[valore].image)
 		texture.xScale= 0.7
 		texture.yScale= 0.5
-		texture.y= 150
+		texture.y= 170
 		texture.x= texture.x -40
 
 		texture2= display.newImage(myImages[valore2].image)
 		texture2.xScale= 0.7
 		texture2.yScale= 0.5
-		texture2.y= 150
+		texture2.y= 170
 		texture2.x= texture2.x +40
+a=0.7
 
-    sfondoLivello = display.newImage( myImages[valore+100].image)
-		sfondoLivello.x = 160 sfondoLivello.y = 240
-		sfondoLivello.width = 200 sfondoLivello.height = 150
+		textureCornice= display.newRect(0,-50, 234,332) --224 322
+		textureCornice:setFillColor(0,0,0)
+
+
+		
+		print("valore i "..i)
+    sfondoLivello = display.newImage( myImages[i+100].image)
+
+		sfondoLivello.x = 0 sfondoLivello.y = -50
+		sfondoLivello.width = 320*a sfondoLivello.height = 460*a
+
+	print( sfondoLivello.width )
+    print( sfondoLivello.height )
 
 		p.canvas:insert( texture )
+		p.canvas:insert( textureCornice )
 		p.canvas:insert( texture2 )
 		p.canvas:insert( sfondoLivello )
 
@@ -93,15 +105,19 @@ function new( imageSet, slideBackground, top )
 		texture = display.newImage(myImages[valore].image)
 		texture.xScale= 0.7
 		texture.yScale= 0.5
-		texture.y= 150
+		texture.y= 170
 
-print("valore"..valore)
+textureCornice= display.newRect(0,-50, 234,332) --224 322
+		textureCornice:setFillColor(0,0,0)
+print("valore i "..i)
 a=0.7
-    sfondoLivello = display.newImage( myImages[valore+100].image)
+    sfondoLivello = display.newImage( myImages[i+100].image)
 		sfondoLivello.x = 0 sfondoLivello.y = -50
 		sfondoLivello.width = 320*a sfondoLivello.height = 460*a
 
+	p.canvas:insert( textureCornice )
 	  p.canvas:insert( sfondoLivello )
+
 		p.canvas:insert( texture )
 	end
 

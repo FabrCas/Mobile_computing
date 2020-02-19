@@ -116,9 +116,9 @@ end
 
     local sceneGroup = self.view
 
-     local background = display.newImage(composer.imgDir .. "bg.jpg", 0, 0, true)
-    background.anchorX = 0
-    background.anchorY = 0
+      background = display.newImage(composer.imgDir .. "sfondoConTorre.png.jpg", _W/2 - 40, _H/2, true)
+  background.xScale= 0.7
+background.height= 480
     sceneGroup:insert(background)
     myLevel= LD_Loader:new(sceneGroup)
     myLevel:loadLevel("opzioni")
