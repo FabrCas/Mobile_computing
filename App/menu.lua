@@ -15,6 +15,15 @@ local numeroPagineMenu= 3
 local preference = require "lib.preference"
 local x
 local y
+if ( system.getInfo("platformName") == "Android" ) then
+   local androidVersion = string.sub( system.getInfo( "platformVersion" ), 1, 3)
+   if( androidVersion and tonumber(androidVersion) >= 4.4 ) then
+     native.setProperty( "androidSystemUiVisibility", "immersiveSticky" )
+     --native.setProperty( "androidSystemUiVisibility", "lowProfile" )
+   elseif( androidVersion ) then
+     native.setProperty( "androidSystemUiVisibility", "lowProfile" )
+   end
+end
 
 local function tapHighscores(event)
     print("tap highscores")
@@ -132,6 +141,7 @@ end
       if nil~= composer.getScene("levels.scene29") then composer.removeScene("levels.scene29", false) end
       if nil~= composer.getScene("levels.scene30") then composer.removeScene("levels.scene30", false) end
       if nil~= composer.getScene("levels.insertNick") then composer.removeScene("levels.insertNick", false) end
+      if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
 
 
       if f ~= nil then f = require("lib.funzioni") end

@@ -417,7 +417,9 @@ if (circle ~= nil) then
     circle:setFillColor((1/255)*50,(1/255)*205,(1/255)*50)
     canShoot=true
      timer.performWithDelay( 500, function()
+      if (circle ~= nil) then
       circle:setFillColor(0,0,0)
+    end
     end
       )
      end )

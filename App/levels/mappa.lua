@@ -36,6 +36,7 @@ local function onButtonClickStanzaSelezionata(event)
      params = {modalita= "tower"}
  }
  stanza= event.target.stanza
+
 -- if (stanza.nome=="scene1" or stanza.nome=="scene2" or stanza.nome=="scene5" or stanza.nome=="scene6" or stanza.nome=="scene9" or
 --  stanza.nome=="scene3" or stanza.nome=="scene4" or stanza.nome=="scene11" or stanza.nome=="scene12" or stanza.nome=="scene13" or
 --  stanza.nome=="scene15" or stanza.nome=="scene17" or stanza.nome=="scene19" or stanza.nome=="scene22" or stanza.nome=="scene23" or
