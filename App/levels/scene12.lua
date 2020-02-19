@@ -1,4 +1,3 @@
-
 -- scene1.lua
 --
 ---------------------------------------------------------------------------------
@@ -6,7 +5,7 @@ local composer = require( "composer" )
 --sceglieri qui partita storia o no
 
 local scene = composer.newScene()
-levelSound= audio.loadSound("sounds/egypt.mp3")
+levelSound= audio.loadSound("sounds/l2s.mp3")
 require("lib.LD_LoaderX")
 require("lib.LD_HelperX")
 
@@ -41,45 +40,44 @@ nMattoni= 0
 local btn = nil
 local myLevel = {}
 function getLevel()
-	return myLevel
+  return myLevel
 end
 -- Called when the scene's view does not exist:
 function scene:create( event )
 
 print("la modalità è: ".. mod_par)
 if mod_par == "tower" then
-	print("richiesta modalita tower = " .. mod_par)
-	f =  require("lib.funzioni")
+  print("richiesta modalita tower = " .. mod_par)
+  f =  require("lib.funzioni")
 elseif mod_par == "arcade" then
-	print("richiesta modalita arcade = " .. mod_par)
-	f =  require("lib.funzioni")
-	--f = require("lib.funzioniArcade")
+  print("richiesta modalita arcade = " .. mod_par)
+  f =  require("lib.funzioni")
+  --f = require("lib.funzioniArcade")
 end
 
 
 local evento
-	--[[ Touch event listener for button
-	function onButtonClick( event )
-		print ("touch")
-		if event.phase == "began" then
-			composer.gotoScene( "scene2", "zoomOutInFade", 300  )
-			return true
-		end
-	end
-
-	-- btn = myLevel:getLayerObject( "layer1","btnNext" )
-	-- btn.onPress = onButtonClick ]]
+  --[[ Touch event listener for button
+  function onButtonClick( event )
+    print ("touch")
+    if event.phase == "began" then
+      composer.gotoScene( "scene2", "zoomOutInFade", 300  )
+      return true
+    end
+  end
+  -- btn = myLevel:getLayerObject( "layer1","btnNext" )
+  -- btn.onPress = onButtonClick ]]
 
 end
 
 
 -- Called immediately after scene has moved onscreen:
 function scene:show( event )
-	evento=event
-	local phase = event.phase
+  evento=event
+  local phase = event.phase
 
     if ( phase == "will" ) then
-    	local isChannel1Active = audio.isChannelActive( 1 )
+      local isChannel1Active = audio.isChannelActive( 1 )
 if isChannel1Active then
     audio.stop( 1 )
 end
@@ -87,44 +85,44 @@ local channel1= audio.findFreeChannel(1)
   audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
   audio.play(levelSound,{channel= channel1, loops = -1})
 
-    	print("scene1 show - " .. mod_par)
-	local screenGroup = self.view
-	--local myLevel = {}
-	myLevel = LD_Loader:new(self.view)
-	myLevel:loadLevel("Level12") -- set your scene/level name here
-	myCannon = LD_Loader:new(self.view)
-	myCannon:loadLevel("cannon.shoot")
-	cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
-	cerchio = myCannon:getLayerObject("LayerCannone", "ellipse_2")
+      print("scene1 show - " .. mod_par)
+  local screenGroup = self.view
+  --local myLevel = {}
+  myLevel = LD_Loader:new(self.view)
+  myLevel:loadLevel("Level12") -- set your scene/level name here
+  myCannon = LD_Loader:new(self.view)
+  myCannon:loadLevel("cannon.shoot")
+  cannone = myCannon:getLayerObject("LayerCannone", "cannon_fire_0").view
+  cerchio = myCannon:getLayerObject("LayerCannone", "ellipse_2")
 
-  	    -- aggiunta listener ai mattoni
-  	local obj = {}
-  	for i=1,26 do
-  	obj[i] = {}
-  	obj[i] = myLevel:getLayerObject("Layer 1","a"..string.format(i))
-  	screenGroup:insert(obj[i].view)
-  	obj[i].view.name = obj[i].property['tipo']
-  	if not (obj[i].view.name=="unbreak") then 
+        -- aggiunta listener ai mattoni
+    local obj = {}
+    for i=1,26 do
+    obj[i] = {}
+    obj[i] = myLevel:getLayerObject("Layer 1","a"..string.format(i))
+    screenGroup:insert(obj[i].view)
+    obj[i].view.name = obj[i].property['tipo']
+    if not (obj[i].view.name=="unbreak") then 
   
-  	if (obj[i].view.name=="speciale" or mod_par=="arcade") then
-  	obj[i].view.life = 1
-  	else
-  	if (i==1 or i==2) then
-      	obj[i].view.life = 5
-      	else
+    if (obj[i].view.name=="speciale" or mod_par=="arcade") then
+    obj[i].view.life = 1
+    else
+    if (i==1 or i==2) then
+        obj[i].view.life = 5
+        else
       obj[i].view.life = 4 end 
       
       obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
     screenGroup:insert(obj[i].view.scritta)
  angolo= obj[i].view.rotation
     if angolo > 315 and angolo <45 then  --<
-    	obj[i].view.scritta.rotation= obj[i].view.rotation
+      obj[i].view.scritta.rotation= obj[i].view.rotation
     elseif angolo > 45 and angolo < 135 then  --^
-    	obj[i].view.scritta.rotation= obj[i].view.rotation -90
+      obj[i].view.scritta.rotation= obj[i].view.rotation -90
     elseif angolo > 135 and angolo <225 then  -->
-    	obj[i].view.scritta.rotation= obj[i].view.rotation +90
+      obj[i].view.scritta.rotation= obj[i].view.rotation +90
      elseif angolo > 225 and angolo < 315 then --u
-    	obj[i].view.scritta.rotation= obj[i].view.rotation +90
+      obj[i].view.scritta.rotation= obj[i].view.rotation +90
   
     elseif angolo <-315 and angolo >-45 then --<
     obj[i].view.scritta.rotation = obj[i].view.rotation 
@@ -137,17 +135,23 @@ local channel1= audio.findFreeChannel(1)
   else  obj[i].view.scritta.rotation = obj[i].view.rotation
   end 
       end 
-    if (i==1 or i==2) then transition1(obj[i].view) transition1(obj[i].view.scritta) end
-  	obj[i].view:addEventListener( "preCollision", function (event) f.hit(event, modalita) end)
-  	obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
-  	nMattoni = nMattoni + 1
+    if (i==1 or i==2) then transition1(obj[i].view) 
+
+    if mod_par=="tower" then
+      transition1(obj[i].view.scritta) 
+    end
+
+    end
+    obj[i].view:addEventListener( "preCollision", function (event) f.hit(event, modalita) end)
+    obj[i].view.c = 0 --conta quante volte in una singola sessione di tiro è stato colpito verticalmente
+    nMattoni = nMattoni + 1
   end
-  	obj[i] = obj[i].view
-  	end
+    obj[i] = obj[i].view
+    end
      
-	sfondo= myLevel:getLayerObject("Layer 1","questaaaaa_0").view
+  sfondo= myLevel:getLayerObject("Layer 1","questaaaaa_0").view
     f.creaCannone(cannone,cerchio)
-	f.creaUI(self.view)
+  f.creaUI(self.view)
     f.creaLivello(cannone,obj, sfondo)
 
 
@@ -156,7 +160,7 @@ local channel1= audio.findFreeChannel(1)
     if nil~= composer.getScene("toPlay") then composer.removeScene("toPlay", false) end
     if nil~= composer.getScene("selectPGArcade") then composer.removeScene("selectPGArcade", false) end
     if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
-   -- if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
+    if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
     if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
@@ -171,7 +175,7 @@ end
 -- Called when scene is about to move offscreen:
 function scene:hide( event )
 
-	print( "scene1 - hide event " .. mod_par )
+  print( "scene1 - hide event " .. mod_par )
 
 end
 
@@ -179,8 +183,8 @@ end
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroy( event )
 
-	--myLevel = nil
-	print( "scene 1 - destroy ".. mod_par)
+  --myLevel = nil
+  print( "scene 1 - destroy ".. mod_par)
 end
 
 ---------------------------------------------------------------------------------

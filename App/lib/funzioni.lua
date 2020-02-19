@@ -1017,6 +1017,10 @@ end
 --FUNZIONE CREAZIONE UI
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
+
+  timer.performWithDelay( 500, function() display.captureScreen( true ) end )
+  --[[ 
+
   gruppoScena= screenGroup
   _G.myUI = LD_Loader:new(screenGroup)
   myUI:loadLevel("ui.ui")

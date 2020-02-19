@@ -208,6 +208,7 @@ Runtime:addEventListener("enterFrame",spostamento2)
         -- Example: start timers, begin animation, play audio, etc.
 
     end
+
 end
 
 
