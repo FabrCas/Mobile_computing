@@ -93,9 +93,10 @@ print( score )
   network.request( ipV4.."/cancellaEnnupla.php?id="..string.format(id), "GET", cancellazioneEnnupla )
  else
   print( "valore minore uguale allo score massimo che hai raggiunto" )
-  if (nameField ~= nil) then 
-  nameField:removeSelf()
-end
+
+ -- if (nameField ~= nil) then 
+ -- nameField:removeSelf()
+--end
   composer.gotoScene("menu", { effect = "crossFade", time = 200})
  end
 
@@ -172,7 +173,7 @@ local function textListener( event )
     elseif ( event.phase == "ended" or event.phase == "submitted" ) then
         -- Output resulting text from "defaultField"
         print( event.target.text )
-        nome= string.sub(event.target.text,0,20)
+        nome= string.sub(event.target.text,0,12)
         getValoreMAX()
         loading.alpha=1
         loading:play()
@@ -230,7 +231,7 @@ nameField.inputType = "default"
 nameField.font = native.newFont( native.systemFontBold, 18 )
 nameField.size = 18
 nameField:resizeHeightToFitFont()
-nameField.placeholder = "(Tap to insert)"
+nameField.placeholder = "Tap to insert (Max 12 characters)"
 nameField.align = "center"
 nameField.hasBackground = true
 nameField.spellCheckingType = "UITextSpellCheckingTypeNo"
