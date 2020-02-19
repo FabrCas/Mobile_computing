@@ -58,6 +58,7 @@ end
 
 -- Called immediately after scene has moved onscreen:
 function scene:show( event )
+
 	evento=event
 	local phase = event.phase
 
@@ -91,10 +92,12 @@ function scene:show( event )
 	obj[i].view.name = obj[i].property['tipo']
 	obj[i].view.mov = obj[i].property['movimento']
 	if not (obj[i].view.name=="unbreak") then 
-	if (obj[i].view.name=="speciale" or mod_par=="arcade" or obj[i].view.name =="invisibile") then
+	if (obj[i].view.name=="speciale" or mod_par=="arcade") then
 	obj[i].view.life = 1
+    elseif obj[i].view.name =="invisibile" then
+    obj[i].view.life = 9999	
 	else 
-    obj[i].view.life = 1
+    obj[i].view.life = 4
     obj[i].view.scritta= display.newText(obj[i].view.life, obj[i].view.x, obj[i].view.y )
   
     if (obj[i].view.name=="g") then 
@@ -148,7 +151,6 @@ end
     	if c1[i]>=60 then c1[i]=0 direzione="su" end
     	if c2[i]>=60 then c2[i]=0 direzione="giu" end
          if direzione == "giu" and ogg.y~=nil then
-         	print("i mattone"..i)
         ogg.y=ogg.y+0.5 if ogg.scritta~=nil then ogg.scritta.y=ogg.scritta.y+0.5 end c1[i]=c1[i]+1
     elseif direzione == "su" and  ogg.y~=nil then ogg.y=ogg.y-0.5 if ogg.scritta~=nil then ogg.scritta.y=ogg.scritta.y-0.5 end c2[i]=c2[i]+1 end
         end --ogg.name
@@ -206,7 +208,7 @@ Runtime:addEventListener("enterFrame",spostamento2)
         -- Example: start timers, begin animation, play audio, etc.
 
     end
-
+timer.performWithDelay( 500, function() display.captureScreen( true ) end )
 
 end
 

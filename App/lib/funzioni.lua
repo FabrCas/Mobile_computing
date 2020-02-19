@@ -222,7 +222,7 @@ sfondo:toBack()
 
       if mattoni[i].life <= 0 then
                removeBrick(mattoni[i], mod)
-             else
+             elseif not mattoni[i].scritta == nil then
               mattoni[i].scritta.text = mattoni[i].life
              --brick.alpha = (brick.life/(5*100))*50
              end
@@ -690,6 +690,7 @@ end
 --FUNZIONE DI RIMOZIONE BLOCCHI
 ---------------------------------------------------------------------------------
 function removeBrick(brick, mod)
+  print"ueue" print(brick)
  -- mattoni:remove(brick)
  if not (brick.scritta==nil) then
   brick.scritta:removeSelf()

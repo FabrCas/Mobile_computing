@@ -35,6 +35,7 @@ settings = {
 
 	androidPermissions = {
   		"android.permission.INTERNET",
+
   	},
 
 	]]--
@@ -44,6 +45,7 @@ settings = {
         usesPermissions =
         {
             "android.permission.INTERNET",
+            "android.permission.WRITE_EXTERNAL_STORAGE",
         },
     },
 }
