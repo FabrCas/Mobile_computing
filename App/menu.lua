@@ -35,7 +35,6 @@ local function tapHighscores(event)
   end
 
   local function salvaxy(event)
-      print ("background clicked")
       x= event.x
       y= event.y
   end
@@ -43,6 +42,7 @@ local function tapHighscores(event)
 
 -- Called when the scene's view does not exist:
 function scene:create( event )
+
   print("menu - create")
   if nil~= composer.getScene("toMenu") then composer.removeScene("toMenu", false) end
   physics.start()
@@ -91,9 +91,8 @@ end -- ends scene:create
 
 -- Called when the scene's view is about to 'will/load' or 'did/appear':
 function scene:show( event )
-
-local arcade = composer.loadScene( "arcade", false)
---local toOptions = composer.loadScene( "toOptions", false)
+  
+  --local arcade = composer.loadScene( "arcade", false)
 
    local sceneGroup = self.view
    --if event.phase == "will" then
@@ -157,8 +156,8 @@ end
   audio.play(tapSound,{channel= channel2})
   if livello == 1 then
     mod_par="tower"
-    print("modalita dal menu scelta tower = " .. mod_par)
-    print("weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+ --   print("modalita dal menu scelta tower = " .. mod_par)
+   -- print("weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
     print(preference.getValue("pg"))
    if (preference.getValue("pg")=="gianna" or preference.getValue("pg")==nil )then
     composer.gotoScene("selectPG", { effect = "crossFade", time = 200})
@@ -188,11 +187,12 @@ end
     loading.yScale = 0.2
     loading:play()
 
+if (not (loading == nil )) then
 sceneGroup:insert(loading)
-
+end
 --fine animazione caricamento
     mod_par="arcade"
-    print("modalita dal menu scelta arcade = " .. mod_par)
+   -- print("modalita dal menu scelta arcade = " .. mod_par)
     composer.gotoScene( "arcade",{ effect = "crossFade", time = 200} )   --in futuro: arcade
     return true
      elseif livello == 3 then

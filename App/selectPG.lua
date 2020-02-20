@@ -64,12 +64,14 @@ end
 
 local function backClicked(event)
   rimuoviListener()
+
   local options = { effect = "crossFade", time = 200}
    local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
     if mod_par == "tower" then composer.gotoScene( "menu", options ) else
       composer.gotoScene("arcade",options) end
+      composer.removeScene("selectPG", false)
   end
 
 function rimuoviListener()
@@ -80,6 +82,7 @@ end
 -- create()
 function scene:create( event )
 
+ if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false ) end
     local sceneGroup = self.view
     if (mod_par=="arcade") then
     livello= event.params.nomeLivello
@@ -129,9 +132,9 @@ function scene:create( event )
       backButton:addEventListener("tap", backClicked)
 
 
-         if mod_par == "arcade" then
-      arcade = composer.loadScene( "arcade", false)
-    end
+   --      if mod_par == "arcade" then
+ --     arcade = composer.loadScene( "arcade", false)
+ --   end
       --rectButton.onRelease= onButtonClick
 end
 
@@ -146,9 +149,9 @@ function scene:show( event )
 
     elseif ( phase == "did" ) then
         -- Code here runs when the scene is entirely on screen
-        -- if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
+         if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
          if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
-
+        
 
     end
 end
@@ -173,7 +176,7 @@ end
 
 -- destroy()
 function scene:destroy( event )
-
+print( "selectPg distrutta" )
     local sceneGroup = self.view
     menuSound= nil
     myLevel:removeLevel()

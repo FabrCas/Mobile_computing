@@ -31,7 +31,8 @@ preference.save{velocita=5} --*100
 
 _G.mod_par = nil
 _G.f= nil
-_G.livelloA=0
+
+_G.livelloA=1
 
 if preference.getValue("score") ~= nil then
 	partitaS:setScore(preference.getValue("score"))

@@ -39,7 +39,6 @@ local function backClicked(event)
 
 
 local function salvaxy(event)
-    print ("background clicked")
     x= event.x
     y= event.y
 end
@@ -49,6 +48,7 @@ end
 function scene:create( event )
 
     local sceneGroup = self.view
+
     print("menuArcade-> create")
 
  background = display.newImage(composer.imgDir .. "sfondoConTorre.png.jpg", _W/2 - 40, _H/2, true)
@@ -78,37 +78,39 @@ background.height= 480
   images[8] = {image = composer.imgDir .. "8.png"}
   images[9] = {image = composer.imgDir .. "9.png"}
 
-  images[100] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
-  images[101] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
-  images[102] = {image = composer.imgDir .. "8.png"}
-  images[103] = {image = composer.imgDir .. "natura3.jpg"}
-  images[104] = {image = composer.imgDir .. "natura4.jpg"}
-  images[105] = {image = composer.imgDir .. "25238fb7c09d88023911b31ed00a83d0.jpg"}
-  images[106] = {image = composer.imgDir .. "6.png"}
-  images[107] = {image = composer.imgDir .. "7.png"}
-  images[108] = {image = composer.imgDir .. "8.png"}
-  images[109] = {image = composer.imgDir .. "9.png"}
-  images[110] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
-  images[111] = {image = composer.imgDir .. "8.png"}
-  images[112] = {image = composer.imgDir .. "natura3.jpg"}
-  images[113] = {image = composer.imgDir .. "natura4.jpg"}
-  images[114] = {image = composer.imgDir .. "25238fb7c09d88023911b31ed00a83d0.jpg"}
-  images[115] = {image = composer.imgDir .. "6.png"}
-  images[116] = {image = composer.imgDir .. "7.png"}
-  images[117] = {image = composer.imgDir .. "8.png"}
-  images[118] = {image = composer.imgDir .. "9.png"}
-  images[119] = {image = composer.imgDir .. "bvLyxzyg0vvwtgVEII1KcmfLLAYlc7pHwO1dWW1R56s.jpg"}
-  images[120] = {image = composer.imgDir .. "8.png"}
-  images[121] = {image = composer.imgDir .. "natura3.jpg"}
-  images[122] = {image = composer.imgDir .. "natura4.jpg"}
-  images[123] = {image = composer.imgDir .. "25238fb7c09d88023911b31ed00a83d0.jpg"}
-  images[124] = {image = composer.imgDir .. "6.png"}
-  images[125] = {image = composer.imgDir .. "7.png"}
-  images[126] = {image = composer.imgDir .. "screen26.jpg"}
-  images[127] = {image = composer.imgDir .. "9.png"}
-  images[128] = {image = composer.imgDir .. "7.png"}
-  images[129] = {image = composer.imgDir .. "8.png"}
-  images[130] = {image = composer.imgDir .. "9.png"}
+ images[100] = {image = composer.imgDir .. "sl/screen1.jpg"}
+ images[101] = {image = composer.imgDir .. "sl/screen1.jpg"}
+ images[102] = {image = composer.imgDir .. "sl/screen2.jpg"}
+ images[103] = {image = composer.imgDir .. "sl/screen3.jpg"}
+ images[104] = {image = composer.imgDir .. "sl/screen4.jpg"}
+ images[105] = {image = composer.imgDir .. "sl/screen5.jpg"}
+ images[106] = {image = composer.imgDir .. "sl/screen6.jpg"}
+ images[107] = {image = composer.imgDir .. "sl/screen9.jpg"}
+ images[108] = {image = composer.imgDir .. "sl/screen11.jpg"}
+ images[109] = {image = composer.imgDir .. "sl/screen12.jpg"}
+ images[110] = {image = composer.imgDir .. "sl/screen13.jpg"}
+ images[111] = {image = composer.imgDir .. "sl/screen14.jpg"}
+ images[112] = {image = composer.imgDir .. "sl/screen15.jpg"}
+ images[113] = {image = composer.imgDir .. "sl/screen17.jpg"}
+ images[114] = {image = composer.imgDir .. "sl/screen19.jpg"}
+ images[115] = {image = composer.imgDir .. "sl/screen20.jpg"}
+ images[116] = {image = composer.imgDir .. "sl/screen21.jpg"}
+ images[117] = {image = composer.imgDir .. "sl/screen22.jpg"}
+ images[118] = {image = composer.imgDir .. "sl/screen23.jpg"}
+ images[119] = {image = composer.imgDir .. "sl/screen25.jpg"}
+ images[120] = {image = composer.imgDir .. "sl/screen26.jpg"}
+ images[121] = {image = composer.imgDir .. "sl/screen27.jpg"}
+ images[122] = {image = composer.imgDir .. "sl/screen30.jpg"}
+
+
+ images[123] = {image = composer.imgDir .. "notAvailable.png"}
+ images[124] = {image = composer.imgDir .. "notAvailable.png"}
+ images[125] = {image = composer.imgDir .. "notAvailable.png"}
+ images[126] = {image = composer.imgDir .. "notAvailable.png"}
+ images[127] = {image = composer.imgDir .. "notAvailable.png"}
+ images[128] = {image = composer.imgDir .. "notAvailable.png"}
+ images[129] = {image = composer.imgDir .. "notAvailable.png"}
+ images[130] = {image = composer.imgDir .. "notAvailable.png"}
 
   levelGroup = slideView.new( images, nil)
   sceneGroup:insert(levelGroup)
@@ -127,7 +129,6 @@ function scene:show( event )
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
 if ((audio.isChannelActive( 1 ))==false )then
-    print( "***********aioooooooo******************" )
     audio.stop(1)
    local channel1 = audio.findFreeChannel(1)
     audio.setVolume( partitaS:volumeMusica(), {channel=channel1}  )
@@ -138,6 +139,8 @@ end
         print("menuArcade-> show (did)")
         -- Code here runs when the scene is entirely on screen
         if nil~= composer.getScene("menu") then composer.removeScene("menu", false) end
+        if nil~= composer.getScene("selectPG") then composer.removeScene("selectPG", false) end
+         --  if nil~= composer.getScene("arcade") then composer.removeScene("arcade", true ) end
     local prevScene = composer.getSceneName( "previous" )
         -- remove previous scene's view
     if (prevScene) then
@@ -152,8 +155,6 @@ local function runLevel(liv)
   local channel2= audio.findFreeChannel(2)
   audio.setVolume( partitaS:volumeEffettoSonoro(), {channel=channel2}  )
   audio.play(tapSound,{channel= channel2})
-  print("Run level (Arcade) eseguita")
-  print(livello)
     if livello == 1 then
         options.params.nomeLivello= 1
     elseif livello == 2 then
@@ -222,16 +223,13 @@ end
 
 
 local function onLevelSelected(event)
-print("eventi")
-print(x)
-print(y)
 if (x~=nil and y~=nil) then
 if ( (x<300) and  (y<460)) then
     clicked = 1--clicked + 1
     if (clicked ==1) then
         Runtime:removeEventListener("levelClicked")
         --levelGroup:cleanUp() MESSO TRA I COMMENTI PER FAR FUNZIONARE IL BACKTOMENU
-        print (clicked, "clicked level", livelloA)
+        --print (clicked, "clicked level", livelloA)
         timer.performWithDelay(0,  runLevel(livelloA) ,1)
     end
 end end --nuovo end messo qui
@@ -252,7 +250,6 @@ function scene:hide( event )
         -- Code here runs immediately after the scene goes entirely off screen
  levelGroup = nil
  levelGroup2 = nil
-print (" page_Arcade destroyed")
     end
 
 end
@@ -260,6 +257,7 @@ end
 
 -- destroy()
 function scene:destroy( event )
+print ("Arcadeee destroyed")
 
     local sceneGroup = self.view
     -- Code here runs prior to the removal of scene's view

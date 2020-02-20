@@ -25,7 +25,7 @@ local scene = composer.newScene()
  if ( score=="gianna" or score==nil )then 
   score=0 
 end 
- local ipV4= "http://192.168.1.47:8080"
+ local ipV4= "http://192.168.1.53:8080"
  local loading 
 
 

@@ -32,6 +32,7 @@ local gruppoVittoria
 local gruppoScena
 local pg
 _G.fisicaCannone=true
+local lastRotation= 0
 --preference.save{statsT= partitaS:stats()}
 
 local statistiche
@@ -64,6 +65,9 @@ local ly
 local firex
 local firey
 local fire
+
+local oldlx
+local oldly
 --------------------------------------------------------------------------------
 local function onLocalCollision( self, event )
   print("funzione collisione chiamata")
@@ -349,7 +353,10 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
-  function getAngle(sx,sy,cannon) --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
+  function getAngle(xs,ys,sx,sy,cannon) --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
+    print( "cambio angolo" )
+    print( lastRotation )
+    print( "ora angolo invece" )
          local angolo
          lx= sx
          ly=sy
@@ -360,17 +367,20 @@ function caricaPalla()
          angolo= ((angoloRad*180)/3.14)
          if (sx < display.contentWidth/2) then
           if angolo>= 90 then
-            cannon.rotation = 90
+            cannon.rotation = 90 
           else
          cannon.rotation = angolo
        end
        else
-         if angolo>= 90 then
-            cannon.rotation = -90
+         if angolo >= 90 then
+            cannon.rotation = -90 
           else
         cannon.rotation = -angolo
+
       end
       end
+      
+      print( angolo )
        end --FINE FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER CREAZIONE PALLA
@@ -945,8 +955,8 @@ end -- if nTiri
 
       if  --((event.phase == 'began') and (os.time() >= timeBegan + 500)) or  spostati dopo un po' che stai con il dito sullo stesso punto
         event.phase == 'moved' or ((event.phase == 'ended') and
-        (not (event.x == event.xStart and event.y== event.yStart))) then --event.phase == 'began'
-        getAngle(event.x,event.y,cannon)
+        (not (event.x == event.xStart and event.y== event.yStart))) then --event.phase == 'began
+        getAngle(event.xStart,event.yStart,event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot
       and event.x == event.xStart and event.y== event.yStart --tap
       -- and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
@@ -1017,9 +1027,6 @@ end
 --FUNZIONE CREAZIONE UI
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
-
-  timer.performWithDelay( 500, function() display.captureScreen( true ) end )
-  --[[ 
 
   gruppoScena= screenGroup
   _G.myUI = LD_Loader:new(screenGroup)
