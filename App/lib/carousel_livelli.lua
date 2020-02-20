@@ -84,7 +84,6 @@ a=0.7
 
 
 		
-		print("valore i "..i)
     sfondoLivello = display.newImage( myImages[i+100].image)
 
 		sfondoLivello.x = 0 sfondoLivello.y = -50
@@ -109,7 +108,6 @@ a=0.7
 
 textureCornice= display.newRect(0,-50, 234,332) --224 322
 		textureCornice:setFillColor(0,0,0)
-print("valore i "..i)
 a=0.7
     sfondoLivello = display.newImage( myImages[i+100].image)
 		sfondoLivello.x = 0 sfondoLivello.y = -50

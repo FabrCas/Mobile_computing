@@ -49,7 +49,6 @@ local evento
 			return true
 		end
 	end
-
 	-- btn = myLevel:getLayerObject( "layer1","btnNext" )
 	-- btn.onPress = onButtonClick ]]
 

@@ -300,9 +300,11 @@ local vecchiaPalla
    gruppoLivello:insert(circle)
    circle:toFront( )
    circle:setFillColor(0,0,0)
+   circle.alpha=0 
    livelloPG = LD_Loader:new(gruppoLivello)
    livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
    pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
+   pg.alpha=0
    if partitaS:personaggio() == "cottonBall" then
    pg.x = _W/2
    pg.y= 60
@@ -319,7 +321,7 @@ local vecchiaPalla
     cannon.y = 60  --50
     cannon.anchorY = 0.33
     cerchio.view.x = cannon.x cerchio.view.y=60
-
+cannon.alpha=0
 cannon.preCollision = nebulaCollide
 cannon:addEventListener( "preCollision", cannon )
 
@@ -364,6 +366,7 @@ function caricaPalla()
           else
          cannon.rotation = angolo
        end
+
        else
          if angolo>= 90 then
             cannon.rotation = -90
@@ -992,7 +995,7 @@ end -- if nTiri
   partitaS:aggiungiscore(500,(os.time() - tempoInizioLivello) - tempoPausaTotale, (numeroPalle),true)
 end
 if nil~= composer.getScene("levels.mappa") then composer.removeScene("levels.mappa", false) end
- if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
+if nil~= composer.getScene("arcade") then composer.removeScene("arcade", false) end
 --partitaS:new()
 if mod_par=="tower" then
 preference.save{tower=123}
@@ -1019,7 +1022,7 @@ end
 function creaUI(screenGroup)
 
   timer.performWithDelay( 500, function() display.captureScreen( true ) end )
-  --[[ 
+  --[[
 
   gruppoScena= screenGroup
   _G.myUI = LD_Loader:new(screenGroup)
@@ -1029,7 +1032,8 @@ function creaUI(screenGroup)
   	for i=28,31 do --20 26 centrali
   local rectVarie = myUI:getLayerObject("ui_layer", "rect_"..i ).view
 
-  if (i==29) then rectVarie:addEventListener("postCollision",function(event) local vx, vy = event.other:getLinearVelocity() end) else
+  if (i==29) then rectVarie:addEventListener("postCollision", function(event) 
+      local vx, vy = event.other:getLinearVelocity() end) else
   rectVarie:addEventListener("postCollision",function(event) local vx, vy = event.other:getLinearVelocity() end)
 end end
 
@@ -1063,6 +1067,7 @@ function creaGruppo()
 gruppo=display.newGroup( )
 --print("creaGruppo - tower")
   return gruppo
+  --]]
 end
 ---------------------------------------------------------------------------------
 --FUNZIONE CHE CREA LA PAUSA

@@ -43,7 +43,7 @@ local function onButtonClickStanzaSelezionata(event)
 --   stanza.nome=="scene25" or stanza.nome=="scene27") then 
 --  composer.gotoScene("levels."..stanza.nome, options)
 --else
-    composer.gotoScene("levels.scene11", options)
+    composer.gotoScene("levels.scene17", options)
  -- end
   print( stanza.nome )
   stanzaSelezionata= stanza
