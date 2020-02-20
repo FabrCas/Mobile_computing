@@ -154,7 +154,7 @@ local function networkListener( event )
         if ( event.isError) then
                 print( "Network error!")
                 if (tries<= 10) then
-                network.request( "http://192.168.1.47:8080/scores.php", "GET", networkListener )
+                network.request( "http://192.168.1.53:8080/scores.php", "GET", networkListener )
               else
                 composer.gotoScene("menu", { effect = "crossFade", time = 200})
               end
@@ -190,7 +190,7 @@ end
 function avviaRichiesta()
   print( "Richiesta inizializzata" )
   tries= 0
-network.request( "http://192.168.1.47:8080/scores.php", "GET", networkListener )
+network.request( "http://192.168.1.53:8080/scores.php", "GET", networkListener )
 end 
 
 --recupera valori+**+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

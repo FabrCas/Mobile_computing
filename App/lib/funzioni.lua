@@ -32,6 +32,7 @@ local gruppoVittoria
 local gruppoScena
 local pg
 _G.fisicaCannone=true
+local lastRotation= 0
 --preference.save{statsT= partitaS:stats()}
 
 local statistiche
@@ -64,6 +65,9 @@ local ly
 local firex
 local firey
 local fire
+
+local oldlx
+local oldly
 --------------------------------------------------------------------------------
 local function onLocalCollision( self, event )
   print("funzione collisione chiamata")
@@ -300,11 +304,11 @@ local vecchiaPalla
    gruppoLivello:insert(circle)
    circle:toFront( )
    circle:setFillColor(0,0,0)
-   circle.alpha=0 
+   --circle.alpha=0 
    livelloPG = LD_Loader:new(gruppoLivello)
    livelloPG:loadLevel("personaggi." .. partitaS:personaggio())
    pg = livelloPG:getLayerObject("Layer 1", partitaS:personaggio() ).view
-   pg.alpha=0
+   --pg.alpha=0
    if partitaS:personaggio() == "cottonBall" then
    pg.x = _W/2
    pg.y= 60
@@ -321,7 +325,7 @@ local vecchiaPalla
     cannon.y = 60  --50
     cannon.anchorY = 0.33
     cerchio.view.x = cannon.x cerchio.view.y=60
-cannon.alpha=0
+--cannon.alpha=0
 cannon.preCollision = nebulaCollide
 cannon:addEventListener( "preCollision", cannon )
 
@@ -351,7 +355,10 @@ function caricaPalla()
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
-  function getAngle(sx,sy,cannon) --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
+  function getAngle(xs,ys,sx,sy,cannon) --FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
+    print( "cambio angolo" )
+    print( lastRotation )
+    print( "ora angolo invece" )
          local angolo
          lx= sx
          ly=sy
@@ -362,18 +369,21 @@ function caricaPalla()
          angolo= ((angoloRad*180)/3.14)
          if (sx < display.contentWidth/2) then
           if angolo>= 90 then
-            cannon.rotation = 90
+            cannon.rotation = 90 
           else
          cannon.rotation = angolo
        end
 
        else
-         if angolo>= 90 then
-            cannon.rotation = -90
+         if angolo >= 90 then
+            cannon.rotation = -90 
           else
         cannon.rotation = -angolo
+
       end
       end
+      
+      print( angolo )
        end --FINE FUNZIONE PER IL CALCOLO DELL'ANGOLO DI ROTAZIONE
 ---------------------------------------------------------------------------------
 -- FUNZIONE PER CREAZIONE PALLA
@@ -948,8 +958,8 @@ end -- if nTiri
 
       if  --((event.phase == 'began') and (os.time() >= timeBegan + 500)) or  spostati dopo un po' che stai con il dito sullo stesso punto
         event.phase == 'moved' or ((event.phase == 'ended') and
-        (not (event.x == event.xStart and event.y== event.yStart))) then --event.phase == 'began'
-        getAngle(event.x,event.y,cannon)
+        (not (event.x == event.xStart and event.y== event.yStart))) then --event.phase == 'began
+        getAngle(event.xStart,event.yStart,event.x,event.y,cannon)
       elseif event.phase == 'ended' and canShoot
       and event.x == event.xStart and event.y== event.yStart --tap
       -- and ((event.time >= timeBegan ) and (event.time <= timeBegan + 200))
@@ -1021,8 +1031,11 @@ end
 ---------------------------------------------------------------------------------
 function creaUI(screenGroup)
 
-  timer.performWithDelay( 500, function() display.captureScreen( true ) end )
+
   --[[
+  timer.performWithDelay( 500, function() display.captureScreen( true ) end )
+  --]]
+
 
   gruppoScena= screenGroup
   _G.myUI = LD_Loader:new(screenGroup)
